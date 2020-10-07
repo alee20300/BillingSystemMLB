@@ -1,0 +1,21 @@
+﻿<views:MvxWindowsPage
+    xmlns:views="using:MvvmCross.Platforms.Uap.Views"
+    x:Class="Bilingmlb.uwp.Views.Home"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Bilingmlb.uwp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:muxc="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            <TextBox  Text="{Binding Name,Mode=TwoWay}"></TextBox>
+            <TextBlock Text="{Binding Name,Mode=TwoWay}"></TextBlock>
+        </StackPanel>
+        
+        
+
+    </Grid>
+</views:MvxWindowsPage>
