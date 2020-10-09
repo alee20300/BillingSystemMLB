@@ -46,6 +46,15 @@ namespace Billing.core.ViewModel
             
         }
 
+        private string _name;
+
+        public string Name
+        {
+            get => _name;
+            set { SetProperty(ref _name, value); }
+        }
+
+
         public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
 
         private PatientViewModel _selectedPatient;

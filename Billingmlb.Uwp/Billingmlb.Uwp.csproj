@@ -175,6 +175,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.10</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.UI.Xaml">
+      <Version>2.4.3</Version>
+    </PackageReference>
     <PackageReference Include="MvvmCross">
       <Version>7.0.1</Version>
     </PackageReference>

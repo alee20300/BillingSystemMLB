@@ -6,12 +6,34 @@
     xmlns:local="using:Billingmlb.Uwp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:MUXC="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock Text="{Binding Name,Mode=OneWay}"></TextBlock>
-        
+       
+        <StackPanel>
+            <TextBox Text="{Binding Name,Mode=TwoWay}"></TextBox>
+            <TextBlock Text="{Binding Name,Mode=TwoWay}"/>
+            <Frame
+                x:Name="HomeFrame"
+                Margin="20,0,0,0"
+                Navigating="OnNavigatingToPage">
+                <Frame.ContentTransitions>
+                    <TransitionCollection>
+                        <NavigationThemeTransition>
+                            <NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                                <EntranceNavigationTransitionInfo/>
+                            </NavigationThemeTransition.DefaultNavigationTransitionInfo>
+                        </NavigationThemeTransition>
+                    </TransitionCollection>
+                </Frame.ContentTransitions>
+                
+            </Frame>
+            
+        </StackPanel>
+       
+
 
     </Grid>
 </views:MvxWindowsPage>

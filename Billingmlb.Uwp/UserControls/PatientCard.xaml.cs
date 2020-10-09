@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Billing.core.ViewModel;
+using MvvmCross.Platforms.Uap.Views;
+using MvvmCross.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,7 +20,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Billingmlb.Uwp.UserControls
 {
-    public sealed partial class PatientCard : UserControl
+    [MvxViewFor(typeof(PatientViewModel))]
+    public sealed partial class PatientCard : MvxWindowsPage
     {
         public PatientCard()
         {

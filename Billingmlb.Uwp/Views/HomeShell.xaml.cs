@@ -1,4 +1,5 @@
 ﻿using Billing.core.ViewModel;
+using Billingmlb.Uwp.UserControls;
 using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.ViewModels;
 using System;
@@ -30,5 +31,12 @@ namespace Billingmlb.Uwp.Views
         {
             this.InitializeComponent();
         }
+        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
+        {
+           
+        }
+
+
+
     }
 }
