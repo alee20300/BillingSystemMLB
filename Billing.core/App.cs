@@ -11,7 +11,7 @@ namespace Billing.core
         public override void Initialize()
         {
             base.Initialize();
-            RegisterAppStart<PatientViewModel>();
+            RegisterAppStart<MainViewModel>();
         }
     }
 }

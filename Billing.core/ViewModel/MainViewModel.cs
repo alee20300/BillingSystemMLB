@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domin.Models;
+using Microsoft.EntityFrameworkCore;
 using MvvmCross.ViewModels;
 using Repository;
 using System;
@@ -12,18 +13,37 @@ namespace Billing.core.ViewModel
    public class MainViewModel : MvxViewModel   
     {
 
+        public void addpatient()
+        {
+            Patient pt = new Patient
+            {
+
+                PatientNumber = "1112",
+                Island = "Thinadhoo ",
+                PermAddress = "Sandalwood",
+                DateOfBirth = DateTime.Now,
+                Atoll = "G Dh",
+                Sex = "M",
+                Country = "Maldives",
+                Name = "ali abdulla",
+                CreatatedOn = DateTime.UtcNow,
+                CreatedBy = "Laith",
+
+
+            };
+            //_patients.Add(pt);
+
+            Repository.Patient.UpsertAsync(pt);
+
+        }
         public MainViewModel()
         {
             var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
-            Repository = new BillingRepository(dbOptions);
-            try
-            {
-                Task.Run(GetPatientListAsync).GetAwaiter().GetResult();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+          Repository = new BillingRepository(dbOptions);
+            //addpatient();
+                Task.Run(GetPatientListAsync);
+
+            
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
@@ -41,7 +61,7 @@ namespace Billing.core.ViewModel
         {
             var patient = await Repository.Patient.GetAsync();
             Patients.Clear();
-            foreach (var p  in patient)
+             foreach (var p  in patient)
             {
                 Patients.Add(new PatientViewModel(p));
             } 

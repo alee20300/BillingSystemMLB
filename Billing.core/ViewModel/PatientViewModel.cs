@@ -23,7 +23,11 @@ namespace Billing.core.ViewModel
                 Atoll = "G Dh",
                 Sex = "M",
                 Country = "Maldives",
-                Name = "ali abdulla"
+                Name = "ali abdulla",
+                CreatatedOn = DateTime.UtcNow,
+                CreatedBy="Laith",
+
+
             };
             _patients.Add(pt);
 
@@ -41,7 +45,7 @@ namespace Billing.core.ViewModel
         {
             var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
             Repository = new BillingRepository(dbOptions);
-            //addpatient();
+            addpatient();
             Patient = patient ?? new Patient();
 
 
