@@ -16,6 +16,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using MUXC = Microsoft.UI.Xaml.Controls;
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,13 +32,9 @@ namespace Billingmlb.Uwp.Views
         public HomeShell()
         {
             this.InitializeComponent();
-        }
-        private void OnNavigatingToPage(object sender, NavigatingCancelEventArgs e)
-        {
-           
+            
         }
 
-
-
+        
     }
 }
