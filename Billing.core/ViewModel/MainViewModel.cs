@@ -12,13 +12,21 @@ namespace Billing.core.ViewModel
 {
    public class MainViewModel : MvxViewModel   
     {
+        private PatientViewModel _patientViewModel;
+
+        public PatientViewModel PatientViewModel
+        {
+            get => _patientViewModel;
+            set { SetProperty(ref _patientViewModel, value); }
+        }
 
         public void addpatient()
         {
+            
             Patient pt = new Patient
             {
 
-                PatientNumber = "1112",
+                PatientNumber = "1122",
                 Island = "Thinadhoo ",
                 PermAddress = "Sandalwood",
                 DateOfBirth = DateTime.Now,
@@ -31,18 +39,21 @@ namespace Billing.core.ViewModel
 
 
             };
-            //_patients.Add(pt);
+         P1.Add(pt);
 
-            Repository.Patient.UpsertAsync(pt);
+            //Repository.Patient.UpsertAsync(pt);
 
         }
         public MainViewModel()
         {
-            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
-          Repository = new BillingRepository(dbOptions);
-            //addpatient();
-                Task.Run(GetPatientListAsync);
+            //  var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
+            //Repository = new BillingRepository(dbOptions);
 
+            P1 = new ObservableCollection<Patient>();
+            addpatient();
+            //Task.Run(GetPatientListAsync);
+           
+           
             
         }
 
@@ -52,6 +63,14 @@ namespace Billing.core.ViewModel
         {
             get => _name;
             set { SetProperty(ref _name, value); }
+        }
+
+        private ObservableCollection<Patient> _p1;      
+
+        public ObservableCollection<Patient> P1
+        {
+            get { return _p1; }
+            set { SetProperty(ref _p1, value); }
         }
 
 

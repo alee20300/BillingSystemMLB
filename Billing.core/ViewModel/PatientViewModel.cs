@@ -45,7 +45,7 @@ namespace Billing.core.ViewModel
         {
             var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
             Repository = new BillingRepository(dbOptions);
-            addpatient();
+            //addpatient();
             Patient = patient ?? new Patient();
 
 
@@ -57,7 +57,8 @@ namespace Billing.core.ViewModel
 
         public ObservableCollection<Patient> Patients
         {
-            get { return _patients; }
+            get => _patients;
+
             set { SetProperty(ref _patients, value); }
         }
 

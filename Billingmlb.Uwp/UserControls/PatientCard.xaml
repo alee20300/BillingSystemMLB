@@ -17,8 +17,8 @@
         </Grid.ColumnDefinitions>
         <Image Source="/Assets/undraw_profile_pic_ic5t (1).png" ></Image>
         <StackPanel Margin="7" Grid.Column="1">
-            
-            <TextBlock Text="{Binding Name, Mode=OneWay}" FontSize="25"></TextBlock>
+            <TextBox Text="{Binding Name,Mode=TwoWay}"></TextBox>
+            <TextBlock Name="PName" Text="{Binding Name, Mode=TwoWay}" FontSize="25"></TextBlock>
             <TextBlock Text="Sandalwood/G Dh.Thinadhoo" FontSize="12"></TextBlock>
             <TextBlock Text="28/M" FontSize="12"></TextBlock>
             <TextBlock Text="9702030" FontSize="12"></TextBlock>
