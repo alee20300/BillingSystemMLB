@@ -26,5 +26,6 @@ namespace Billingmlb.Uwp.Views
         {
             this.InitializeComponent();
         }
+       
     }
 }

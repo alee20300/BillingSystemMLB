@@ -191,8 +191,8 @@ namespace Billingmlb.Uwp.Views
                     .OfType<NavigationViewItem>()
                     .First(n => n.Tag.Equals(item.Tag));
 
-                NavView.Header =
-                    ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
+                //NavView.Header =
+                //    ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
             }
         }
     }
