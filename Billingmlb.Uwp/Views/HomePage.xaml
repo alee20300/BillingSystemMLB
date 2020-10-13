@@ -23,6 +23,24 @@
 
             <uc:PatientCard x:Name="PatientCard" HorizontalAlignment="Left" Width="1500" ></uc:PatientCard>
             <uc:NewPatient x:Name="NewPatientCard" Width="800" HorizontalAlignment="Left" ></uc:NewPatient>
+            <GridView>
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name">
+                                
+                            </TextBlock>
+                            <TextBlock Text="Address">
+                                
+                            </TextBlock>
+                            <TextBlock>
+                                
+                            </TextBlock>
+                        </StackPanel>
+                       
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
         </StackPanel>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

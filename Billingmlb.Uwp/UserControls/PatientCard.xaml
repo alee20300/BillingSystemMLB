@@ -17,12 +17,16 @@
         </Grid.ColumnDefinitions>
         <Image Source="/Assets/undraw_profile_pic_ic5t (1).png" ></Image>
         <StackPanel Margin="7" Grid.Column="1">
-            <TextBox Text="{Binding Name,Mode=TwoWay}"></TextBox>
+            <TextBlock Text="Patient"></TextBlock>
+            
             <TextBlock Name="PName" Text="{Binding Name, Mode=TwoWay}" FontSize="25"></TextBlock>
             <TextBlock Text="Sandalwood/G Dh.Thinadhoo" FontSize="12"></TextBlock>
             <TextBlock Text="28/M" FontSize="12"></TextBlock>
             <TextBlock Text="9702030" FontSize="12"></TextBlock>
+            <TextBlock Text="Email@gmail.com" FontSize="12"></TextBlock>
+            <TextBlock Text="Island" FontSize="12"></TextBlock>
         </StackPanel>
+        
 
     </Grid>
 </views:MvxWindowsPage>
