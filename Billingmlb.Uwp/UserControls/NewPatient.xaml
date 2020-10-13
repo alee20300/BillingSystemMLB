@@ -1,0 +1,34 @@
+﻿<UserControl
+    x:Class="Billingmlb.Uwp.UserControls.NewPatient"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Billingmlb.Uwp.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="360"
+    d:DesignWidth="800">
+
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="8">
+            <TextBlock Text="Add New Patient" FontSize="23"></TextBlock>
+            <TextBox x:Name="NameTextBox" PlaceholderText="Patient Name" Header="Name" Width="300" HorizontalAlignment="Left"></TextBox>
+            <DatePicker Header="Date Of Birth" x:Name="DOBPicker" ></DatePicker>
+            <StackPanel Orientation="Horizontal" Width="300" HorizontalAlignment="Left">
+                <ComboBox Header="Gender" x:Name="GenderComboBox"  Width="100" >
+                    <ComboBoxItem Content="Male"/>
+                    <ComboBoxItem Content="Female"/>
+                </ComboBox>
+                <ComboBox x:Name="CountryComboBox" Header="Country" HorizontalAlignment="Left" Width="180"></ComboBox>
+
+            </StackPanel>
+            
+            <TextBox x:Name="AddressTextBox" PlaceholderText="Patient Address" Header="Address" Width="300" HorizontalAlignment="Left"></TextBox>
+            <RelativePanel Width="300" HorizontalAlignment="Left">
+                <ComboBox x:Name="AtollCombobox" Header="Atoll" Width="120"></ComboBox>
+                <ComboBox x:Name="IslandComboBox" Header="Island" Width="120" RelativePanel.RightOf="AtollCombobox"></ComboBox>
+            </RelativePanel>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

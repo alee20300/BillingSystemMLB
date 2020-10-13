@@ -21,18 +21,21 @@
                 
             </RelativePanel>
 
-            <uc:PatientCard HorizontalAlignment="Left" ></uc:PatientCard>
+            <uc:PatientCard x:Name="PatientCard" HorizontalAlignment="Left" Width="1500" ></uc:PatientCard>
+            <uc:NewPatient x:Name="NewPatientCard" Width="800" HorizontalAlignment="Left" ></uc:NewPatient>
         </StackPanel>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>
                 <VisualState>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger
-                        MinWindowWidth="300"/>
+                        MinWindowWidth ="300"/>
+                        
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!-- Remove the next 3 lines for left-only navigation. -->
                         <Setter Target="Searchbox.Visibility" Value="Visible"/>
+                        <Setter Target="PatientCard.Width" Value="1100"></Setter>
 
                        
                     </VisualState.Setters>
