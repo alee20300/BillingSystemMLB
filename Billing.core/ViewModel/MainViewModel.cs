@@ -5,6 +5,7 @@ using Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,47 +14,28 @@ namespace Billing.core.ViewModel
    public class MainViewModel : MvxViewModel   
     {
         private PatientViewModel _patientViewModel;
+        private PatientCardViewModel _patientCardViewModel;
 
+        public event EventHandler<Patient> OnPatientSearch;
         public PatientViewModel PatientViewModel
         {
             get => _patientViewModel;
-            set { SetProperty(ref _patientViewModel, value); }
+            set {SetProperty (ref _patientViewModel, value); }
         }
 
-        public void addpatient()
-        {
-            
-            Patient pt = new Patient
-            {
+           
 
-                PatientNumber = "1122",
-                Island = "Thinadhoo ",
-                PermAddress = "Sandalwood",
-                DateOfBirth = DateTime.Now,
-                Atoll = "G Dh",
-                Sex = "M",
-                Country = "Maldives",
-                Name = "ali abdulla",
-                CreatatedOn = DateTime.UtcNow,
-                CreatedBy = "Laith",
-
-
-            };
-         P1.Add(pt);
-
-            //Repository.Patient.UpsertAsync(pt);
-
-        }
         public MainViewModel()
         {
             //  var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
             //Repository = new BillingRepository(dbOptions);
-
+            _patientCardViewModel = new PatientCardViewModel();
+            OnPatientSearch += _patientCardViewModel.PatientSearched;
             P1 = new ObservableCollection<Patient>();
-            addpatient();
+            
             //Task.Run(GetPatientListAsync);
-           
-           
+
+            OnPatientSearch?.Invoke(this, P1.FirstOrDefault());
             
         }
 
@@ -65,14 +47,8 @@ namespace Billing.core.ViewModel
             set { SetProperty(ref _name, value); }
         }
 
-        private ObservableCollection<Patient> _p1;      
 
-        public ObservableCollection<Patient> P1
-        {
-            get { return _p1; }
-            set { SetProperty(ref _p1, value); }
-        }
-
+        public ObservableCollection<Patient> P1 { get; private set; }
 
         public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
 

@@ -73,6 +73,7 @@ namespace Billing.core.ViewModel
 
         }
 
+
         private Patient _patient;
 
         public Patient Patient

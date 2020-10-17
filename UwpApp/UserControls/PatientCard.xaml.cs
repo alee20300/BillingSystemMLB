@@ -1,11 +1,9 @@
-﻿using Billing.core.ViewModel;
-using MvvmCross.Platforms.Uap.Views;
-using MvvmCross.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -18,18 +16,15 @@ using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
-namespace Billingmlb.Uwp.UserControls
+namespace UwpApp.UserControls
 {
-    //[MvxViewFor(typeof(PatientCardViewModel))]
-    public sealed partial class PatientCard : Page
+    public sealed partial class PatientCard : UserControl
     {
-        public pat viewModel { get; set; }
+        
         public PatientCard()
         {
             this.InitializeComponent();
-            viewModel=new ShellViewModel()
+            
         }
-
-        
     }
 }

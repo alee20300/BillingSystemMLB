@@ -18,15 +18,18 @@ namespace Domin.Models
         [StringLength(2)]
         public string Sex { get; set; }
         public DateTime DateOfBirth { get; set; }
+        [StringLength(20)]
+        public string Contact { get; set; }
         [StringLength(50)]
+        
+        
         public string Country { get; set; }
         [StringLength(5)]
         public string Atoll { get; set; }
         [StringLength(50)]
         public string Island { get; set; }
-        
-
-
+        [StringLength(50)]
+        public string Email { get; set; }
     }
 
 

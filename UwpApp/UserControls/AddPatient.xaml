@@ -1,0 +1,39 @@
+﻿<Page
+    x:Class="UwpApp.UserControls.AddPatient"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="New Customer" Style="{StaticResource TitleTextBlockStyle}"/>
+            
+            <TextBox x:Name="Name" Header= "Name" Margin="0,24,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
+            <StackPanel  Orientation="Horizontal">
+                <CalendarDatePicker Margin="0,24,0,0" Header="Date Of Birth " Width="100"></CalendarDatePicker>
+                <TextBox Margin="24,24,0,0" Header="Age" PlaceholderText="MM"></TextBox>
+                <TextBox Margin="24,24,0,0"  PlaceholderText="DD" Header=" "></TextBox>
+                <TextBox Margin="24,24,0,0"  Header=" " PlaceholderText="YYYY"></TextBox>
+                
+
+            </StackPanel>
+            <TextBox x:Name="PhoneNumber" Header="Phone Number" Margin="0,24,0,0" MaxLength="15" Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
+            <TextBox x:Name="Email" Header="Email" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
+            <TextBox x:Name="Address" Header="Address" PlaceholderText="Address" Margin="0,24,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
+            <RelativePanel>
+                <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Margin="0,24,0,0"  Width="100" HorizontalAlignment="Left"  />
+                <ComboBox x:Name="Island" PlaceholderText="Island" Margin="24,24,0,0"  Width="200" RelativePanel.RightOf="Atoll">
+                    <x:String>WA</x:String>
+                </ComboBox>
+            </RelativePanel>
+             <StackPanel Orientation="Horizontal">
+                <Button Content="Save" Margin="0,24" Click="SaveButton_Click"/>
+                <Button Content="Cancel" Margin="24" Click="CancelButton_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

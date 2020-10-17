@@ -1,12 +1,9 @@
-﻿using Billing.core.ViewModel;
-using Billingmlb.Uwp.UserControls;
-using MvvmCross.Platforms.Uap.Views;
-using MvvmCross.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,26 +13,21 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using MUXC = Microsoft.UI.Xaml.Controls;
-
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace Billingmlb.Uwp.Views
+namespace UwpApp
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    [MvxViewFor(typeof(MainViewModel))]
-    public sealed partial class HomeShell : MvxWindowsPage
+    public sealed partial class ShellView : Page
     {
-        public HomeShell()
+        public ShellView()
         {
             this.InitializeComponent();
-            
         }
-        // Add "using" for WinUI controls.
-        // using muxc = Microsoft.UI.Xaml.Controls;
+
 
         private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
 
@@ -49,20 +41,12 @@ namespace Billingmlb.Uwp.Views
 {
     ("home", typeof(HomePage)),
     ("apps", typeof(PatientPage)),
-    
+
 };
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            // You can also add items in code.
-            NavView.MenuItems.Add(new NavigationViewItemSeparator());
-            NavView.MenuItems.Add(new NavigationViewItem
-            {
-                Content = "My content",
-                Icon = new SymbolIcon((Symbol)0xF1AD),
-                Tag = "content"
-            });
-            _pages.Add(("content", typeof(MyContentPage)));
+            
 
             // Add handler for ContentFrame navigation.
             ContentFrame.Navigated += On_Navigated;
@@ -194,11 +178,6 @@ namespace Billingmlb.Uwp.Views
                 //NavView.Header =
                 //    ((NavigationViewItem)NavView.SelectedItem)?.Content?.ToString();
             }
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
