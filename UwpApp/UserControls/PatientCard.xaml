@@ -10,9 +10,7 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:ShellViewModel x:Name="ShellViewModel"/>
-    </UserControl.DataContext> 
+   
 
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
@@ -27,12 +25,12 @@
         </Grid.RowDefinitions>
         <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
         <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
-            <TextBlock Text="{Binding Patient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
-            <TextBlock Text="{Binding Patient.PermAddress, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-            <TextBlock Text="{Binding Patient.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-            <TextBlock Text="{Binding Patient.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-            <TextBlock Text="{Binding Patient.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-            <TextBlock Text="{Binding Patient.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{x:Bind patientViewModel.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Text="{x:Bind patientViewModel.PermAddress, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
 
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="1" Margin="5" Width="200" HorizontalAlignment="Left">

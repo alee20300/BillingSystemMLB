@@ -31,8 +31,8 @@
                 </ComboBox>
             </RelativePanel>
              <StackPanel Orientation="Horizontal">
-                <Button Content="Save" Margin="0,24" Click="SaveButton_Click"/>
-                <Button Content="Cancel" Margin="24" Click="CancelButton_Click"/>
+                <Button Content="Save" Margin="0,24" />
+                <Button Content="Cancel" Margin="24" />
             </StackPanel>
         </StackPanel>
     </Grid>

@@ -23,7 +23,76 @@ namespace UwpApp.ViewModel
         public ShellViewModel()
         {
             Task.Run(GetPatientsAsync);
+            
+            NameF = "ali";
             Patient = new Patient();
+
+            Patient.PatientNumber = "1112";
+            Patient.Island = "Thinadhoo ";
+            Patient.PermAddress = "Sanlwood";
+            Patient.DateOfBirth = DateTime.Now;
+            Patient.Atoll = "G Dh";
+            Patient.Sex = "M";
+            Patient.Country = "Maldives";
+            Patient.Name = "ali Abdulla";
+            Patient.CreatatedOn = DateTime.UtcNow;
+            Patient.CreatedBy = "Laith";
+
+           
+
+        }
+
+        public  async Task adddemodata()
+        {
+            Patient pt = new Patient
+            {
+
+                PatientNumber = "112",
+                Island = "Thinadhoo ",
+                PermAddress = "Sandalwood",
+                DateOfBirth = DateTime.Now,
+                Atoll = "G Dh",
+                Sex = "M",
+                Country = "Maldives",
+                Name = "MOhamed Laith ali abdulla",
+                CreatatedOn = DateTime.UtcNow,
+                CreatedBy = "Laith",
+
+
+            };
+
+            await App.Repository.Patient.UpsertAsync(pt);
+        }
+
+        private Patient _patient;
+
+        public Patient Patient
+        {
+            get => _patient;
+            set => Set(ref _patient, value);
+        }
+
+        private string _nameF;
+
+        public string NameF
+        {
+            get => _nameF;
+            set => Set(ref _nameF, value);
+        }
+
+
+        public string Name
+        {
+            get => Patient.Name;
+            set
+            {
+                if (value != Patient.Name)
+                {
+                    Patient.Name = value;
+                    OnPropertyChanged();
+                }
+            }
+
         }
 
         public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
@@ -32,7 +101,8 @@ namespace UwpApp.ViewModel
 
         public PatientViewModel SelectedPatient
         {
-            get => _selectedPatient; set => Set(ref _selectedPatient, value);
+            get => _selectedPatient; 
+            set => Set(ref _selectedPatient, value);
         }
 
         private async Task GetPatientsAsync()
@@ -49,6 +119,7 @@ namespace UwpApp.ViewModel
                 foreach (var p in patients)
                 {
                     Patients.Add(new PatientViewModel(p));
+                    
                 }
                 IsLoading = false;
             });
@@ -72,24 +143,18 @@ namespace UwpApp.ViewModel
 
         public void plus1()
         { /*Age = Age + age;*/
+            NameF = "Name Changed";
             demodate();
+            adddemodata();
         }
 
 
         public void demodate()
         {
-            
-            Patient.PatientNumber = "1112";
-            Patient.Island = "Thinadhoo ";
-            Patient.PermAddress = "Sandalwood";
-            Patient.DateOfBirth = DateTime.Now;
-            Patient.Atoll = "G Dh";
-            Patient.Sex = "M";
-            Patient.Country = "Maldives";
-            Patient.Name = "ali abdulla";
-            Patient.CreatatedOn = DateTime.UtcNow;
-            Patient.CreatedBy = "Laith";
+            Name = "Ali";
+           
         }
+
 
         public void BeginEdit()
         {
@@ -113,38 +178,7 @@ namespace UwpApp.ViewModel
             set => Set(ref _isLoading, value);
         }
 
-        private Patient _patient;
 
-        public Patient Patient
-        {
-            get => _patient;
-            set
-            {
-                if (_patient !=value)
-                {
-                    _patient = value;
-                    OnPropertyChanged(string.Empty);
-                }
-            }
-        }
-
-
-
-        public string Name
-        {
-            get => Patient.Name;
-            set
-            {
-                if (value != Patient.Name)
-                {
-                    Patient.Name = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-
-
-
+       
     }
 }

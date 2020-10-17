@@ -32,7 +32,7 @@ namespace UwpApp.Views
         public ShellViewModel ViewModel => App.ShellViewModel;
    
 
-        private void AutoSuggestBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private async void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Only get results when it was a user typing, 
             // otherwise assume the value got filled in by TextMemberPath 
@@ -40,7 +40,14 @@ namespace UwpApp.Views
             if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
 
-               
+                if (string.IsNullOrEmpty(sender.Text))
+                {
+                    sender.ItemTemplate = null;
+                }
+                else
+                {
+                    sender.ItemsSource = await App.Repository.Patient.GetAsync();
+                }
                 //Set the ItemsSource to be your filtered dataset
                 //sender.ItemsSource = dataset;
             }

@@ -13,6 +13,6 @@ namespace Domin.Models
         [StringLength(25)]
         public string LastModifiedBy { get; set; }
 
-        public DateTime? LastModifeid { get; set; }
+        public DateTime LastModifeid { get; set; }
     }
 }

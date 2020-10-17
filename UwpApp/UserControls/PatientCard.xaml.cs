@@ -20,11 +20,11 @@ namespace UwpApp.UserControls
 {
     public sealed partial class PatientCard : UserControl
     {
-        
+        public PatientViewModel patientViewModel { get; set; } = new PatientViewModel();
         public PatientCard()
         {
             this.InitializeComponent();
-            
+            DataContext = patientViewModel;
         }
     }
 }
