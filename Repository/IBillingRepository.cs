@@ -7,5 +7,6 @@ namespace Repository
     public interface IBillingRepository 
     {
         IPatientRepository Patient { get; }
+        IMemoRepository Memo { get; }
     }
 }

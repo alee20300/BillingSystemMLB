@@ -16,10 +16,7 @@ namespace Repository.SQL
         }
         
 
-        public  async Task<Patient> GetSingleAsync(string PatientId)
-        {
-            return await dbSet.FindAsync(PatientId);
-        }
+      
 
        
     }

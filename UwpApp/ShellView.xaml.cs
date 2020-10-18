@@ -28,6 +28,7 @@ namespace UwpApp
             this.InitializeComponent();
         }
 
+        
 
         private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
 

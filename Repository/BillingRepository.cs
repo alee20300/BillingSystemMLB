@@ -21,7 +21,8 @@ namespace Repository
         }
 
         public IPatientRepository Patient => new PatientRepository(new ApplicationContext(_dbOptions));
+        public IMemoRepository Memo => new MemoRepository(new ApplicationContext(_dbOptions));
 
-    
+
     }
 }

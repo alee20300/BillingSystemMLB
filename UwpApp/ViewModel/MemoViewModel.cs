@@ -32,6 +32,11 @@ namespace UwpApp.ViewModel
 
         }
 
+        public async static Task<MemoViewModel> CreatefromMemoId(string MemoId) =>
+            new MemoViewModel(await GetMemo(MemoId));
+
+        private static async Task<Memo> GetMemo(string MemoId) =>
+            await App.Repository.Memo.GetbyIdAsync(MemoId);
 
         private MemoDetailViewModel  _newMemoDetail;
 

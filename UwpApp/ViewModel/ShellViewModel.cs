@@ -10,15 +10,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.UI.Core;
-
-
+using Windows.UI.Xaml;
 
 namespace UwpApp.ViewModel
 {
     public class ShellViewModel : BindableBase , IEditableObject
 
     {
-
+        
         public PatientViewModel patientViewModel  { get; set; }
         public ShellViewModel()
         {
