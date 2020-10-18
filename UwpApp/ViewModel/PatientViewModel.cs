@@ -8,18 +8,22 @@ using Domin.Models;
 using Windows.UI.Xaml.Media;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel
 {
     public class PatientViewModel :BindableBase
     {
+        public SaveCommand  SaveCommand { get; set; }
         public PatientViewModel(Patient patient =null)
         {
+          
             Patient = patient ?? new Patient();
+
+            SaveCommand = new SaveCommand(this);
         }
 
-
-       
+      
         private bool _IsLoading = false;
 
         public bool Isloading
@@ -27,6 +31,8 @@ namespace UwpApp.ViewModel
             get { return _IsLoading; }
             set { Set(ref _IsLoading, value); }
         }
+
+
 
         private Patient _patient;
 
@@ -209,7 +215,7 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public DateTime CreatedOn
+        public DateTime CreatedOn 
         {
             get => Patient.CreatatedOn;
             set

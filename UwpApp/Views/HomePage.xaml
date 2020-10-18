@@ -32,7 +32,8 @@
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                     ></AutoSuggestBox>
             </RelativePanel>
-            
+            <uc:PatientCard DataContext="{x:Bind ViewModel.Patient}"></uc:PatientCard>
+            <uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>
 
             
             <TextBlock Text="{x:Bind ViewModel.Name, Mode=TwoWay}" FontSize="100"></TextBlock>

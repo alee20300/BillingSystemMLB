@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using UwpApp.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -16,18 +15,16 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UwpApp.UserControls
+namespace UwpApp.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class AddPatient : Page
+    public sealed partial class MemoDetails : Page
     {
-        public PatientViewModel patientViewModel { get; set; } = new PatientViewModel();
-        public AddPatient()
+        public MemoDetails()
         {
             this.InitializeComponent();
-            DataContext = patientViewModel;
         }
     }
 }
