@@ -187,7 +187,7 @@ namespace UwpApp.ViewModel
 
         public string PatientNumber
         {
-            get => Patient.PatientNumber;
+            get => "100";
             set
             {
                 if (value != Patient.PatientNumber)

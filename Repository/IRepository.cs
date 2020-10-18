@@ -9,7 +9,7 @@ namespace Repository
     {
         Task<IEnumerable<TEntity>> GetAsync();
         Task<IEnumerable<TEntity>> GetAsync(string Search);
-        Task<TEntity> GetAsync(Guid Id);
+        Task<TEntity> GetbyIdAsync(String Id);
         Task<TEntity> UpsertAsync(TEntity entity);
     }
 }

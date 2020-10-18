@@ -15,18 +15,18 @@ namespace Billing.core.ViewModel
 {
     public class ShellViewModel : BindableBase
     {
-        //public BillingRepository Repository { get; private set; }
-        //public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
+        public BillingRepository Repository { get; private set; }
+        public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
 
-     
-        //public ShellViewModel()
-        //{
-        //    var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
-        //    Repository = new BillingRepository(dbOptions);
-           
-        //}
 
-       public void GetTask() 
+        public ShellViewModel()
+        {
+            //var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=reception\\SQLEXPRESS;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
+            //Repository = new BillingRepository(dbOptions);
+
+        }
+
+        public void GetTask() 
         {
             
             Patient pt = new Patient

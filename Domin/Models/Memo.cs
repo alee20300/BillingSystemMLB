@@ -20,6 +20,9 @@ namespace Domin.Models
         public decimal AccountAmmount { get; set; }
         public decimal  Account2Ammount { get; set; }
 
+        public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
+
+
 
 
     }

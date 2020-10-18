@@ -145,7 +145,7 @@ namespace UwpApp.ViewModel
         { /*Age = Age + age;*/
             NameF = "Name Changed";
             demodate();
-            adddemodata();
+            //adddemodata();
         }
 
 

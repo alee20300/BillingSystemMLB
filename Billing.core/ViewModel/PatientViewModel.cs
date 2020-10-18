@@ -114,7 +114,7 @@ namespace Billing.core.ViewModel
 
         public string PatientNumber
         {
-            get { return _patientNumber; }
+            get { return "1000"; }
             set { SetProperty(ref _patientNumber, value); }
         }
 

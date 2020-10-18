@@ -33,7 +33,7 @@ namespace UwpApp
         public static ShellViewModel ShellViewModel { get; } = new ShellViewModel();
         public static IBillingRepository Repository { get; private set; }
 
-
+        
 
         public App()
         {

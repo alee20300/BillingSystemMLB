@@ -8,7 +8,56 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="New Memo"></TextBlock>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                           
+                        </Grid.ColumnDefinitions>
+                        <StackPanel >
+                            <TextBlock Text="Patient Number" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Name" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Address" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Contact Number" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Email" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Text="Patient Number" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Name" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Address" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Contact Number" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Email" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
+                        </StackPanel>
+                        
+                        
+                    </Grid>
+                    <StackPanel Width="450">
+                        <TextBox Header="Account" PlaceholderText="Account"></TextBox>
+                        <TextBox Header="Doctor" PlaceholderText="Requested by"></TextBox>
+                        <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
+                        
+                    </StackPanel>
+                    <Image Margin="800,0,0,0" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  HorizontalAlignment="Left"></Image>
+                </StackPanel>                
+            </StackPanel>
+            <AutoSuggestBox QueryIcon="Find" Width="400" HorizontalAlignment="Left" Header="Search for Service"></AutoSuggestBox>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+            </Grid>
+            <GridView>
+                
+            </GridView>
+        </StackPanel>
        
 
     </Grid>

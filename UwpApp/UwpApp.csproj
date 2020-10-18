@@ -134,6 +134,8 @@
     </Compile>
     <Compile Include="ViewModel\BindableBase.cs" />
     <Compile Include="ViewModel\Command\SaveCommand.cs" />
+    <Compile Include="ViewModel\MemoDetailViewModel.cs" />
+    <Compile Include="ViewModel\MemoViewModel.cs" />
     <Compile Include="ViewModel\PatientViewModel.cs" />
     <Compile Include="ViewModel\ShellViewModel.cs" />
     <Compile Include="Views\HomePage.xaml.cs">
