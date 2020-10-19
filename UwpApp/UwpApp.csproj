@@ -151,6 +151,15 @@
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SettingsPages\AccountsSetting.xaml.cs">
+      <DependentUpon>AccountsSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPages\DoctorSetting.xaml.cs">
+      <DependentUpon>DoctorSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPages\ServiceSetting.xaml.cs">
+      <DependentUpon>ServiceSetting.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -202,6 +211,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPages\AccountsSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPages\DoctorSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPages\ServiceSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

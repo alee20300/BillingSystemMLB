@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.ViewModel;
 using UwpApp.Views;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -26,9 +27,11 @@ namespace UwpApp
         public ShellView()
         {
             this.InitializeComponent();
+            
         }
 
         
+
 
         private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
 

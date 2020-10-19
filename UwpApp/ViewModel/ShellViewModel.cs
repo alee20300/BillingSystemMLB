@@ -21,9 +21,10 @@ namespace UwpApp.ViewModel
         public PatientViewModel patientViewModel  { get; set; }
         public ShellViewModel()
         {
-            Task.Run(GetPatientsAsync);
             
-            NameF = "ali";
+            Task.Run(GetPatientsListAsync);
+            
+            
             Patient = new Patient();
 
             Patient.PatientNumber = "1112";
@@ -41,27 +42,7 @@ namespace UwpApp.ViewModel
 
         }
 
-        public  async Task adddemodata()
-        {
-            Patient pt = new Patient
-            {
-
-                PatientNumber = "112",
-                Island = "Thinadhoo ",
-                PermAddress = "Sandalwood",
-                DateOfBirth = DateTime.Now,
-                Atoll = "G Dh",
-                Sex = "M",
-                Country = "Maldives",
-                Name = "MOhamed Laith ali abdulla",
-                CreatatedOn = DateTime.UtcNow,
-                CreatedBy = "Laith",
-
-
-            };
-
-            await App.Repository.Patient.UpsertAsync(pt);
-        }
+        
 
         private Patient _patient;
 
@@ -71,28 +52,9 @@ namespace UwpApp.ViewModel
             set => Set(ref _patient, value);
         }
 
-        private string _nameF;
+        
 
-        public string NameF
-        {
-            get => _nameF;
-            set => Set(ref _nameF, value);
-        }
-
-
-        public string Name
-        {
-            get => Patient.Name;
-            set
-            {
-                if (value != Patient.Name)
-                {
-                    Patient.Name = value;
-                    OnPropertyChanged();
-                }
-            }
-
-        }
+      
 
         public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
 
@@ -104,7 +66,7 @@ namespace UwpApp.ViewModel
             set => Set(ref _selectedPatient, value);
         }
 
-        private async Task GetPatientsAsync()
+        public async Task GetPatientsListAsync()
         {
             await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
             var patients = await App.Repository.Patient.GetAsync();
@@ -126,34 +88,11 @@ namespace UwpApp.ViewModel
 
         }
 
-        private int age=1;
-
-        public int Age
-        {
-            get => age;
-            set
-            {
-                Set(ref age, value);
-                
-            }
-
-            
-        }
-
-        public void plus1()
-        { /*Age = Age + age;*/
-            NameF = "Name Changed";
-            demodate();
-            //adddemodata();
-        }
+        
+        
 
 
-        public void demodate()
-        {
-            Name = "Ali";
-           
-        }
-
+       
 
         public void BeginEdit()
         {

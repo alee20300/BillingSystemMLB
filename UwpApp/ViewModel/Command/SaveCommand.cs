@@ -30,7 +30,7 @@ namespace UwpApp.ViewModel.Command
         {
 
             App.Repository.Patient.UpsertAsync(PatientViewModel.Patient);
-            
+           
            
         }
     }

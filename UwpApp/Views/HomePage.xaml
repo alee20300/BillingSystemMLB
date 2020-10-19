@@ -23,6 +23,7 @@
                     <AppBarSeparator/>
                 </CommandBar>
                 <AutoSuggestBox 
+                    
                     RelativePanel.RightOf="CommandBar" 
                     Name="Searchbox"  PlaceholderText="Search for Something" 
                     Width="400" HorizontalAlignment="Right"
@@ -32,27 +33,48 @@
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                     ></AutoSuggestBox>
             </RelativePanel>
-            <uc:PatientCard DataContext="{x:Bind ViewModel.Patient}"></uc:PatientCard>
-            <uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="4*" />
+                    <ColumnDefinition Width="0.5*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="2.0*" />
+                </Grid.RowDefinitions>
+                <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
+                <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
+                    <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
+                    <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Coutry,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+
+                </StackPanel>
+
+            </Grid>
+
+            <!--<TextBlock x:Name="testtext" Text="{x:Bind ViewModel.SelectedPatient.Name, Mode=TwoWay}"></TextBlock>-->
+                <!--<uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>-->
+
+
+                <GridView ItemsSource="{x:Bind ViewModel.Patients}"
+                      SelectedItem="{x:Bind ViewModel.SelectedPatient,Mode=TwoWay}">
+                    <GridView.ItemTemplate >
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                                <TextBlock Text="{Binding PermAddress}"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
 
             
-            <TextBlock Text="{x:Bind ViewModel.Name, Mode=TwoWay}" FontSize="100"></TextBlock>
-            <Button Content="click" Click="{x:Bind ViewModel.plus1}"></Button>
-
-
-            <GridView ItemsSource="{x:Bind ViewModel.Patients}">
-                
-                <GridView.ItemTemplate >
-                    <DataTemplate>
-                        <StackPanel>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            <TextBlock Text="{Binding PermAddress}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
-
-
         </StackPanel>
         <VisualStateManager.VisualStateGroups>
             <VisualStateGroup>

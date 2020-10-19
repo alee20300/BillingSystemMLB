@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Toolkit.Uwp.Helpers;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel;
 using Windows.Foundation;
@@ -31,7 +33,7 @@ namespace UwpApp.Views
 
         public ShellViewModel ViewModel => App.ShellViewModel;
    
-
+        
         private async void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Only get results when it was a user typing, 
@@ -42,11 +44,20 @@ namespace UwpApp.Views
 
                 if (string.IsNullOrEmpty(sender.Text))
                 {
+                    await DispatcherHelper.ExecuteOnUIThreadAsync(async ()=>
+                        await ViewModel.GetPatientsListAsync());
                     sender.ItemTemplate = null;
                 }
                 else
                 {
-                    sender.ItemsSource = await App.Repository.Patient.GetAsync();
+                    string[] parameters = sender.Text.Split(new char[] { ' ' },
+                        StringSplitOptions.RemoveEmptyEntries);
+                    sender.ItemsSource = ViewModel.Patients
+                        .Where(patient => parameters.Any(Parameter =>
+                          patient.PatientNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
+                        .Select(patient => patient.Name);
+                        
+                    
                 }
                 //Set the ItemsSource to be your filtered dataset
                 //sender.ItemsSource = dataset;
@@ -57,6 +68,9 @@ namespace UwpApp.Views
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
+
+            
+            
         }
 
 
@@ -70,6 +84,11 @@ namespace UwpApp.Views
             {
                 // Use args.QueryText to determine what to do.
             }
+        }
+
+        private void AddmemoPage_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

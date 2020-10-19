@@ -15,7 +15,7 @@
                 <StackPanel Orientation="Horizontal">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1.5*" />
                             <ColumnDefinition Width="1*" />
                            
                         </Grid.ColumnDefinitions>
@@ -28,12 +28,12 @@
                             <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <TextBlock Text="Patient Number" Grid.Column="0"></TextBlock>
-                            <TextBlock Text="Patient Name" Grid.Column="0"></TextBlock>
-                            <TextBlock Text="Patient Address" Grid.Column="0"></TextBlock>
-                            <TextBlock Text="Patient Contact Number" Grid.Column="0"></TextBlock>
-                            <TextBlock Text="Patient Email" Grid.Column="0"></TextBlock>
-                            <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
+                            <TextBlock x:Name="patientnumber" Text="{x:Bind ViewModel.PatientNumber,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{x:Bind ViewModel.Name,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{x:Bind ViewModel.PermAddress,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{x:Bind ViewModel.Contact,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{x:Bind ViewModel.Email,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                            <TextBlock Text="{x:Bind ViewModel.DateOfBirth,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                         </StackPanel>
                         
                         
