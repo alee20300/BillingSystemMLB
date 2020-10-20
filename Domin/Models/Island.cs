@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Domin.Models
 {
-    public class Doctor: DbObject   
+    public class Island
     {
         public int Id { get; set; }
-        [StringLength(50)]
-        public String DoctorName { get; set; }
-        
+        public Atoll Atoll { get; set; }
+        [StringLength(20)]
+        public string IslandName { get; set; }
     }
 }

@@ -11,13 +11,15 @@
         <NavigationView x:Name="NavView"
                         Loaded="NavView_Loaded"
                         ItemInvoked="NavView_ItemInvoked"
-                        BackRequested="NavView_BackRequested">
+                        BackRequested="NavView_BackRequested"
+                        >
             <NavigationView.MenuItems>
                 <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
                 <NavigationViewItemSeparator/>
                 <NavigationViewItemHeader x:Name="MainPagesHeader"
                                            Content="Main pages"/>
                 <NavigationViewItem Tag="Patient" Icon="People" Content="People"/>
+                   
             </NavigationView.MenuItems>
 
             <ScrollViewer>

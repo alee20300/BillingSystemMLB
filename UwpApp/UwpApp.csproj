@@ -132,6 +132,7 @@
     <Compile Include="UserControls\PatientCard.xaml.cs">
       <DependentUpon>PatientCard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\AddDemoDate.cs" />
     <Compile Include="ViewModel\BindableBase.cs" />
     <Compile Include="ViewModel\Command\SaveCommand.cs" />
     <Compile Include="ViewModel\MemoDetailViewModel.cs" />
@@ -241,7 +242,9 @@
       <Version>6.1.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Triggers\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domin\Domin.csproj">
       <Project>{22b52429-b3de-4a2a-9720-a509632b2441}</Project>

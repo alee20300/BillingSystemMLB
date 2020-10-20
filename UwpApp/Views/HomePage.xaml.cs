@@ -55,7 +55,8 @@ namespace UwpApp.Views
                     sender.ItemsSource = ViewModel.Patients
                         .Where(patient => parameters.Any(Parameter =>
                           patient.PatientNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
-                        .Select(patient => patient.Name);
+                        .Select(patient => patient.Name)
+                        ;
                         
                     
                 }
@@ -68,7 +69,7 @@ namespace UwpApp.Views
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
-
+                
             
             
         }
@@ -83,6 +84,7 @@ namespace UwpApp.Views
             else
             {
                 // Use args.QueryText to determine what to do.
+                
             }
         }
 

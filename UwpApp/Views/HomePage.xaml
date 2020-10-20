@@ -73,6 +73,21 @@
                         </DataTemplate>
                     </GridView.ItemTemplate>
                 </GridView>
+            <GridView ItemsSource="{x:Bind ViewModel.SelectedPatient.Memo}">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical">
+                            <TextBox Header="Memo Number" Text="{Binding MemoNumber,Mode=TwoWay}"></TextBox>
+                            <TextBox Header="Memo Date" Text="{Binding MemoDate,Mode=TwoWay}"></TextBox>
+                            <TextBox Header="Name" Text="{Binding Patient.Name,Mode=TwoWay}"></TextBox>
+                            <TextBox Header="Rate" Text="{Binding Rate,Mode=TwoWay}"></TextBox>
+                            <TextBox Header="Patient Ammount" Text="{Binding  PatientAmmount ,Mode=TwoWay}"></TextBox>
+                            <TextBox Header="Account Ammount" Text="{Binding AccountAmmount,Mode=TwoWay}"></TextBox>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+            </GridView>
+            <uc:AddPatient></uc:AddPatient>
 
             
         </StackPanel>
