@@ -140,6 +140,19 @@ namespace UwpApp.ViewModel
             }
         }
 
+        public string IdCardNumber {
+            get => Patient.IdCardNumber;
+            set
+            {
+                if (value != Patient.IdCardNumber)
+                {
+                    Patient.IdCardNumber = value;
+                    IsModified = true;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
         public string Atoll 
         {
             get => Patient.Atoll;

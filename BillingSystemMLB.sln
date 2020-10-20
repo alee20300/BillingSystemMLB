@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Billingmlb.Uwp", "Billingml
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UwpApp", "UwpApp\UwpApp.csproj", "{AD8119C1-00B2-437A-870B-8D72E916FFE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "enti", "enti\enti.csproj", "{51612481-A837-402C-BD88-6DA6D619C82D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -161,6 +163,26 @@ Global
 		{AD8119C1-00B2-437A-870B-8D72E916FFE6}.Release|x86.ActiveCfg = Release|x86
 		{AD8119C1-00B2-437A-870B-8D72E916FFE6}.Release|x86.Build.0 = Release|x86
 		{AD8119C1-00B2-437A-870B-8D72E916FFE6}.Release|x86.Deploy.0 = Release|x86
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|ARM.Build.0 = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|x64.Build.0 = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Debug|x86.Build.0 = Debug|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|ARM.ActiveCfg = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|ARM.Build.0 = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|ARM64.Build.0 = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|x64.ActiveCfg = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|x64.Build.0 = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|x86.ActiveCfg = Release|Any CPU
+		{51612481-A837-402C-BD88-6DA6D619C82D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

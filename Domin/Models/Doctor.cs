@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Domin.Models
 {
-    public class Doctor: DbObject   
+    public class Doctor
     {
         public int Id { get; set; }
         [StringLength(50)]

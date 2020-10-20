@@ -13,7 +13,10 @@ namespace Domin.Models
         public string PatientNumber { get; set; }
         [StringLength(200)]
         public string Name { get; set; }
+        [StringLength(15)]
+        public string IdCardNumber { get; set; }
         [StringLength(100)]
+
         public string PermAddress { get; set; }
         [StringLength(2)]
         public string Sex { get; set; }
