@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.ViewModel;
+using UwpApp.ViewModel.SettingsViewModelfolder;
+using UwpApp.Views.SettingsPages;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +25,24 @@ namespace UwpApp.Views
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
+        public AtollViewModel ViewModel { get; set; } = new AtollViewModel();
+        public SettingsViewModel SettingsViewModel { get; set; } = new SettingsViewModel();
         public SettingsPage()
         {
             this.InitializeComponent();
+            DataContext = ViewModel;
+            
+        }
+
+        private void AccoutSettingframe_Loaded(object sender, RoutedEventArgs e)
+        {
+            AccoutSettingframe.Navigate(typeof(AccountsSetting));
+
+        }
+
+        private void ServiceSettingFrame_Loaded(object sender, RoutedEventArgs e)
+        {
+            AccoutSettingframe.Navigate(typeof(ServiceSetting));
         }
     }
 }

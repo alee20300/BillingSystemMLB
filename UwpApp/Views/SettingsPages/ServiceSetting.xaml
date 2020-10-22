@@ -9,6 +9,24 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <StackPanel Width="400" HorizontalAlignment="Left" Margin="24">
+            <TextBox Text="{x:Bind viewModel.Id}" Header="Service ID" PlaceholderText="Service Id"></TextBox>
+            <TextBox Text="{x:Bind viewModel.ServiceName}" Header="Service Name" PlaceholderText="Service Name"></TextBox>
+            
+<TextBox Text="{x:Bind viewModel.ServiceCode}" Header="Service Code" PlaceholderText="ServiceCode"></TextBox>
+            <RelativePanel>
+            <ComboBox x:Name="CatogoryComboBox" Text="{x:Bind viewModel.Catogory}" PlaceholderText="Catogory" Header="Catogory">
+                <x:String>Hematology</x:String></ComboBox>
+                <ComboBox Margin="24,0,0,0" Text="{x:Bind viewModel.IsActive}" Header="Is Active" RelativePanel.RightOf="CatogoryComboBox" >
+                    <x:String>Yes</x:String></ComboBox>
+
+            </RelativePanel>
+
+            <TextBox Header="Rate" Text="{x:Bind viewModel.Rate}" ></TextBox>
+            <TextBox Text="{x:Bind viewModel.LisCode}" Header="Lis Code" PlaceholderText="LIS Code" ></TextBox>
+            <TextBox Text="{x:Bind viewModel.ICode}" Header="Insuarance Code" PlaceholderText="Aasandha Code"></TextBox>
+        </StackPanel>
+                 
 
     </Grid>
 </Page>

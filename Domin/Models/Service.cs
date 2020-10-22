@@ -16,7 +16,7 @@ namespace Domin.Models
         public Catogory Catogory { get; set; }
         [StringLength(10)]
 
-        public string ICOde { get; set; }
+        public string ICode { get; set; }
         [StringLength(10)]
         public String LisCode { get; set; }
         public decimal Rate { get; set; }

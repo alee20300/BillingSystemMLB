@@ -7,11 +7,14 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
      xmlns:vm="using:UwpApp.ViewModel"
      xmlns:uc="using:UwpApp.UserControls"
+    xmlns:converters="using:UwpApp.ViewModel.Converters"
     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-   
-   
+    <Page.Resources>
+        <converters:WIndowsStateConverter x:Key="ObjectToVisibilityConverter"/>
+    </Page.Resources>
+
     <Grid>
 
         <StackPanel Orientation="Vertical" >
@@ -28,38 +31,49 @@
                     Name="Searchbox"  PlaceholderText="Search for Something" 
                     Width="400" HorizontalAlignment="Right"
                     QueryIcon="Find"
+                    
                      TextChanged="AutoSuggestBox_TextChangedAsync"
                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                    ></AutoSuggestBox>
+                    DisplayMemberPath="Name"
+                    
+                    
+                    
+                    >
+                    
+                    
+                </AutoSuggestBox>
             </RelativePanel>
 
+
             
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="0.5*" />
+                    </Grid.ColumnDefinitions>
 
-            <Grid Margin="10">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="4*" />
-                    <ColumnDefinition Width="0.5*" />
-                </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="2.0*" />
+                    </Grid.RowDefinitions>
+                    <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
+                    <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
+                        <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Coutry,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10*" />
-                    <RowDefinition Height="2.0*" />
-                </Grid.RowDefinitions>
-                <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
-                <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
-                    <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
-                    <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Coutry,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    </StackPanel>
 
-                </StackPanel>
+                </Grid>
 
-            </Grid>
 
+            
+            
             <!--<TextBlock x:Name="testtext" Text="{x:Bind ViewModel.SelectedPatient.Name, Mode=TwoWay}"></TextBlock>-->
                 <!--<uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>-->
 
@@ -89,8 +103,11 @@
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <uc:AddPatient></uc:AddPatient>
-
+            <StackPanel Orientation="Horizontal">
+                <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="{Binding Converter={StaticResource ObjectToVisibilityConverter}}"></uc:AddPatient>
+                
+            </StackPanel>
+            
             
         </StackPanel>
         <VisualStateManager.VisualStateGroups>

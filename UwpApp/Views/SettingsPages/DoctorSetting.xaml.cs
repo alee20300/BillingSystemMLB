@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.ViewModel.SettingsViewModelfolder;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,12 @@ namespace UwpApp.Views.SettingsPages
     /// </summary>
     public sealed partial class DoctorSetting : Page
     {
+
+        DoctorViewModel viewModel { get; set; } = new DoctorViewModel();
         public DoctorSetting()
         {
             this.InitializeComponent();
+            DataContext = viewModel;
         }
     }
 }

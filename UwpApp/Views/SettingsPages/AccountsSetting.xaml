@@ -8,7 +8,17 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Margin="20">
+        <StackPanel HorizontalAlignment="Left" MaxWidth="600" MinWidth="400">
+            <TextBlock Text="Add Account" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+
+            <TextBox Width="400" Header="Account Id" Text="{x:Bind viewModel.id}" PlaceholderText="Account Id"> </TextBox>
+            <TextBox Width="400" Header="Account Name" Text="{x:Bind viewModel.AccountName}" PlaceholderText="Account Name"></TextBox>
+            <TextBox Width="400" Header="Account Code" Text="{x:Bind viewModel.AccountCode}"></TextBox>
+
+
+        </StackPanel>
+        
 
     </Grid>
 </Page>

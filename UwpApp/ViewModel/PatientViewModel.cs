@@ -140,7 +140,8 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string IdCardNumber {
+        public string IdCardNumber 
+        {
             get => Patient.IdCardNumber;
             set
             {

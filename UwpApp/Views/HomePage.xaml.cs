@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.UserControls;
 using UwpApp.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -50,14 +51,16 @@ namespace UwpApp.Views
                 }
                 else
                 {
+
                     string[] parameters = sender.Text.Split(new char[] { ' ' },
                         StringSplitOptions.RemoveEmptyEntries);
                     sender.ItemsSource = ViewModel.Patients
                         .Where(patient => parameters.Any(Parameter =>
-                          patient.PatientNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
-                        .Select(patient => patient.Name)
+                          patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
+                        //.Select
+                        //(patient => patient.IdCardNumber)
                         ;
-                        
+                   
                     
                 }
                 //Set the ItemsSource to be your filtered dataset
@@ -69,8 +72,9 @@ namespace UwpApp.Views
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
-                
-            
+
+
+            ViewModel.SelectedPatient = (args.SelectedItem as FrameworkElement).DataContext as PatientViewModel;
             
         }
 

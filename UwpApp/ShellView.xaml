@@ -19,7 +19,8 @@
                 <NavigationViewItemHeader x:Name="MainPagesHeader"
                                            Content="Main pages"/>
                 <NavigationViewItem Tag="Patient" Icon="People" Content="People"/>
-                   
+                
+
             </NavigationView.MenuItems>
 
             <ScrollViewer>

@@ -8,5 +8,7 @@ namespace Repository
     {
         IPatientRepository Patient { get; }
         IMemoRepository Memo { get; }
+
+        IAtollRepository Atoll { get; }
     }
 }

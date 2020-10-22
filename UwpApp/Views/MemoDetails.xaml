@@ -44,7 +44,7 @@
                         <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
                         
                     </StackPanel>
-                    <Image Margin="800,0,0,0" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  HorizontalAlignment="Left"></Image>
+                    <Image Margin="200,0,0,0" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  HorizontalAlignment="Left"></Image>
                 </StackPanel>                
             </StackPanel>
             <AutoSuggestBox QueryIcon="Find" Width="400" HorizontalAlignment="Left" Header="Search for Service"></AutoSuggestBox>
