@@ -8,7 +8,10 @@ namespace Domin.Models
     public class Atoll
     {
         public int Id { get; set; }
-        [StringLength(4)]
+        [StringLength(5)]
         public String AtollName { get; set; }
+
+        public List<Island> Islands { get; set; } = new List<Island>();
+
     }
 }

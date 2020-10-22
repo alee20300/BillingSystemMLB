@@ -12,7 +12,7 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
     {
         public DoctorViewModel(Doctor doctor =null)
         {
-            Doctor = doctor;
+            Doctor = doctor ?? new Doctor();
         }
         private Doctor _doctor;
 

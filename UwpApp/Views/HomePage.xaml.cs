@@ -60,7 +60,9 @@ namespace UwpApp.Views
                         //.Select
                         //(patient => patient.IdCardNumber)
                         ;
-                   
+                    
+                        
+                    
                     
                 }
                 //Set the ItemsSource to be your filtered dataset
@@ -73,9 +75,8 @@ namespace UwpApp.Views
         {
             // Set sender.Text. You can use args.SelectedItem to build your text string.
 
-
-            ViewModel.SelectedPatient = (args.SelectedItem as FrameworkElement).DataContext as PatientViewModel;
-            
+            ViewModel.SelectedPatient = (PatientViewModel)args.SelectedItem;
+            addpatientcard.Visibility = Visibility.Visible;
         }
 
 

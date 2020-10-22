@@ -133,6 +133,7 @@
       <DependentUpon>PatientCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AddDemoDate.cs" />
+    <Compile Include="ViewModel\AtollIslandViewModel.cs" />
     <Compile Include="ViewModel\BindableBase.cs" />
     <Compile Include="ViewModel\Command\SaveCommand.cs" />
     <Compile Include="ViewModel\Converters\WIndowsStateConverter.cs" />
@@ -194,6 +195,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ShellView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

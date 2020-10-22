@@ -38,7 +38,7 @@
                     <Frame x:Name="ServiceSettingFrame" Loaded="ServiceSettingFrame_Loaded"></Frame>
                 </PivotItem>
                 <PivotItem Header="Doctors">
-                    <TextBlock Text="urgent emails go here." />
+                    <Frame x:Name="DoctorSettingFrame" Loaded="DoctorSettingFrame_Loaded"></Frame>
                 </PivotItem>
             </Pivot>
         </StackPanel>

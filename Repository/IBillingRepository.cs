@@ -10,5 +10,9 @@ namespace Repository
         IMemoRepository Memo { get; }
 
         IAtollRepository Atoll { get; }
+        
+        IIslandRepository Island { get; }
+
+
     }
 }

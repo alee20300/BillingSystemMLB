@@ -42,7 +42,12 @@ namespace UwpApp.Views
 
         private void ServiceSettingFrame_Loaded(object sender, RoutedEventArgs e)
         {
-            AccoutSettingframe.Navigate(typeof(ServiceSetting));
+            ServiceSettingFrame.Navigate(typeof(ServiceSetting));
+        }
+
+        private void DoctorSettingFrame_Loaded(object sender, RoutedEventArgs e)
+        {
+            DoctorSettingFrame.Navigate(typeof(DoctorSetting));
         }
     }
 }

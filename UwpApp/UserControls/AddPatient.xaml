@@ -39,7 +39,7 @@
             
             <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
             <RelativePanel>
-                <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll" SelectedItem="{x:Bind patientViewModel.Atoll}"  Margin="0,0,0,0"  Width="100" HorizontalAlignment="Left" >
+                <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll" DisplayMemberPath="AtollName" ItemsSource="{x:Bind IAviewModel.Atolls}" SelectedItem="{x:Bind patientViewModel.Atoll}" SelectionChanged="Atoll_SelectionChanged" SelectedValuePath="Id" Margin="0,0,0,0"  Width="100" HorizontalAlignment="Left" >
                     <x:String>WA</x:String>
                 </ComboBox> 
                 

@@ -25,6 +25,7 @@ namespace Repository
 
         public IAtollRepository Atoll => new AtollRepository(new ApplicationContext(_dbOptions));
 
+        public IIslandRepository Island => new IslandRepository(new ApplicationContext(_dbOptions));
 
     }
 }

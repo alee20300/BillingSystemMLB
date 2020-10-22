@@ -31,6 +31,9 @@ namespace UwpApp
         /// </summary>
         /// 
         public static ShellViewModel ShellViewModel { get; } = new ShellViewModel();
+
+        public static AtollIslandViewModel AtollIslandViewModel { get; } = new AtollIslandViewModel(); 
+
         public static IBillingRepository Repository { get; private set; }
 
         
@@ -110,7 +113,7 @@ namespace UwpApp
 
         private static void UseSqlServer()
         {
-            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=LAPTOP-7KC3O54G\\RECEPTION;Initial Catalog=Billing1;User Id=sa;Password=sa@12345;");
+            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=LAPTOP-7KC3O54G\\RECEPTION;Initial Catalog=Billing;User Id=sa;Password=sa@12345;");
             Repository = new BillingRepository(dbOptions);
 
         }

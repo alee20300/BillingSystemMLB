@@ -36,6 +36,7 @@
                 QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                 SuggestionChosen="AutoSuggestBox_SuggestionChosen"
                     DisplayMemberPath="Name"
+                    TextMemberPath="Name"
                     
                     
                     
@@ -104,7 +105,7 @@
                 </GridView.ItemTemplate>
             </GridView>
             <StackPanel Orientation="Horizontal">
-                <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="{Binding Converter={StaticResource ObjectToVisibilityConverter}}"></uc:AddPatient>
+                <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
                 
             </StackPanel>
             

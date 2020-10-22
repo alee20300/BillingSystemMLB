@@ -23,11 +23,19 @@ namespace UwpApp.UserControls
     /// </summary>
     public sealed partial class AddPatient : Page
     {
+        public AtollIslandViewModel IAviewModel { get; set; } 
         public PatientViewModel patientViewModel { get; set; } = new PatientViewModel();
         public AddPatient()
         {
             this.InitializeComponent();
             DataContext = patientViewModel;
+            IAviewModel = new AtollIslandViewModel();
+        }
+
+        private void Atoll_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            IAviewModel.UpdateIslands(sender.ToString());
         }
     }
 }

@@ -4,15 +4,78 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views.SettingsPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <MenuFlyout x:Key="DataGridContextMenu">
+            <MenuFlyoutItem
+                Click="ViewDetails_Click"
+                Style="{StaticResource MenuFlyoutItemIconTemplate}"
+                Tag="&#xE1A5;"
+                Text="View details" />
+            <MenuFlyoutItem
+                Click="AddOrder_Click"
+                Style="{StaticResource MenuFlyoutItemIconTemplate}"
+                Tag="&#xE14D;"
+                Text="Add order" />
+        </MenuFlyout>
+    </Page.Resources>
+
     <Grid Margin="20">
-        <StackPanel Width="400" HorizontalAlignment="Left">
-            <TextBox Text="{x:Bind viewModel.Id}" Header="Doctor Id" PlaceholderText="Doctor Id"></TextBox>
-            <TextBox Text="{x:Bind viewModel.DoctorName}" Header="Doctor Name" PlaceholderText="Doctor Name"></TextBox>     
+        <StackPanel  HorizontalAlignment="Left">
+            <TextBox  Width="400" Text="{x:Bind viewModel.Id}" Header="Doctor Id" PlaceholderText="Doctor Id"></TextBox>
+            <TextBox Width="400" Text="{x:Bind viewModel.DoctorName}" Header="Doctor Name" PlaceholderText="Doctor Name"></TextBox>
+            <toolkit:DataGrid
+                    CanUserReorderColumns="False"
+                    CanUserResizeColumns="False"
+                    AutoGenerateColumns="False"
+                    Sorting="DataGrid_Sorting"
+                    BorderThickness="0"
+                    GridLinesVisibility="None"
+                    ItemsSource="{x:Bind viewModel.Doctor}"
+                    SelectedItem="{x:Bind viewModel.Doctor, Mode=TwoWay}"
+                    KeyDown="DataGrid_KeyDown"
+                    RightTapped="DataGrid_RightTapped"
+                    ContextFlyout="{StaticResource DataGridContextMenu}">
+                <toolkit:DataGrid.Columns>
+                    <toolkit:DataGridTextColumn
+                            Header="First name"
+                            Tag="FirstName"
+                            Binding="{Binding FirstName}"
+                            CanUserSort="False"
+                            HeaderStyle="{StaticResource DataGridNonSortableColumnHeaderStyle}"/>
+                    <toolkit:DataGridTextColumn
+                            Header="Last name"
+                            Tag="LastName"
+                            Binding="{Binding LastName}"/>
+                    <toolkit:DataGridTextColumn
+                            Header="Address"
+                            Binding="{Binding Address}"
+                            CanUserSort="False"
+                            HeaderStyle="{StaticResource DataGridNonSortableColumnHeaderStyle}"/>
+                    <toolkit:DataGridTextColumn
+                            Header="Company"
+                            Binding="{Binding Company}"/>
+                    <toolkit:DataGridTextColumn
+                            Header="Phone"
+                            Binding="{Binding Phone}"
+                            CanUserSort="False"
+                            HeaderStyle="{StaticResource DataGridNonSortableColumnHeaderStyle}"/>
+                    <toolkit:DataGridTextColumn
+                            Header="Email"
+                            Binding="{Binding Email}"
+                            CanUserSort="False"
+                            HeaderStyle="{StaticResource DataGridNonSortableColumnHeaderStyle}"/>
+                </toolkit:DataGrid.Columns>
+            </toolkit:DataGrid>
+
         </StackPanel>
+        
+        
+        
+        
 
     </Grid>
 </Page>
