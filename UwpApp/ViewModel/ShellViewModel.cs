@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.ApplicationModel;
+using Windows.Networking.NetworkOperators;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 
@@ -27,23 +28,55 @@ namespace UwpApp.ViewModel
             
             Patient = new Patient();
 
-            Patient.PatientNumber = "1112";
-            Patient.Island = "Thinadhoo ";
-            Patient.PermAddress = "Sanlwood";
-            Patient.DateOfBirth = DateTime.Now;
-            Patient.Atoll = "G Dh";
-            Patient.Sex = "M";
-            Patient.Country = "Maldives";
-            Patient.Name = "ali Abdulla";
-            Patient.CreatatedOn = DateTime.UtcNow;
-            Patient.CreatedBy = "Laith";
+           
 
            
 
         }
 
-        
+        public List<Patient> MasterPatientList { get; } = new List<Patient>();
+        public ObservableCollection<Patient> PatientSuggestion { get; } = new ObservableCollection<Patient>();
 
+
+        public async void LoadPatients()
+        {
+            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            {
+                IsLoading = true;
+               
+                MasterPatientList.Clear();
+            });
+
+            var patients = await Task.Run(App.Repository.Patient.GetAsync);
+
+            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            {
+                foreach (var patient in patients)
+                {
+                   
+                    MasterPatientList.Add(patient);
+                }
+
+                IsLoading = false;
+            });
+        }
+        public void updatepstientSuggestion(string idcard)
+        {
+            string[] parameters = idcard.Split(new char[] { ' ' },
+                        StringSplitOptions.RemoveEmptyEntries);
+            var resultlist = MasterPatientList
+                 .Where(patient => parameters.Any(Parameter =>
+                   patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)));
+                //.Select
+                //(patient => patient.IdCardNumber);
+
+            foreach (var result in resultlist)
+            {
+                PatientSuggestion.Add(result);
+            }
+        }
+
+      
         private Patient _patient;
 
         public Patient Patient

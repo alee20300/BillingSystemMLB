@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Media;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using UwpApp.ViewModel.Command;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace UwpApp.ViewModel
 {
@@ -169,6 +170,7 @@ namespace UwpApp.ViewModel
             }
         }
 
+
         public string Island
         {
             get => Patient.Island;
@@ -194,6 +196,7 @@ namespace UwpApp.ViewModel
                     Patient.DateOfBirth = value;
                     IsModified = true;
                     OnPropertyChanged();
+                    //calcualteAge(Patient.DateOfBirth);
 
                 }
             }
@@ -274,7 +277,40 @@ namespace UwpApp.ViewModel
             }
         }
 
+        public int Age { get; set; }
+
+        public int Month { get; set; }
+        public int Day { get; set; }
+
         public bool IsModified { get;  set; }
+
+        //public void calcualteAge(DateTime? Dob)
+        //{
+        //    DateTime Now = DateTime.Now;
+        //    int Years = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
+        //    DateTime PastYearDate = Dob.AddYears(Years);
+        //    int Months = 0;
+        //    for (int i = 1; i <= 12; i++)
+        //    {
+        //        if (PastYearDate.AddMonths(i) == Now)
+        //        {
+        //            Months = i;
+        //            break;
+        //        }
+        //        else if (PastYearDate.AddMonths(i) >= Now)
+        //        {
+        //            Months = i - 1;
+        //            break;
+        //        }
+        //    }
+
+        //    int Days = Now.Subtract(PastYearDate.AddMonths(Months)).Days;
+
+        //    Age = Years;
+        //    Month = Months;
+        //    Day = Days;
+
+        //}
 
         public ObservableCollection<Memo> Memo
         { get; } = new ObservableCollection<Memo>();
@@ -295,6 +331,6 @@ namespace UwpApp.ViewModel
             set => Set(ref _isNewCustomer, value);
         }
 
-
+        
     }
 }

@@ -7,6 +7,7 @@ using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.UserControls;
 using UwpApp.ViewModel;
+using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -33,39 +34,51 @@ namespace UwpApp.Views
         }
 
         public ShellViewModel ViewModel => App.ShellViewModel;
-   
-        
-        private async void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (ViewModel.MasterPatientList.Count<1)
+            {
+                ViewModel.LoadPatients();
+            }
+        }
+        private  void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Only get results when it was a user typing, 
             // otherwise assume the value got filled in by TextMemberPath 
             // or the handler for SuggestionChosen.
-            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+                if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
 
-                if (string.IsNullOrEmpty(sender.Text))
-                {
-                    await DispatcherHelper.ExecuteOnUIThreadAsync(async ()=>
-                        await ViewModel.GetPatientsListAsync());
-                    sender.ItemTemplate = null;
-                }
-                else
-                {
+                ViewModel.updatepstientSuggestion(sender.Text);
+                sender.ItemsSource = ViewModel.PatientSuggestion;
 
-                    string[] parameters = sender.Text.Split(new char[] { ' ' },
-                        StringSplitOptions.RemoveEmptyEntries);
-                    sender.ItemsSource = ViewModel.Patients
-                        .Where(patient => parameters.Any(Parameter =>
-                          patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
-                        //.Select
-                        //(patient => patient.IdCardNumber)
-                        ;
-                    
-                        
-                    
-                    
-                }
-                //Set the ItemsSource to be your filtered dataset
+
+                //if (string.IsNullOrEmpty(sender.Text))
+                //{
+
+
+                //    //await DispatcherHelper.ExecuteOnUIThreadAsync(async ()=>
+                //    //    await ViewModel.GetPatientsListAsync());
+                //    //sender.ItemTemplate = null;
+                //}
+                //else
+                //{
+
+                //    //string[] parameters = sender.Text.Split(new char[] { ' ' },
+                //    //    StringSplitOptions.RemoveEmptyEntries);
+                //    //sender.ItemsSource = ViewModel.Patients
+                //    //    .Where(patient => parameters.Any(Parameter =>
+                //    //      patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
+                //    //    .Select
+                //    //    (patient => patient.IdCardNumber);
+
+
+
+
+                //}
+                ////Set the ItemsSource to be your filtered dataset
                 //sender.ItemsSource = dataset;
             }
         }

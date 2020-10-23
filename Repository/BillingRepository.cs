@@ -27,5 +27,8 @@ namespace Repository
 
         public IIslandRepository Island => new IslandRepository(new ApplicationContext(_dbOptions));
 
+        public IDoctorRepository Doctor => new DoctorRepository(new ApplicationContext(_dbOptions));
+
+
     }
 }

@@ -16,10 +16,8 @@ namespace UwpApp.ViewModel
         public SettingsViewModel()
         {
 
-            var at = new Atoll();
-            at.Id = 1;
-            at.AtollName = "H.Dh";
-            App.Repository.Atoll.UpsertAsync(at);
+           Task.Run( GetListOfDoctor);
+            Task.Run(GetListOfAtoll);
 
         }
 
@@ -27,6 +25,7 @@ namespace UwpApp.ViewModel
 
 
         public ObservableCollection<AtollViewModel> Atolls { get; } = new ObservableCollection<AtollViewModel>();
+        public ObservableCollection<DoctorViewModel> Doctors { get; } = new ObservableCollection<DoctorViewModel>();
 
 
         private Atoll _atoll;
@@ -46,6 +45,14 @@ namespace UwpApp.ViewModel
             set => Set(ref _selectedAtoll, value);
         }
 
+        private DoctorViewModel  _selectedDoctor;
+
+        public DoctorViewModel SelectedDoctor
+        {
+            get => _selectedDoctor;
+            set => Set(ref _selectedDoctor, value);
+        }
+
 
         public async Task GetListOfAtoll()
         {
@@ -55,6 +62,17 @@ namespace UwpApp.ViewModel
             foreach (var atoll in atolls)
             {
                 Atolls.Add(new AtollViewModel(atoll));
+            }
+        }
+
+        public async Task GetListOfDoctor()
+        {
+            await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
+            Doctors.Clear();
+            var doctors = await App.Repository.Doctor.GetAsync();
+            foreach (var doctor in doctors )
+            {
+                Doctors.Add(new DoctorViewModel(doctor));
             }
         }
     }

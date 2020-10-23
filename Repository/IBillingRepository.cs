@@ -13,6 +13,7 @@ namespace Repository
         
         IIslandRepository Island { get; }
 
+        IDoctorRepository Doctor { get; }
 
     }
 }

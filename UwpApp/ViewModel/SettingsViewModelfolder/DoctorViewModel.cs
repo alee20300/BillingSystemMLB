@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,9 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
         {
             Doctor = doctor ?? new Doctor();
         }
+
+        
+        
         private Doctor _doctor;
 
         public Doctor Doctor
