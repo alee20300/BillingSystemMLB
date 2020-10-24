@@ -21,13 +21,20 @@ namespace UwpApp.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MemoDetails : Page
+    public sealed partial class AddMemo : Page
     {
-        public PatientViewModel ViewModel { get; set; }
-        public MemoDetails()
+        public PatientViewModel ViewModel { get; } = new PatientViewModel();
+
+        public ShellViewModel ShellViewModel => App.ShellViewModel;
+
+
+        public AddMemo()
         {
             this.InitializeComponent();
             DataContext = ViewModel;
+                      
         }
+
+       
     }
 }

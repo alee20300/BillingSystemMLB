@@ -32,6 +32,11 @@ namespace UwpApp.ViewModel
 
         }
 
+        public MemoViewModel(ObservableCollection<Memo> memo)
+        {
+            this.memo = memo;
+        }
+
         public async static Task<MemoViewModel> CreatefromMemoId(string MemoId) =>
             new MemoViewModel(await GetMemo(MemoId));
 
@@ -132,6 +137,7 @@ namespace UwpApp.ViewModel
             }
         }
         private ObservableCollection<MemoDetail> _memoDetails;
+        private ObservableCollection<Memo> memo;
 
         public ObservableCollection<MemoDetail> MemoDetails
         {

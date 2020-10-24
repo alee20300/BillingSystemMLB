@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.Helpers;
+﻿using Domin.Models;
+using Microsoft.Toolkit.Uwp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -34,8 +35,7 @@ namespace UwpApp.Views
         }
 
         public ShellViewModel ViewModel => App.ShellViewModel;
-
-
+       
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (ViewModel.MasterPatientList.Count<1)
@@ -53,6 +53,17 @@ namespace UwpApp.Views
 
                 ViewModel.updatepstientSuggestion(sender.Text);
                 sender.ItemsSource = ViewModel.PatientSuggestion;
+
+                if (ViewModel.PatientSuggestion != null)
+                {
+                    addpatientcard.Visibility = Visibility.Visible;
+                }
+                else 
+                {
+                   
+                    
+                }
+                
 
 
                 //if (string.IsNullOrEmpty(sender.Text))
@@ -86,10 +97,8 @@ namespace UwpApp.Views
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-            // Set sender.Text. You can use args.SelectedItem to build your text string.
-
-            ViewModel.SelectedPatient = (PatientViewModel)args.SelectedItem;
-            addpatientcard.Visibility = Visibility.Visible;
+           
+            
         }
 
 
@@ -109,6 +118,11 @@ namespace UwpApp.Views
         private void AddmemoPage_Loaded(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AddMemo));
         }
     }
 }

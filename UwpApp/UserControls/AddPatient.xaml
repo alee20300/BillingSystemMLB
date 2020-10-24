@@ -18,8 +18,11 @@
    
 
 
-    <Grid Margin="20" HorizontalAlignment="Left" VerticalAlignment="Center"> 
-       
+    <Grid Margin="20" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <Grid.Resources>
+            <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+        </Grid.Resources>
+
         <StackPanel>
             <TextBlock Text="New Patient" Style="{StaticResource TitleTextBlockStyle}"/>
             <TextBox x:Name="PatientNumber" Header="Paitent Number" Text="{x:Bind patientViewModel.PatientNumber,Mode=TwoWay}"  Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"></TextBox>

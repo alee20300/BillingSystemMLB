@@ -169,8 +169,14 @@ namespace UwpApp
             {
                 // SettingsItem is not part of NavView.MenuItems, and doesn't have a Tag.
                 NavView.SelectedItem = (NavigationViewItem)NavView.SettingsItem;
-                NavView.Header = "Settings";
+                //NavView.Header = "Settings";
             }
+            else if (ContentFrame.SourcePageType==typeof(AddMemo))
+            {
+            
+            }
+
+            
             else if (ContentFrame.SourcePageType != null)
             {
                 var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);

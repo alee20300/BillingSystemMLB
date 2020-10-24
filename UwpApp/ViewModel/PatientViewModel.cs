@@ -16,12 +16,16 @@ namespace UwpApp.ViewModel
     public class PatientViewModel :BindableBase
     {
         public SaveCommand  SaveCommand { get; set; }
+
+        public MemoViewModel memoViewModel { get; set; }
         public PatientViewModel(Patient patient =null)
         {
           
             Patient = patient ?? new Patient();
 
             SaveCommand = new SaveCommand(this);
+
+            
         }
 
       

@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="UwpApp.Views.AddMemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20" >
+        <Grid.Resources>
+            <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="7*" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Text="New Memo" Style="{StaticResource HeaderTextBlockStyle }"></TextBlock>
+        <RelativePanel Grid.Row="1"  Margin="20">
+            <StackPanel x:Name="HeaderStackPanel" MaxWidth="250" MinWidth="150" Style="{StaticResource ResourceKey=SettingsFlyoutSectionStyle}" >
+                <TextBlock Text="Patient Number" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Patient Name" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Patient Address" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Phone Number" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Patient Email" Grid.Column="0"></TextBlock>
+                <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
+            </StackPanel>
+            <StackPanel x:Name="FieldsStackPanel" Grid.Column="1" MaxWidth="350" MinWidth="200" RelativePanel.RightOf="HeaderStackPanel" >
+                <TextBlock x:Name="patientnumber" Text="{x:Bind ShellViewModel.SelectedPatient.PatientNumber,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ShellViewModel.SelectedPatient.Name,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ShellViewModel.SelectedPatient.PermAddress,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ShellViewModel.SelectedPatient.Contact,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ShellViewModel.SelectedPatient.Email,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ShellViewModel.SelectedPatient.DateOfBirth,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+            </StackPanel>
+            <StackPanel Width="450" RelativePanel.RightOf="FieldsStackPanel">
+                <TextBox Header="Account" PlaceholderText="Account"></TextBox>
+                <TextBox Header="Doctor" PlaceholderText="Requested by"></TextBox>
+                <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
+            </StackPanel>
+            <Image Margin="200,0,0,0" MaxWidth="250" MinWidth="150" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  
+                   HorizontalAlignment="Left" RelativePanel.AlignRightWithPanel="True"></Image>
+        </RelativePanel>
+        <RelativePanel Margin="20" Grid.Row="2">
+            <AutoSuggestBox QueryIcon="Find" Width="400" HorizontalAlignment="Left" Header="Search for Service"></AutoSuggestBox>
+            
+        </RelativePanel>
+    </Grid>
+</Page>

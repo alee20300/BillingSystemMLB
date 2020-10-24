@@ -22,64 +22,58 @@
             
             <RelativePanel HorizontalAlignment="Right">
                 <CommandBar x:Name="CommandBar" Background="Transparent" HorizontalAlignment="Right" >
-                    <AppBarToggleButton Icon="Add" Label="Add Patient" />
+                    <AppBarToggleButton 
+                        Icon="Add" Label="Add Patient" />
                     <AppBarToggleButton Icon="RepeatAll" Label="Refresh" />
                     <AppBarSeparator/>
                 </CommandBar>
-                <AutoSuggestBox 
-                    
+                <AutoSuggestBox  
                     RelativePanel.RightOf="CommandBar" 
                     Name="Searchbox"  PlaceholderText="Search for Something" 
                     Width="400" HorizontalAlignment="Right"
                     QueryIcon="Find"
-                    
-                     TextChanged="AutoSuggestBox_TextChangedAsync"
-                QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                   
-                    
-                    >
-                    
+                    TextChanged="AutoSuggestBox_TextChangedAsync"
+                    QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                    SuggestionChosen="AutoSuggestBox_SuggestionChosen">
                     <AutoSuggestBox.ItemTemplate>
                         <DataTemplate x:DataType="models:Patient" >
                             <StackPanel>
-                                <TextBlock Text="{x:Bind Name}"></TextBlock>
+                                <TextBlock Text="{x:Bind Name}" Style="{StaticResource BaseTextBlockStyle}"></TextBlock>
                                 <TextBlock Text="{x:Bind IdCardNumber }"></TextBlock>
-
                             </StackPanel>
-                            
                         </DataTemplate>
                     </AutoSuggestBox.ItemTemplate>
-                    
-                    
                 </AutoSuggestBox>
             </RelativePanel>
 
 
-            
-                <Grid Margin="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*" />
-                        <ColumnDefinition Width="4*" />
-                        <ColumnDefinition Width="0.5*" />
-                    </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="10*" />
-                        <RowDefinition Height="2.0*" />
+            <Grid Margin="10" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="7*" />
+                        <RowDefinition Height="1.8*" />
                     </Grid.RowDefinitions>
-                    <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
-                    <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
+                    <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" MaxHeight="200"  VerticalAlignment="Bottom"></Image>
+                    <StackPanel Grid.Column="1" Margin="20,5,5,5" Grid.RowSpan="2">
                         <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
                         <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Coutry,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    
 
                     </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,20,20">
+                    <Button HorizontalAlignment="Left" Content="Load Memo" Margin="20,0,0,0"></Button>
+                    <Button HorizontalAlignment="Left" Content="Make Memo" Margin="20,0,0,0" Click="Button_Click"></Button>
+                </StackPanel>
 
-                </Grid>
+            </Grid>
 
 
             
@@ -88,35 +82,45 @@
                 <!--<uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>-->
 
 
-                <GridView ItemsSource="{x:Bind ViewModel.Patients}"
-                      SelectedItem="{x:Bind ViewModel.SelectedPatient,Mode=TwoWay}">
-                    <GridView.ItemTemplate >
-                        <DataTemplate>
-                            <StackPanel>
-                                <TextBlock Text="{Binding Name}"></TextBlock>
-                                <TextBlock Text="{Binding PermAddress}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </GridView.ItemTemplate>
-                </GridView>
-            <GridView ItemsSource="{x:Bind ViewModel.SelectedPatient.Memo}">
+                
+            <GridView Visibility="Visible" ItemsSource="{x:Bind ViewModel.Patients}" SelectedValue="{x:Bind ViewModel.SelectedPatient , Mode=TwoWay}">
                 <GridView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Vertical">
-                            <TextBox Header="Memo Number" Text="{Binding MemoNumber,Mode=TwoWay}"></TextBox>
-                            <TextBox Header="Memo Date" Text="{Binding MemoDate,Mode=TwoWay}"></TextBox>
-                            <TextBox Header="Name" Text="{Binding Patient.Name,Mode=TwoWay}"></TextBox>
-                            <TextBox Header="Rate" Text="{Binding Rate,Mode=TwoWay}"></TextBox>
-                            <TextBox Header="Patient Ammount" Text="{Binding  PatientAmmount ,Mode=TwoWay}"></TextBox>
-                            <TextBox Header="Account Ammount" Text="{Binding AccountAmmount,Mode=TwoWay}"></TextBox>
-                        </StackPanel>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
                     </DataTemplate>
                 </GridView.ItemTemplate>
             </GridView>
-            <StackPanel Orientation="Horizontal">
+
+            <RelativePanel>
                 <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
+                <toolkit:DataGrid AutoGenerateColumns="False" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.PatientSuggestion}" MinHeight="400" MaxHeight="500">
+                    <toolkit:DataGrid.Columns>
+                        <toolkit:DataGridTextColumn 
+                            Width="80"
+                            FontSize="12"
+                            Header="Name"
+                            Binding="{Binding Name}"/>
+                        <toolkit:DataGridTextColumn 
+                            Width="80"
+                            FontSize="12"
+                            Header="Address"
+                            Binding="{Binding Address}"/>
+                        <toolkit:DataGridTextColumn 
+                            Width="80"
+                            FontSize="12"
+                            Header="Phone Number"
+                            Binding="{Binding Contact}"/>
+                        
+                    </toolkit:DataGrid.Columns>
+                    
+                    
+                </toolkit:DataGrid>
+
+            </RelativePanel>
                 
-            </StackPanel>
+           
             
             
         </StackPanel>

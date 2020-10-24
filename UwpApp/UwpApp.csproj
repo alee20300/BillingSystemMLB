@@ -150,8 +150,8 @@
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\MemoDetails.xaml.cs">
-      <DependentUpon>MemoDetails.xaml</DependentUpon>
+    <Compile Include="Views\AddMemo.xaml.cs">
+      <DependentUpon>AddMemo.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>
@@ -176,6 +176,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" />
+    <Content Include="Assets\Asset 1.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -214,7 +215,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\MemoDetails.xaml">
+    <Page Include="Views\AddMemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
