@@ -29,6 +29,8 @@ namespace Repository
 
         public IDoctorRepository Doctor => new DoctorRepository(new ApplicationContext(_dbOptions));
 
+        public IServiceRepository Service => new ServiceRepository(new ApplicationContext(_dbOptions));
+
 
     }
 }

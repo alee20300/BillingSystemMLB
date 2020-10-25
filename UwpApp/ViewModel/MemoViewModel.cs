@@ -5,9 +5,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Foundation;
+using Windows.Graphics.Printing;
 
 namespace UwpApp.ViewModel
 {
@@ -190,7 +193,106 @@ namespace UwpApp.ViewModel
                     Memo.MemoNumber = value;
                     OnPropertyChanged();
                 }
+            } 
+        }
+
+        //public void NewMemoDetail_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateNewMemoDetailBindings();
+        public DateTime dateTime
+        {
+            get => Memo.MemoDate;
+            set
+            {
+                if (value != Memo.MemoDate)
+                {
+                    Memo.MemoDate = value;
+                    OnPropertyChanged();
+
+                };
+            }
+
+        }
+        public DateTime CreatedOn 
+        {
+            get=>Memo.CreatatedOn;
+            set
+            {
+                if (value != Memo.CreatatedOn
+                    )
+                {
+                    Memo.CreatatedOn = value;
+                    OnPropertyChanged();
+                }
+                }
+             }
+
+        public Decimal PatientTotal => Memo.PatientAmmount;
+
+        public Decimal AccountAmmount => Memo.AccountAmmount;
+
+        public string Address 
+        {
+            get=>Memo.Address;
+            set 
+            {
+                if (Memo.Address!=value)
+
+                {
+
+                    Memo.Address = value;
+                    OnPropertyChanged();
+
+                }
             } }
 
+        public string PatientName 
+        { get=>Memo.PatientName;
+            set
+            {
+                if (Memo.PatientName!=value)
+                {
+                    Memo.PatientName = value;
+                    OnPropertyChanged();
+
+                }
+            } }
+
+
+        public async Task SaveMemoAsync()
+        {
+            Memo result = null;
+            try
+            {
+                result = await App.Repository.Memo.UpsertAsync(Memo);
+            }
+          catch(Exception ex)
+            {
+                throw new MemoSavingException("Unable to Save Memo. There might have been a problem Connecting to Database. Please Try again later", ex);
+            }
+            if (result!=null)
+            {
+                await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsModified = false);
+
+            }
+        }
+
+        public ObservableCollection<Service> ServiceSuggections { get; } = new ObservableCollection<Service>();
+
+        public async void UpdateServiceSuggestions(string queryText)
+        {
+            ServiceSuggections.Clear();
+
+            if (!string.IsNullOrEmpty(queryText))
+            {
+                var services = await App.Repository.Service.GetServiceAsync(queryText);
+
+                foreach (Service service in services)
+                {
+                    ServiceSuggections.Add(service);
+                }
+            }
+        }
+
     }
+
+
 }

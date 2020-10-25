@@ -95,7 +95,7 @@
 
             <RelativePanel>
                 <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
-                <toolkit:DataGrid AutoGenerateColumns="False" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.PatientSuggestion}" MinHeight="400" MaxHeight="500">
+                <toolkit:DataGrid AutoGenerateColumns="False" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos}" MinHeight="400" MaxHeight="500">
                     <toolkit:DataGrid.Columns>
                         <toolkit:DataGridTextColumn 
                             Width="80"

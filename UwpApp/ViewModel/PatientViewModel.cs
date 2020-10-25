@@ -10,6 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using UwpApp.ViewModel.Command;
 using System.Runtime.InteropServices.ComTypes;
+using Microsoft.Toolkit.Uwp.Helpers;
 
 namespace UwpApp.ViewModel
 {
@@ -17,7 +18,7 @@ namespace UwpApp.ViewModel
     {
         public SaveCommand  SaveCommand { get; set; }
 
-        public MemoViewModel memoViewModel { get; set; }
+      
         public PatientViewModel(Patient patient =null)
         {
           
@@ -48,9 +49,25 @@ namespace UwpApp.ViewModel
                 if (_patient!=value)
                 {
                     _patient = value;
+                    RefreshMemos();
 
                     OnPropertyChanged(string.Empty);
                 }
+            }
+        }
+
+        public string Id
+        {
+            get => Patient.Id;
+            set
+            {
+                if (value != Patient.Id)
+
+                {
+                    Patient.Id = value;
+                    IsModified = true;
+                    OnPropertyChanged();
+                };
             }
         }
 
@@ -316,7 +333,7 @@ namespace UwpApp.ViewModel
 
         //}
 
-        public ObservableCollection<Memo> Memo
+        public ObservableCollection<Memo> Memos
         { get; } = new ObservableCollection<Memo>();
 
         private Memo _selectedeMemo;
@@ -335,6 +352,33 @@ namespace UwpApp.ViewModel
             set => Set(ref _isNewCustomer, value);
         }
 
-        
+        public async Task RefreshPatientAsync()
+        {
+            RefreshMemos();
+            Patient = await App.Repository.Patient.GetbyIdAsync(Patient.Id);
+        }
+
+        public void RefreshMemos()
+        {
+            Task.Run(LoadMemoAsync);
+        }
+
+        public async  Task LoadMemoAsync()
+        {
+            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            {
+                Isloading = true;
+            });
+            var memos = await App.Repository.Memo.GetForPatientAsync(Patient.Id);
+            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            {
+                Memos.Clear();
+                foreach (var memo in memos)
+                {
+                    Memos.Add(memo);
+                }
+                Isloading = false;
+            });
+        }
     }
 }

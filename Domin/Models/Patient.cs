@@ -8,7 +8,11 @@ using System.Text;
 namespace Domin.Models
 {
     public class Patient : AuditEntity
+
     {
+        [Required]
+        [StringLength(20)]
+        public string Id { get; set; }
         [StringLength(15)]
         public string PatientNumber { get; set; }
         [StringLength(200)]

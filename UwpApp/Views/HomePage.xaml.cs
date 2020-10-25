@@ -120,9 +120,9 @@ namespace UwpApp.Views
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(AddMemo));
-        }
+        private void Button_Click(object sender, RoutedEventArgs e)=>
+        
+            Frame.Navigate(typeof(AddMemo),ViewModel.SelectedPatient.Patient.Id);
+        
     }
 }

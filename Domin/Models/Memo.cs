@@ -36,14 +36,16 @@ namespace Domin.Models
         [StringLength(50)]
         public string Address { get; set; }
         public Doctor RequstedDoctor { get; set; }
-        public decimal Rate { get; set; }
-
-        public decimal Subtotal => MemoDetails.Sum(MemoDetail => MemoDetail.Rate * MemoDetail.Qty);
+        public decimal Rate => MemoDetails.Sum(MemoDetail => MemoDetail.Rate * MemoDetail.Qty);
+        
         public Account Account { get; set; }
         public Account Account1 { get; set; }
-        public decimal PatientAmmount { get; set; }
-        public decimal AccountAmmount { get; set; }
-        public decimal  Account2Ammount { get; set; }
+        public decimal PatientAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.PatientAmmount * MemoDetails.Qty);
+
+        public decimal AccountAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount * MemoDetails.Qty);
+
+        public decimal Account2Ammount  =>  MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount1 * MemoDetails.Qty);
+
 
         public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
 

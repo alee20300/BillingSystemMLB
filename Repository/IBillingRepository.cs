@@ -15,5 +15,7 @@ namespace Repository
 
         IDoctorRepository Doctor { get; }
 
+        IServiceRepository Service { get; }
+
     }
 }

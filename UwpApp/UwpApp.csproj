@@ -137,6 +137,7 @@
     <Compile Include="ViewModel\BindableBase.cs" />
     <Compile Include="ViewModel\Command\SaveCommand.cs" />
     <Compile Include="ViewModel\Converters\WIndowsStateConverter.cs" />
+    <Compile Include="ViewModel\Exception.cs" />
     <Compile Include="ViewModel\MemoDetailViewModel.cs" />
     <Compile Include="ViewModel\MemoListPageViewModel.cs" />
     <Compile Include="ViewModel\MemoViewModel.cs" />
@@ -155,6 +156,9 @@
     </Compile>
     <Compile Include="Views\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SaveChangesDialog.xaml.cs">
+      <DependentUpon>SaveChangesDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
@@ -220,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PatientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SaveChangesDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
