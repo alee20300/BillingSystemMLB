@@ -334,22 +334,7 @@
                                 HorizontalAlignment="Right"
                                 FontWeight="Bold"
                                 Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}" />
-
-
-
-            </Grid>
-                
-                
-                
-                
-                
-
-        </StackPanel>
-
-                
-                
-           
-            
-       
-    </Grid>
+ </Grid>
+ </StackPanel>
+</Grid>
 </Page>

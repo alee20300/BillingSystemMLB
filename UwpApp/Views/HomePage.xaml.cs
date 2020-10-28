@@ -67,7 +67,7 @@ namespace UwpApp.Views
             // or the handler for SuggestionChosen.
                 if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
-
+                
                 ViewModel.updatepstientSuggestion(sender.Text);
                 sender.ItemsSource = ViewModel.PatientSuggestion;
 
@@ -114,7 +114,7 @@ namespace UwpApp.Views
 
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
-           
+            ViewModel.SelectedPatient = new PatientViewModel(args.SelectedItem as Patient);
             
         }
 
@@ -139,7 +139,7 @@ namespace UwpApp.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)=>
         
-            Frame.Navigate(typeof(AddMemo),ViewModel.SelectedPatient.Patient.Id);
+            Frame.Navigate(typeof(AddMemo),ViewModel.SelectedPatient.Patient);
 
         private void loadbtn_Click(object sender, RoutedEventArgs e)
         {

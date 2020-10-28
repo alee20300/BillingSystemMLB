@@ -32,6 +32,7 @@
                     Name="Searchbox"  PlaceholderText="Search for Something" 
                     Width="400" HorizontalAlignment="Right"
                     QueryIcon="Find"
+                    
                     TextChanged="AutoSuggestBox_TextChangedAsync"
                     QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                     SuggestionChosen="AutoSuggestBox_SuggestionChosen">
@@ -80,44 +81,43 @@
             
             <!--<TextBlock x:Name="testtext" Text="{x:Bind ViewModel.SelectedPatient.Name, Mode=TwoWay}"></TextBlock>-->
                 <!--<uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>-->
+            <Pivot x:Name="HomePagePivot" VerticalAlignment="Stretch">
+                <PivotItem Header="EdIt Patient">
+                    <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
+                </PivotItem>
+                <PivotItem Header=" Patient Memos">
+                   
+                            
+                            <ListView Header="Patient Memo" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos ,Mode=OneWay}"
+                                      Width="350"
+                                      Height="400"
+                                      HorizontalAlignment="Left">
 
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="models:Memo">
+                                        <StackPanel>
+                                            <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
+                                            <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                        </StackPanel>
+
+
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                     
+                         
+                </PivotItem>
+                
+            </Pivot>
 
                 
-            <GridView Visibility="Visible" ItemsSource="{x:Bind ViewModel.Patients}" SelectedValue="{x:Bind ViewModel.SelectedPatient , Mode=TwoWay}">
-                <GridView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Vertical">
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                            </StackPanel>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-            </GridView>
+            
 
-            <RelativePanel>
-                <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
+            <RelativePanel Visibility="Collapsed" >
                 
-                <ListView Header="Patient Memo" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.SelectedPatientMemos ,Mode=OneWay}"
-                    
-                    Width="350"
-                    Height="400"
-                    HorizontalAlignment="Left">
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:DataType="models:Memo">
-                            
-                            
-                            
-                            
-                            <StackPanel>
-                                <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
-                                <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
-                            </StackPanel>
-
-
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </RelativePanel>
+                
+                           </RelativePanel>
                 
            
             

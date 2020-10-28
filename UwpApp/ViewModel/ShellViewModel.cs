@@ -16,24 +16,24 @@ namespace UwpApp.ViewModel
         public PatientViewModel patientViewModel { get; set; }
         public ShellViewModel()
         {
-            SelectedPatientMemos = new ObservableCollection<Memo>();
-            Task.Run(GetPatientsListAsync);
-            Patient = new Patient();
-            this.PropertyChanged += ShellViewModel_PropertyChanged;
+            //SelectedPatientMemos = new ObservableCollection<Memo>();
+            //Task.Run(GetPatientsListAsync);
+            //Patient = new Patient();
+            //this.PropertyChanged += ShellViewModel_PropertyChanged;
         }
 
-        private void ShellViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
+        //private void ShellViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        //{
 
-            var shell = (ShellViewModel)sender;
-            this.SelectedPatientMemos.Clear();
-            if (SelectedPatient is null)   return;
-            if (SelectedPatient.Memos is null) return;
-            foreach (var item in shell.SelectedPatient?.Memos)
-            {
-                SelectedPatientMemos.Add(item);
-            }
-        }
+        //    var shell = (ShellViewModel)sender;
+        //    this.SelectedPatientMemos.Clear();
+        //    if (SelectedPatient is null)   return;
+        //    if (SelectedPatient.Memos is null) return;
+        //    foreach (var item in shell.SelectedPatient?.Memos)
+        //    {
+        //        SelectedPatientMemos.Add(item);
+        //    }
+        //}
 
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 
@@ -63,7 +63,7 @@ namespace UwpApp.ViewModel
                 IsLoading = false;
             });
         }
-        public void updatepstientSuggestion(string idcard)
+        public  void updatepstientSuggestion(string idcard)
         {
             string[] parameters = idcard.Split(new char[] { ' ' },
                         StringSplitOptions.RemoveEmptyEntries);
@@ -102,27 +102,27 @@ namespace UwpApp.ViewModel
             set => Set(ref _selectedPatient, value);
         }
 
-        public async Task GetPatientsListAsync()
-        {
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
-            var patients = await App.Repository.Patient.GetAsync();
-            if (patients == null)
-            {
-                return;
-            }
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                Patients.Clear();
-                foreach (var p in patients)
-                {
-                    Patients.Add(new PatientViewModel(p));
+        //public async Task GetPatientsListAsync()
+        //{
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
+        //    var patients = await App.Repository.Patient.GetAsync();
+        //    if (patients == null)
+        //    {
+        //        return;
+        //    }
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        Patients.Clear();
+        //        foreach (var p in patients)
+        //        {
+        //            Patients.Add(new PatientViewModel(p));
 
-                }
-                IsLoading = false;
-            });
+        //        }
+        //        IsLoading = false;
+        //    });
 
 
-        }
+        //}
 
 
 

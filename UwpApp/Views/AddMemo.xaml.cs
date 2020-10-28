@@ -56,20 +56,20 @@ namespace UwpApp.Views
 
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var id = (string)e.Parameter;
-            var patient = App.ShellViewModel.Patients.Where(pati => pati.Patient.Id == id).FirstOrDefault();
+            var id = (Patient)e.Parameter;
+           
 
-            if (patient != null)
+            if (id != null)
             {
                 // Order is a new order
-                ViewModel = new MemoViewModel(new Memo(patient.Patient));
+                ViewModel = new MemoViewModel(new Memo(id));
             }
-            else
-            {
-                // Order is an existing order.
-                var memo = await App.Repository.Memo.GetMemoAsync(id);
-                ViewModel = new MemoViewModel(memo);
-            }
+            //else
+            //{
+            //    // Order is an existing order.
+            //    var memo = await App.Repository.Memo.GetMemoAsync(id);
+            //    ViewModel = new MemoViewModel(memo);
+            //}
 
             base.OnNavigatedTo(e);
         }

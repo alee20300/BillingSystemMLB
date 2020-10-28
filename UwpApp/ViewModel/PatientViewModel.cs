@@ -25,7 +25,7 @@ namespace UwpApp.ViewModel
             Patient = patient ?? new Patient();
 
             SaveCommand = new SaveCommand(this);
-            Memos.CollectionChanged += Memos_CollectionChanged;
+            Task.Run(LoadMemoAsync);
 
 
         }
