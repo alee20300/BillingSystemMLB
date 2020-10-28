@@ -18,6 +18,7 @@ namespace UwpApp.ViewModel
 
            Task.Run( GetListOfDoctor);
             Task.Run(GetListOfAtoll);
+            Task.Run(GetListOfServices);
 
         }
 
@@ -26,7 +27,7 @@ namespace UwpApp.ViewModel
 
         public ObservableCollection<AtollViewModel> Atolls { get; } = new ObservableCollection<AtollViewModel>();
         public ObservableCollection<DoctorViewModel> Doctors { get; } = new ObservableCollection<DoctorViewModel>();
-
+        public ObservableCollection<ServicesViewModel> Services { get; } = new ObservableCollection<ServicesViewModel>();
 
         private Atoll _atoll;
 
@@ -73,6 +74,18 @@ namespace UwpApp.ViewModel
             foreach (var doctor in doctors )
             {
                 Doctors.Add(new DoctorViewModel(doctor));
+            }
+        }
+
+
+        public async Task GetListOfServices()
+        {
+            await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
+            Services.Clear();
+            var services = await App.Repository.Service.GetAsync();
+            foreach (var service in services)
+            {
+                Services.Add(new ServicesViewModel(service));
             }
         }
     }

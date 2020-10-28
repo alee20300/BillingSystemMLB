@@ -57,7 +57,7 @@
                         <RowDefinition Height="7*" />
                         <RowDefinition Height="1.8*" />
                     </Grid.RowDefinitions>
-                    <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" MaxHeight="200"  VerticalAlignment="Bottom"></Image>
+                    <Image HorizontalAlignment="Left" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" MaxHeight="200"  VerticalAlignment="Bottom"></Image>
                     <StackPanel Grid.Column="1" Margin="20,5,5,5" Grid.RowSpan="2">
                         <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
                         <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
@@ -65,11 +65,11 @@
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Coutry,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-                    
+                    <TextBlock x:Name="MemoNo" Text="{x:Bind ViewModel.SelectedPatientMemos.Count}"/>
 
-                    </StackPanel>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,20,20">
-                    <Button HorizontalAlignment="Left" Content="Load Memo" Margin="20,0,0,0"></Button>
+                    <Button HorizontalAlignment="Left" x:Name="loadbtn" Content="Load Memo" Margin="20,0,0,0" Click="loadbtn_Click"></Button>
                     <Button HorizontalAlignment="Left" Content="Make Memo" Margin="20,0,0,0" Click="Button_Click"></Button>
                 </StackPanel>
 
@@ -95,29 +95,28 @@
 
             <RelativePanel>
                 <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
-                <toolkit:DataGrid AutoGenerateColumns="False" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos}" MinHeight="400" MaxHeight="500">
-                    <toolkit:DataGrid.Columns>
-                        <toolkit:DataGridTextColumn 
-                            Width="80"
-                            FontSize="12"
-                            Header="Name"
-                            Binding="{Binding Name}"/>
-                        <toolkit:DataGridTextColumn 
-                            Width="80"
-                            FontSize="12"
-                            Header="Address"
-                            Binding="{Binding Address}"/>
-                        <toolkit:DataGridTextColumn 
-                            Width="80"
-                            FontSize="12"
-                            Header="Phone Number"
-                            Binding="{Binding Contact}"/>
-                        
-                    </toolkit:DataGrid.Columns>
+                
+                <ListView Header="Patient Memo" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.SelectedPatientMemos ,Mode=OneWay}"
                     
-                    
-                </toolkit:DataGrid>
+                    Width="350"
+                    Height="400"
+                    HorizontalAlignment="Left">
 
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Memo">
+                            
+                            
+                            
+                            
+                            <StackPanel>
+                                <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
+                                <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                            </StackPanel>
+
+
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </RelativePanel>
                 
            

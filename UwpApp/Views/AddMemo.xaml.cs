@@ -99,7 +99,8 @@ namespace UwpApp.Views
         }
 
         private void ServiceSuggection_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-        {
+        { 
+            
             if (args.SelectedItem!=null)
             {
                 var selectedService = args.SelectedItem as Service;
@@ -107,9 +108,46 @@ namespace UwpApp.Views
             }
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        private async void AppBarSaveButton_ClickAsync(object sender, RoutedEventArgs e)
+        {
+            try
+                {
+                await ViewModel.SaveMemoAsync();
+            }
+            catch (MemoSavingException ex)
+            {
+                var dialog = new ContentDialog()
+                {
+                    Title = "Unable to save",
+                    Content = $"There was an error saving your order:\n{ex.Message}",
+                    PrimaryButtonText = "OK"
+                };
+
+                await dialog.ShowAsync();
+            }
+        }
+
+        private void AddServiceButton_Click(object sender, RoutedEventArgs e)
+        {
+            ViewModel.MemoDetails.Add(ViewModel.NewMemoDetail.MemoDetail);
+            ClearCandidateService();
+        }
+
+        private void ClearCandidateService()
+        {
+            ServiceSuggection.Text = string.Empty;
+            ViewModel.NewMemoDetail = new MemoDetailViewModel();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void RemoveButtonClicked(object sender, RoutedEventArgs e)
+        {
+
+            ViewModel.MemoDetails.Remove((sender as FrameworkElement).DataContext as MemoDetail);
         }
     }
 }

@@ -4,28 +4,42 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views.SettingsPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Width="400" HorizontalAlignment="Left" Margin="24">
-            <TextBox Text="{x:Bind viewModel.Id}" Header="Service ID" PlaceholderText="Service Id"></TextBox>
-            <TextBox Text="{x:Bind viewModel.ServiceName}" Header="Service Name" PlaceholderText="Service Name"></TextBox>
-            
-<TextBox Text="{x:Bind viewModel.ServiceCode}" Header="Service Code" PlaceholderText="ServiceCode"></TextBox>
-            <RelativePanel>
-            <ComboBox x:Name="CatogoryComboBox" Text="{x:Bind viewModel.Catogory}" PlaceholderText="Catogory" Header="Catogory">
-                <x:String>Hematology</x:String></ComboBox>
-                <ComboBox Margin="24,0,0,0" Text="{x:Bind viewModel.IsActive}" Header="Is Active" RelativePanel.RightOf="CatogoryComboBox" >
-                    <x:String>Yes</x:String></ComboBox>
+        <RelativePanel>
 
-            </RelativePanel>
-
-            <TextBox Header="Rate" Text="{x:Bind viewModel.Rate}" ></TextBox>
-            <TextBox Text="{x:Bind viewModel.LisCode}" Header="Lis Code" PlaceholderText="LIS Code" ></TextBox>
-            <TextBox Text="{x:Bind viewModel.ICode}" Header="Insuarance Code" PlaceholderText="Aasandha Code"></TextBox>
-        </StackPanel>
+            <StackPanel Width="400" HorizontalAlignment="Left" Margin="24" x:Name="formStack">
+                <TextBox  Header="Service ID" PlaceholderText="Service Id"></TextBox>
+                <TextBox  Header="Service Name" PlaceholderText="Service Name"></TextBox>
+                <TextBox  Header="Service Code" PlaceholderText="ServiceCode"></TextBox>
+                <RelativePanel>
+                    <ComboBox x:Name="CatogoryComboBox" PlaceholderText="Catogory" Header="Catogory">
+                        <x:String>Hematology</x:String>
+                    </ComboBox>
+                    <ComboBox Margin="24,0,0,0"  Header="Is Active" RelativePanel.RightOf="CatogoryComboBox" >
+                        <x:String>Yes</x:String>
+                    </ComboBox>
+                </RelativePanel>
+                <TextBox Header="Rate" ></TextBox>
+                <TextBox Header="Lis Code" PlaceholderText="LIS Code" ></TextBox>
+                <TextBox  Header="Insuarance Code" PlaceholderText="Aasandha Code"></TextBox>
+            </StackPanel>
+            <GridView RelativePanel.RightOf="formStack" ItemsSource="{x:Bind viewModel.Services}">
+                <GridView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="{Binding ServiceName}"></TextBlock>
+                            <TextBlock Text="{Binding ServiceCode}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
+                
+            </GridView>
+        </RelativePanel>
+        
                  
 
     </Grid>

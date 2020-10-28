@@ -10,8 +10,7 @@ namespace Domin.Models
     public class Patient : AuditEntity
 
     {
-        [Required]
-        [StringLength(20)]
+        
         public string Id { get; set; }
         [StringLength(15)]
         public string PatientNumber { get; set; }
@@ -32,9 +31,11 @@ namespace Domin.Models
         
         public string Country { get; set; }
         [StringLength(5)]
-        public string Atoll { get; set; }
-        [StringLength(50)]
-        public string Island { get; set; }
+        public int AtollId { get; set; }
+        
+        public int IslandId { get; set; }
+        
+        public Island Island { get; set; }
         [StringLength(50)]
         public string Email { get; set; }
     }

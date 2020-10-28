@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using UwpApp.ViewModel.Command;
 using System.Runtime.InteropServices.ComTypes;
 using Microsoft.Toolkit.Uwp.Helpers;
+using System.Collections.Specialized;
 
 namespace UwpApp.ViewModel
 {
@@ -21,15 +22,19 @@ namespace UwpApp.ViewModel
       
         public PatientViewModel(Patient patient =null)
         {
-          
             Patient = patient ?? new Patient();
 
             SaveCommand = new SaveCommand(this);
+            Memos.CollectionChanged += Memos_CollectionChanged;
 
-            
+
         }
 
-      
+        private void Memos_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            OnPropertyChanged("SelectedPatientMemo");
+        }
+
         private bool _IsLoading = false;
 
         public bool Isloading
@@ -176,14 +181,29 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string Atoll 
+        public int Atoll 
         {
-            get => Patient.Atoll;
+            get => Patient.AtollId;
             set
             {
-                if (value != Patient.Atoll)
+                if (value != Patient.AtollId)
                 {
-                    Patient.Atoll = value;
+                    Patient.AtollId = value;
+                    IsModified = true;
+                    OnPropertyChanged();
+
+                }
+            }
+        }
+
+        public int IslandId
+        {
+            get => Patient.IslandId;
+            set
+            {
+                if (value != Patient.IslandId)
+                {
+                    Patient.IslandId = value;
                     IsModified = true;
                     OnPropertyChanged();
 
@@ -192,7 +212,8 @@ namespace UwpApp.ViewModel
         }
 
 
-        public string Island
+
+        public Island Island
         {
             get => Patient.Island;
             set
@@ -206,6 +227,8 @@ namespace UwpApp.ViewModel
                 }
             }
         }
+
+
 
         public DateTime DateOfBirth
         {
@@ -333,8 +356,7 @@ namespace UwpApp.ViewModel
 
         //}
 
-        public ObservableCollection<Memo> Memos
-        { get; } = new ObservableCollection<Memo>();
+        public ObservableCollection<Memo> Memos { get; } = new ObservableCollection<Memo>();
 
         private Memo _selectedeMemo;
 

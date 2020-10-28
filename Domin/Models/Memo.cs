@@ -22,7 +22,7 @@ namespace Domin.Models
             Patient = patient;
             PatientName = patient.Name;
             Address = patient.PermAddress;
-
+            
 
         }
 
@@ -37,14 +37,13 @@ namespace Domin.Models
         public string Address { get; set; }
         public Doctor RequstedDoctor { get; set; }
         public decimal Rate => MemoDetails.Sum(MemoDetail => MemoDetail.Rate * MemoDetail.Qty);
-        
+        public int AccountId { get; set; }
         public Account Account { get; set; }
-        public Account Account1 { get; set; }
+        
         public decimal PatientAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.PatientAmmount * MemoDetails.Qty);
 
         public decimal AccountAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount * MemoDetails.Qty);
 
-        public decimal Account2Ammount  =>  MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount1 * MemoDetails.Qty);
 
 
         public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();

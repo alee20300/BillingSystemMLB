@@ -29,8 +29,8 @@
             <TextBox x:Name="PatientNumber" Header="Paitent Number" Text="{x:Bind patientViewModel.PatientNumber,Mode=TwoWay}"  Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"></TextBox>
             <TextBox x:Name="PatientName" Header= "Name" Text="{x:Bind patientViewModel.Name,Mode=TwoWay}" Margin="0,0,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
             <StackPanel  Orientation="Horizontal">
-                <CalendarDatePicker Margin="0,0,0,0"  Header="Date Of Birth " Width="150"  ></CalendarDatePicker>
-                <ComboBox x:Name="Gender" Width="100" Header="Gender" Margin="20,0,0,0" SelectedItem="{x:Bind patientViewModel.Sex}" >
+                <CalendarDatePicker Header="Date of Birth"></CalendarDatePicker>
+                <ComboBox x:Name="Gender" Width="100" Header="Gender" Margin="20,0,0,0" SelectedItem="{x:Bind patientViewModel.Sex,Mode=TwoWay}" >
                     <x:String>F</x:String>
                     <x:String>M</x:String>
                 </ComboBox>
@@ -41,15 +41,20 @@
             <TextBox Text="{x:Bind patientViewModel.IdCardNumber,Mode=TwoWay}" Header="National ID Card Number" Width="400" HorizontalAlignment="Left" ></TextBox>
             <TextBox x:Name="PhoneNumber" Text="{x:Bind patientViewModel.Contact,Mode=TwoWay}" Header="Phone Number" Margin="0,0,0,0" MaxLength="15" Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
             
-            <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
+            <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress,Mode=TwoWay}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
             <RelativePanel>
-                <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll" DisplayMemberPath="AtollName" ItemsSource="{x:Bind IAviewModel.Atolls}" SelectedItem="{x:Bind patientViewModel.Atoll}" SelectionChanged="Atoll_SelectionChanged" SelectedValuePath="Id" Margin="0,0,0,0"  Width="100" HorizontalAlignment="Left" >
-                    <x:String>WA</x:String>
-                </ComboBox> 
-                
-                <ComboBox x:Name="Island" PlaceholderText="Island" Header="Island" Margin="24,0,0,0" SelectedItem="{x:Bind patientViewModel.Island}"  Width="200" RelativePanel.RightOf="Atoll">
-                    <x:String>WA</x:String>
+                <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll"  DisplayMemberPath="AtollName" 
+                          ItemsSource="{x:Bind IAviewModel.Atolls}" SelectedItem="{x:Bind patientViewModel.Atoll,Mode=TwoWay}"
+                          SelectedValuePath="Id" Margin="0,0,0,0"  Width="100" HorizontalAlignment="Left" >
+                    
                 </ComboBox>
+                <ComboBox x:Name="Island" PlaceholderText="Island" 
+                          Header="Island" DisplayMemberPath="IslandName" 
+                          SelectedValuePath="Id" SelectedValue="{x:Bind patientViewModel.IslandId,Mode=TwoWay}"
+                          RelativePanel.RightOf="Atoll" Margin="20,0,0,0" 
+                          ItemsSource="{x:Bind IAviewModel.MasterIslandList}" ></ComboBox>
+
+                
                 
             </RelativePanel>
             <TextBox x:Name="Email" Header="Email" Text="{x:Bind patientViewModel.Email,Mode=TwoWay}" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />

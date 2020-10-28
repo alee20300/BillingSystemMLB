@@ -2,10 +2,13 @@
 using Microsoft.Toolkit.Uwp.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.ServiceModel.Channels;
+using System.Threading.Tasks;
 using UwpApp.UserControls;
 using UwpApp.ViewModel;
 using Windows.ApplicationModel.Activation;
@@ -28,14 +31,28 @@ namespace UwpApp.Views
     /// </summary>
     public sealed partial class HomePage : Page
     {
+
         public HomePage()
         {
             this.InitializeComponent();
-       
+            ViewModel.PropertyChanged += debug;
         }
 
-        public ShellViewModel ViewModel => App.ShellViewModel;
-       
+        
+        private void debug(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            Debug.WriteLine("Changed Property: " + e.PropertyName + "\n");
+                Debug.WriteLine("No. Memos: " + ViewModel.SelectedPatientMemos?.Count+"\n");
+        }
+
+        public ShellViewModel ViewModel
+        {
+            get
+            {
+                return App.ShellViewModel;
+            }
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             if (ViewModel.MasterPatientList.Count<1)
@@ -123,6 +140,10 @@ namespace UwpApp.Views
         private void Button_Click(object sender, RoutedEventArgs e)=>
         
             Frame.Navigate(typeof(AddMemo),ViewModel.SelectedPatient.Patient.Id);
-        
+
+        private void loadbtn_Click(object sender, RoutedEventArgs e)
+        {
+           Task.Run( ViewModel.SelectedPatient.LoadMemoAsync);
+        }
     }
 }

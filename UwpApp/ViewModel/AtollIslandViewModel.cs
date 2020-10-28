@@ -13,8 +13,10 @@ namespace UwpApp.ViewModel
         public AtollIslandViewModel()
         {
             Atolls = new List<Atoll>();
-            Task.Run(GetAtoll);
 
+            MasterIslandList = new List<Island>();
+            Task.Run(GetAtoll);
+            Task.Run(getIslandList);
 
         }
 

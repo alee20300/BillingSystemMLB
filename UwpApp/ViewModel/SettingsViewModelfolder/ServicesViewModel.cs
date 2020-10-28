@@ -16,6 +16,8 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
         }
 
+        
+
         private bool _IsLoading = false;
 
         public bool Isloading

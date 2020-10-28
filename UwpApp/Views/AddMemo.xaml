@@ -4,26 +4,82 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:Models="using:Domin.Models"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:Models="using:Domin.Models" xmlns:sys="using:System"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Page.Resources>
+        <DataTemplate
+            x:Key="DefultLineTemplate"
+            x:DataType="Models:MemoDetail">
+            <Grid HorizontalAlignment="Stretch" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition Width="32" />
+                    <ColumnDefinition Width="32" />
+                </Grid.ColumnDefinitions>
+                <Border
+                   Grid.ColumnSpan="4"
+                   BorderBrush="LightGray"
+                   BorderThickness="0,0,0,1"/>
+                <TextBlock
+                    Grid.Column="0"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    Text="{x:Bind Service.ServiceName}"/>
+                <TextBlock
+                    Grid.Column="2"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    Text="{x:Bind Service.Rate}"/>
+                <TextBlock
+                    Grid.Column="3"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    Text="{x:Bind Qty}"></TextBlock>
+               <Button
+                    
+                    Grid.Column="5"
+                    Margin="4,0,0,0"
+                    Padding="4"
+                    HorizontalAlignment="Right"
+                    AutomationProperties.Name="Cancel the addition"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="RemoveButtonClicked"
+                    Content="&#xE711;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="Red" />
+                   
+            </Grid>
+        </DataTemplate>
+
+    </Page.Resources>
+    
+    
     <Grid Margin="20" >
         <Grid.Resources>
             <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
-            
         </Grid.Resources>
+       
+        
         <Grid.RowDefinitions>
-            <RowDefinition Height="60" />
+            <RowDefinition Height="50" />
             <RowDefinition Height="3*" />
             <RowDefinition Height="7*" />
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" Text="New Memo" Style="{StaticResource HeaderTextBlockStyle }"></TextBlock>
-        <AppBarButton Grid.Row="0" HorizontalAlignment="Right" Icon="Save" Label="Save" Click="AppBarButton_Click">
+        <TextBlock Grid.Row="0" Text="New Memo" Style="{StaticResource HeaderTextBlockStyle }" VerticalAlignment="Top"></TextBlock>
+        <AppBarButton Grid.Row="0" HorizontalAlignment="Right" Icon="Save" Label="Save" Click="AppBarSaveButton_ClickAsync">
            
         </AppBarButton>
-        <RelativePanel Grid.Row="1"  Margin="20">
+        <RelativePanel Grid.Row="1"  Margin="0,20,0,0">
             <StackPanel x:Name="HeaderStackPanel" MaxWidth="250" MinWidth="150" Style="{StaticResource ResourceKey=SettingsFlyoutSectionStyle}" >
                 <TextBlock Text="Patient Number" Grid.Column="0"></TextBlock>
                 <TextBlock Text="Patient Name" Grid.Column="0"></TextBlock>
@@ -33,7 +89,7 @@
                 <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
             </StackPanel>
             <StackPanel x:Name="FieldsStackPanel" Grid.Column="1" MaxWidth="350" MinWidth="200" RelativePanel.RightOf="HeaderStackPanel" >
-                <TextBlock x:Name="patientnumber" Text="{x:Bind ViewModel.MemoNumber,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
+                <TextBlock x:Name="patientnumber" Text="{x:Bind ViewModel.Patient.PatientNumber,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Name,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.PermAddress,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Contact,Mode=TwoWay}" Grid.Column="0"></TextBlock>
@@ -41,46 +97,259 @@
                 <TextBlock Text="{x:Bind ViewModel.Patient.DateOfBirth,Mode=TwoWay}" Grid.Column="0"></TextBlock>
             </StackPanel>
             <StackPanel Width="450" RelativePanel.RightOf="FieldsStackPanel">
-                <TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account}" PlaceholderText="Account"></TextBox>
-                <TextBox Header="Doctor" PlaceholderText="Requested by" Text="{x:Bind ViewModel.Memo.RequstedDoctor}" ></TextBox>
+                <TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>
+                <TextBox Header="Doctor" PlaceholderText="Requested by" Text="{x:Bind ViewModel.Memo.RequstedDoctor.Id,Mode=TwoWay}" ></TextBox>
                 <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
             </StackPanel>
-            <Image Margin="200,0,0,0" MaxWidth="250" MinWidth="150" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  
-                   HorizontalAlignment="Left" RelativePanel.AlignRightWithPanel="True"></Image>
+            <!--<Image Margin="200,0,0,0" MaxWidth="250" MinWidth="150" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  
+                   HorizontalAlignment="Left" RelativePanel.AlignRightWithPanel="True"></Image>-->
         </RelativePanel>
-        <RelativePanel Margin="20" Grid.Row="2">
-            <AutoSuggestBox x:Name="ServiceSuggection" QueryIcon="Find" Width="400" HorizontalAlignment="Left" Header="Search for Service"
+
+            <StackPanel
+                        x:Name="sp1"
+                       Grid.Row="2"
+                       
+                        Margin="0,0,0,0"
+                        HorizontalAlignment="Stretch">
+
+                <!--  Line items header  -->
+                <Grid
+                            x:Name="DefaultLineItemsHeader"
+                            Margin="0,15,0,0"
+                            HorizontalAlignment="Stretch">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="250" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="80" />
+                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="32" />
+                    </Grid.ColumnDefinitions>
+                    <Border
+                                Grid.ColumnSpan="4"
+                                BorderBrush="LightGray"
+                                BorderThickness="0,0,0,1" />
+                    <TextBlock
+                                Grid.Column="0"
+                                FontWeight="SemiBold"
+                                Text="Product" />
+                    <TextBlock
+                                Grid.Column="2"
+                                Margin="8,0,0,0"
+                                Padding="0,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                FontWeight="SemiBold"
+                                Text="Price" />
+                    <TextBlock
+                                Grid.Column="3"
+                                Margin="8,0,0,0"
+                                Padding="0,0,0,0"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                FontWeight="SemiBold"
+                                Text="Quantity" />
+                </Grid>
+
+                <ListView HorizontalAlignment="Stretch"
+                    x:Name="ListviewService"
+                   
+                    ItemsSource="{x:Bind ViewModel.MemoDetails,Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate
+            
+            x:DataType="Models:MemoDetail">
+                        
+                        <Grid HorizontalAlignment="Stretch" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="3*" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="32" />
+                                <ColumnDefinition Width="32" />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                   Grid.ColumnSpan="4"
+                   BorderBrush="LightGray"
+                   BorderThickness="0,0,0,1"/>
+                            <TextBlock
+                    Grid.Column="0"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    Text="{x:Bind Service.ServiceName}"/>
+                            <TextBlock
+                    Grid.Column="2"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    Text="{x:Bind Service.Rate}"/>
+                            <TextBlock
+                    Grid.Column="3"
+                    Margin="0"
+                    Padding="0"
+                    HorizontalAlignment="Right"
+                    Text="{x:Bind Qty}"></TextBlock>
+                            <Button
+                    
+                    Grid.Column="5"
+                    Margin="4,0,0,0"
+                    Padding="4"
+                    HorizontalAlignment="Right"
+                    AutomationProperties.Name="Cancel the addition"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="RemoveButtonClicked"
+                    Content="&#xE711;"
+                    FontFamily="Segoe MDL2 Assets"
+                    Foreground="Red" />
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                    <!--<ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                            <Setter Property="Margin" Value="0,0,0,0"/>
+                            <Setter Property="Padding" Value="0,0,0,0"/>
+                            <Setter Property="MinWidth" Value="0"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>-->
+                </ListView>
+            <Grid
+                     Margin="0,20,0,0"
+                            HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <AutoSuggestBox x:Name="ServiceSuggection" QueryIcon="Find" MinWidth="200"  HorizontalAlignment="Left" Header="Search for Service"
                             ItemsSource="{x:Bind ViewModel.ServiceSuggections}"
                             TextChanged="ServiceSuggection_TextChanged"
                             SuggestionChosen="ServiceSuggection_SuggestionChosen">
-                <AutoSuggestBox.ItemTemplate>
-               
-                            <DataTemplate x:DataType="Models:Service">
-                <StackPanel>
-                    <TextBlock Text="{Binding ServiceName}"></TextBlock>
-                </StackPanel>
-                
-                </DataTemplate>
-                </AutoSuggestBox.ItemTemplate>
+                    <AutoSuggestBox.ItemTemplate>
+ <DataTemplate x:DataType="Models:Service">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ServiceName}"></TextBlock>
+                            </StackPanel>
+
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
                 </AutoSuggestBox>
-            <controls:DataGrid x:Name="memodtailgrid" RelativePanel.Below="ServiceSuggection" AutoGenerateColumns="False" Width="1300" Height="500"  >
-                
-            </controls:DataGrid>
-            <Grid  Width="500"  Height="400" RelativePanel.RightOf="memodtailgrid" Margin="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                </Grid.ColumnDefinitions>
-                
-                
+
+                <Grid
+                                x:Name="ItemAddPanel"
+                                Grid.Column="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="32" />
+                        <ColumnDefinition Width="32" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                                    Grid.Column="0"
+                                    Margin="4,0,0,0"
+                                    Padding="4"
+                                    HorizontalAlignment="Right"
+                                    AutomationProperties.Name="Add product"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="AddServiceButton_Click"
+                                    Content="&#xE73E;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Foreground="Green"
+                                    Visibility="{x:Bind ViewModel.HasNewMemoDetailItem, Mode=OneWay}" />
+                    <Button
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="4,0,0,0"
+                                    Padding="4"
+                                    HorizontalAlignment="Right"
+                                    AutomationProperties.Name="Cancel the addition"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Click="Button_Click"
+                                    Content="&#xE711;"
+                                    FontFamily="Segoe MDL2 Assets"
+                                    Foreground="Red"
+                                    Visibility="{x:Bind ViewModel.HasNewMemoDetailItem, Mode=OneWay}" />
+                </Grid>
+
             </Grid>
+
+            <Grid
+                x:Name="TotalsPanel"
+                Margin="0,20,64,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                   
+                </Grid.RowDefinitions>
+
+                <TextBlock 
+                    Grid.Column="1"
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    HorizontalAlignment="Right"
+                   Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.AccountAmmount), Mode=OneWay}"/>
+
+                <TextBlock 
+                    Grid.Column="1"
+                    Margin="0,0,0,0"
+                    Padding="0,0,0,0"
+                    HorizontalAlignment="Right"
+                   Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}"/>
+                <Border
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Grid.ColumnSpan="2"
+                                BorderBrush="LightGray"
+                                BorderThickness="0,0,0,1" />
+                <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Margin="0,0,0,0"
+                                Padding="0,0,0,0"
+                                FontWeight="Bold"
+                                Text="Total" />
+                <TextBlock
+                                Grid.Row="4"
+                                Grid.Column="2"
+                                Margin="0,0,0,0"
+                                Padding="0,0,0,0"
+                                HorizontalAlignment="Right"
+                                FontWeight="Bold"
+                                Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}" />
+
+
+
+            </Grid>
+                
+                
+                
+                
+                
+
+        </StackPanel>
+
+                
+                
+           
             
-        </RelativePanel>
+       
     </Grid>
 </Page>

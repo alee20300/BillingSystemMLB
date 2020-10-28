@@ -12,6 +12,6 @@ namespace Domin.Models
         public Service Service { get; set; }
         public decimal Rate { get; set; }
         public decimal PatientAmmount { get; set; }
-        public decimal AccountId { get; set; }
+        public decimal AccountAmmount { get; set; }
     }
 }

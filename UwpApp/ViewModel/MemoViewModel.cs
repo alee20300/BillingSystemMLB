@@ -32,13 +32,10 @@ namespace UwpApp.ViewModel
                 Task.Run(() => loadpatient(Memo.MemoNumber));
             }
 
-
+            //addmemodatademo();
         }
 
-        public MemoViewModel(ObservableCollection<Memo> memo)
-        {
-            this.memo = memo;
-        }
+    
 
         public async static Task<MemoViewModel> CreatefromMemoId(string MemoId) =>
             new MemoViewModel(await GetMemo(MemoId));
@@ -91,6 +88,18 @@ namespace UwpApp.ViewModel
             });
         }
 
+        public void addmemodatademo()
+        
+        {
+            Memo m = new Memo();
+            m.MemoNumber = "121212";
+            m.MemoDate = DateTime.UtcNow;
+            m.Patient.Id = "1";
+            m.PatientName = "Ali Abdulla";
+            m.Account.Id = 1;
+            App.Repository.Memo.UpsertAsync(m);
+        }
+       
         public Patient Patient
         {
             get => Memo.Patient;
@@ -114,6 +123,8 @@ namespace UwpApp.ViewModel
                 }
             }
         }
+
+
 
         public bool IsNewOrder => Memo.MemoNumber == "0";
 
@@ -140,7 +151,7 @@ namespace UwpApp.ViewModel
             }
         }
         private ObservableCollection<MemoDetail> _memoDetails;
-        private ObservableCollection<Memo> memo;
+        
 
         public ObservableCollection<MemoDetail> MemoDetails
         {
@@ -184,7 +195,7 @@ namespace UwpApp.ViewModel
 
         public string MemoNumber
         { 
-            get=> Memo.MemoNumber;
+            get=> Memo.MemoNumber="1112";
 
             set
             {
@@ -256,6 +267,19 @@ namespace UwpApp.ViewModel
                 }
             } }
 
+
+        public int AccountId 
+        { get=>Memo.AccountId=1;
+
+            set
+            {
+                if (Memo.AccountId!=value)
+                {
+                    Memo.AccountId = value;
+                } }
+             }
+
+        
 
         public async Task SaveMemoAsync()
         {
