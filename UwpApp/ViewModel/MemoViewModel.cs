@@ -21,7 +21,7 @@ namespace UwpApp.ViewModel
         public MemoViewModel(Memo memo)
         {
             Memo = memo;
-
+            Memo.MemoNumber = "1144";
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
 
 
@@ -32,7 +32,7 @@ namespace UwpApp.ViewModel
                 Task.Run(() => loadpatient(Memo.MemoNumber));
             }
 
-            //addmemodatademo();
+         
         }
 
     
@@ -88,17 +88,7 @@ namespace UwpApp.ViewModel
             });
         }
 
-        public void addmemodatademo()
-        
-        {
-            Memo m = new Memo();
-            m.MemoNumber = "121212";
-            m.MemoDate = DateTime.UtcNow;
-            m.Patient.Id = "1";
-            m.PatientName = "Ali Abdulla";
-            m.Account.Id = 1;
-            App.Repository.Memo.UpsertAsync(m);
-        }
+       
        
         public Patient Patient
         {

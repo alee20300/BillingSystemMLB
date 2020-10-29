@@ -24,7 +24,10 @@
                 <CommandBar x:Name="CommandBar" Background="Transparent" HorizontalAlignment="Right" >
                     <AppBarToggleButton 
                         Icon="Add" Label="Add Patient" />
-                    <AppBarToggleButton Icon="RepeatAll" Label="Refresh" />
+                    <AppBarButton
+                        Name="Edit" Label="Edit Patinet" Icon="Edit"/>
+                    <AppBarButton x:Name="SavePateint" Label="Save Patient" Icon="Save"/>
+                    
                     <AppBarSeparator/>
                 </CommandBar>
                 <AutoSuggestBox  

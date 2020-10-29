@@ -7,8 +7,8 @@
     xmlns:vmol="using:UwpApp.ViewModel"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    MinWidth="440"
-    MaxWidth="440"
+    MinWidth="940"
+    MaxWidth="940"
     MinHeight="600"
     MaxHeight="600"
     
@@ -18,12 +18,14 @@
    
 
 
-    <Grid Margin="20" HorizontalAlignment="Left" VerticalAlignment="Top">
-        <Grid.Resources>
-            <ResourceDictionary Source="ms-appx:///Microsoft.UI.Xaml/DensityStyles/Compact.xaml" />
-        </Grid.Resources>
+    <Grid Margin="20" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
 
-        <StackPanel>
+        <StackPanel Grid.Column="0">
+
             <TextBlock Text="New Patient" Style="{StaticResource TitleTextBlockStyle}"/>
             <TextBox  Text="{x:Bind patientViewModel.Id,Mode=TwoWay}" Header="Id" PlaceholderText="Id"></TextBox>
             <TextBox x:Name="PatientNumber" Header="Paitent Number" Text="{x:Bind patientViewModel.PatientNumber,Mode=TwoWay}"  Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"></TextBox>
@@ -35,34 +37,40 @@
                     <x:String>M</x:String>
                 </ComboBox>
                 <TextBlock Text="{x:Bind patientViewModel.Age}"></TextBlock>
-                
+
 
             </StackPanel>
-            <TextBox Text="{x:Bind patientViewModel.IdCardNumber,Mode=TwoWay}" Header="National ID Card Number" Width="400" HorizontalAlignment="Left" ></TextBox>
-            <TextBox x:Name="PhoneNumber" Text="{x:Bind patientViewModel.Contact,Mode=TwoWay}" Header="Phone Number" Margin="0,0,0,0" MaxLength="15" Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
-            
-            <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress,Mode=TwoWay}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
-            <RelativePanel>
-                <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll"  DisplayMemberPath="AtollName" 
+        </StackPanel>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                <TextBox Text="{x:Bind patientViewModel.IdCardNumber,Mode=TwoWay}" Header="National ID Card Number" Width="400" HorizontalAlignment="Left" ></TextBox>
+                <TextBox x:Name="PhoneNumber" Text="{x:Bind patientViewModel.Contact,Mode=TwoWay}" Header="Phone Number" Margin="0,0,0,0" MaxLength="15" Width="400" HorizontalAlignment="Left" InputScope="TelephoneNumber" />
+
+                <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress,Mode=TwoWay}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
+                <RelativePanel>
+                    <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll"  DisplayMemberPath="AtollName" 
                           ItemsSource="{x:Bind IAviewModel.Atolls}" SelectedItem="{x:Bind patientViewModel.Atoll,Mode=TwoWay}"
                           SelectedValuePath="Id" Margin="0,0,0,0"  Width="100" HorizontalAlignment="Left" >
-                    
-                </ComboBox>
-                <ComboBox x:Name="Island" PlaceholderText="Island" 
+
+                    </ComboBox>
+                    <ComboBox x:Name="Island" PlaceholderText="Island" 
                           Header="Island" DisplayMemberPath="IslandName" 
                           SelectedValuePath="Id" SelectedValue="{x:Bind patientViewModel.IslandId,Mode=TwoWay}"
                           RelativePanel.RightOf="Atoll" Margin="20,0,0,0" 
                           ItemsSource="{x:Bind IAviewModel.MasterIslandList}" ></ComboBox>
 
-                
-                
-            </RelativePanel>
-            <TextBox x:Name="Email" Header="Email" Text="{x:Bind patientViewModel.Email,Mode=TwoWay}" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
-             <StackPanel Orientation="Horizontal">
-                <Button Command="{x:Bind patientViewModel.SaveCommand}" Content="Save"  Margin="0,20,0,0" />
-                <Button Content="Cancel" Margin="20,20,0,0"  />
+
+
+                </RelativePanel>
+                <TextBox x:Name="Email" Header="Email" Text="{x:Bind patientViewModel.Email,Mode=TwoWay}" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
+                <StackPanel Orientation="Horizontal">
+                    <Button Command="{x:Bind patientViewModel.SaveCommand}" Content="Save"  Margin="0,20,0,0" />
+                    <Button Content="Cancel" Margin="20,20,0,0"  />
+                </StackPanel>
+
             </StackPanel>
-        </StackPanel>
+           
+       
+    
         
     </Grid>
 </Page>

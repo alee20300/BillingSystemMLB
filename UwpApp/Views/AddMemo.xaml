@@ -97,6 +97,8 @@
                 <TextBlock Text="{x:Bind ViewModel.Patient.DateOfBirth,Mode=TwoWay}" Grid.Column="0"></TextBlock>
             </StackPanel>
             <StackPanel Width="450" RelativePanel.RightOf="FieldsStackPanel">
+
+                <ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}" DisplayMemberPath="AtollName"/>
                 <TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>
                 <TextBox Header="Doctor" PlaceholderText="Requested by" Text="{x:Bind ViewModel.Memo.RequstedDoctor.Id,Mode=TwoWay}" ></TextBox>
                 <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
