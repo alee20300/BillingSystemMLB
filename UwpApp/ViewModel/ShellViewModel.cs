@@ -16,24 +16,28 @@ namespace UwpApp.ViewModel
         public PatientViewModel patientViewModel { get; set; }
         public ShellViewModel()
         {
-            //SelectedPatientMemos = new ObservableCollection<Memo>();
-            //Task.Run(GetPatientsListAsync);
-            //Patient = new Patient();
-            //this.PropertyChanged += ShellViewModel_PropertyChanged;
+
+           Task.Run(addisland);
         }
 
-        //private void ShellViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
-        //{
+        public  async void addisland()
+        {
 
-        //    var shell = (ShellViewModel)sender;
-        //    this.SelectedPatientMemos.Clear();
-        //    if (SelectedPatient is null)   return;
-        //    if (SelectedPatient.Memos is null) return;
-        //    foreach (var item in shell.SelectedPatient?.Memos)
-        //    {
-        //        SelectedPatientMemos.Add(item);
-        //    }
-        //}
+
+            var ato = new Atoll();
+
+            
+            ato.AtollName = "K";
+            ato.Islands = new List<Island>();
+            ato.Islands.Add(new Island {  IslandName = "Thinadhoo" });
+            
+
+           Atoll result = await App.Repository.Atoll.UpsertAsync(ato);
+
+           
+        }
+
+
 
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 
