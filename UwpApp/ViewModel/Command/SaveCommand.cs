@@ -6,6 +6,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using UwpApp.UserControls;
 using UwpApp.Views;
 using Windows.UI.Xaml;
 
@@ -31,8 +32,8 @@ namespace UwpApp.ViewModel.Command
         {
 
             App.Repository.Patient.Update(PatientViewModel.Patient);
-           
-           
+
+          
         }
     }
 }
