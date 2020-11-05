@@ -10,8 +10,10 @@ namespace Repository.SQL
 {
     public class MemoRepository : BaseRepository<Memo>, IMemoRepository
     {
+        ApplicationContext _db;
         public MemoRepository(ApplicationContext db) : base(db)
         {
+            _db = db;
         }
 
         public async Task<IEnumerable<Memo>> GetForPatientAsync(string id)=>
@@ -29,6 +31,22 @@ namespace Repository.SQL
             .ThenInclude(memoDetail => memoDetail.Service)
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoNumber == Id);
-        
+
+        public async Task<Memo> Update(Memo memo)
+        {
+            var existing = await dbSet.FirstOrDefaultAsync(_memo => _memo.MemoNumber == memo.MemoNumber);
+            if (null == existing)
+
+            {
+                dbSet.Add(memo);
+            }
+            else
+            {
+                _db.Entry(existing).CurrentValues.SetValues(memo);
+            }
+
+            await _db.SaveChangesAsync();
+            return memo;
+        }
     }
 }

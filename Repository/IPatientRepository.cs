@@ -8,6 +8,6 @@ namespace Repository
 {
     public interface IPatientRepository :IRepository<Patient>
     {
-
+        Task<Patient> Update(Patient patient);
     }
 }

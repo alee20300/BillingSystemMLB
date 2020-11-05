@@ -29,6 +29,8 @@ namespace UwpApp.ViewModel
         public ObservableCollection<DoctorViewModel> Doctors { get; } = new ObservableCollection<DoctorViewModel>();
         public ObservableCollection<ServicesViewModel> Services { get; } = new ObservableCollection<ServicesViewModel>();
 
+        public ObservableCollection<Service> Serviceslist { get; } = new ObservableCollection<Service>();
+
         private Atoll _atoll;
 
         public Atoll Atoll
@@ -86,6 +88,7 @@ namespace UwpApp.ViewModel
             foreach (var service in services)
             {
                 Services.Add(new ServicesViewModel(service));
+                Serviceslist.Add(service);
             }
         }
     }

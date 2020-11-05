@@ -73,7 +73,7 @@ namespace UwpApp.Views
 
                 if (ViewModel.PatientSuggestion != null)
                 {
-                    addpatientcard.Visibility = Visibility.Visible;
+                    
                 }
                 else 
                 {
@@ -144,6 +144,16 @@ namespace UwpApp.Views
         private void loadbtn_Click(object sender, RoutedEventArgs e)
         {
            Task.Run( ViewModel.SelectedPatient.LoadMemoAsync);
+        }
+
+        private void AppBarToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            addpatientframe.Navigate(typeof(AddPatient), null);
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            addpatientframe.Navigate(typeof(AddPatient), ViewModel.SelectedPatient);
         }
     }
 }

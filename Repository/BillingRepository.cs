@@ -31,6 +31,8 @@ namespace Repository
 
         public IServiceRepository Service => new ServiceRepository(new ApplicationContext(_dbOptions));
 
+        public IAccountRepository Account => new AccountRepository(new ApplicationContext(_dbOptions));
+
 
     }
 }

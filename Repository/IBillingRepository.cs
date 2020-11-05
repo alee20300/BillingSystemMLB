@@ -17,5 +17,7 @@ namespace Repository
 
         IServiceRepository Service { get; }
 
+        IAccountRepository Account { get; }
+
     }
 }

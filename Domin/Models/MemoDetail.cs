@@ -9,7 +9,7 @@ namespace Domin.Models
         public Memo Memo { get; set; }
         public Service Service { get; set; }
         public decimal Rate { get; set; }
-        public int Qty { get; set; }
+        public int Qty { get; set; } = 1;
         public decimal PatientAmmount { get; set; }
         public decimal AccountAmmount { get; set; }
         public decimal AccountAmmount1 { get; set; }

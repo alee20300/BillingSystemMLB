@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Store.Preview.InstallControl;
 
 namespace UwpApp.ViewModel
 {
@@ -17,27 +18,20 @@ namespace UwpApp.ViewModel
         public ShellViewModel()
         {
 
-           Task.Run(addisland);
-        }
-
-        public  async void addisland()
-        {
-
-
-            var ato = new Atoll();
-
-            
-            ato.AtollName = "K";
-            ato.Islands = new List<Island>();
-            ato.Islands.Add(new Island {  IslandName = "Thinadhoo" });
-            
-
-           Atoll result = await App.Repository.Atoll.UpsertAsync(ato);
-
            
         }
+        public Atoll Atoll { get; set; }
 
+        public async Task<Atoll> addoreditisland(int id)
+        {
+            var atoll = await App.Repository.Atoll.GetbyintIdAsync(2);
+            atoll.AtollName = "Z";
+            atoll.Islands.Add(new Island{ IslandName = "fuck" , Atoll=atoll, Id=6 });
+            await App.Repository.Atoll.Update(atoll);
+            return atoll;
+          
 
+        }
 
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 

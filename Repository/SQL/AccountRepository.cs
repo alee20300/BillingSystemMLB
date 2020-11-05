@@ -1,7 +1,9 @@
 ﻿using Domin.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Repository.SQL
 {
@@ -9,6 +11,11 @@ namespace Repository.SQL
     {
         public AccountRepository(ApplicationContext db) : base(db)
         {
+        }
+
+        public async Task<Account> GetAccountbyIdInt(int Id)
+        {
+            return await dbSet.FirstOrDefaultAsync(account => account.Id == Id);
         }
     }
 }

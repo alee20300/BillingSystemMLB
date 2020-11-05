@@ -32,6 +32,24 @@ namespace UwpApp.UserControls
             IAviewModel = new AtollIslandViewModel();
         }
 
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            if (e.Parameter==null)
+            {
+                patientViewModel = new PatientViewModel
+                {
+                    IsNewCustomer = true,
+
+
+                };
+            }
+            else
+            {
+                patientViewModel = App.ShellViewModel.SelectedPatient;
+            }
+        }
+
         private void Atoll_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 

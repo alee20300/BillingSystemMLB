@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
      xmlns:vm="using:UwpApp.ViewModel"
+    xmlns:BoldReports="using:BoldReports.UI.Xaml"
      xmlns:uc="using:UwpApp.UserControls"
     xmlns:converters="using:UwpApp.ViewModel.Converters"
     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" 
@@ -23,9 +24,10 @@
             <RelativePanel HorizontalAlignment="Right">
                 <CommandBar x:Name="CommandBar" Background="Transparent" HorizontalAlignment="Right" >
                     <AppBarToggleButton 
-                        Icon="Add" Label="Add Patient" />
+                        Icon="Add" Label="Add Patient" Click="AppBarToggleButton_Click" />
                     <AppBarButton
-                        Name="Edit" Label="Edit Patinet" Icon="Edit"/>
+                        Name="Edit" Label="Edit Patinet" Icon="Edit" Click="Edit_Click"
+                        />
                     <AppBarButton x:Name="SavePateint" Label="Save Patient" Icon="Save"/>
                     
                     <AppBarSeparator/>
@@ -86,7 +88,10 @@
                 <!--<uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>-->
             <Pivot x:Name="HomePagePivot" VerticalAlignment="Stretch">
                 <PivotItem Header="EdIt Patient">
-                    <uc:AddPatient x:Name="addpatientcard" HorizontalAlignment="Left" Visibility="Visible"></uc:AddPatient>
+                    <Frame x:Name="addpatientframe" HorizontalAlignment="Left">
+                        
+                    </Frame>
+                    
                 </PivotItem>
                 <PivotItem Header=" Patient Memos">
                    
@@ -98,10 +103,18 @@
 
                                 <ListView.ItemTemplate>
                                     <DataTemplate x:DataType="models:Memo">
-                                        <StackPanel>
-                                            <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
-                                            <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
-                                        </StackPanel>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="250" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel>
+                                        <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
+                                        <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                    </StackPanel>
+                                    <BoldReports:ReportViewer Grid.Column="1" HorizontalAlignment="Stretch"></BoldReports:ReportViewer>
+                                </Grid>
+                                       
 
 
                                     </DataTemplate>

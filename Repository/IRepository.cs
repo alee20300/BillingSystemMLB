@@ -11,5 +11,9 @@ namespace Repository
         Task<IEnumerable<TEntity>> GetAsync(string Search);
         Task<TEntity> GetbyIdAsync(string Id);
         Task<TEntity> UpsertAsync(TEntity entity);
+
+        
+
+
     }
 }

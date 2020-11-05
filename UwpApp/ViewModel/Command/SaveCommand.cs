@@ -15,6 +15,7 @@ namespace UwpApp.ViewModel.Command
     {
         public PatientViewModel PatientViewModel { get; set; }
         public SaveCommand(PatientViewModel patientViewModel)
+
         {
             PatientViewModel = patientViewModel;
         }
@@ -29,7 +30,7 @@ namespace UwpApp.ViewModel.Command
         public void Execute(object parameter)
         {
 
-            App.Repository.Patient.UpsertAsync(PatientViewModel.Patient);
+            App.Repository.Patient.Update(PatientViewModel.Patient);
            
            
         }
