@@ -13,5 +13,7 @@ namespace Domin.Models
         public decimal Rate { get; set; }
         public decimal PatientAmmount { get; set; }
         public decimal AccountAmmount { get; set; }
+
+       
     }
 }

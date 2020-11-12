@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
         <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
         <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
-            <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Id, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
             <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
             <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
             <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>

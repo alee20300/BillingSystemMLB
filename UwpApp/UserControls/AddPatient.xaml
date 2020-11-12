@@ -31,7 +31,7 @@
 
             <TextBlock Text="New Patient" Style="{StaticResource TitleTextBlockStyle}"/>
             <TextBox  Text="{x:Bind patientViewModel.Id,Mode=TwoWay}" Header="Id" PlaceholderText="Id"></TextBox>
-            <TextBox x:Name="PatientNumber" Header="Paitent Number" Text="{x:Bind patientViewModel.PatientNumber,Mode=TwoWay}"  Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"></TextBox>
+            <!--<TextBox x:Name="PatientNumber" Header="Paitent Number" Text="{x:Bind patientViewModel.PatientNumber,Mode=TwoWay}"  Width="400" Margin="0,0,0,0" HorizontalAlignment="Left"></TextBox>-->
             <TextBox x:Name="PatientName" Header= "Name" Text="{x:Bind patientViewModel.Name,Mode=TwoWay}" Margin="0,0,0,0" MaxLength="32" Width="400" HorizontalAlignment="Left" InputScope="PersonalFullName"/>
             <StackPanel  Orientation="Horizontal">
                 <CalendarDatePicker Header="Date of Birth" Date="{x:Bind patientViewModel.DateOfBirth,Mode=TwoWay,Converter={StaticResource TimeConverter}}"  ></CalendarDatePicker>

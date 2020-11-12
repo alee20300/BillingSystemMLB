@@ -12,8 +12,7 @@ namespace Domin.Models
     {
         
         public string Id { get; set; }
-        [StringLength(15)]
-        public string PatientNumber { get; set; }
+       
         [StringLength(200)]
         public string Name { get; set; }
         [StringLength(15)]
@@ -38,7 +37,8 @@ namespace Domin.Models
         public Island Island { get; set; }
         [StringLength(50)]
         public string Email { get; set; }
-    }
+
+        public List<Memo> Memos { get; set; } = new List<Memo>();    }
 
 
 }

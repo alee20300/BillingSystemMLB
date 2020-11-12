@@ -54,7 +54,7 @@ namespace UwpApp.Views
             }
         }
 
-        protected override async void OnNavigatedTo(NavigationEventArgs e)
+        protected override  void OnNavigatedTo(NavigationEventArgs e)
         {
             var id = (Patient)e.Parameter;
            
@@ -105,6 +105,8 @@ namespace UwpApp.Views
             {
                 var selectedService = args.SelectedItem as Service;
                 ViewModel.NewMemoDetail.Service = selectedService;
+                ViewModel.MemoDetails.Add(ViewModel.NewMemoDetail.MemoDetail);
+                ClearCandidateService();
             }
         }
 

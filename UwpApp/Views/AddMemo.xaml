@@ -89,7 +89,7 @@
                 <TextBlock Text="Patient Age" Grid.Column="0"></TextBlock>
             </StackPanel>
             <StackPanel x:Name="FieldsStackPanel" Grid.Column="1" MaxWidth="350" MinWidth="200" RelativePanel.RightOf="HeaderStackPanel" >
-                <TextBlock x:Name="patientnumber" Text="{x:Bind ViewModel.Patient.PatientNumber,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
+                <TextBlock x:Name="patientnumber" Text="{x:Bind ViewModel.Patient.Id,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Name,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.PermAddress,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Contact,Mode=TwoWay}" Grid.Column="0"></TextBlock>
@@ -98,9 +98,9 @@
             </StackPanel>
             <StackPanel Width="450" RelativePanel.RightOf="FieldsStackPanel">
 
-                <ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}" DisplayMemberPath="AtollName"/>
-                <TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>
-                <TextBox Header="Doctor" PlaceholderText="Requested by" Text="{x:Bind ViewModel.Memo.RequstedDoctor.Id,Mode=TwoWay}" ></TextBox>
+                <!--<ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}"  DisplayMemberPath="AtollName"/>-->
+                <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
+                
                 <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
             </StackPanel>
             <!--<Image Margin="200,0,0,0" MaxWidth="250" MinWidth="150" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  
@@ -236,7 +236,8 @@
                 <AutoSuggestBox x:Name="ServiceSuggection" QueryIcon="Find" MinWidth="200"  HorizontalAlignment="Left" Header="Search for Service"
                             ItemsSource="{x:Bind ViewModel.ServiceSuggections}"
                             TextChanged="ServiceSuggection_TextChanged"
-                            SuggestionChosen="ServiceSuggection_SuggestionChosen">
+                            SuggestionChosen="ServiceSuggection_SuggestionChosen"
+                                TextMemberPath="ServiceName">
                     <AutoSuggestBox.ItemTemplate>
  <DataTemplate x:DataType="Models:Service">
                             <StackPanel>

@@ -21,8 +21,8 @@ namespace UwpApp.ViewModel
         public MemoViewModel(Memo memo)
         {
             Memo = memo;
-            Memo.MemoNumber = "1144";
-            memo.AccountId = 1;
+            Memo.MemoNumber = "144";
+            
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
 
 
@@ -30,12 +30,12 @@ namespace UwpApp.ViewModel
 
            
                 Task.Run(() => loadpatient(Memo.Patient.Id));
-            Task.Run(() => loadAccount(memo.AccountId));
 
+            Task.Run(() => loadAccount(1));
 
         }
 
-        private async void loadAccount(int accountId)
+        public async void loadAccount(int accountId)
         {
             var account = await App.Repository.Account.GetAccountbyIdInt(accountId);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
@@ -279,18 +279,18 @@ namespace UwpApp.ViewModel
         }
 
 
-        public int AccountId 
-        { get=>Memo.AccountId;
+        //public int AccountId 
+        //{ get=>Memo.AccountId;
 
-            set
-            {
-                if (Memo.AccountId!=value)
-                {
-                    Memo.AccountId = value;
-                } }
-             }
+        //    set
+        //    {
+        //        if (Memo.AccountId!=value)
+        //        {
+        //            Memo.AccountId = value;
+        //        } }
+        //     }
 
-        
+
 
         public async Task SaveMemoAsync()
         {

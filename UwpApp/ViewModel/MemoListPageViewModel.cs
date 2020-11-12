@@ -43,7 +43,7 @@ namespace UwpApp.ViewModel
                     SelectedMemo = null;
                     if (_selectedMemo!=null)
                     {
-                        Task.Run(() => LoadPatient(_selectedMemo.Patient.PatientNumber));
+                        Task.Run(() => LoadPatient(_selectedMemo.Patient.Id));
                     }
                     //OnPropertyChanged(nameof(SelectedMemoGrandTotalFormated));
                 }

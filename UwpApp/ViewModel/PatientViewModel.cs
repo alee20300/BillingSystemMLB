@@ -246,20 +246,20 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string PatientNumber
-        {
-            get => Patient.PatientNumber;
-            set
-            {
-                if (value != Patient.PatientNumber)
-                {
-                    Patient.PatientNumber = value;
-                    IsModified = true;
-                    OnPropertyChanged();
+        //public string PatientNumber
+        //{
+        //    get => Patient.PatientNumber;
+        //    set
+        //    {
+        //        if (value != Patient.PatientNumber)
+        //        {
+        //            Patient.PatientNumber = value;
+        //            IsModified = true;
+        //            OnPropertyChanged();
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         public string CreatedBy
         {

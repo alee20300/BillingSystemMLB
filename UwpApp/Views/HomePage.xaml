@@ -40,7 +40,9 @@
                     
                     TextChanged="AutoSuggestBox_TextChangedAsync"
                     QuerySubmitted="AutoSuggestBox_QuerySubmitted"
-                    SuggestionChosen="AutoSuggestBox_SuggestionChosen">
+                    SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                    TextMemberPath="Name"
+                     >
                     <AutoSuggestBox.ItemTemplate>
                         <DataTemplate x:DataType="models:Patient" >
                             <StackPanel>
@@ -66,7 +68,7 @@
                     <Image HorizontalAlignment="Left" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" MaxHeight="200"  VerticalAlignment="Bottom"></Image>
                     <StackPanel Grid.Column="1" Margin="20,5,5,5" Grid.RowSpan="2">
                         <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
-                        <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.PatientNumber, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Id, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
@@ -94,35 +96,35 @@
                     
                 </PivotItem>
                 <PivotItem Header=" Patient Memos">
-                   
-                            
-                            <ListView Header="Patient Memo" RelativePanel.RightOf="addpatientcard" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos ,Mode=OneWay}"
+
+                    <RelativePanel>
+                        <ListView Header="Patient Memo"  x:Name="Listview" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos ,Mode=OneWay}"
                                       Width="350"
                                       Height="400"
                                       HorizontalAlignment="Left">
 
-                                <ListView.ItemTemplate>
-                                    <DataTemplate x:DataType="models:Memo">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="250" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel>
-                                        <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
-                                        <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
-                                    </StackPanel>
-                                    <BoldReports:ReportViewer Grid.Column="1" HorizontalAlignment="Stretch"></BoldReports:ReportViewer>
-                                </Grid>
-                                       
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:Memo">
+                                    <Grid HorizontalAlignment="Stretch">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="250" />
+                                            <ColumnDefinition Width="1000" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel Grid.Column="0">
+                                            <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
+                                            <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <BoldReports:ReportViewer  RelativePanel.RightOf="Listview" HorizontalAlignment="Stretch" Width="1550"></BoldReports:ReportViewer>
+
+                    </RelativePanel>
+                           
 
 
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
 
-                     
-                         
                 </PivotItem>
                 
             </Pivot>

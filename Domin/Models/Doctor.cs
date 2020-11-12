@@ -10,6 +10,7 @@ namespace Domin.Models
         public int Id { get; set; }
         [StringLength(50)]
         public String DoctorName { get; set; }
-        
+        public List<Memo> Memos { get; set; } = new List<Memo>();
+
     }
 }

@@ -8,6 +8,7 @@ namespace Domin.Models
 {
     public class Service
     {
+
         public int Id { get; set; }
 
         [StringLength(10)]
@@ -27,9 +28,12 @@ namespace Domin.Models
         [StringLength(10)]
         public String LisCode { get; set; }
 
-        public decimal Rate { get; set; }
+        public decimal Rate { get; set; } 
 
         public bool IsActive { get; set; }
-        
+
+        public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
+        public List<AccountServicePrice> AccountServicePrices { get; set; } = new List<AccountServicePrice>();
+
     }
 }

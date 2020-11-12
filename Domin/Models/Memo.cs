@@ -26,25 +26,28 @@ namespace Domin.Models
 
         }
 
-
+        public Account Account { get; set; }
         public String MemoNumber { get; set; }
         public DateTime MemoDate { get; set; }
         public Patient Patient { get; set; }
+        
+
+        public Doctor Doctor { get; set; }
 
         [StringLength(100)]
         public string  PatientName { get; set; }
         [StringLength(50)]
         public string Address { get; set; }
-        public Doctor RequstedDoctor { get; set; }
+    
         public decimal Rate => MemoDetails.Sum(MemoDetail => MemoDetail.Rate * MemoDetail.Qty);
-        public int AccountId { get; set; }
-        public Account Account { get; set; }
+    
         
         public decimal PatientAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.PatientAmmount * MemoDetails.Qty);
 
         public decimal AccountAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount * MemoDetails.Qty);
 
 
+      
 
         public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
 
