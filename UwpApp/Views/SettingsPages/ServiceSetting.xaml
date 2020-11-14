@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views.SettingsPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:models="using:Domin.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -27,18 +28,13 @@
                 <TextBox Header="Lis Code" PlaceholderText="LIS Code" ></TextBox>
                 <TextBox  Header="Insuarance Code" PlaceholderText="Aasandha Code"></TextBox>
             </StackPanel>
-            <ListView RelativePanel.RightOf="formStack" ItemsSource="{x:Bind viewModel.Serviceslist, Mode=OneWay}">
-                <ListView.ItemTemplate >
-                    <DataTemplate x:DataType="models:Service">
-                        <StackPanel  Orientation="Vertical">
-                            <TextBlock Text="{x:Bind ServiceName, Mode=OneWay}"></TextBlock>
-                            <TextBlock Text="{x:Bind ServiceCode,Mode=OneWay}"></TextBlock>
-                            <TextBlock Text="{x:Bind Catogory,Mode=OneWay}"></TextBlock>
-                        </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+            <toolkit:DataGrid RelativePanel.RightOf="formStack" ItemsSource="{x:Bind viewModel.Serviceslist}">
+                <toolkit:DataGrid.Columns>
+                    <toolkit:DataGridTextColumn
+                        />
+                </toolkit:DataGrid.Columns>
                 
-            </ListView>
+            </toolkit:DataGrid>
             
         </RelativePanel>
         

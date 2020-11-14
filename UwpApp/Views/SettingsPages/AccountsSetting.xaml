@@ -5,6 +5,7 @@
     xmlns:local="using:UwpApp.Views.SettingsPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" 
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -15,10 +16,18 @@
             <TextBox Width="400" Header="Account Id" Text="{x:Bind viewModel.id}" PlaceholderText="Account Id"> </TextBox>
             <TextBox Width="400" Header="Account Name" Text="{x:Bind viewModel.AccountName}" PlaceholderText="Account Name"></TextBox>
             <TextBox Width="400" Header="Account Code" Text="{x:Bind viewModel.AccountCode}"></TextBox>
-
+            <toolkit:DataGrid ItemsSource="{x:Bind avmodel.Accounts,Mode=TwoWay}">
+                <toolkit:DataGrid.Columns>
+                    <toolkit:DataGridTextColumn
+                  Header="ID"
+                    Width="Auto"
+                    Binding="{Binding Id}"/>
+                </toolkit:DataGrid.Columns>
+            </toolkit:DataGrid>
 
         </StackPanel>
         
+
 
     </Grid>
 </Page>

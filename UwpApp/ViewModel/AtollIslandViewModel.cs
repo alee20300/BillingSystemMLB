@@ -18,6 +18,7 @@ namespace UwpApp.ViewModel
             Task.Run(GetAtoll);
             Task.Run(getIslandList);
             Task.Run(getCountryList);
+            Task.Run(GetAccounts);
 
         }
 
@@ -28,6 +29,19 @@ namespace UwpApp.ViewModel
             foreach (var atoll in atolls)
             {
                 Atolls.Add(atoll);
+
+            }
+
+        }
+
+
+        private async Task GetAccounts()
+        {
+            var accounts = await App.Repository.Account.GetAsync();
+            Accounts.Clear();
+            foreach (var account in accounts)
+            {
+                Accounts.Add(account);
 
             }
 
@@ -60,6 +74,7 @@ namespace UwpApp.ViewModel
 
         public List<Atoll> Atolls { get; set; }
 
+        public List<Account> Accounts { get; set; } = new List<Account>();
         public List<Island> MasterIslandList { get; } = new List<Island>();
 
         public ObservableCollection<Island> Islands { get; } = new ObservableCollection<Island>();
