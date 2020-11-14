@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Principal;
 using System.Text;
 
@@ -18,7 +19,7 @@ namespace Domin.Models
         [StringLength(50)]
         public string ServiceName { get; set; }
 
-
+        [ForeignKey("CatogoryId")]
         public Catogory Catogory { get; set; }
 
 
@@ -34,6 +35,6 @@ namespace Domin.Models
 
         public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
         public List<AccountServicePrice> AccountServicePrices { get; set; } = new List<AccountServicePrice>();
-
+        public int CatogoryId { get; set; }
     }
 }

@@ -9,5 +9,6 @@ namespace Repository
     public interface IPatientRepository :IRepository<Patient>
     {
         Task<Patient> Update(Patient patient);
+        Task<Patient> findbyid(int ID);
     }
 }

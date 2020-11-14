@@ -15,7 +15,9 @@ namespace Repository.SQL
 
         public async Task<Account> GetAccountbyIdInt(int Id)
         {
-            return await dbSet.FirstOrDefaultAsync(account => account.Id == Id);
+            return await dbSet
+                //.AsNoTracking()
+                .FirstOrDefaultAsync(account => account.Id == Id);
         }
     }
 }

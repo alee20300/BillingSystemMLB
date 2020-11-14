@@ -61,15 +61,15 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string Id
+        public int Id
         {
-            get => Patient.Id;
+            get => Patient.PatientId;
             set
             {
-                if (value != Patient.Id)
+                if (value != Patient.PatientId)
 
                 {
-                    Patient.Id = value;
+                    Patient.PatientId = value;
                     IsModified = true;
                     OnPropertyChanged();
                 };
@@ -137,14 +137,14 @@ namespace UwpApp.ViewModel
         }
 
 
-        public string Coutry
+        public Country Coutry
         {
-            get => Patient.Country;
+            get => Patient.country;
             set
             {
-                if (value != Patient.Country)
+                if (value != Patient.country)
                 {
-                    Patient.Country = value;
+                    Patient.country = value;
                     IsModified = true;
                     OnPropertyChanged();
 
@@ -377,7 +377,7 @@ namespace UwpApp.ViewModel
         public async Task RefreshPatientAsync()
         {
             RefreshMemos();
-            Patient = await App.Repository.Patient.GetbyIdAsync(Patient.Id);
+            Patient = await App.Repository.Patient.GetbyIdAsync(Patient.PatientId);
         }
 
         public void RefreshMemos()
@@ -391,7 +391,7 @@ namespace UwpApp.ViewModel
             {
                 Isloading = true;
             });
-            var memos = await App.Repository.Memo.GetForPatientAsync(Patient.Id);
+            var memos = await App.Repository.Memo.GetForPatientAsync(Patient.PatientId);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
             {
                 Memos.Clear();

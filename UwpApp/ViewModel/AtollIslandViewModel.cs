@@ -13,10 +13,11 @@ namespace UwpApp.ViewModel
         public AtollIslandViewModel()
         {
             Atolls = new List<Atoll>();
-
+            Country = new List<Country>();
             MasterIslandList = new List<Island>();
             Task.Run(GetAtoll);
             Task.Run(getIslandList);
+            Task.Run(getCountryList);
 
         }
 
@@ -42,6 +43,20 @@ namespace UwpApp.ViewModel
             }
 
         }
+
+        private async Task getCountryList()
+        {
+            var countries = await App.Repository.Country.GetAsync();
+            Country.Clear();
+            foreach (var country in countries)
+            {
+               Country.Add(country);
+            }
+
+        }
+
+
+        public List<Country> Country { get; set; } 
 
         public List<Atoll> Atolls { get; set; }
 

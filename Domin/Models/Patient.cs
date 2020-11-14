@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
 using System.Text;
@@ -10,8 +11,9 @@ namespace Domin.Models
     public class Patient : AuditEntity
 
     {
-        
-        public string Id { get; set; }
+        [KeyAttribute()]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PatientId { get; set; }
        
         [StringLength(200)]
         public string Name { get; set; }
@@ -28,17 +30,22 @@ namespace Domin.Models
         [StringLength(50)]
         
         
-        public string Country { get; set; }
-        [StringLength(5)]
+       
+       
         public int AtollId { get; set; }
         
         public int IslandId { get; set; }
-        
+        [ForeignKey("IslandId")]
         public Island Island { get; set; }
         [StringLength(50)]
         public string Email { get; set; }
+        [ForeignKey("countryId")]
+        public Country country { get; set; }
 
-        public List<Memo> Memos { get; set; } = new List<Memo>();    }
+        public int countryId { get; set; }
+        public List<Memo> Memos { get; set; } = new List<Memo>();   
+    
+    }
 
 
 }

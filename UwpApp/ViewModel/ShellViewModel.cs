@@ -20,19 +20,7 @@ namespace UwpApp.ViewModel
 
            
         }
-        public Atoll Atoll { get; set; }
-
-        public async Task<Atoll> addoreditisland(int id)
-        {
-            var atoll = await App.Repository.Atoll.GetbyintIdAsync(2);
-            atoll.AtollName = "Z";
-            atoll.Islands.Add(new Island{ IslandName = "fuck" , Atoll=atoll, Id=6 });
-            await App.Repository.Atoll.Update(atoll);
-            return atoll;
-          
-
-        }
-
+      
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 
         public List<Patient> MasterPatientList { get; } = new List<Patient>();
@@ -65,7 +53,7 @@ namespace UwpApp.ViewModel
         {
             string[] parameters = idcard.Split(new char[] { ' ' },
                         StringSplitOptions.RemoveEmptyEntries);
-            var resultlist = MasterPatientList
+            var resultlist =  MasterPatientList
                  .Where(patient => parameters.Any(Parameter =>
                    patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)));
             //.Select
@@ -100,28 +88,7 @@ namespace UwpApp.ViewModel
             set => Set(ref _selectedPatient, value);
         }
 
-        //public async Task GetPatientsListAsync()
-        //{
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
-        //    var patients = await App.Repository.Patient.GetAsync();
-        //    if (patients == null)
-        //    {
-        //        return;
-        //    }
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-        //    {
-        //        Patients.Clear();
-        //        foreach (var p in patients)
-        //        {
-        //            Patients.Add(new PatientViewModel(p));
-
-        //        }
-        //        IsLoading = false;
-        //    });
-
-
-        //}
-
+       
 
 
 

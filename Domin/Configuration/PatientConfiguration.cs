@@ -12,7 +12,9 @@ namespace Domin.Configuration
     {
        public void Configure(EntityTypeBuilder<Patient> builder)
         {
-            builder.HasKey(p => p.Id);
+            builder.HasKey(p => p.PatientId)
+                ;
+           
 
         }
     }

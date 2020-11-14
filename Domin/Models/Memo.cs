@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -20,17 +21,21 @@ namespace Domin.Models
             :this()
         {
             Patient = patient;
+            PatientId = patient.PatientId;
             PatientName = patient.Name;
             Address = patient.PermAddress;
             
 
         }
-
+        [ForeignKey("AccountId")]
         public Account Account { get; set; }
-        public String MemoNumber { get; set; }
+
+        public int AccountId { get; set; }
+        public int MemoNumber { get; set; }
         public DateTime MemoDate { get; set; }
+     [ForeignKey("PatientId")]
         public Patient Patient { get; set; }
-        
+        public int PatientId { get; set; }
 
         public Doctor Doctor { get; set; }
 

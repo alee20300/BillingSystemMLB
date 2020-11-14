@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Caching.Memory;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,7 @@ namespace Domin.Models
         public string AccountCode { get; set; }
 
         public List<Memo> Memos { get; set; } = new List<Memo>();
+        public List<AccountServicePrice> accountServicePrices { get; set; } = new List<AccountServicePrice>();
 
     }
 }

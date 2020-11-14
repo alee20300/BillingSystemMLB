@@ -43,7 +43,7 @@ namespace UwpApp.ViewModel
                     SelectedMemo = null;
                     if (_selectedMemo!=null)
                     {
-                        Task.Run(() => LoadPatient(_selectedMemo.Patient.Id));
+                        Task.Run(() => LoadPatient(_selectedMemo.Patient.PatientId));
                     }
                     //OnPropertyChanged(nameof(SelectedMemoGrandTotalFormated));
                 }
@@ -62,7 +62,7 @@ namespace UwpApp.ViewModel
         }
 
 
-        private async void LoadPatient(string PatientId)
+        private async void LoadPatient(int PatientId)
         {
             var patient = await App.Repository.Patient.GetbyIdAsync(PatientId);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>

@@ -38,7 +38,7 @@ namespace Repository.SQL
 
 
 
-        public async Task<TEntity> GetbyIdAsync(string Id)
+        public async Task<TEntity> GetbyIdAsync(int Id)
         {
             return await _db.Set<TEntity>().FindAsync(Id);
         }

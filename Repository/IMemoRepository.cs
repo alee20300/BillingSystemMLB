@@ -11,9 +11,9 @@ namespace Repository
 
 
 
-        Task<IEnumerable<Memo>> GetForPatientAsync(string id);
+        Task<IEnumerable<Memo>> GetForPatientAsync(int id);
 
-        Task<Memo> GetMemoAsync(string Id);
+        Task<Memo> GetMemoAsync(int Id);
         Task<Memo> Update(Memo memo);
     }
 

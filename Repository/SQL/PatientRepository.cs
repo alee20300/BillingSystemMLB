@@ -17,14 +17,21 @@ namespace Repository.SQL
             _db = db;
         }
 
+        public async Task<Patient> findbyid(int ID)
+        {
+            return await _db.Patients
+                .AsNoTracking()
+                .FirstOrDefaultAsync(patient => patient.PatientId == ID);
+        }
+
         public async Task<Patient> Update(Patient patient)
         {
             
-                var existing = await dbSet.FirstOrDefaultAsync(_patient => _patient.Id == patient.Id);
+                var existing = await dbSet.FirstOrDefaultAsync(_patient => _patient.PatientId == patient.PatientId);
                 if (null == existing)
 
                 {
-                    dbSet.Add(existing);
+                    dbSet.Add(patient);
                 }
                 else
                 {

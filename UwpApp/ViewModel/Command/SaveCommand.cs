@@ -28,10 +28,22 @@ namespace UwpApp.ViewModel.Command
             return true;
         }
 
-        public void Execute(object parameter)
+        public async void Execute(object parameter)
         {
 
-            App.Repository.Patient.Update(PatientViewModel.Patient);
+            Patient result = null;
+            try
+            {
+               result= await App.Repository.Patient.Update(PatientViewModel.Patient);
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new MemoSavingException("Unable to Save Memo. There might have been a problem Connecting to Database. Please Try again later", ex);
+            }
+
+            
 
           
         }

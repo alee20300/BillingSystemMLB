@@ -21,21 +21,18 @@ namespace UwpApp.ViewModel
         public MemoViewModel(Memo memo)
         {
             Memo = memo;
-            Memo.MemoNumber = "144";
+            Memo.MemoNumber = 144;
             
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
 
 
             NewMemoDetail = new MemoDetailViewModel();
 
-           
-                Task.Run(() => loadpatient(Memo.Patient.Id));
-
+            //Task.Run(() => loadpatient(Memo.Patient.Id));
             Task.Run(() => loadAccount(1));
-
         }
 
-        public async void loadAccount(int accountId)
+        public  async void loadAccount(int accountId)
         {
             var account = await App.Repository.Account.GetAccountbyIdInt(accountId);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
@@ -44,10 +41,10 @@ namespace UwpApp.ViewModel
             });
         }
 
-        public async static Task<MemoViewModel> CreatefromMemoId(string MemoId) =>
+        public async static Task<MemoViewModel> CreatefromMemoId(int MemoId) =>
             new MemoViewModel(await GetMemo(MemoId));
 
-        private static async Task<Memo> GetMemo(string MemoId) =>
+        private static async Task<Memo> GetMemo(int MemoId) =>
             await App.Repository.Memo.GetbyIdAsync(MemoId);
 
         private MemoDetailViewModel  _newMemoDetail;
@@ -86,7 +83,7 @@ namespace UwpApp.ViewModel
         public bool HasNewMemoDetailItem => NewMemoDetail != null && NewMemoDetail.Service != null;
 
 
-        private async void loadpatient(string memoNumber)
+        private async void loadpatient(int memoNumber)
         {
             var patient = await App.Repository.Patient.GetbyIdAsync(memoNumber);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
@@ -104,26 +101,17 @@ namespace UwpApp.ViewModel
             {
                 if (Memo.Patient != value)
                 {
-                    var isLoadingOperation = Memo.Patient == null &&
-                        value != null && !IsNewOrder;
+                  
                     Memo.Patient = value;
                     OnPropertyChanged();
-                    if (isLoadingOperation)
-                    {
-                        OnPropertyChanged(nameof(IsLoaded));
-                        OnPropertyChanged(nameof(IsNotLoaded));
-                    }
-                    else
-                    {
-                        IsModified = true;
-                    }
+                    
                 }
             }
         }
 
 
 
-        public bool IsNewOrder => Memo.MemoNumber == "0";
+        public bool IsNewOrder => Memo.MemoNumber == 0;
 
 
         public bool IsLoaded => Memo != null && (IsNewOrder || Memo.Patient != null);
@@ -190,9 +178,9 @@ namespace UwpApp.ViewModel
         }
 
 
-        public string MemoNumber
+        public int MemoNumber
         { 
-            get=> Memo.MemoNumber="1112";
+            get=> Memo.MemoNumber=1112;
 
             set
             {
@@ -294,6 +282,11 @@ namespace UwpApp.ViewModel
 
         public async Task SaveMemoAsync()
         {
+
+
+           
+            //Task.Run(() => loadAccount(1));
+
             Memo result = null;
             try
             {

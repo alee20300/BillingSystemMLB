@@ -33,6 +33,6 @@ namespace Repository
 
         public IAccountRepository Account => new AccountRepository(new ApplicationContext(_dbOptions));
 
-
+        public ICountryRepository Country => new CountryRepository(new ApplicationContext(_dbOptions));
     }
 }
