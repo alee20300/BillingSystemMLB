@@ -7,14 +7,17 @@ using System.Text;
 
 namespace Domin.Configuration
 {
-    class CountryConfiguration : IEntityTypeConfiguration<Country>
+   public class CountryConfiguration : IEntityTypeConfiguration<Country>
 
     {
 
         public void Configure(EntityTypeBuilder<Country> builder)
         {
             builder.HasKey(c => c.Id);
-            
+            builder.HasData(new Country { Id=1, CountryName = "Maldives" });
+
+        
+           
         }
     }
 }

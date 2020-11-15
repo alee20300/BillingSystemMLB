@@ -16,6 +16,10 @@ namespace Domin.Configuration
         void IEntityTypeConfiguration<Service>.Configure(EntityTypeBuilder<Service> builder)
         {
             builder.HasKey(s=>s.Id);
+
+            builder
+               .HasData(new Service() { Id = 1, ServiceCode = "112", CatogoryId = 1, ICode = "112", IsActive = true, LisCode = "112", Rate = 112, ServiceName = "ESR" });
+           
         }
     }
 }

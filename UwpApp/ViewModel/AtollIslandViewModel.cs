@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UwpApp.ViewModel.SettingsViewModelfolder;
 
 namespace UwpApp.ViewModel
 {
@@ -41,7 +42,7 @@ namespace UwpApp.ViewModel
             Accounts.Clear();
             foreach (var account in accounts)
             {
-                Accounts.Add(account);
+                Accounts.Add(new AccountViewModel(account));
 
             }
 
@@ -73,8 +74,8 @@ namespace UwpApp.ViewModel
         public List<Country> Country { get; set; } 
 
         public List<Atoll> Atolls { get; set; }
-
-        public List<Account> Accounts { get; set; } = new List<Account>();
+        public ObservableCollection<AccountViewModel> Accounts { get; set; } = new ObservableCollection<AccountViewModel>();
+       
         public List<Island> MasterIslandList { get; } = new List<Island>();
 
         public ObservableCollection<Island> Islands { get; } = new ObservableCollection<Island>();

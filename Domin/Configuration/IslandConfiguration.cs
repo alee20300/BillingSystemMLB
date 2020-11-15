@@ -13,6 +13,9 @@ namespace Domin.Configuration
         {
             builder.HasKey(s => s.Id);
 
+            builder
+               .HasData(new Island() { AtollId = 1, Id = 1, IslandName = "Thinadhoo" });
+           
         }
     }
 }

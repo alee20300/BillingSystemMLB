@@ -14,7 +14,11 @@ namespace Domin.Configuration
         {
             builder.HasKey(p => p.PatientId)
                 ;
-           
+           builder
+                .HasData(new Patient() { AtollId = 1, countryId = 1, Contact = "9702030", 
+                    CreatedBy = "Ali", Email = "Alee20300@gmail.com", IslandId = 1, DateOfBirth = DateTime.Now, 
+                    Name = "Ali Abdulla", Sex = "M", PermAddress = "Sandalwood" });
+
 
         }
     }

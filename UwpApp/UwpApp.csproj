@@ -129,6 +129,7 @@
     <Compile Include="UserControls\AddPatient.xaml.cs">
       <DependentUpon>AddPatient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\calender.cs" />
     <Compile Include="UserControls\PatientCard.xaml.cs">
       <DependentUpon>PatientCard.xaml</DependentUpon>
     </Compile>
@@ -211,6 +212,10 @@
     <Page Include="Styles\DataGrid.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControls\AddPatient.xaml">
       <SubType>Designer</SubType>

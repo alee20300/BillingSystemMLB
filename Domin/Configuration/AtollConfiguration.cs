@@ -13,7 +13,8 @@ namespace Domin.Configuration
         public void Configure(EntityTypeBuilder<Atoll> builder)
         {
             builder.HasKey(s => s.Id);
-
+            builder
+                .HasData(new Atoll { Id = 1, AtollName = "G DH" });
         }
     }
 

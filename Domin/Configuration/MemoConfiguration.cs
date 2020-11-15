@@ -13,6 +13,9 @@ namespace Domin.Configuration
         public void Configure(EntityTypeBuilder<Memo> builder)
         {
             builder.HasKey(m => m.MemoNumber);
+            builder
+               .HasOne(p => p.Patient)
+               .WithMany(m => m.Memos);
         }
     }
 }

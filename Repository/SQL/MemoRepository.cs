@@ -42,6 +42,7 @@ namespace Repository.SQL
             if (null == existing)
 
             {
+                
                 memo.MemoNumber = 0;
                 _db.Memos.Add(memo);
 
@@ -53,6 +54,7 @@ namespace Repository.SQL
   
             _db.Update(memo.Patient);
             _db.Update(memo.Account);
+           
             var state = (_db.ChangeTracker.Entries());
             await _db.SaveChangesAsync();
             return memo;
