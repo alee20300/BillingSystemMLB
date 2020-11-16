@@ -41,12 +41,12 @@
                     TextChanged="AutoSuggestBox_TextChangedAsync"
                     QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                     SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                    TextMemberPath="Name"
+                    TextMemberPath="PatientName"
                      >
                     <AutoSuggestBox.ItemTemplate>
                         <DataTemplate x:DataType="models:Patient" >
                             <StackPanel>
-                                <TextBlock Text="{x:Bind Name}" Style="{StaticResource BaseTextBlockStyle}"></TextBlock>
+                                <TextBlock Text="{x:Bind PatientName}" Style="{StaticResource BaseTextBlockStyle}"></TextBlock>
                                 <TextBlock Text="{x:Bind IdCardNumber }"></TextBlock>
                             </StackPanel>
                         </DataTemplate>
@@ -72,7 +72,7 @@
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                         <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
-                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Coutry,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Country,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
                     <TextBlock x:Name="MemoNo" Text="{x:Bind ViewModel.SelectedPatientMemos.Count}"/>
 
                 </StackPanel>

@@ -7,10 +7,10 @@ namespace Domin.Models
 {
     public class Doctor
     {
-        public int Id { get; set; }
-        [StringLength(50)]
+        public int DoctorId { get; set; }
+      
         public String DoctorName { get; set; }
-        public List<Memo> Memos { get; set; } = new List<Memo>();
+        public ICollection<Memo> Memos { get; set; } = new List<Memo>();
 
     }
 }

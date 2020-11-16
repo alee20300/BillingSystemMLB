@@ -50,7 +50,8 @@ namespace Repository.SQL
 
         public async Task<TEntity> UpsertAsync(TEntity entity)
         {
-            await _db.Set<TEntity>().AddAsync(entity);
+            var state = (_db.ChangeTracker.Entries());
+             _db.Set<TEntity>().Update(entity);
             await _db.SaveChangesAsync();
             return entity;
         }

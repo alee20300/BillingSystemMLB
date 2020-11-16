@@ -31,29 +31,31 @@ namespace Repository.SQL
             .Include(memo => memo.MemoDetails)
             .ThenInclude(memoDetail => memoDetail.Service)
             .AsNoTracking()
-            .FirstOrDefaultAsync(memo => memo.MemoNumber == Id);
+            .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
         public async Task<Memo> Update(Memo memo)
         {
-            var existing = await dbSet.FirstOrDefaultAsync(_memo => _memo.MemoNumber == memo.MemoNumber);
+            var existing = await dbSet.Include(p=>p.Patient).Include(m=>m.MemoDetails)
+                .FirstOrDefaultAsync(_memo => _memo.MemoId == memo.MemoId);
             //var account = await _db.Accounts.FirstOrDefaultAsync(a => a.Id == memo.Account.Id);
-            
 
+            var state1 = (_db.ChangeTracker.Entries());
             if (null == existing)
 
             {
-                
-                memo.MemoNumber = 0;
+                memo.PatientId = 0;
+                memo.Patient.PatientId = 0;
+                memo.MemoId = 0;
                 _db.Memos.Add(memo);
-
+               
             }
             else
             {
                 _db.Entry(existing).CurrentValues.SetValues(memo);
             }
   
-            _db.Update(memo.Patient);
-            _db.Update(memo.Account);
+            //_db.Update(memo.Patient);
+            
            
             var state = (_db.ChangeTracker.Entries());
             await _db.SaveChangesAsync();

@@ -10,7 +10,7 @@ namespace Domin.Models
     public class Service
     {
 
-        public int Id { get; set; }
+        public int ServiceId { get; set; }
 
         [StringLength(10)]
         public string ServiceCode { get; set; }
@@ -19,9 +19,7 @@ namespace Domin.Models
         [StringLength(50)]
         public string ServiceName { get; set; }
 
-        [ForeignKey("CatogoryId")]
-        public Catogory Catogory { get; set; }
-
+  
 
         [StringLength(10)]
         public string ICode { get; set; }
@@ -33,8 +31,14 @@ namespace Domin.Models
 
         public bool IsActive { get; set; }
 
-        public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
-        public List<AccountServicePrice> AccountServicePrices { get; set; } = new List<AccountServicePrice>();
+
+
+
+        public ICollection<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
+        public ICollection<AccountServicePrice> AccountServicePrices { get; set; } = new List<AccountServicePrice>();
         public int CatogoryId { get; set; }
+        [ForeignKey("CatogoryId")]
+        public Catogory Catogory { get; set; }
+
     }
 }

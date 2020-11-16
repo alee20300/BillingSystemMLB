@@ -46,9 +46,7 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new MemoDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
 
-            modelBuilder.Entity<Catogory>()
-                .HasData(new Catogory { Id = 1, Name = "Hematology", CatogoryCode = "HEME" });
-           
+            
 
 
 

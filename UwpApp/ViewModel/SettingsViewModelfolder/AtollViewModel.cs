@@ -46,13 +46,13 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
         public int Id
         {
-            get => Atoll.Id;
+            get => Atoll.AtollId;
             set
             {
-                if (value != Atoll.Id)
+                if (value != Atoll.AtollId)
 
                 {
-                    Atoll.Id = value;
+                    Atoll.AtollId = value;
                     OnPropertyChanged();
                 }
             }

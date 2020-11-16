@@ -6,9 +6,9 @@ using System.Text;
 namespace Domin.Models
 {
    public class Country
-    {   
-        public int Id { get; set; }
-        [StringLength(50)]
+    {
+        public int CountryId { get; set; }
+       
         public string CountryName { get; set; }
         public List<Patient> patients { get; set; }
     }

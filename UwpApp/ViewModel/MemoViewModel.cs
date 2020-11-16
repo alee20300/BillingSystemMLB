@@ -17,11 +17,11 @@ namespace UwpApp.ViewModel
   public  class MemoViewModel :BindableBase
     {
 
-        public Memo Memo { get; }
+        public Memo Memo { get; set; }
         public MemoViewModel(Memo memo)
         {
             Memo = memo;
-            Memo.MemoNumber = 144;
+            Memo.DoctorId = 1;
             
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
 
@@ -30,6 +30,7 @@ namespace UwpApp.ViewModel
 
             //Task.Run(() => loadpatient(Memo.Patient.Id));
             Task.Run(() => loadAccount(1));
+            //Task.Run(() => loadDoc(1));
         }
 
         public  async void loadAccount(int accountId)
@@ -92,8 +93,17 @@ namespace UwpApp.ViewModel
             });
         }
 
-       
-       
+        //private async void loadDoc(int DoctorId)
+        //{
+        //    var doctor =  App.Repository.Doctor.GetDocById(DoctorId);
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        Doctor = doctor;
+        //    });
+        //}
+
+
+
         public Patient Patient
         {
             get => Memo.Patient;
@@ -111,7 +121,7 @@ namespace UwpApp.ViewModel
 
 
 
-        public bool IsNewOrder => Memo.MemoNumber == 0;
+        public bool IsNewOrder => Memo.MemoId == 0;
 
 
         public bool IsLoaded => Memo != null && (IsNewOrder || Memo.Patient != null);
@@ -180,13 +190,13 @@ namespace UwpApp.ViewModel
 
         public int MemoNumber
         { 
-            get=> Memo.MemoNumber=1112;
+            get=> Memo.MemoId;
 
             set
             {
-                if (value!=Memo.MemoNumber)
+                if (value!=Memo.MemoId)
                 {
-                    Memo.MemoNumber = value;
+                    Memo.MemoId = value;
                     OnPropertyChanged();
                 }
             } 
@@ -221,7 +231,7 @@ namespace UwpApp.ViewModel
                 }
              }
 
-        public Decimal PatientTotal => Memo.PatientAmmount;
+        public Decimal PatientTotal => Memo.Rate;
 
         public Decimal AccountAmmount => Memo.AccountAmmount;
 
@@ -267,18 +277,45 @@ namespace UwpApp.ViewModel
         }
 
 
-        //public int AccountId 
-        //{ get=>Memo.AccountId;
+        public int AccountId
+        {
+            get => Memo.AccountId =1;
 
-        //    set
-        //    {
-        //        if (Memo.AccountId!=value)
-        //        {
-        //            Memo.AccountId = value;
-        //        } }
-        //     }
+            set
+            {
+                if (Memo.AccountId != value)
+                {
+                    Memo.AccountId = value;
+                }
+            }
+        }
 
+        public Doctor Doctor
+        {
+            get => Memo.Doctor;
+            set
+            {
+                if (value != Memo.Doctor)
+                {
+                    Doctor = value;
+                    OnPropertyChanged();
 
+                }
+
+            }
+        }
+
+        public int DoctorID
+        { get=>Memo.DoctorId=1;
+            set
+            {
+                if (value!=Memo.DoctorId)
+                {
+                    value = Memo.DoctorId;
+                    OnPropertyChanged();
+
+                }
+            } }
 
         public async Task SaveMemoAsync()
         {
@@ -291,7 +328,7 @@ namespace UwpApp.ViewModel
             try
             {
                
-                result = await App.Repository.Memo.Update(Memo);
+                result = await App.Repository.Memo.UpsertAsync(Memo);
             }
           catch(Exception ex)
             {

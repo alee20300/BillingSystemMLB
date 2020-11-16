@@ -8,12 +8,11 @@ namespace Domin.Models
 {
     public class Atoll
     {
-        public int Id { get; set; }
-        [StringLength(5)]
-        [Column("Atoll_Name")]
+        public int AtollId { get; set; }
+   
         public String AtollName { get; set; }
 
-        public List<Island> Islands { get; set; } = new List<Island>();
+        public ICollection<Island> Islands { get; set; } = new List<Island>();
 
     }
 }

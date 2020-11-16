@@ -34,7 +34,8 @@ namespace UwpApp.ViewModel.Command
             Patient result = null;
             try
             {
-               result= await App.Repository.Patient.Update(PatientViewModel.Patient);
+                
+               result= await App.Repository.Patient.UpsertAsync(PatientViewModel.Patient);
 
             }
             catch (Exception ex)

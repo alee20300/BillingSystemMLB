@@ -62,7 +62,8 @@
                           RelativePanel.RightOf="Atoll" Margin="20,0,0,0" 
                           ItemsSource="{x:Bind IAviewModel.MasterIslandList, Mode=OneWay}" ></ComboBox>
 
-                <ComboBox x:Name="Contry" PlaceholderText="Country" Header="Country" ItemsSource="{x:Bind IAviewModel.Country,Mode=OneWay}" SelectedItem="{x:Bind patientViewModel.Coutry}" DisplayMemberPath="Country" SelectedValuePath="Id" RelativePanel.RightOf="Island" Margin="20,0,0,0" HorizontalAlignment="Stretch" Width="180"/>
+                <ComboBox x:Name="Contry" PlaceholderText="Country" Header="Country" ItemsSource="{x:Bind IAviewModel.Country,Mode=OneWay}" SelectedItem="{x:Bind patientViewModel.CountryId, Mode=TwoWay}"
+                          DisplayMemberPath="CountryName" SelectedValuePath="CountryId" RelativePanel.RightOf="Island" Margin="20,0,0,0" HorizontalAlignment="Stretch" Width="180"/>
 
 
 

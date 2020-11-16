@@ -77,12 +77,12 @@ namespace UwpApp.ViewModel
         }
 
         public string Name {
-            get=>Patient.Name;
+            get=>Patient.PatientName;
             set
             {
-                if (value!=Patient.Name)
+                if (value!=Patient.PatientName)
                 {
-                    Patient.Name = value;
+                    Patient.PatientName = value;
                     IsModified = true;
                     OnPropertyChanged();
                     
@@ -120,6 +120,20 @@ namespace UwpApp.ViewModel
             }
         }
 
+        public int CountryId
+        {
+            get => Patient.CountryId;
+            set
+            {
+                if (value!=Patient.CountryId)
+                {
+                    Patient.CountryId = value;
+                    OnPropertyChanged();
+
+                }
+            }
+        }
+
 
         public string Email
         {
@@ -137,7 +151,7 @@ namespace UwpApp.ViewModel
         }
 
 
-        public Country Coutry
+        public Country Country
         {
             get => Patient.country;
             set

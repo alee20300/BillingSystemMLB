@@ -90,7 +90,7 @@ namespace UwpApp.ViewModel
                 var resultlist = MasterIslandList
                     .Where(island => parameters
                     .Any(parameter =>
-                    island.Atoll.Id.ToString().StartsWith(parameter)))
+                    island.Atoll.AtollId.ToString().StartsWith(parameter)))
                     ;
                 foreach (var island in resultlist)
                 {

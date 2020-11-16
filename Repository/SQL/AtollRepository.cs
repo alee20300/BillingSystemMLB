@@ -18,12 +18,12 @@ namespace Repository.SQL
         public async Task<Atoll> GetbyintIdAsync(int Id)
         {
             
-            return await dbSet.FirstOrDefaultAsync(atoll=>atoll.Id ==Id );
+            return await dbSet.FirstOrDefaultAsync(atoll=>atoll.AtollId ==Id );
         }
 
         public async Task<Atoll> Update(Atoll atoll)
         {
-            var existing = await dbSet.FirstOrDefaultAsync(_atoll => _atoll.Id == atoll.Id);
+            var existing = await dbSet.FirstOrDefaultAsync(_atoll => _atoll.AtollId == atoll.AtollId);
             if (null==existing )
 
             {

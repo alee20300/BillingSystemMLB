@@ -43,12 +43,12 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
         public int Id
         {
-            get =>Service.Id; 
+            get =>Service.ServiceId; 
             set
             {
-                if (value!=Service.Id)
+                if (value!=Service.ServiceId)
                 {
-                    Service.Id = value;
+                    Service.ServiceId = value;
                     OnPropertyChanged();
                 }
             }

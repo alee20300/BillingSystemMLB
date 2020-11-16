@@ -37,13 +37,13 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
         public int Id
         
-        { get=>Doctor.Id;
+        { get=>Doctor.DoctorId;
 
             set 
             {
-                if (value!=Doctor.Id)
+                if (value!=Doctor.DoctorId)
                 {
-                    Doctor.Id = value;
+                    Doctor.DoctorId = value;
                     OnPropertyChanged();
                 }
             } }

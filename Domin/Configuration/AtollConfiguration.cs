@@ -12,9 +12,16 @@ namespace Domin.Configuration
     {
         public void Configure(EntityTypeBuilder<Atoll> builder)
         {
-            builder.HasKey(s => s.Id);
+            builder.HasKey(s => s.AtollId);
+            builder.Property(s => s.AtollId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("Atoll_Id");
+            builder.Property(s => s.AtollName)
+                .HasMaxLength(6)
+                .HasColumnName("Atoll_Name");
+
             builder
-                .HasData(new Atoll { Id = 1, AtollName = "G DH" });
+                .HasData(new Atoll { AtollId = 1, AtollName = "G DH" });
         }
     }
 

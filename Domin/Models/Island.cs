@@ -8,13 +8,13 @@ namespace Domin.Models
 {
     public class Island
     {
-        public int Id { get; set; }
+        public int IslandId { get; set; }
         [ForeignKey("AtollId")]
         public Atoll Atoll { get; set; }
-        [StringLength(20)]
+        
         public string IslandName { get; set; }
         public int AtollId { get; set; }
 
-        public List<Patient> patients { get; set; } = new List<Patient>();
+        public ICollection<Patient> patients { get; set; } = new List<Patient>();
     }
 }

@@ -41,12 +41,12 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
         public int id
         {
-            get => Account.Id;
+            get => Account.AccountId;
             set
             {
-                if (_account.Id != value)
+                if (_account.AccountId != value)
                 {
-                    _account.Id = value;
+                    _account.AccountId = value;
 
                     OnPropertyChanged();
                 }

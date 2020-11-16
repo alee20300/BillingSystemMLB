@@ -90,7 +90,7 @@
             </StackPanel>
             <StackPanel x:Name="FieldsStackPanel" Grid.Column="1" MaxWidth="350" MinWidth="200" RelativePanel.RightOf="HeaderStackPanel" >
                 <TextBlock x:Name="patientnumber" Text="{x:Bind ViewModel.Patient.PatientId,Mode=TwoWay}"  Grid.Column="0"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Patient.Name,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ViewModel.Patient.PatientName,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.PermAddress,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Contact,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Email,Mode=TwoWay}" Grid.Column="0"></TextBlock>

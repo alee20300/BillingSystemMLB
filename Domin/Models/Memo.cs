@@ -22,41 +22,44 @@ namespace Domin.Models
         {
             Patient = patient;
             PatientId = patient.PatientId;
-            PatientName = patient.Name;
+            PatientName = patient.PatientName;
             Address = patient.PermAddress;
             
 
         }
-        [ForeignKey("AccountId")]
-        public Account Account { get; set; }
 
-        public int AccountId { get; set; }
-        public int MemoNumber { get; set; }
+        public int MemoId { get; set; }
         public DateTime MemoDate { get; set; }
-     [ForeignKey("PatientId")]
-        public Patient Patient { get; set; }
-        public int PatientId { get; set; }
 
-        public Doctor Doctor { get; set; }
+        public string  PatientName { get;  set; }
 
-        [StringLength(100)]
-        public string  PatientName { get; set; }
-        [StringLength(50)]
-        public string Address { get; set; }
+        public string Address { get;  set; }
+
+        public decimal Rate { get; set; } 
     
-        public decimal Rate => MemoDetails.Sum(MemoDetail => MemoDetail.Rate * MemoDetail.Qty);
-    
-        
-        public decimal PatientAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.PatientAmmount * MemoDetails.Qty);
+        public decimal PatientAmmount { get; set; }
 
-        public decimal AccountAmmount => MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount * MemoDetails.Qty);
+        public decimal AccountAmmount { get; set; }
 
 
       
 
-        public List<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
+        public ICollection<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
 
 
+
+        #region Navigation
+        [ForeignKey("AccountId")]
+        public Account Account { get; set; }
+        public int AccountId { get; set; }
+        [ForeignKey("PatientId")]
+        public Patient Patient { get; set; }
+        public int PatientId { get; set; }
+        [ForeignKey("DoctorId")]
+        public Doctor Doctor { get; set; }
+        public int DoctorId { get; set; }
+
+        #endregion
 
 
     }

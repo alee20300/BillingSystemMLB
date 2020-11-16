@@ -13,16 +13,14 @@ namespace Domin.Models
     {
 
 
-        [KeyAttribute()]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Id { get; set; }
-        [StringLength(50)]
+         public int AccountId { get; set; }
+ 
         public string AccountName { get; set; }
-        [StringLength(10)]
+        
         public string AccountCode { get; set; }
 
-        public List<Memo> Memos { get; set; } = new List<Memo>();
-        public List<AccountServicePrice> accountServicePrices { get; set; } = new List<AccountServicePrice>();
+        public ICollection<Memo> Memos { get; set; } = new List<Memo>();
+        public ICollection<AccountServicePrice> accountServicePrices { get; set; } = new List<AccountServicePrice>();
 
     }
 }

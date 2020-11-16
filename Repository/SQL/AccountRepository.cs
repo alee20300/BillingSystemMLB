@@ -17,7 +17,7 @@ namespace Repository.SQL
         {
             return await dbSet
                 //.AsNoTracking()
-                .FirstOrDefaultAsync(account => account.Id == Id);
+                .FirstOrDefaultAsync(account => account.AccountId == Id);
         }
     }
 }
