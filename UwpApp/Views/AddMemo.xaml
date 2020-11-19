@@ -302,16 +302,29 @@
                     <RowDefinition Height="Auto" />
                    
                 </Grid.RowDefinitions>
-
+                <TextBlock
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="0,0,0,0"
+                                Padding="0,0,0,0"
+                                
+                                Text="Account" />
                 <TextBlock 
-                    Grid.Column="1"
+                    Grid.Column="2"
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
                     HorizontalAlignment="Right"
                    Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.AccountAmmount), Mode=OneWay}"/>
-
+                <TextBlock
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Margin="0,0,0,0"
+                                Padding="0,0,0,0"
+                                
+                                Text="Patient" />
                 <TextBlock 
-                    Grid.Column="1"
+                    Grid.Row="1"
+                    Grid.Column="2"
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
                     HorizontalAlignment="Right"
@@ -336,7 +349,7 @@
                                 Padding="0,0,0,0"
                                 HorizontalAlignment="Right"
                                 FontWeight="Bold"
-                                Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}" />
+                                Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.Rate), Mode=OneWay}" />
  </Grid>
  </StackPanel>
 </Grid>

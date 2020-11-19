@@ -20,5 +20,7 @@ namespace Repository
         IAccountRepository Account { get; }
 
         ICountryRepository Country { get; }
+
+        IAccountServicePrice AccountServicePrice { get; }
     }
 }

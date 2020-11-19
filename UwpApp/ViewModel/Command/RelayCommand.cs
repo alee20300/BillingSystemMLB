@@ -1,46 +1,58 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Input;
-using Windows.Media.Playback;
 
 namespace UwpApp.ViewModel.Command
 {
-    
-        public class RelayCommand : ICommand
+    public class RelayCommand : ICommand
+    {
+        private readonly Action _execute;
+
+        private readonly Func<bool> _canExecute;
+
+        public event EventHandler CanExecuteChanged;
+
+        public RelayCommand(Action execute)
+            : this(execute, null)
         {
-
-        Action<object> _executeMethod;
-        Func<object, bool> _canexecuteMethod;
-
-
-        public RelayCommand (Action <object > executeMethod,Func<object,bool> canExecuteMethod)
-        {
-            _executeMethod = executeMethod;
-            _canexecuteMethod = canExecuteMethod;
-        }
-        public event EventHandler CanExecuteChanged
-    ;
-
-        public bool CanExecute(object parameter)
-        {
-            if (_canexecuteMethod != null)
-
-            {
-                return _canexecuteMethod(parameter);
-            }
-            else
-            {
-                return false;
-            }
         }
 
-            public void Execute(object parameter)
-            {
-                throw new NotImplementedException();
-            }
+        public RelayCommand(Action execute, Func<bool> canExecute)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute;
         }
-    
+
+        public bool CanExecute(object parameter) => _canExecute == null || _canExecute();
+
+        public void Execute(object parameter) => _execute();
+
+        public void OnCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    }
+
+    public class RelayCommand<T> : ICommand
+    {
+        private readonly Action<T> _execute;
+
+        private readonly Func<T, bool> _canExecute;
+
+        public event EventHandler CanExecuteChanged;
+
+        public RelayCommand(Action<T> execute)
+            : this(execute, null)
+        {
+        }
+
+        public RelayCommand(Action<T> execute, Func<T, bool> canExecute)
+        {
+            _execute = execute ?? throw new ArgumentNullException(nameof(execute));
+            _canExecute = canExecute;
+        }
+
+        public bool CanExecute(object parameter) => _canExecute == null || _canExecute((T)parameter);
+
+        public void Execute(object parameter) => _execute((T)parameter);
+
+        public void OnCanExecuteChanged() => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    }
 }

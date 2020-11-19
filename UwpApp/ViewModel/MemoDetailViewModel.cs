@@ -1,19 +1,32 @@
 ﻿using Domin.Models;
+using Syncfusion.UI.Xaml.Collections.Generic;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Store.Preview.InstallControl;
 
 namespace UwpApp.ViewModel
 {
     public class MemoDetailViewModel:BindableBase
     {
-        public MemoDetailViewModel(MemoDetail memoDetail = null) => MemoDetail = memoDetail ?? new MemoDetail();
-
+        public MemoDetailViewModel(MemoDetail memoDetail = null)
+        {
+            MemoDetail = memoDetail ?? new MemoDetail();
+            account(1, 2);
+                   }
 
         public MemoDetail MemoDetail { get;  }
 
+        public void account(int acc,int scc)
+        {
+           var result = App.Repository.AccountServicePrice.GetAccountServicePrice(1, 2);
+            AccountAmmount = result.AccountAmmount;
+            PatientAmount = result.PatientAmmount;
+            Rate = result.Rate;
+        }
 
         public Service Service
         {
@@ -23,6 +36,44 @@ namespace UwpApp.ViewModel
                 if (MemoDetail.Service != value)
                 {
                     MemoDetail.Service = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public decimal PatientAmount 
+        { get=>MemoDetail.PatientAmmount;
+            set
+            {
+                if (MemoDetail.PatientAmmount!=value)
+                {
+                    MemoDetail.PatientAmmount = value;
+                    OnPropertyChanged();
+                }
+            }
+             }
+
+        public decimal Rate
+        {
+            get => MemoDetail.Rate;
+            set
+            {
+                if (MemoDetail.Rate != value)
+                {
+                    MemoDetail.Rate = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public decimal AccountAmmount
+        {
+            get => MemoDetail.AccountAmmount;
+            set
+            {
+                if (MemoDetail.AccountAmmount != value)
+                {
+                    MemoDetail.AccountAmmount = value;
                     OnPropertyChanged();
                 }
             }

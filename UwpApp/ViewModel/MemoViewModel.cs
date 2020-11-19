@@ -1,5 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
+using Syncfusion.DocIO.DLS;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -28,9 +29,9 @@ namespace UwpApp.ViewModel
 
             NewMemoDetail = new MemoDetailViewModel();
 
-            //Task.Run(() => loadpatient(Memo.Patient.Id));
+           
             Task.Run(() => loadAccount(1));
-            //Task.Run(() => loadDoc(1));
+           
         }
 
         public  async void loadAccount(int accountId)
@@ -180,8 +181,9 @@ namespace UwpApp.ViewModel
                 Memo.MemoDetails = MemoDetails.ToList();
             }
 
-            //OnPropertyChanged(nameof(LineItems));
-            //OnPropertyChanged(nameof(Subtotal));
+            OnPropertyChanged(nameof(PatientTotal));
+            OnPropertyChanged(nameof(AccountAmmount));
+            OnPropertyChanged(nameof(Rate));
             //OnPropertyChanged(nameof(Tax));
             //OnPropertyChanged(nameof(GrandTotal));
             IsModified = true;
@@ -231,9 +233,58 @@ namespace UwpApp.ViewModel
                 }
              }
 
-        public Decimal PatientTotal => Memo.Rate;
+        public Decimal PatientTotal
+        {
+            get
+            {
+                return MemoDetails.Sum(m => m.PatientAmmount);
+            }
+            set
+            {
+                if (value!=Memo.PatientAmmount)
+                {
+                    Memo.PatientAmmount = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
-        public Decimal AccountAmmount => Memo.AccountAmmount;
+        public Decimal AccountAmmount
+        {
+            get
+            {
+                return MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount);
+            }
+
+            set
+            {
+                if (value!=Memo.AccountAmmount)
+                {
+                    AccountAmmount = value;
+                    OnPropertyChanged();
+
+                }
+            }
+        }
+
+        public decimal Rate
+        {
+            get
+            {
+                return MemoDetails.Sum(MemoDetails => MemoDetails.Rate);
+            }
+
+            set
+            {
+                if (value!=Memo.Rate)
+
+                {
+                    Rate = value;
+                    OnPropertyChanged();
+
+                }
+            }
+        }
 
         public string Address 
         {
@@ -304,6 +355,8 @@ namespace UwpApp.ViewModel
 
             }
         }
+
+      
 
         public int DoctorID
         { get=>Memo.DoctorId=1;

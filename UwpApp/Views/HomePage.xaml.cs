@@ -55,11 +55,9 @@ namespace UwpApp.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (ViewModel.MasterPatientList.Count<1)
-            {
-                ViewModel.LoadPatients();
-            }
-        }
+
+
+                }
         private  void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Only get results when it was a user typing, 
@@ -83,31 +81,6 @@ namespace UwpApp.Views
                 
 
 
-                //if (string.IsNullOrEmpty(sender.Text))
-                //{
-
-
-                //    //await DispatcherHelper.ExecuteOnUIThreadAsync(async ()=>
-                //    //    await ViewModel.GetPatientsListAsync());
-                //    //sender.ItemTemplate = null;
-                //}
-                //else
-                //{
-
-                //    //string[] parameters = sender.Text.Split(new char[] { ' ' },
-                //    //    StringSplitOptions.RemoveEmptyEntries);
-                //    //sender.ItemsSource = ViewModel.Patients
-                //    //    .Where(patient => parameters.Any(Parameter =>
-                //    //      patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)))
-                //    //    .Select
-                //    //    (patient => patient.IdCardNumber);
-
-
-
-
-                //}
-                ////Set the ItemsSource to be your filtered dataset
-                //sender.ItemsSource = dataset;
             }
         }
 
@@ -115,6 +88,7 @@ namespace UwpApp.Views
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             ViewModel.SelectedPatient = new PatientViewModel(args.SelectedItem as Patient);
+           
             
         }
 

@@ -23,46 +23,48 @@ namespace UwpApp.ViewModel
       
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 
-        public List<Patient> MasterPatientList { get; } = new List<Patient>();
+        //public List<Patient> MasterPatientList { get; } = new List<Patient>();
         public ObservableCollection<Patient> PatientSuggestion { get; } = new ObservableCollection<Patient>();
 
 
-        public async void LoadPatients()
+        //public async void LoadPatients()
+        //{
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        IsLoading = true;
+
+        //        MasterPatientList.Clear();
+        //    });
+
+        //    var patients = await Task.Run(App.Repository.Patient.GetAsync);
+
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        foreach (var patient in patients)
+        //        {
+
+        //            MasterPatientList.Add(patient);
+        //        }
+
+        //        IsLoading = false;
+        //    });
+        //}
+        public async  void updatepstientSuggestion(string idcard)
         {
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+            PatientSuggestion.Clear();
+
+            if (!string.IsNullOrEmpty(idcard))
             {
-                IsLoading = true;
+                var resultlist = await App.Repository.Patient.getpatientforsearch(idcard);
 
-                MasterPatientList.Clear();
-            });
 
-            var patients = await Task.Run(App.Repository.Patient.GetAsync);
-
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                foreach (var patient in patients)
+                foreach (var result in resultlist)
                 {
-
-                    MasterPatientList.Add(patient);
+                    PatientSuggestion.Add(result);
                 }
-
-                IsLoading = false;
-            });
-        }
-        public  void updatepstientSuggestion(string idcard)
-        {
-            string[] parameters = idcard.Split(new char[] { ' ' },
-                        StringSplitOptions.RemoveEmptyEntries);
-            var resultlist =  MasterPatientList
-                 .Where(patient => parameters.Any(Parameter =>
-                   patient.IdCardNumber.StartsWith(Parameter, StringComparison.OrdinalIgnoreCase)));
-            //.Select
-            //(patient => patient.IdCardNumber);
-
-            foreach (var result in resultlist)
-            {
-                PatientSuggestion.Add(result);
             }
+
+            
         }
 
 

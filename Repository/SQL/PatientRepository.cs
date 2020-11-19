@@ -24,6 +24,26 @@ namespace Repository.SQL
                 .FirstOrDefaultAsync(patient => patient.PatientId == ID);
         }
 
+        public async Task<IEnumerable<Patient>> getpatientforsearch(string Query)
+        {
+
+            string[] parameters = Query.Split(' ');
+                     
+            return await dbSet
+                
+                .Where(patient =>
+                parameters.Any(Parameter =>
+                   patient.IdCardNumber.StartsWith(Parameter)
+
+                   ||
+                   patient.PatientName.StartsWith(Parameter) ||
+                   patient.Contact.StartsWith(Parameter)
+                   ))
+                .AsNoTracking()
+                .ToListAsync();
+
+        }
+
         public async Task<Patient> Update(Patient patient)
         {
             

@@ -11,7 +11,7 @@ namespace Domin.Models
     {
         public MemoDetail()
         {
-                
+            
         }
         public MemoDetail(int serviceId)
             :this()
@@ -23,12 +23,11 @@ namespace Domin.Models
         }
         public int MemoDetailId { get; set; }
 
-        public decimal Rate => Service.Rate;
+        public decimal Rate { get; set; }
         public int Qty { get; set; } = 1;
         public decimal PatientAmmount { get; set; }
         public decimal AccountAmmount { get; set; }
 
-        
 
 
         #region Navigation
@@ -39,10 +38,10 @@ namespace Domin.Models
         public Service Service { get; set; }
         public int ServiceId { get; set; }
 
-       
+
 
         #endregion
 
-
+        
     }
 }
