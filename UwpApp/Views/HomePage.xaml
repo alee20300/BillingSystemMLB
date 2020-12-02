@@ -34,6 +34,7 @@
                 </CommandBar>
                 <AutoSuggestBox  
                     RelativePanel.RightOf="CommandBar" 
+                    
                     Name="Searchbox"  PlaceholderText="Search for Something" 
                     Width="400" HorizontalAlignment="Right"
                     QueryIcon="Find"
@@ -41,8 +42,12 @@
                     TextChanged="AutoSuggestBox_TextChangedAsync"
                     QuerySubmitted="AutoSuggestBox_QuerySubmitted"
                     SuggestionChosen="AutoSuggestBox_SuggestionChosen"
-                    TextMemberPath="PatientName"
-                     >
+                    TextMemberPath="PatientName">
+                    <AutoSuggestBox.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="f" Modifiers="Control"></KeyboardAccelerator>
+                    </AutoSuggestBox.KeyboardAccelerators>
+
+
                     <AutoSuggestBox.ItemTemplate>
                         <DataTemplate x:DataType="models:Patient" >
                             <StackPanel>
@@ -118,8 +123,7 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <BoldReports:ReportViewer  RelativePanel.RightOf="Listview" HorizontalAlignment="Stretch" Width="1550"></BoldReports:ReportViewer>
-
+                        
                     </RelativePanel>
                            
 

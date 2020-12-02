@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel;
 using Windows.ApplicationModel;
@@ -40,8 +41,24 @@ namespace UwpApp
 
         public App()
         {
+
+            var assembly = typeof(App).GetTypeInfo().Assembly;
+            var fileStream = assembly.GetManifestResourceStream("UwpApp.BoldLicense.txt");
+
+
+            if (fileStream != null && fileStream.Length > 0)
+            {
+                using (var reader = new StreamReader(fileStream))
+                {
+                    string licenseKey = reader.ReadLineAsync().Result;
+                    Bold.Licensing.BoldLicenseProvider.RegisterLicense(licenseKey);
+                }
+            }
+
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+
         }
 
         /// <summary>

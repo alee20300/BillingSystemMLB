@@ -226,12 +226,6 @@
       <Version>7.0.1</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Billing.core\Billing.core.csproj">
-      <Project>{1a416ad9-b655-4997-a85d-a26e80e8be10}</Project>
-      <Name>Billing.core</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

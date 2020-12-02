@@ -279,7 +279,7 @@ namespace UwpApp.ViewModel
                 if (value!=Memo.Rate)
 
                 {
-                    Rate = value;
+                    Rate = MemoDetails.Sum(MemoDetails => MemoDetails.Rate);
                     OnPropertyChanged();
 
                 }

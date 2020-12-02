@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -35,7 +36,7 @@ namespace Domin.Models
 
         public string Address { get;  set; }
 
-        public decimal Rate { get; set; } 
+        public decimal Rate { get; set; }
     
         public decimal PatientAmmount { get; set; }
 
@@ -52,6 +53,12 @@ namespace Domin.Models
         [ForeignKey("AccountId")]
         public Account Account { get; set; }
         public int AccountId { get; set; }
+
+        public Memo Include(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
+
         [ForeignKey("PatientId")]
         public Patient Patient { get; set; }
         public int PatientId { get; set; }

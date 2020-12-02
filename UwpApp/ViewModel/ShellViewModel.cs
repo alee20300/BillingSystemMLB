@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using UwpApp.Views;
 using Windows.ApplicationModel.Store.Preview.InstallControl;
 
 namespace UwpApp.ViewModel
@@ -49,7 +50,7 @@ namespace UwpApp.ViewModel
         //        IsLoading = false;
         //    });
         //}
-        public async  void updatepstientSuggestion(string idcard)
+        public async  Task updatepstientSuggestion(string idcard)
         {
             PatientSuggestion.Clear();
 
@@ -57,11 +58,14 @@ namespace UwpApp.ViewModel
             {
                 var resultlist = await App.Repository.Patient.getpatientforsearch(idcard);
 
+                
+                    foreach (var result in resultlist)
+                    {
+                        PatientSuggestion.Add(result);
+                    }
 
-                foreach (var result in resultlist)
-                {
-                    PatientSuggestion.Add(result);
-                }
+             
+               
             }
 
             

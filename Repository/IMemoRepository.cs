@@ -15,6 +15,7 @@ namespace Repository
 
         Task<Memo> GetMemoAsync(int Id);
         Task<Memo> Update(Memo memo);
+       Memo getreposrt(int MemoId);
     }
 
     

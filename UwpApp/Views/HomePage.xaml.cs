@@ -1,16 +1,20 @@
-﻿using Domin.Models;
+﻿using BoldReports.UI.Xaml;
+using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Metadata;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using UwpApp.UserControls;
 using UwpApp.ViewModel;
+using UwpApp.ViewModel.ReportsViewModel;
+
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -35,16 +39,12 @@ namespace UwpApp.Views
         public HomePage()
         {
             this.InitializeComponent();
-            ViewModel.PropertyChanged += debug;
-        }
+            this.Loaded += ReportViewerPage_Loaded;
 
-        
-        private void debug(object sender, System.ComponentModel.PropertyChangedEventArgs e)
-        {
-            Debug.WriteLine("Changed Property: " + e.PropertyName + "\n");
-                Debug.WriteLine("No. Memos: " + ViewModel.SelectedPatientMemos?.Count+"\n");
         }
+        public Reports Reports { get; set; } = new Reports();
 
+       
         public ShellViewModel ViewModel
         {
             get
@@ -53,33 +53,35 @@ namespace UwpApp.Views
             }
         }
 
+        private void ReportViewerPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+           
 
-
-                }
-        private  void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        }
+        private async  void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Only get results when it was a user typing, 
             // otherwise assume the value got filled in by TextMemberPath 
             // or the handler for SuggestionChosen.
-                if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+                if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput && sender.Text.Length > 3)
             {
-                
-                ViewModel.updatepstientSuggestion(sender.Text);
-                sender.ItemsSource = ViewModel.PatientSuggestion;
 
-                if (ViewModel.PatientSuggestion != null)
-                {
-                    
-                }
-                else 
-                {
-                   
-                    
-                }
-                
+                await ViewModel.updatepstientSuggestion(sender.Text);
 
+                if (ViewModel.PatientSuggestion?.Count == 0)
+                {
+                    addpatientframe.Navigate(typeof(AddPatient), null);
+                    return;
+                }
+                else
+                {
+                    sender.ItemsSource = ViewModel.PatientSuggestion;
+                }
 
             }
         }

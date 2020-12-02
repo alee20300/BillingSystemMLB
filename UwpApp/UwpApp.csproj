@@ -145,6 +145,9 @@
     <Compile Include="ViewModel\MemoListPageViewModel.cs" />
     <Compile Include="ViewModel\MemoViewModel.cs" />
     <Compile Include="ViewModel\PatientViewModel.cs" />
+    <Compile Include="ViewModel\ReportsViewModel\ReportMemoDetailVM.cs" />
+    <Compile Include="ViewModel\ReportsViewModel\Reports.cs" />
+    <Compile Include="ViewModel\ReportsViewModel\ReportViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModelfolder\AccountViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModelfolder\AtollViewModel.cs" />
@@ -159,6 +162,9 @@
     </Compile>
     <Compile Include="Views\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\report.xaml.cs">
+      <DependentUpon>report.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SaveChangesDialog.xaml.cs">
       <DependentUpon>SaveChangesDialog.xaml</DependentUpon>
@@ -188,6 +194,7 @@
     <Content Include="Assets\SplashScreen.scale-125.png" />
     <Content Include="Assets\SplashScreen.scale-150.png" />
     <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="BoldLicense.txt" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -235,6 +242,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PatientPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\report.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -292,6 +303,12 @@
       <Project>{bfc04b6e-4570-4754-8987-5adfe31485a5}</Project>
       <Name>Repository</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Report\Inv.rdlc" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

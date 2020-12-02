@@ -33,6 +33,16 @@ namespace Repository.SQL
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
+        public  Memo getreposrt(int MemoId)
+        {
+            return  dbSet.Include(m=>m.Patient).Include(m=>m.MemoDetails).ThenInclude(s=>s.Service).
+                FirstOrDefault(m => m.MemoId == MemoId)
+                
+              
+                
+               ;
+        }
+
         public async Task<Memo> Update(Memo memo)
         {
             var existing = await dbSet.Include(p=>p.Patient).Include(m=>m.MemoDetails)
