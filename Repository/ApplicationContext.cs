@@ -30,7 +30,11 @@ namespace Repository
        
 
         public DbSet<Service> Services { get; set; }
-            
+
+        public DbSet<Invoice> Invoices { get; set; }
+
+        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+
 
 
 
