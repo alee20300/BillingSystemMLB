@@ -13,11 +13,11 @@ namespace Repository.SQL
         {
         }
 
-        public async Task<Account> GetAccountbyIdInt(int Id)
+        public async Task<Account> GetAccountbyIdInt(string AccountName)
         {
             return await dbSet
                 //.AsNoTracking()
-                .FirstOrDefaultAsync(account => account.AccountId == Id);
+                .FirstOrDefaultAsync(account => account.AccountName == AccountName);
         }
     }
 }

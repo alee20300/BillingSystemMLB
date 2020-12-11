@@ -11,7 +11,7 @@ using Windows.ApplicationModel.Store.Preview.InstallControl;
 
 namespace UwpApp.ViewModel
 {
-    public class ShellViewModel : BindableBase, IEditableObject
+    public class ShellViewModel : BindableBase
 
     {
 
@@ -28,28 +28,7 @@ namespace UwpApp.ViewModel
         public ObservableCollection<Patient> PatientSuggestion { get; } = new ObservableCollection<Patient>();
 
 
-        //public async void LoadPatients()
-        //{
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-        //    {
-        //        IsLoading = true;
-
-        //        MasterPatientList.Clear();
-        //    });
-
-        //    var patients = await Task.Run(App.Repository.Patient.GetAsync);
-
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-        //    {
-        //        foreach (var patient in patients)
-        //        {
-
-        //            MasterPatientList.Add(patient);
-        //        }
-
-        //        IsLoading = false;
-        //    });
-        //}
+       
         public async  Task updatepstientSuggestion(string idcard)
         {
             PatientSuggestion.Clear();
@@ -84,7 +63,7 @@ namespace UwpApp.ViewModel
 
 
 
-        public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
+        //public ObservableCollection<PatientViewModel> Patients { get; } = new ObservableCollection<PatientViewModel>();
 
         private PatientViewModel _selectedPatient;
 
@@ -92,35 +71,6 @@ namespace UwpApp.ViewModel
         {
             get => _selectedPatient;
             set => Set(ref _selectedPatient, value);
-        }
-
-       
-
-
-
-
-
-
-        public void BeginEdit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void CancelEdit()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void EndEdit()
-        {
-            throw new NotImplementedException();
-        }
-
-        private bool _isLoading = false;
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set => Set(ref _isLoading, value);
         }
 
 

@@ -103,8 +103,20 @@ namespace UwpApp.Views
             
             if (args.SelectedItem!=null)
             {
+
                 var selectedService = args.SelectedItem as Service;
+                int ser = selectedService.ServiceId;
+                if (ViewModel.NewMemoDetail==null)
+                {
+                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser,1);
+                }
+                else
+                {
+                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser, 1);
+                }
+
                 ViewModel.NewMemoDetail.Service = selectedService;
+                ViewModel.NewMemoDetail.MemoDetail.Service = selectedService;
                 ViewModel.MemoDetails.Add(ViewModel.NewMemoDetail.MemoDetail);
                 ClearCandidateService();
             }
@@ -138,7 +150,7 @@ namespace UwpApp.Views
         private void ClearCandidateService()
         {
             ServiceSuggection.Text = string.Empty;
-            ViewModel.NewMemoDetail = new MemoDetailViewModel();
+            //ViewModel.NewMemoDetail = new MemoDetailViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -151,5 +163,7 @@ namespace UwpApp.Views
 
             ViewModel.MemoDetails.Remove((sender as FrameworkElement).DataContext as MemoDetail);
         }
+
+       
     }
 }

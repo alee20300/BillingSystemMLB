@@ -24,29 +24,19 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
             set { Set(ref _IsLoading, value); }
         }
 
-        private Account _account;
+       
 
-        public Account Account
-        {
-            get => _account;
-            set {
-                if (_account!=value)
-                {
-                    _account = value;
-                    OnPropertyChanged(string.Empty);
-                }
-            
-            }
-        }
+        public Account Account { get; set; }
+       
 
         public int id
         {
             get => Account.AccountId;
             set
             {
-                if (_account.AccountId != value)
+                if (Account.AccountId != value)
                 {
-                    _account.AccountId = value;
+                    Account.AccountId = value;
 
                     OnPropertyChanged();
                 }
@@ -57,9 +47,9 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
             get => Account.AccountName;
             set
             {
-                if (_account.AccountName != value)
+                if (Account.AccountName != value)
                 {
-                    _account.AccountName = value;
+                    Account.AccountName = value;
 
                     OnPropertyChanged();
                 }

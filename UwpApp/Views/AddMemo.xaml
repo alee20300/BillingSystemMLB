@@ -100,11 +100,10 @@
 
                 <!--<ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}"  DisplayMemberPath="AtollName"/>-->
                 <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
-                
-                <TextBox Header="Payment Type" PlaceholderText="Mvr/USD"></TextBox>
+                <ComboBox x:Name="AccountCombobox" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" SelectedItem="{x:Bind ViewModel.AccountId,Mode=TwoWay}" 
+                          Width="450" SelectedValuePath="Id"></ComboBox>
             </StackPanel>
-            <!--<Image Margin="200,0,0,0" MaxWidth="250" MinWidth="150" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"  
-                   HorizontalAlignment="Left" RelativePanel.AlignRightWithPanel="True"></Image>-->
+            
         </RelativePanel>
 
             <StackPanel

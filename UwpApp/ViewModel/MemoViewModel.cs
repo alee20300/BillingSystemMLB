@@ -10,12 +10,15 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using UwpApp.ViewModel.Command;
 using Windows.Foundation;
 using Windows.Graphics.Printing;
 
 namespace UwpApp.ViewModel
 {
   public  class MemoViewModel :BindableBase
+
     {
 
         public Memo Memo { get; set; }
@@ -27,16 +30,27 @@ namespace UwpApp.ViewModel
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
 
 
-            NewMemoDetail = new MemoDetailViewModel();
+           
 
-           
-            Task.Run(() => loadAccount(1));
-           
+
+            //Task.Run(() => loadAccount(1));
+
         }
 
-        public  async void loadAccount(int accountId)
+
+
+
+
+        
+
+        public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
+
+
+       
+
+        public  async void loadAccount(string accountName)
         {
-            var account = await App.Repository.Account.GetAccountbyIdInt(accountId);
+            var account = await App.Repository.Account.GetAccountbyIdInt(accountName);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
             {
                 Account = account;
@@ -60,6 +74,8 @@ namespace UwpApp.ViewModel
                     if (value!=null)
                     {
                         value.PropertyChanged += NewMemoDetail_PropertyChanged;
+                        //NewMemoDetail.account(1, 2);
+                        
                     }
                     if (_newMemoDetail !=null)
                     {
@@ -77,7 +93,7 @@ namespace UwpApp.ViewModel
         private void UpdateNewMemoDetailBindings()
         {
             OnPropertyChanged(nameof(NewMemoDetail));
-            OnPropertyChanged(nameof(HasNewMemoDetailItem));
+            //OnPropertyChanged(nameof(HasNewMemoDetailItem));
             //OnPropertyChanged(nameof(NewMemoDtail))
         }
 
@@ -85,14 +101,14 @@ namespace UwpApp.ViewModel
         public bool HasNewMemoDetailItem => NewMemoDetail != null && NewMemoDetail.Service != null;
 
 
-        private async void loadpatient(int memoNumber)
-        {
-            var patient = await App.Repository.Patient.GetbyIdAsync(memoNumber);
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                Patient = patient;
-            });
-        }
+        //private async void loadpatient(int memoNumber)
+        //{
+        //    var patient = await App.Repository.Patient.GetbyIdAsync(memoNumber);
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        Patient = patient;
+        //    });
+        //}
 
         //private async void loadDoc(int DoctorId)
         //{
@@ -317,7 +333,8 @@ namespace UwpApp.ViewModel
         public Account Account
         {
             get => Memo.Account
-                  ; set
+                  ; 
+            set
             {
                 if (Memo.Account != value)
                 {
@@ -330,7 +347,7 @@ namespace UwpApp.ViewModel
 
         public int AccountId
         {
-            get => Memo.AccountId =1;
+            get => Memo.AccountId;
 
             set
             {
@@ -356,26 +373,31 @@ namespace UwpApp.ViewModel
             }
         }
 
-      
 
-        public int DoctorID
-        { get=>Memo.DoctorId=1;
-            set
-            {
-                if (value!=Memo.DoctorId)
-                {
-                    value = Memo.DoctorId;
-                    OnPropertyChanged();
 
-                }
-            } }
+        //public int DoctorID
+        //{ get=>Memo.DoctorId;
+        //    set
+        //    {
+        //        if (value!=Memo.DoctorId)
+        //        {
+        //            value = Memo.DoctorId;
+        //            OnPropertyChanged();
 
-        public async Task SaveMemoAsync()
+        //        }
+        //    } }
+
+
+
+       
+
+
+        public  async Task SaveMemoAsync()
         {
 
 
-           
-            //Task.Run(() => loadAccount(1));
+
+            Task.Run(() => loadAccount("CASH"));
 
             Memo result = null;
             try

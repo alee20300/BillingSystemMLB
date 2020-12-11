@@ -9,7 +9,7 @@ namespace Repository
 {
     public interface IAccountRepository:IRepository<Account>
     {
-        Task<Account> GetAccountbyIdInt(int Id);
+        Task<Account> GetAccountbyIdInt(string AccountName);
     }
 
     

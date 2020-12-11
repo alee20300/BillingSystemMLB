@@ -56,6 +56,7 @@ namespace Repository.SQL
                 memo.PatientId = 0;
                 memo.Patient.PatientId = 0;
                 memo.MemoId = 0;
+                memo.Account.AccountId = 0;
                 _db.Memos.Add(memo);
                
             }

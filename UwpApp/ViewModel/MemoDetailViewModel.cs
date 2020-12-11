@@ -12,17 +12,21 @@ namespace UwpApp.ViewModel
 {
     public class MemoDetailViewModel:BindableBase
     {
-        public MemoDetailViewModel(MemoDetail memoDetail = null)
+        public MemoDetailViewModel(int ser,int acco)
         {
-            MemoDetail = memoDetail ?? new MemoDetail();
-            account(1, 2);
-                   }
+            MemoDetail =  new MemoDetail();
+
+            account(acco, ser);
+
+
+
+        }
 
         public MemoDetail MemoDetail { get;  }
 
         public void account(int acc,int scc)
         {
-           var result = App.Repository.AccountServicePrice.GetAccountServicePrice(1, 2);
+           var result = App.Repository.AccountServicePrice.GetAccountServicePrice(acc, scc);
             AccountAmmount = result.AccountAmmount;
             PatientAmount = result.PatientAmmount;
             Rate = result.Rate;
