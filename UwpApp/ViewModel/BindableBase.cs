@@ -34,6 +34,9 @@ namespace UwpApp.ViewModel
         /// support CallerMemberName.</param>
         /// <returns>True if the value was changed, false if the existing value matched the
         /// desired value.</returns>
+        /// 
+
+        virtual public void Merge(BindableBase source) { }
         protected bool Set<T>(ref T storage, T value,
             [CallerMemberName] String propertyName = null)
         {

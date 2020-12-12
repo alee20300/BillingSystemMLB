@@ -42,7 +42,7 @@ namespace UwpApp.Views
             this.Loaded += ReportViewerPage_Loaded;
 
         }
-        public Reports Reports { get; set; } = new Reports();
+        //public Reports Reports { get; set; } = new Reports();
 
        
         public ShellViewModel ViewModel
@@ -130,6 +130,12 @@ namespace UwpApp.Views
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
             addpatientframe.Navigate(typeof(AddPatient), ViewModel.SelectedPatient);
+        }
+
+        private void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var memoid = Listview.SelectedItem;
+            memoframe.Navigate(typeof(report), memoid);
         }
     }
 }

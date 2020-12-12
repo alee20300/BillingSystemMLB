@@ -1,4 +1,5 @@
 ﻿using BoldReports.UI.Xaml;
+using Domin.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,15 +26,36 @@ namespace UwpApp.Views
     /// </summary>
     public sealed partial class report : Page
     {
+        public Reports Reports { get; set; }
 
-        public Reports Reports { get; set; } = new Reports();
         public report()
         {
             this.InitializeComponent();
 
             this.Loaded += ReportViewerPage_Loaded;
         }
-        
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var id = (Memo)e.Parameter;
+
+
+            if (id != null)
+            {
+                // Order is a new order
+              Reports = new Reports(id.MemoId);
+    }
+            //else
+            //{
+            //    // Order is an existing order.
+            //    var memo = await App.Repository.Memo.GetMemoAsync(id);
+            //    ViewModel = new MemoViewModel(memo);
+            //}
+
+            base.OnNavigatedTo(e);
+        }
+
+
         private void ReportViewerPage_Loaded(object sender, RoutedEventArgs e)
         {
             Assembly assembly = typeof(HomePage).GetTypeInfo().Assembly;

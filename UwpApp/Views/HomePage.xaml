@@ -106,9 +106,11 @@
                         <ListView Header="Patient Memo"  x:Name="Listview" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos ,Mode=OneWay}"
                                       Width="350"
                                       Height="400"
+                                  SelectedValuePath="Memo"
+                                  SelectionChanged="Listview_SelectionChanged"
                                       HorizontalAlignment="Left">
 
-                            <ListView.ItemTemplate>
+                            <ListView.ItemTemplate >
                                 <DataTemplate x:DataType="models:Memo">
                                     <Grid HorizontalAlignment="Stretch">
                                         <Grid.ColumnDefinitions>
@@ -123,6 +125,9 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <Frame x:Name="memoframe"  >
+                            
+                        </Frame>
                         
                     </RelativePanel>
                            

@@ -397,7 +397,7 @@ namespace UwpApp.ViewModel
 
 
 
-            Task.Run(() => loadAccount("CASH"));
+            //Task.Run(() => loadAccount("CASH"));
 
             Memo result = null;
             try

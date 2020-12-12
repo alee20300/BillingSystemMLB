@@ -52,7 +52,7 @@
                 <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress,Mode=TwoWay}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
                 <RelativePanel>
                     <ComboBox x:Name="Atoll" PlaceholderText="Atoll" Header="Atoll"  DisplayMemberPath="AtollName" 
-                          ItemsSource="{x:Bind IAviewModel.Atolls}" SelectedItem="{x:Bind patientViewModel.Atoll,Mode=TwoWay}"
+                          ItemsSource="{x:Bind IAviewModel.Atolls, Mode=OneWay}" IsTextSearchEnabled="True"  SelectedItem="{x:Bind patientViewModel.Atoll,Mode=TwoWay}"
                           SelectedValuePath="Id" Margin="0,0,0,0"  Width="100" HorizontalAlignment="Left" >
 
                     </ComboBox>

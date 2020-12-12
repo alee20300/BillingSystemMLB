@@ -10,20 +10,20 @@ namespace UwpApp.ViewModel.ReportsViewModel
 {
     public class Reports : BindableBase
     {
-        public Reports()
+        public Reports( int memoId)
         {
-            Loadmemo();
+            Loadmemo(memoId);
             
 
         }
 
         public Memo memo { get; set; }
 
-        public void Loadmemo()
+        public void Loadmemo(int memoid)
         {
 
 
-            var result = App.Repository.Memo.getreposrt(3);
+            var result = App.Repository.Memo.getreposrt(memoid);
 
             memo = result;
         }

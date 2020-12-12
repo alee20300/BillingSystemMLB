@@ -155,6 +155,7 @@
     <Compile Include="ViewModel\SettingsViewModelfolder\DoctorViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModelfolder\ServicesViewModel.cs" />
     <Compile Include="ViewModel\ShellViewModel.cs" />
+    <Compile Include="ViewModel\UserProfile\UserViewModel.cs" />
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>

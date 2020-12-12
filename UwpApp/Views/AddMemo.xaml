@@ -102,6 +102,15 @@
                 <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
                 <ComboBox x:Name="AccountCombobox" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" SelectedItem="{x:Bind ViewModel.AccountId,Mode=TwoWay}" 
                           Width="450" SelectedValuePath="Id"></ComboBox>
+
+
+                <ComboBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
+                          
+                          SelectedValuePath="Account"
+                          SelectedValue="{x:Bind ViewModel.Account,Mode=TwoWay}" Width="450">
+                   
+                    
+                </ComboBox>
             </StackPanel>
             
         </RelativePanel>
