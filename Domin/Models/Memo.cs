@@ -36,14 +36,19 @@ namespace Domin.Models
 
         public string Address { get;  set; }
 
+
+        public DateTime COllectedDate { get; set; }
+
+        
+
         public decimal Rate { get; set; }
     
         public decimal PatientAmmount { get; set; }
 
         public decimal AccountAmmount { get; set; }
 
+        public int CollectionSiteId { get; set; }
 
-      
 
         public ICollection<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();
 

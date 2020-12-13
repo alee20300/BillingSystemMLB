@@ -35,6 +35,8 @@ namespace Repository
 
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
+        public DbSet<CollectionSite> collectionSites { get; set; }
+
 
 
 
@@ -49,8 +51,9 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new AtollConfiguration());
             modelBuilder.ApplyConfiguration(new MemoDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
+            modelBuilder.ApplyConfiguration(new CollectionSiteConfiguration());
 
-            
+
 
 
 

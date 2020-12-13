@@ -137,6 +137,33 @@ namespace UwpApp.ViewModel
         }
 
 
+        public DateTime COllectedDate
+        {
+            get => Memo.COllectedDate;
+            set
+            {
+                if (Memo.COllectedDate!= value)
+                {
+                    Memo.COllectedDate = value;
+                    OnPropertyChanged();
+                    
+                }
+            }
+        }
+
+        public int CollectionSiteId
+        {
+            get => Memo.CollectionSiteId;
+            set
+            {
+                if (Memo.CollectionSiteId != value)
+                {
+                    Memo.CollectionSiteId = value;
+                    OnPropertyChanged();
+
+                }
+            }
+        }
 
         public bool IsNewOrder => Memo.MemoId == 0;
 

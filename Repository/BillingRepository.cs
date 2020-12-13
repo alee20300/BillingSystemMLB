@@ -36,5 +36,9 @@ namespace Repository
         public ICountryRepository Country => new CountryRepository(new ApplicationContext(_dbOptions));
 
         public IAccountServicePrice AccountServicePrice => new AccountServicePriceRepository(new ApplicationContext(_dbOptions));
+
+
+        public ICollectionSiteRepository CollectionSite => new CollectionSIteRepository(new ApplicationContext(_dbOptions));
+
     }
 }

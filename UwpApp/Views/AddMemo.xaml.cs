@@ -106,6 +106,7 @@ namespace UwpApp.Views
 
                 var selectedService = args.SelectedItem as Service;
                 int ser = selectedService.ServiceId;
+                
                 if (ViewModel.NewMemoDetail==null)
                 {
                     ViewModel.NewMemoDetail = new MemoDetailViewModel(ser,1);

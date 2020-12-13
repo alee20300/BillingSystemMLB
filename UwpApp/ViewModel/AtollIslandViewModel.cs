@@ -20,6 +20,21 @@ namespace UwpApp.ViewModel
             Task.Run(getIslandList);
             Task.Run(getCountryList);
             Task.Run(GetAccounts);
+            Task.Run(GetCollectionSite);
+
+        }
+
+
+        public ObservableCollection<CollectionSiteViewModel> CollectionSites { get; set; } = new ObservableCollection<CollectionSiteViewModel>();
+
+        private async Task GetCollectionSite()
+        {
+            var sites = await App.Repository.CollectionSite.GetAsync();
+            CollectionSites.Clear();
+            foreach (var site in sites)
+            {
+                CollectionSites.Add(new CollectionSiteViewModel(site));
+            }
 
         }
 

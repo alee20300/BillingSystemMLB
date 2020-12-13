@@ -130,7 +130,7 @@ namespace UwpApp
 
         private static void UseSqlServer()
         {
-            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1;Initial Catalog=Billing19;User Id=sa;Password=sa@12345;");
+            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1;Initial Catalog=Billing1;User Id=sa;Password=sa@12345;");
             Repository = new BillingRepository(dbOptions);
 
         }

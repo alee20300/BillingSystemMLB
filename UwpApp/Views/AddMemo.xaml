@@ -4,11 +4,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:Models="using:Domin.Models" xmlns:sys="using:System"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:Models="using:Domin.Models" xmlns:sys="using:System" xmlns:con="using:UwpApp.ViewModel.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    
+
+
     <Page.Resources>
+       
+            <con:TimeConverter x:Key="TimeConverter"></con:TimeConverter>
+        
+
         <DataTemplate
             x:Key="DefultLineTemplate"
             x:DataType="Models:MemoDetail">
@@ -100,18 +107,17 @@
 
                 <!--<ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}"  DisplayMemberPath="AtollName"/>-->
                 <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
-                <ComboBox x:Name="AccountCombobox" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" SelectedItem="{x:Bind ViewModel.AccountId,Mode=TwoWay}" 
-                          Width="450" SelectedValuePath="Id"></ComboBox>
+                <CalendarDatePicker Width="450" Header="Collected Date"  Date="{x:Bind ViewModel.COllectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></CalendarDatePicker>
 
-
-                <ComboBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
+                <ComboBox Header="Account" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
                           
                           SelectedValuePath="Account"
                           SelectedValue="{x:Bind ViewModel.Account,Mode=TwoWay}" Width="450">
-                   
-                    
+
                 </ComboBox>
-            </StackPanel>
+                <ComboBox x:Name="combosite" ItemsSource="{x:Bind IAVM.CollectionSites ,Mode=OneWay}" DisplayMemberPath="CollectionSiteName" SelectedValuePath="CollectionSIteId" SelectedItem="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>
+                    
+                </StackPanel>
             
         </RelativePanel>
 
