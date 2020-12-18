@@ -52,11 +52,6 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new MemoDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionSiteConfiguration());
-
-
-
-
-
-        }
+ }
     }
 }

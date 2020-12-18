@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
+using UwpApp.Services.Infrastructure;
+using ViewModels.Infrastructure.Services;
 using Windows.UI.ViewManagement;
 
 namespace UwpApp.Configuration
@@ -21,6 +23,9 @@ namespace UwpApp.Configuration
 
       static  public void Configure(IServiceCollection serviceCollection)
         {
+            serviceCollection.AddSingleton<IMessageService, MessageService>();
+            serviceCollection.AddSingleton<ILoginService, LoginService>();
+
 
         }
 

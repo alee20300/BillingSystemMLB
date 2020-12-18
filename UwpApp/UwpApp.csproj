@@ -119,11 +119,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Configuration\AppSettings.cs" />
     <Compile Include="Configuration\ServiceLocator.cs" />
+    <Compile Include="Configuration\Startup.cs" />
+    <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\Infrastructure\ActivationService.cs" />
+    <Compile Include="Services\Infrastructure\LoginService.cs" />
+    <Compile Include="Services\Infrastructure\MessageService.cs" />
+    <Compile Include="Services\Infrastructure\NavigationService.cs" />
     <Compile Include="ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -166,6 +173,9 @@
     <Compile Include="Views\InvoicePage.xaml.cs">
       <DependentUpon>InvoicePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Login\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +196,9 @@
     </Compile>
     <Compile Include="Views\SettingsPages\ServiceSetting.xaml.cs">
       <DependentUpon>ServiceSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreen\ExtendedSplash.xaml.cs">
+      <DependentUpon>ExtendedSplash.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +264,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Login\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PatientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -279,6 +296,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SplashScreen\ExtendedSplash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BoldReports.UWP">
@@ -303,6 +324,7 @@
   <ItemGroup>
     <Folder Include="Triggers\" />
     <Folder Include="ViewModel\Converters\NewFolder1\" />
+    <Folder Include="Views\Shell\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domin\Domin.csproj">
@@ -312,6 +334,10 @@
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{bfc04b6e-4570-4754-8987-5adfe31485a5}</Project>
       <Name>Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ViewModels\ViewModels.csproj">
+      <Project>{5ff459de-308c-4a40-b37a-2f15fd958929}</Project>
+      <Name>ViewModels</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
