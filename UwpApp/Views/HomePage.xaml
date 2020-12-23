@@ -119,7 +119,11 @@
                                         </Grid.ColumnDefinitions>
                                         <StackPanel Grid.Column="0">
                                             <TextBlock  Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
-                                            <TextBlock  Text="{x:Bind Rate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                            <TextBlock  Text="{x:Bind  AccountAmmount ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                            <TextBlock  Text="{x:Bind  PatientAmmount ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                            <TextBlock  Text="{x:Bind  Address ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                            <TextBlock  Text="{x:Bind  MemoDate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+
                                         </StackPanel>
                                     </Grid>
                                 </DataTemplate>

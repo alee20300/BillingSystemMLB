@@ -4,7 +4,10 @@ using System.Text;
 
 namespace Domin.Models
 {
-    class Episode
+  public     class Episode
     {
+
+        public int EpisodeId { get; set; }
+       
     }
 }

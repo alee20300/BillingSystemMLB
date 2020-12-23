@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -22,9 +23,16 @@ namespace UwpApp.Views
     /// </summary>
     public sealed partial class InvoicePage : Page
     {
+
+        public InvoiceViewModel InvoiceViewModel { get; set; } = new InvoiceViewModel();
         public InvoicePage()
         {
             this.InitializeComponent();
+            
         }
+
+        public AtollIslandViewModel IAVM { get => App.AtollIslandViewModel; }
+
+        
     }
 }

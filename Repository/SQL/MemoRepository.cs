@@ -33,6 +33,14 @@ namespace Repository.SQL
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
+        public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
+        {
+            return await dbSet.Where(m => m.AccountId == Account &&
+            m.COllectedDate >= from  && m.COllectedDate <= to &&
+            m.IsPaid==false
+            ).ToListAsync();
+        }
+
         public  Memo getreposrt(int MemoId)
         {
             return  dbSet.Include(m=>m.Patient).Include(m=>m.MemoDetails).ThenInclude(s=>s.Service).

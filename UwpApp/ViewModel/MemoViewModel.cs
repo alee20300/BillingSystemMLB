@@ -151,6 +151,25 @@ namespace UwpApp.ViewModel
             }
         }
 
+
+        private bool _ispaid;
+
+        public bool Ispaid
+        {
+            get => _ispaid;
+            set
+            {
+                if (_ispaid!=value)
+                {
+                    Ispaid = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+
+
         public int CollectionSiteId
         {
             get => Memo.CollectionSiteId;
@@ -444,6 +463,7 @@ namespace UwpApp.ViewModel
         }
 
         public ObservableCollection<Service> ServiceSuggections { get; } = new ObservableCollection<Service>();
+        
 
         public async void UpdateServiceSuggestions(string queryText)
         {

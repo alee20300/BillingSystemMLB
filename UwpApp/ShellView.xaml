@@ -40,7 +40,7 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!-- Remove the next 3 lines for left-only navigation. -->
-                        <Setter Target="NavView.PaneDisplayMode" Value="Left"/>
+                        <Setter Target="NavView.PaneDisplayMode" Value="LeftCompact"/>
 
                         <Setter Target="MainPagesHeader.Visibility" Value="Collapsed"/>
                         <!-- Leave the next line for left-only navigation. -->

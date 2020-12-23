@@ -109,13 +109,18 @@
                 <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
                 <CalendarDatePicker Width="450" Header="Collected Date"  Date="{x:Bind ViewModel.COllectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></CalendarDatePicker>
 
-                <ComboBox Header="Account" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
-                          
+                <ComboBox Header="Account"  ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
+                           IsTextSearchEnabled="True" 
                           SelectedValuePath="Account"
                           SelectedValue="{x:Bind ViewModel.Account,Mode=TwoWay}" Width="450">
 
                 </ComboBox>
-                <ComboBox x:Name="combosite" ItemsSource="{x:Bind IAVM.CollectionSites ,Mode=OneWay}" DisplayMemberPath="CollectionSiteName" SelectedValuePath="CollectionSIteId" SelectedItem="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>
+                <ComboBox x:Name="combosite" IsTextSearchEnabled="True"  
+                          Width="450" Header="Collection Site" 
+                          ItemsSource="{x:Bind IAVM.CollectionSites ,
+                    Mode=OneWay}" DisplayMemberPath="CollectionSiteName" 
+                          SelectedValuePath="CollectionSIteId"  
+                          SelectedValue="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>
                     
                 </StackPanel>
             

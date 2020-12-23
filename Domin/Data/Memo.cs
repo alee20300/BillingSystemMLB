@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
+﻿using Domin.Data;
+using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -48,6 +49,11 @@ namespace Domin.Models
         public decimal AccountAmmount { get; set; }
 
         public int CollectionSiteId { get; set; }
+
+        public bool IsPaid { get; set; }
+
+
+        public PaymentType PaymentSign { get; set; }
 
 
         public ICollection<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();

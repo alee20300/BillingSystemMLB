@@ -30,6 +30,9 @@ namespace UwpApp.ViewModel
 
         }
 
+
+       
+
         private void Memos_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             OnPropertyChanged("SelectedPatientMemo");

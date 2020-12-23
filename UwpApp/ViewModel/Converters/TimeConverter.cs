@@ -16,7 +16,7 @@ namespace UwpApp.ViewModel.Converters
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
-        {
+                {
             return ((DateTimeOffset)value).DateTime;
         }
     }

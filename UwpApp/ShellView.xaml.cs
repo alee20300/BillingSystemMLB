@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel;
 using UwpApp.Views;
+using UwpApp.Views.Report;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -44,7 +45,7 @@ namespace UwpApp
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
 {
     ("home", typeof(HomePage)),
-    ("Patient", typeof(report)),
+    ("Patient", typeof(InvoicePage)),
 
 };
 

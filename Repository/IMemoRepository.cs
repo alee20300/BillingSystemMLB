@@ -16,7 +16,11 @@ namespace Repository
         Task<Memo> GetMemoAsync(int Id);
         Task<Memo> Update(Memo memo);
        Memo getreposrt(int MemoId);
+
+        Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from,DateTimeOffset to,int accountId);
     }
+
+    
 
     
 }
