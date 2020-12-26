@@ -9,10 +9,12 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -26,7 +28,9 @@ namespace UwpApp.Views
     /// </summary>
     public sealed partial class AddMemo : Page, INotifyPropertyChanged
     {
-        
+
+        private AppWindow AppWindow { get; set; }
+        private Frame appWindowFrame = new Frame();
 
 
         public AddMemo()
@@ -140,6 +144,21 @@ namespace UwpApp.Views
 
                 await dialog.ShowAsync();
             }
+
+            if (AppWindow == null)
+            {
+                // Create a new window
+                AppWindow = await AppWindow.TryCreateAsync();
+                // Make sure we release the reference to this window, and release XAML resources, when it's closed
+                AppWindow.Closed += delegate { AppWindow = null; appWindowFrame.Content = null; };
+                // Navigate the frame to the page we want to show in the new window
+                appWindowFrame.Navigate(typeof(report), ViewModel.Memo);
+                // Attach the XAML content to our window
+                ElementCompositionPreview.SetAppWindowContent(AppWindow, appWindowFrame);
+            }
+
+            // Now show the window
+            await AppWindow.TryShowAsync();
         }
 
         private void AddServiceButton_Click(object sender, RoutedEventArgs e)

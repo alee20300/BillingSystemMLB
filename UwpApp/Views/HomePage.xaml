@@ -67,7 +67,7 @@
                     <ColumnDefinition Width="4*" />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                        <RowDefinition Height="7*" />
+                        <RowDefinition Height="10*" />
                         <RowDefinition Height="1.8*" />
                     </Grid.RowDefinitions>
                     <Image HorizontalAlignment="Left" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" MaxHeight="200"  VerticalAlignment="Bottom"></Image>

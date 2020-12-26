@@ -18,10 +18,12 @@ using UwpApp.ViewModel.ReportsViewModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Data;
+using Windows.UI.Xaml.Hosting;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
@@ -36,6 +38,10 @@ namespace UwpApp.Views
     public sealed partial class HomePage : Page
     {
 
+        private AppWindow AppWindow { get; set; }
+        private Frame appWindowFrame = new Frame();
+
+
         public HomePage()
         {
             this.InitializeComponent();
@@ -44,7 +50,26 @@ namespace UwpApp.Views
         }
         //public Reports Reports { get; set; } = new Reports();
 
-       
+        private async void ShowNewWindowButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Create a new window.
+            // Only ever create one window. If the AppWindow already exists call TryShow on it to bring it to foreground.
+            if (AppWindow == null)
+            {
+                // Create a new window
+                AppWindow = await AppWindow.TryCreateAsync();
+                // Make sure we release the reference to this window, and release XAML resources, when it's closed
+                AppWindow.Closed += delegate { AppWindow = null; appWindowFrame.Content = null; };
+                // Navigate the frame to the page we want to show in the new window
+                appWindowFrame.Navigate(typeof(report));
+                // Attach the XAML content to our window
+                ElementCompositionPreview.SetAppWindowContent(AppWindow, appWindowFrame);
+            }
+
+            // Now show the window
+            await AppWindow.TryShowAsync();
+            // ...
+        }
         public ShellViewModel ViewModel
         {
             get
@@ -132,10 +157,25 @@ namespace UwpApp.Views
             addpatientframe.Navigate(typeof(AddPatient), ViewModel.SelectedPatient);
         }
 
-        private void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var memoid = Listview.SelectedItem;
-            memoframe.Navigate(typeof(report), memoid);
+            if (AppWindow == null)
+            {
+                // Create a new window
+                AppWindow = await AppWindow.TryCreateAsync();
+                // Make sure we release the reference to this window, and release XAML resources, when it's closed
+                AppWindow.Closed += delegate { AppWindow = null; appWindowFrame.Content = null; };
+                // Navigate the frame to the page we want to show in the new window
+                appWindowFrame.Navigate(typeof(report), memoid);
+                // Attach the XAML content to our window
+                ElementCompositionPreview.SetAppWindowContent(AppWindow, appWindowFrame);
+            }
+
+            // Now show the window
+            await AppWindow.TryShowAsync();
+
+            //memoframe.Navigate(typeof(report), memoid);
         }
     }
 }
