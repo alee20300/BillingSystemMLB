@@ -8,7 +8,19 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="AliceBlue">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Assets/Asset 1.png" Height="200" Width="200" ></Image>
+            <TextBox Header="User Name" Width="400">
+                
+            </TextBox>
+            <PasswordBox Header="Password" Width="400"></PasswordBox>
+            <Button Content="Login" HorizontalAlignment="Center" Margin="0,20,0,0" />
+            <TextBlock Text="Forgot Password? Please Contact Admin."  Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Center"></TextBlock>
+            
+
+        </StackPanel>
+      
 
     </Grid>
 </Page>

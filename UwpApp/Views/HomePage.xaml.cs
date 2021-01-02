@@ -1,31 +1,13 @@
-﻿using BoldReports.UI.Xaml;
-using Domin.Models;
-using Microsoft.Toolkit.Uwp.Helpers;
+﻿using Domin.Models;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using UwpApp.UserControls;
 using UwpApp.ViewModel;
-using UwpApp.ViewModel.ReportsViewModel;
-
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using UwpApp.Views.MemoDetails;
 using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -160,6 +142,9 @@ namespace UwpApp.Views
         private async void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var memoid = Listview.SelectedItem;
+            
+            memoframe.Navigate(typeof(MemoDetailsForReport), memoid);
+           
             if (AppWindow == null)
             {
                 // Create a new window
@@ -177,5 +162,6 @@ namespace UwpApp.Views
 
             //memoframe.Navigate(typeof(report), memoid);
         }
+
     }
 }

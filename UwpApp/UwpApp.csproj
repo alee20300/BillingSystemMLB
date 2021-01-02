@@ -132,6 +132,7 @@
     <Compile Include="Services\Infrastructure\LoginService.cs" />
     <Compile Include="Services\Infrastructure\MessageService.cs" />
     <Compile Include="Services\Infrastructure\NavigationService.cs" />
+    <Compile Include="Services\Reporting\IReportingServices.cs" />
     <Compile Include="ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
@@ -157,6 +158,7 @@
     <Compile Include="ViewModel\ReportsViewModel\Invoicesreport.cs" />
     <Compile Include="ViewModel\ReportsViewModel\ReportMemoDetailVM.cs" />
     <Compile Include="ViewModel\ReportsViewModel\Reports.cs" />
+    <Compile Include="ViewModel\ReportsViewModel\ReportService.cs" />
     <Compile Include="ViewModel\ReportsViewModel\ReportViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModelfolder\AccountViewModel.cs" />
@@ -164,6 +166,7 @@
     <Compile Include="ViewModel\SettingsViewModelfolder\CollectionSiteViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModelfolder\DoctorViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModelfolder\ServicesViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModelfolder\UserSettingViewModel.cs" />
     <Compile Include="ViewModel\ShellViewModel.cs" />
     <Compile Include="ViewModel\UserProfile\UserViewModel.cs" />
     <Compile Include="Views\HomePage.xaml.cs">
@@ -177,6 +180,9 @@
     </Compile>
     <Compile Include="Views\Login\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MemoDetails\MemoDetailsForReport.xaml.cs">
+      <DependentUpon>MemoDetailsForReport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\PatientPage.xaml.cs">
       <DependentUpon>PatientPage.xaml</DependentUpon>
@@ -201,6 +207,9 @@
     </Compile>
     <Compile Include="Views\SettingsPages\ServiceSetting.xaml.cs">
       <DependentUpon>ServiceSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPages\UserSettingsPage.xaml.cs">
+      <DependentUpon>UserSettingsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SplashScreen\ExtendedSplash.xaml.cs">
       <DependentUpon>ExtendedSplash.xaml</DependentUpon>
@@ -273,6 +282,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MemoDetails\MemoDetailsForReport.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PatientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -305,6 +318,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SettingsPages\UserSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SplashScreen\ExtendedSplash.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,13 +329,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BoldReports.UWP">
-      <Version>2.4.10</Version>
+      <Version>2.4.19</Version>
     </PackageReference>
     <PackageReference Include="FluentValidation">
       <Version>9.3.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
+      <Version>6.2.11</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit">
       <Version>6.1.1</Version>
@@ -330,7 +347,7 @@
       <Version>6.1.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.UI.Xaml">
-      <Version>2.4.3</Version>
+      <Version>2.5.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

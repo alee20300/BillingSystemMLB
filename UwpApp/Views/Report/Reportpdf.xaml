@@ -9,7 +9,23 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Image x:Name="Output"/>
+        <GridView ItemsSource="{x:Bind PdfPages}">
+            <GridView.ItemTemplate>
+                <DataTemplate>
+                    <Image Width="500" Source="{Binding}"/>
+                </DataTemplate>
+            </GridView.ItemTemplate>
+        </GridView>
+        
+        <!--<ScrollViewer ZoomMode="Enabled" Background="DarkGray" Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding PdfPages, ElementName=root}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Margin="0 2" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>-->
 
     </Grid>
 </Page>

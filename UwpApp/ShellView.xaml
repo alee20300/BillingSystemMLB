@@ -15,6 +15,7 @@
 
                         >
             <NavigationView.MenuItems>
+
                 <NavigationViewItem Tag="home" Icon="Home" Content="Home"/>
                 <NavigationViewItemSeparator/>
                 <NavigationViewItemHeader x:Name="MainPagesHeader"

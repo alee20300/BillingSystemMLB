@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Domin.Models;
 using Domin.Configuration;
+using Domin.Data;
 
 namespace Repository
 {
@@ -36,6 +37,8 @@ namespace Repository
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         public DbSet<CollectionSite> collectionSites { get; set; }
+        //public DbSet<User> Users { get; set; }
+        //public DbSet<Role> Roles { get; set; }
 
 
 
@@ -52,6 +55,10 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new MemoDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionSiteConfiguration());
- }
+
+            //modelBuilder.ApplyConfiguration(new UserConfiguration());
+
+            //modelBuilder.ApplyConfiguration(new RoleConfiguration());
+        }
     }
 }

@@ -24,5 +24,10 @@ namespace Repository
         IAccountServicePrice AccountServicePrice { get; }
 
         ICollectionSiteRepository CollectionSite { get; }
+
+
+        IUserRepository Users { get; }
+
+        IRoleRepostitory Roles { get; }
     }
 }

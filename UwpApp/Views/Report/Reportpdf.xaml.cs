@@ -1,25 +1,15 @@
 ﻿using BoldReports.Writer;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Reflection.Metadata;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel.ReportsViewModel;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Storage;
-using Windows.Storage.Pickers;
 using Windows.Storage.Streams;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
+using Windows.Data.Pdf;
+using System.Collections.ObjectModel;
+using Domin.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -32,16 +22,43 @@ namespace UwpApp.Views.Report
     {
 
         public Reports Reports { get; set; }
-        public Reportpdf()
+        public Reportpdf( Memo memo)
         {
             this.InitializeComponent();
+            Memo = memo;
+        }
+
+        public Memo Memo { get; set; }
+        async void Load(PdfDocument pdfDoc)
+        {
+            PdfPages.Clear();
+
+            for (uint i = 0; i < pdfDoc.PageCount; i++)
+            {
+                BitmapImage image = new BitmapImage();
+
+                var page = pdfDoc.GetPage(i);
+
+                using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
+                {
+                    await page.RenderToStreamAsync(stream);
+                    await image.SetSourceAsync(stream);
+                }
+
+                PdfPages.Add(image);
+            }
         }
 
 
+        public ObservableCollection<BitmapImage> PdfPages
+        {
+            get;
+            set;
+        } = new ObservableCollection<BitmapImage>();
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
            
-            Reports = new Reports(4);
+            Reports = new Reports(Memo);
             //var stream = new InMemoryRandomAccessStream();
             //FileSavePicker fileSavePicker = new FileSavePicker();
             WriterFormat format = WriterFormat.PDF;
@@ -53,44 +70,32 @@ namespace UwpApp.Views.Report
             //
 
                 MemoryStream exportFileStream = new MemoryStream();
-                Assembly assembly = typeof(MainPage).GetTypeInfo().Assembly;
-                // Ensure the report loaction and application name.
-                Stream reportStream = assembly.GetManifestResourceStream("UwpApp.Report.Inv.rdlc");
+
+            Assembly assembly = typeof(HomePage).GetTypeInfo().Assembly;
+            // Ensure the report loaction and application name.
+            Stream reportStream = assembly.GetManifestResourceStream("UwpApp.Report.Inv.rdlc");
 
                 BoldReports.UI.Xaml.ReportDataSourceCollection datas = new BoldReports.UI.Xaml.ReportDataSourceCollection();
                 datas.Add(new BoldReports.UI.Xaml.ReportDataSource { Name = "PatientInfo", Value = Reports.LoadReport() });
                 datas.Add(new BoldReports.UI.Xaml.ReportDataSource { Name = "MemoDetails", Value = Reports.loadmemodetail() });
 
-                ReportWriter writer = new ReportWriter(reportStream, datas);
-                writer.ExportMode = ExportMode.Local;
+
 
             
-
+            ReportWriter writer = new ReportWriter(reportStream, datas);
+                writer.ExportMode = ExportMode.Local;
             await writer.SaveASync(exportFileStream, format);
 
 
-            //    try
-            //{
-            //    using (IRandomAccessStream stream = await sampleFile.OpenAsync(FileAccessMode.ReadWrite))
-            //    {
-            //        // Write compressed data from memory to le
-            //        using (Stream outstream = stream.AsStreamForWrite())
-            //        {
-            //            byte[] buffer = exportFileStream.ToArray();
-            //            outstream.Write(buffer, 0, buffer.Length);
-            //            outstream.Flush();
-            //        }
-            //    }
-            //    exportFileStream.Dispose();
-            //}
-            //catch { }
-        
 
 
-        BitmapImage src = new BitmapImage();
-            Output.Source = src;
-            await src.SetSourceAsync(exportFileStream.AsRandomAccessStream());
-            }
+            //InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream()
+            //exportFileStream.AsRandomAccessStream
+            //memStream.Position = 0;
+            PdfDocument doc = await PdfDocument.LoadFromStreamAsync(exportFileStream.AsRandomAccessStream());
+
+            Load(doc);
+        }
     }}
 
     
