@@ -1,17 +1,12 @@
 ﻿using Domin.Data;
-using Microsoft.EntityFrameworkCore.Query.Internal;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
 
 namespace Domin.Models
 {
-   
-    public class Memo :AuditEntity
+
+    public class Memo : AuditEntity
     {
 
         public Memo()
@@ -20,30 +15,30 @@ namespace Domin.Models
         }
 
         public Memo(Patient patient)
-            :this()
+            : this()
         {
             Patient = patient;
             PatientId = patient.PatientId;
             PatientName = patient.PatientName;
             Address = patient.PermAddress;
-            
+
 
         }
 
         public int MemoId { get; set; }
         public DateTime MemoDate { get; set; }
 
-        public string  PatientName { get;  set; }
+        public string PatientName { get; set; }
 
-        public string Address { get;  set; }
+        public string Address { get; set; }
 
 
         public DateTime COllectedDate { get; set; }
 
-        
 
+        public string ReferaceNo { get; set; }
         public decimal Rate { get; set; }
-    
+
         public decimal PatientAmmount { get; set; }
 
         public decimal AccountAmmount { get; set; }

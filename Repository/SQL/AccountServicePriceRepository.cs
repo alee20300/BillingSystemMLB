@@ -1,9 +1,5 @@
 ﻿using Domin.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Repository.SQL
 {
@@ -17,7 +13,7 @@ namespace Repository.SQL
         {
             return dbSet.Where(a => a.AccountId == acc)
                  .FirstOrDefault(s => s.ServiceId == ser);
-                
+
         }
     }
 }

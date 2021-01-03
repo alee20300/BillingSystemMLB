@@ -1,9 +1,7 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository.SQL
@@ -15,7 +13,7 @@ namespace Repository.SQL
         {
         }
 
-       
+
         public async Task<IEnumerable<Service>> GetServiceAsync(string search)
         {
             return await dbSet.Where(service =>

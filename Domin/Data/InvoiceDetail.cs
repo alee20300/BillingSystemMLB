@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Domin.Models
 {
-     public class InvoiceDetail
+    public class InvoiceDetail
     {
         public int InvoiceDetailId { get; set; }
         public List<MemoDetail> MemoDetail { get; set; }

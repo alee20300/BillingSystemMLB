@@ -1,12 +1,10 @@
 ﻿using Domin.Data;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using ViewModels.Infrastructure.ViewModels;
 
 namespace ViewModels.Models
 {
-   public class AppLogModel: ObservableObject
+    public class AppLogModel : ObservableObject
 
     {
         static public AppLogModel CreateEmpty() => new AppLogModel { Id = -1, IsEmpty = true };

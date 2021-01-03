@@ -1,8 +1,5 @@
 ﻿using Domin.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Infrastructure.Services;
 using ViewModels.Infrastructure.ViewModels;
@@ -14,16 +11,16 @@ namespace ViewModels.ViewModels.Home
 {
     public class HomePageViewModel : ViewModelBase
     {
-        public HomePageViewModel(IPatientService patientService,  ICommonServices commonServices) : base(commonServices)
+        public HomePageViewModel(IPatientService patientService, ICommonServices commonServices) : base(commonServices)
         {
             PatientService = patientService;
         }
 
 
-        public IPatientService PatientService { get;  }
+        public IPatientService PatientService { get; }
 
         public PatientViewModel patientViewModel { get; set; }
-       
+
 
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 
@@ -39,7 +36,7 @@ namespace ViewModels.ViewModels.Home
             if (!string.IsNullOrEmpty(idcard))
             {
                 var resultlist = await PatientService.getpatientforsearch(idcard);
-                   
+
 
 
                 foreach (var result in resultlist)

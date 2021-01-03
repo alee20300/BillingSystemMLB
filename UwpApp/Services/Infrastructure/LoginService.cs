@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Infrastructure.Services;
 using Windows.Security.Credentials;
@@ -9,7 +6,7 @@ using Windows.Storage.Streams;
 
 namespace UwpApp.Services.Infrastructure
 {
-   public class LoginService: ILoginService
+    public class LoginService : ILoginService
 
     {
 
@@ -25,7 +22,7 @@ namespace UwpApp.Services.Infrastructure
 
         public bool IsAuthenticated { get; set; }
 
-       
+
 
         public Task<bool> SignInWithPasswordAsync(string userName, string password)
         {
@@ -35,7 +32,7 @@ namespace UwpApp.Services.Infrastructure
             return Task.FromResult(true);
         }
 
-        
+
 
         public void Logoff()
         {
@@ -48,9 +45,9 @@ namespace UwpApp.Services.Infrastructure
             MessageService.Send(this, "AuthenticationChanged", IsAuthenticated);
         }
 
-       
 
-       
+
+
 
         private async Task<IBuffer> CreatePassportKeyCredentialAsync(string userName)
         {

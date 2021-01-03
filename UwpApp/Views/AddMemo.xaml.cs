@@ -1,22 +1,12 @@
 ﻿using Domin.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Hosting;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -36,32 +26,35 @@ namespace UwpApp.Views
         public AddMemo()
         {
             this.InitializeComponent();
-            
-                      
+
+
         }
 
         private MemoViewModel _viewModel;
-        public  AtollIslandViewModel  IAVM { get => App.AtollIslandViewModel;  }
+        public AtollIslandViewModel IAVM { get => App.AtollIslandViewModel; }
+
+
 
         public MemoViewModel ViewModel
         {
             get => _viewModel;
 
-            set {
-                if (_viewModel!=value)
+            set
+            {
+                if (_viewModel != value)
                 {
                     _viewModel = value;
                     OnPropertyChanged();
 
-                      
+
                 }
             }
         }
 
-        protected override  void OnNavigatedTo(NavigationEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var id = (Patient)e.Parameter;
-           
+
 
             if (id != null)
             {
@@ -78,9 +71,9 @@ namespace UwpApp.Views
             base.OnNavigatedTo(e);
         }
 
-        protected  override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
-            
+
 
             base.OnNavigatingFrom(e);
         }
@@ -96,24 +89,24 @@ namespace UwpApp.Views
 
         private void ServiceSuggection_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
-            if (args.Reason==AutoSuggestionBoxTextChangeReason.UserInput)
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
             {
                 ViewModel.UpdateServiceSuggestions(sender.Text);
             }
         }
 
         private void ServiceSuggection_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
-        { 
-            
-            if (args.SelectedItem!=null)
+        {
+
+            if (args.SelectedItem != null)
             {
 
                 var selectedService = args.SelectedItem as Service;
                 int ser = selectedService.ServiceId;
-                
-                if (ViewModel.NewMemoDetail==null)
+
+                if (ViewModel.NewMemoDetail == null)
                 {
-                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser,1);
+                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser, 1);
                 }
                 else
                 {
@@ -130,7 +123,7 @@ namespace UwpApp.Views
         private async void AppBarSaveButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             try
-                {
+            {
                 await ViewModel.SaveMemoAsync();
             }
             catch (MemoSavingException ex)
@@ -184,6 +177,6 @@ namespace UwpApp.Views
             ViewModel.MemoDetails.Remove((sender as FrameworkElement).DataContext as MemoDetail);
         }
 
-       
+
     }
 }

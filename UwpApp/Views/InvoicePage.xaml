@@ -8,76 +8,93 @@
     x:Class="UwpApp.Views.InvoicePage"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="130" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
 
-    <StackPanel Margin="20">
-        <StackPanel  HorizontalAlignment="Right" Orientation="Horizontal">
+                <AppBarButton Icon="Add" Label="Add"/>
+                <AppBarButton Icon="Print"/>
+                <AutoSuggestBox Width="300" QueryIcon="Find" HorizontalAlignment="Right" />
 
-            <AppBarButton Icon="Add" Label="Add"/>
-            <AppBarButton Icon="Print"/>
-            <AutoSuggestBox Width="300" QueryIcon="Find" HorizontalAlignment="Right" />
-          
 
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5">
-            <ComboBox Header="Please Select An Account" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" SelectedValuePath="Account" SelectedValue="{x:Bind InvoiceViewModel.Account, Mode=TwoWay}" 
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5">
+                <ComboBox Header="Please Select An Account" ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" SelectedValuePath="Account" SelectedValue="{x:Bind InvoiceViewModel.Account, Mode=TwoWay}" 
                       DisplayMemberPath="AccountName"  
                       Margin="10,0,10,0" Width="200"/>
-            <CalendarDatePicker Width="200" Header="From" Date="{x:Bind InvoiceViewModel.DateTimeOffsetfrom, Mode=TwoWay}" Margin="10,0,10,0"></CalendarDatePicker>
-            <CalendarDatePicker Header="To" Date="{x:Bind InvoiceViewModel.DateTimeOffsetto,Mode=TwoWay}" Width="200" Margin="10,0,10,0">
-                
-            </CalendarDatePicker>
+                <CalendarDatePicker Width="200" Header="From" Date="{x:Bind InvoiceViewModel.DateTimeOffsetfrom, Mode=TwoWay}" Margin="10,0,10,0"></CalendarDatePicker>
+                <CalendarDatePicker Header="To" Date="{x:Bind InvoiceViewModel.DateTimeOffsetto,Mode=TwoWay}" Width="200" Margin="10,0,10,0">
 
-            <Button Content="Load Memos" VerticalAlignment="Bottom"  CornerRadius="3" Command="{x:Bind InvoiceViewModel.LoadAccount}"></Button>
+                </CalendarDatePicker>
+
+                <Button Content="Load Memos" VerticalAlignment="Bottom"  CornerRadius="3" Command="{x:Bind InvoiceViewModel.LoadAccount}"></Button>
+            </StackPanel>
         </StackPanel>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-            </Grid.RowDefinitions>
-            <Border Grid.Row="1" BorderThickness="01" Grid.ColumnSpan="6" BorderBrush="Black"></Border>
-            <TextBlock Grid.Column="0" Text="ID" ></TextBlock>
-            <TextBlock Grid.Column="1" Text="Memo Number" ></TextBlock>
-            <TextBlock Grid.Column="02" Text="Account" ></TextBlock>
-            <TextBlock Grid.Column="3" Text="Ammount" ></TextBlock>
-           
-            
-            <TextBlock Grid.Column="0" Text="ID" ></TextBlock>
-        </Grid>
-        <ListView  Width="1300" ItemsSource="{x:Bind InvoiceViewModel.Memos, Mode=OneWay}">
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:Memo">
-                    <Grid Padding="9" Width="1300">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                            <ColumnDefinition Width="1*" />
-                        </Grid.ColumnDefinitions>
-                        
-                        <CheckBox Grid.Column="0" IsChecked="{x:Bind IsPaid , Mode=OneWay}" ></CheckBox>
-                        <TextBlock Grid.Column="1" Text="{x:Bind Address }" ></TextBlock>
-                        <TextBlock Grid.Column="2" Text="{x:Bind AccountId , Mode=OneWay}" ></TextBlock>
-                        <TextBlock Grid.Column="3" Text="{x:Bind AccountAmmount , Mode=OneWay}" ></TextBlock>
-                        <TextBlock Grid.Column="4" Text="{x:Bind PatientAmmount, Mode=OneWay}" ></TextBlock>
-                       
 
-                        
-                    </Grid>
+        <StackPanel Grid.Row="1">
+            <Grid VerticalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="10*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1" BorderThickness="01" Grid.ColumnSpan="6" BorderBrush="Black"></Border>
+                <TextBlock Grid.Column="0" Text="ID" ></TextBlock>
+                <TextBlock Grid.Column="1" Text="Memo Number" ></TextBlock>
+                <TextBlock Grid.Column="02" Text="Account" ></TextBlock>
+                <TextBlock Grid.Column="3" Text="Ammount" ></TextBlock>
 
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+                <TextBlock Grid.Column="0" Text="ID" ></TextBlock>
+            </Grid>
+            <ListView VerticalAlignment="Stretch" Width="1300" ItemsSource="{x:Bind InvoiceViewModel.Memos, Mode=OneWay}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Memo">
+                        <Grid Padding="9" Width="1300">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+
+                            <CheckBox Grid.Column="0" IsChecked="{x:Bind IsPaid , Mode=OneWay}" ></CheckBox>
+                            <TextBlock Grid.Column="1" Text="{x:Bind Address }" ></TextBlock>
+                            <TextBlock Grid.Column="2" Text="{x:Bind AccountId , Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="3" Text="{x:Bind AccountAmmount , Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="4" Text="{x:Bind PatientAmmount, Mode=OneWay}" ></TextBlock>
 
 
 
+                        </Grid>
 
-    </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackPanel >  
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"  Padding="10">
+                <Button Content="Invoice" Margin="0,0,20,0" ></Button>
+            <Button Content="Cancel"></Button>
+            </StackPanel>
+
+
+
+       
+
+    </Grid>
+   
 </Page>

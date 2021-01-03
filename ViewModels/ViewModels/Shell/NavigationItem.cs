@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using ViewModels.Infrastructure.ViewModels;
 
 namespace ViewModels.ViewModels.Shell
 {
-   public class NavigationItem : ObservableObject
+    public class NavigationItem : ObservableObject
     {
         public NavigationItem(Type viewModel)
         {

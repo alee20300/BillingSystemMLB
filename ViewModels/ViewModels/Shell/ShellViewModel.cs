@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Infrastructure.Common;
 using ViewModels.Infrastructure.Services;
@@ -14,7 +12,7 @@ namespace ViewModels.ViewModels.Shell
         public object Parameter { get; set; }
         public UserInfo UserInfo { get; set; }
     }
-   public class ShellViewModel : ViewModelBase
+    public class ShellViewModel : ViewModelBase
 
     {
 

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Domin.Models
 {
-   public class Catogory
+    public class Catogory
     {
         public int CatogoryId { get; set; }
         public string CatogoryName { get; set; }

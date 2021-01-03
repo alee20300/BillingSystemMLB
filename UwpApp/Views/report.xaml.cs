@@ -33,8 +33,8 @@ namespace UwpApp.Views
             if (id != null)
             {
                 // Order is a new order
-              Reports = new Reports(id);
-    }
+                Reports = new Reports(id);
+            }
             //else
             //{
             //    // Order is an existing order.
@@ -54,7 +54,7 @@ namespace UwpApp.Views
             this.ReportViewer.LoadReport(reportStream);
             this.ReportViewer.DataSources.Add(new ReportDataSource { Name = "PatientInfo", Value = Reports.LoadReport() });
             this.ReportViewer.DataSources.Add(new ReportDataSource { Name = "MemoDetails", Value = Reports.loadmemodetail() });
-            
+
             this.ReportViewer.RefreshReport();
         }
     }

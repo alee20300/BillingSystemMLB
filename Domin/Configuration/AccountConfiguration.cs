@@ -1,11 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using MvvmCross.Core;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -25,9 +20,9 @@ namespace Domin.Configuration
                 .HasColumnName("Account_Code")
                 .HasMaxLength(10)
                 .IsRequired();
-                
+
         }
 
-        
+
     }
 }

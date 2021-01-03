@@ -1,26 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Navigation;
-using Domin.Models;
-using Windows.UI.Xaml.Media;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.ObjectModel;
-using UwpApp.ViewModel.Command;
-using System.Runtime.InteropServices.ComTypes;
+﻿using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
+using System;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Threading.Tasks;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel
 {
-    public class PatientViewModel :BindableBase
+    public class PatientViewModel : BindableBase
     {
-        public SaveCommand  SaveCommand { get; set; }
+        public SaveCommand SaveCommand { get; set; }
 
-      
-        public PatientViewModel(Patient patient =null)
+
+        public PatientViewModel(Patient patient = null)
         {
             Patient = patient ?? new Patient();
 
@@ -31,7 +24,7 @@ namespace UwpApp.ViewModel
         }
 
 
-       
+
 
         private void Memos_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -53,8 +46,9 @@ namespace UwpApp.ViewModel
         public Patient Patient
         {
             get => _patient;
-            set {
-                if (_patient!=value)
+            set
+            {
+                if (_patient != value)
                 {
                     _patient = value;
                     RefreshMemos();
@@ -79,16 +73,17 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string Name {
-            get=>Patient.PatientName;
+        public string Name
+        {
+            get => Patient.PatientName;
             set
             {
-                if (value!=Patient.PatientName)
+                if (value != Patient.PatientName)
                 {
                     Patient.PatientName = value;
                     IsModified = true;
                     OnPropertyChanged();
-                    
+
                 }
             }
         }
@@ -103,7 +98,7 @@ namespace UwpApp.ViewModel
                     Patient.PermAddress = value;
                     IsModified = true;
                     OnPropertyChanged();
-                    
+
                 }
             }
         }
@@ -128,7 +123,7 @@ namespace UwpApp.ViewModel
             get => Patient.CountryId;
             set
             {
-                if (value!=Patient.CountryId)
+                if (value != Patient.CountryId)
                 {
                     Patient.CountryId = value;
                     OnPropertyChanged();
@@ -184,7 +179,7 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string IdCardNumber 
+        public string IdCardNumber
         {
             get => Patient.IdCardNumber;
             set
@@ -198,7 +193,7 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public int Atoll 
+        public int Atoll
         {
             get => Patient.AtollId;
             set
@@ -293,7 +288,7 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public DateTime CreatedOn 
+        public DateTime CreatedOn
         {
             get => Patient.CreatatedOn;
             set
@@ -343,7 +338,7 @@ namespace UwpApp.ViewModel
         public int Month { get; set; }
         public int Day { get; set; }
 
-        public bool IsModified { get;  set; }
+        public bool IsModified { get; set; }
 
         //public void calcualteAge(DateTime? Dob)
         //{
@@ -402,7 +397,7 @@ namespace UwpApp.ViewModel
             Task.Run(LoadMemoAsync);
         }
 
-        public async  Task LoadMemoAsync()
+        public async Task LoadMemoAsync()
         {
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
             {

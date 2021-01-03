@@ -1,9 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -13,12 +10,12 @@ namespace Domin.Configuration
         {
             builder.HasKey(s => s.AccountServicePriceId)
                 ;
-           
+
             builder.Property(s => s.AccountServicePriceId)
                 .ValueGeneratedOnAdd()
                 .IsRequired()
                 .HasColumnName("Account_Servive_Price_Id");
-            
+
 
             builder.Property(s => s.Rate)
                 .HasColumnType("decimal(5,2)");

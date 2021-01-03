@@ -1,12 +1,11 @@
 ﻿using Domin.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository
 {
-    public interface IMemoRepository :IRepository<Memo>
+    public interface IMemoRepository : IRepository<Memo>
     {
 
 
@@ -15,12 +14,12 @@ namespace Repository
 
         Task<Memo> GetMemoAsync(int Id);
         Task<Memo> Update(Memo memo);
-       Memo getreposrt(int MemoId);
+        Memo getreposrt(int MemoId);
 
-        Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from,DateTimeOffset to,int accountId);
+        Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int accountId);
     }
 
-    
 
-    
+
+
 }

@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Domin.Models
 {
-   public class Invoice
+    public class Invoice
     {
         public int InvoiceId { get; set; }
 

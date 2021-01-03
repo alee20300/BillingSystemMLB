@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repository.SQL;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 
 namespace Repository
@@ -40,7 +37,7 @@ namespace Repository
 
         public ICollectionSiteRepository CollectionSite => new CollectionSIteRepository(new ApplicationContext(_dbOptions));
 
-        public IUserRepository Users => new UserRepository(new ApplicationContext (_dbOptions));
+        public IUserRepository Users => new UserRepository(new ApplicationContext(_dbOptions));
 
         public IRoleRepostitory Roles => new RoleRepository(new ApplicationContext(_dbOptions));
     }

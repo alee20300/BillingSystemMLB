@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using ViewModels.Infrastructure.Services;
+﻿using ViewModels.Infrastructure.Services;
 using ViewModels.Infrastructure.ViewModels;
 
 namespace ViewModels.ViewModels.Patient
@@ -10,7 +7,7 @@ namespace ViewModels.ViewModels.Patient
 
     {
 
-        public PatientViewModel(ICommonServices commonServices): base(commonServices)
+        public PatientViewModel(ICommonServices commonServices) : base(commonServices)
         {
 
         }

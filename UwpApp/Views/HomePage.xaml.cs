@@ -62,20 +62,20 @@ namespace UwpApp.Views
 
         private void ReportViewerPage_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-           
+
 
         }
-        private async  void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        private async void AutoSuggestBox_TextChangedAsync(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
         {
             // Only get results when it was a user typing, 
             // otherwise assume the value got filled in by TextMemberPath 
             // or the handler for SuggestionChosen.
-                if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput && sender.Text.Length > 3)
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput && sender.Text.Length > 3)
             {
 
                 await ViewModel.updatepstientSuggestion(sender.Text);
@@ -97,8 +97,8 @@ namespace UwpApp.Views
         private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
             ViewModel.SelectedPatient = new PatientViewModel(args.SelectedItem as Patient);
-           
-            
+
+
         }
 
 
@@ -111,7 +111,7 @@ namespace UwpApp.Views
             else
             {
                 // Use args.QueryText to determine what to do.
-                
+
             }
         }
 
@@ -120,13 +120,13 @@ namespace UwpApp.Views
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)=>
-        
-            Frame.Navigate(typeof(AddMemo),ViewModel.SelectedPatient.Patient);
+        private void Button_Click(object sender, RoutedEventArgs e) =>
+
+            Frame.Navigate(typeof(AddMemo), ViewModel.SelectedPatient.Patient);
 
         private void loadbtn_Click(object sender, RoutedEventArgs e)
         {
-           Task.Run( ViewModel.SelectedPatient.LoadMemoAsync);
+            Task.Run(ViewModel.SelectedPatient.LoadMemoAsync);
         }
 
         private void AppBarToggleButton_Click(object sender, RoutedEventArgs e)
@@ -142,9 +142,9 @@ namespace UwpApp.Views
         private async void Listview_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var memoid = Listview.SelectedItem;
-            
+
             memoframe.Navigate(typeof(MemoDetailsForReport), memoid);
-           
+
             if (AppWindow == null)
             {
                 // Create a new window

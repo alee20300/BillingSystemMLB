@@ -1,9 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -17,7 +14,7 @@ namespace Domin.Configuration
                 .IsRequired();
             builder.Property(s => s.CollectionSiteName)
                 .HasMaxLength(100);
-                
+
 
         }
     }

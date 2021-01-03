@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UwpApp.Extensions;
-using UwpApp.ViewModel;
 using ViewModels.Infrastructure.ViewModels;
 using ViewModels.ViewModels.Home;
-using ViewModels.ViewModels.Patient;
 using Windows.ApplicationModel.Activation;
 
 namespace UwpApp.Services.Infrastructure

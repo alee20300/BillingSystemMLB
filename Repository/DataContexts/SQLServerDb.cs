@@ -2,13 +2,10 @@
 using Domin.Data;
 using Domin.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Repository.DataContexts
 {
-   public class SQLServerDb : DbContext, IDataSource
+    public class SQLServerDb : DbContext, IDataSource
     {
 
 

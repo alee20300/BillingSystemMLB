@@ -1,12 +1,10 @@
 ﻿using Domin.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using ViewModels.Infrastructure.ViewModels;
 
 namespace ViewModels.Models
 {
-   public class PatientModel :ObservableObject
+    public class PatientModel : ObservableObject
 
     {
         static public PatientModel CreateEmpty() => new PatientModel { PatientId = -1, IsEmpty = true };
@@ -32,9 +30,9 @@ namespace ViewModels.Models
         public int AtollId { get; set; }
 
         public int IslandId { get; set; }
-      
+
         public Island Island { get; set; }
-     
+
 
         public Country country { get; set; }
 

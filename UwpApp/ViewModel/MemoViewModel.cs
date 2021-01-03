@@ -1,23 +1,17 @@
 ﻿using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
-using Syncfusion.DocIO.DLS;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using UwpApp.ViewModel.Command;
-using Windows.Foundation;
-using Windows.Graphics.Printing;
 
 namespace UwpApp.ViewModel
 {
-  public  class MemoViewModel :BindableBase
+    public class MemoViewModel : BindableBase
 
     {
 
@@ -25,12 +19,12 @@ namespace UwpApp.ViewModel
         public MemoViewModel(Memo memo)
         {
             Memo = memo;
-            Memo.DoctorId = 1;
-            
+
+
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
 
 
-           
+
 
 
             //Task.Run(() => loadAccount(1));
@@ -41,14 +35,14 @@ namespace UwpApp.ViewModel
 
 
 
-        
+
 
         public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
 
 
-       
 
-        public  async void loadAccount(string accountName)
+
+        public async void loadAccount(string accountName)
         {
             var account = await App.Repository.Account.GetAccountbyIdInt(accountName);
             await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
@@ -63,21 +57,22 @@ namespace UwpApp.ViewModel
         private static async Task<Memo> GetMemo(int MemoId) =>
             await App.Repository.Memo.GetbyIdAsync(MemoId);
 
-        private MemoDetailViewModel  _newMemoDetail;
+        private MemoDetailViewModel _newMemoDetail;
 
-        public MemoDetailViewModel  NewMemoDetail
+        public MemoDetailViewModel NewMemoDetail
         {
             get => _newMemoDetail;
-            set {
-                if (value!= _newMemoDetail)
+            set
+            {
+                if (value != _newMemoDetail)
                 {
-                    if (value!=null)
+                    if (value != null)
                     {
                         value.PropertyChanged += NewMemoDetail_PropertyChanged;
                         //NewMemoDetail.account(1, 2);
-                        
+
                     }
-                    if (_newMemoDetail !=null)
+                    if (_newMemoDetail != null)
                     {
                         _newMemoDetail.PropertyChanged -= NewMemoDetail_PropertyChanged;
                     }
@@ -85,7 +80,7 @@ namespace UwpApp.ViewModel
                     _newMemoDetail = value;
                     UpdateNewMemoDetailBindings();
                 }
-            
+
             }
         }
 
@@ -128,10 +123,10 @@ namespace UwpApp.ViewModel
             {
                 if (Memo.Patient != value)
                 {
-                  
+
                     Memo.Patient = value;
                     OnPropertyChanged();
-                    
+
                 }
             }
         }
@@ -142,14 +137,31 @@ namespace UwpApp.ViewModel
             get => Memo.COllectedDate;
             set
             {
-                if (Memo.COllectedDate!= value)
+                if (Memo.COllectedDate != value)
                 {
                     Memo.COllectedDate = value;
                     OnPropertyChanged();
-                    
+
                 }
             }
         }
+
+
+        public string ReferanceCode
+        {
+            get => Memo.ReferaceNo;
+            set
+            {
+
+                if (Memo.ReferaceNo != value)
+                {
+                    Memo.ReferaceNo = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
 
 
         private bool _ispaid;
@@ -159,7 +171,7 @@ namespace UwpApp.ViewModel
             get => _ispaid;
             set
             {
-                if (_ispaid!=value)
+                if (_ispaid != value)
                 {
                     Ispaid = value;
                     OnPropertyChanged();
@@ -209,32 +221,33 @@ namespace UwpApp.ViewModel
             }
         }
         private ObservableCollection<MemoDetail> _memoDetails;
-        
+
 
         public ObservableCollection<MemoDetail> MemoDetails
         {
             get => _memoDetails;
-            set {
+            set
+            {
 
                 if (_memoDetails != value)
                 {
-                    if (value!=null)
+                    if (value != null)
                     {
                         value.CollectionChanged += MemoDetails_Changed;
                     }
-                    if (_memoDetails!=null)
+                    if (_memoDetails != null)
                     {
                         _memoDetails.CollectionChanged -= MemoDetails_Changed;
 
                     }
                     _memoDetails = value;
                     OnPropertyChanged();
-                    
+
                 }
             }
         }
 
-        
+
 
         private void MemoDetails_Changed(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -253,17 +266,17 @@ namespace UwpApp.ViewModel
 
 
         public int MemoNumber
-        { 
-            get=> Memo.MemoId;
+        {
+            get => Memo.MemoId;
 
             set
             {
-                if (value!=Memo.MemoId)
+                if (value != Memo.MemoId)
                 {
                     Memo.MemoId = value;
                     OnPropertyChanged();
                 }
-            } 
+            }
         }
 
         //public void NewMemoDetail_PropertyChanged(object sender, PropertyChangedEventArgs e) => UpdateNewMemoDetailBindings();
@@ -281,9 +294,9 @@ namespace UwpApp.ViewModel
             }
 
         }
-        public DateTime CreatedOn 
+        public DateTime CreatedOn
         {
-            get=>Memo.CreatatedOn;
+            get => Memo.CreatatedOn;
             set
             {
                 if (value != Memo.CreatatedOn
@@ -292,8 +305,8 @@ namespace UwpApp.ViewModel
                     Memo.CreatatedOn = value;
                     OnPropertyChanged();
                 }
-                }
-             }
+            }
+        }
 
         public Decimal PatientTotal
         {
@@ -303,7 +316,7 @@ namespace UwpApp.ViewModel
             }
             set
             {
-                if (value!=Memo.PatientAmmount)
+                if (value != Memo.PatientAmmount)
                 {
                     Memo.PatientAmmount = value;
                     OnPropertyChanged();
@@ -320,7 +333,7 @@ namespace UwpApp.ViewModel
 
             set
             {
-                if (value!=Memo.AccountAmmount)
+                if (value != Memo.AccountAmmount)
                 {
                     AccountAmmount = value;
                     OnPropertyChanged();
@@ -338,7 +351,7 @@ namespace UwpApp.ViewModel
 
             set
             {
-                if (value!=Memo.Rate)
+                if (value != Memo.Rate)
 
                 {
                     Rate = MemoDetails.Sum(MemoDetails => MemoDetails.Rate);
@@ -348,12 +361,12 @@ namespace UwpApp.ViewModel
             }
         }
 
-        public string Address 
+        public string Address
         {
-            get=>Memo.Address;
-            set 
+            get => Memo.Address;
+            set
             {
-                if (Memo.Address!=value)
+                if (Memo.Address != value)
 
                 {
 
@@ -361,25 +374,28 @@ namespace UwpApp.ViewModel
                     OnPropertyChanged();
 
                 }
-            } }
+            }
+        }
 
-        public string PatientName 
-        { get=>Memo.PatientName;
+        public string PatientName
+        {
+            get => Memo.PatientName;
             set
             {
-                if (Memo.PatientName!=value)
+                if (Memo.PatientName != value)
                 {
                     Memo.PatientName = value;
                     OnPropertyChanged();
 
                 }
-            } }
+            }
+        }
 
 
         public Account Account
         {
             get => Memo.Account
-                  ; 
+                  ;
             set
             {
                 if (Memo.Account != value)
@@ -435,10 +451,10 @@ namespace UwpApp.ViewModel
 
 
 
-       
 
 
-        public  async Task SaveMemoAsync()
+
+        public async Task SaveMemoAsync()
         {
 
 
@@ -448,14 +464,14 @@ namespace UwpApp.ViewModel
             Memo result = null;
             try
             {
-               
+
                 result = await App.Repository.Memo.UpsertAsync(Memo);
             }
-          catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new MemoSavingException("Unable to Save Memo. There might have been a problem Connecting to Database. Please Try again later", ex);
             }
-            if (result!=null)
+            if (result != null)
             {
                 await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsModified = false);
 
@@ -463,7 +479,7 @@ namespace UwpApp.ViewModel
         }
 
         public ObservableCollection<Service> ServiceSuggections { get; } = new ObservableCollection<Service>();
-        
+
 
         public async void UpdateServiceSuggestions(string queryText)
         {

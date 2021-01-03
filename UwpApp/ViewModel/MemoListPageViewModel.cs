@@ -1,16 +1,12 @@
 ﻿using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Foundation;
 
 namespace UwpApp.ViewModel
 {
-     public class MemoListPageViewModel : BindableBase
+    public class MemoListPageViewModel : BindableBase
     {
         public MemoListPageViewModel()
         {
@@ -31,17 +27,17 @@ namespace UwpApp.ViewModel
             set => Set(ref _isLoading, value);
         }
 
-        private Memo _selectedMemo; 
+        private Memo _selectedMemo;
 
-        public Memo  SelectedMemo
+        public Memo SelectedMemo
         {
             get => _selectedMemo;
             set
             {
-                if (Set(ref _selectedMemo,value))
+                if (Set(ref _selectedMemo, value))
                 {
                     SelectedMemo = null;
-                    if (_selectedMemo!=null)
+                    if (_selectedMemo != null)
                     {
                         Task.Run(() => LoadPatient(_selectedMemo.Patient.PatientId));
                     }

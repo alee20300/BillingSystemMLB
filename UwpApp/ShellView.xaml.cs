@@ -1,19 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using UwpApp.ViewModel;
 using UwpApp.Views;
-using UwpApp.Views.Report;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -28,10 +19,10 @@ namespace UwpApp
         public ShellView()
         {
             this.InitializeComponent();
-            
+
         }
 
-        
+
 
 
         private double NavViewCompactModeThresholdWidth { get { return NavView.CompactModeThresholdWidth; } }
@@ -51,7 +42,7 @@ namespace UwpApp
 
         private void NavView_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
 
             // Add handler for ContentFrame navigation.
             ContentFrame.Navigated += On_Navigated;
@@ -172,12 +163,12 @@ namespace UwpApp
                 NavView.SelectedItem = (NavigationViewItem)NavView.SettingsItem;
                 //NavView.Header = "Settings";
             }
-            else if (ContentFrame.SourcePageType==typeof(AddMemo))
+            else if (ContentFrame.SourcePageType == typeof(AddMemo))
             {
-            
+
             }
 
-            
+
             else if (ContentFrame.SourcePageType != null)
             {
                 var item = _pages.FirstOrDefault(p => p.Page == e.SourcePageType);

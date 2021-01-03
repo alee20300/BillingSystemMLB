@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace ViewModels.Infrastructure.Services
 {
@@ -12,7 +9,7 @@ namespace ViewModels.Infrastructure.Services
 
         Task<bool> SignInWithPasswordAsync(string userName, string password);
 
-    
+
 
         void Logoff();
 

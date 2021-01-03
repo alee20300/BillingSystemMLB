@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ViewModels.Infrastructure.Services
 {
-    public interface  IMessageService
+    public interface IMessageService
     {
         void Subscribe<TSender>(object target, Action<TSender, string, object> action) where TSender : class;
         void Subscribe<TSender, TArgs>(object target, Action<TSender, string, TArgs> action) where TSender : class;

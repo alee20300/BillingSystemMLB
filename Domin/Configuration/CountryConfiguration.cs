@@ -1,13 +1,10 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
-   public class CountryConfiguration : IEntityTypeConfiguration<Country>
+    public class CountryConfiguration : IEntityTypeConfiguration<Country>
 
     {
 
@@ -24,11 +21,11 @@ namespace Domin.Configuration
         .HasMaxLength(50);
 
 
-            builder.HasData(new Country { CountryId=1, CountryName = "Maldives" });
+            builder.HasData(new Country { CountryId = 1, CountryName = "Maldives" });
 
-        
-           
+
+
         }
     }
 }
- 
+

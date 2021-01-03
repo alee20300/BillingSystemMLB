@@ -1,9 +1,7 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository.SQL
@@ -33,27 +31,27 @@ namespace Repository.SQL
             patient.Contact.StartsWith(Query))
                 .AsNoTracking()
                 .ToListAsync();
-                     
-            
-                  }
+
+
+        }
 
         public async Task<Patient> Update(Patient patient)
         {
-            
-                var existing = await dbSet.FirstOrDefaultAsync(_patient => _patient.PatientId == patient.PatientId);
-                if (null == existing)
 
-                {
-                    dbSet.Add(patient);
-                }
-                else
-                {
-                    _db.Entry(existing).CurrentValues.SetValues(patient);
-                }
+            var existing = await dbSet.FirstOrDefaultAsync(_patient => _patient.PatientId == patient.PatientId);
+            if (null == existing)
 
-                await _db.SaveChangesAsync();
-                return patient;
-            
+            {
+                dbSet.Add(patient);
+            }
+            else
+            {
+                _db.Entry(existing).CurrentValues.SetValues(patient);
+            }
+
+            await _db.SaveChangesAsync();
+            return patient;
+
         }
     }
 }

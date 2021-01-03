@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ViewModels.Infrastructure.Services
+﻿namespace ViewModels.Infrastructure.Services
 {
     public interface ICommonServices
     {

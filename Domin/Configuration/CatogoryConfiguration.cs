@@ -1,9 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -11,7 +8,7 @@ namespace Domin.Configuration
     {
         void IEntityTypeConfiguration<Catogory>.Configure(EntityTypeBuilder<Catogory> builder)
         {
-            builder.HasKey(c=>c.CatogoryId);
+            builder.HasKey(c => c.CatogoryId);
             builder.Property(c => c.CatogoryId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("Catogory_ID");
@@ -21,8 +18,8 @@ namespace Domin.Configuration
             builder.Property(c => c.CatogoryCode)
                 .HasMaxLength(6)
                 .HasColumnName("Catogory_Id");
-                
-                
+
+
         }
     }
 }

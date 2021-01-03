@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ViewModels.Infrastructure.Services;
 
 namespace UwpApp.Services.Infrastructure
 {
-  public  class MessageService :IMessageService
+    public class MessageService : IMessageService
 
     {
         private object _sync = new Object();

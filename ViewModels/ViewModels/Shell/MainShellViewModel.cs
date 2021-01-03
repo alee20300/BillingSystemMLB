@@ -3,7 +3,6 @@ using Domin.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Infrastructure.Services;
 using ViewModels.ViewModels.Home;
@@ -70,25 +69,25 @@ namespace ViewModels.ViewModels.Shell
                 case "DashboardViewModel":
                     NavigationService.Navigate(viewModel);
                     break;
-                //case "CustomersViewModel":
-                //    NavigationService.Navigate(viewModel, new CustomerListArgs());
-                //    break;
-                //case "OrdersViewModel":
-                //    NavigationService.Navigate(viewModel, new OrderListArgs());
-                //    break;
-                //case "ProductsViewModel":
-                //    NavigationService.Navigate(viewModel, new ProductListArgs());
-                //    break;
-                //case "AppLogsViewModel":
-                //    NavigationService.Navigate(viewModel, new AppLogListArgs());
-                //    await LogService.MarkAllAsReadAsync();
-                //    await UpdateAppLogBadge();
-                //    break;
-                //case "SettingsViewModel":
-                //    NavigationService.Navigate(viewModel, new SettingsArgs());
-                //    break;
-                //default:
-                //    throw new NotImplementedException();
+                    //case "CustomersViewModel":
+                    //    NavigationService.Navigate(viewModel, new CustomerListArgs());
+                    //    break;
+                    //case "OrdersViewModel":
+                    //    NavigationService.Navigate(viewModel, new OrderListArgs());
+                    //    break;
+                    //case "ProductsViewModel":
+                    //    NavigationService.Navigate(viewModel, new ProductListArgs());
+                    //    break;
+                    //case "AppLogsViewModel":
+                    //    NavigationService.Navigate(viewModel, new AppLogListArgs());
+                    //    await LogService.MarkAllAsReadAsync();
+                    //    await UpdateAppLogBadge();
+                    //    break;
+                    //case "SettingsViewModel":
+                    //    NavigationService.Navigate(viewModel, new SettingsArgs());
+                    //    break;
+                    //default:
+                    //    throw new NotImplementedException();
             }
         }
 

@@ -1,15 +1,15 @@
 ﻿using BoldReports.Writer;
+using Domin.Models;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Reflection;
 using UwpApp.ViewModel.ReportsViewModel;
+using Windows.Data.Pdf;
 using Windows.Storage.Streams;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
-using Windows.Data.Pdf;
-using System.Collections.ObjectModel;
-using Domin.Models;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,7 +22,7 @@ namespace UwpApp.Views.Report
     {
 
         public Reports Reports { get; set; }
-        public Reportpdf( Memo memo)
+        public Reportpdf(Memo memo)
         {
             this.InitializeComponent();
             Memo = memo;
@@ -57,7 +57,7 @@ namespace UwpApp.Views.Report
         } = new ObservableCollection<BitmapImage>();
         protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-           
+
             Reports = new Reports(Memo);
             //var stream = new InMemoryRandomAccessStream();
             //FileSavePicker fileSavePicker = new FileSavePicker();
@@ -69,21 +69,21 @@ namespace UwpApp.Views.Report
             //if (savedItem != null)
             //
 
-                MemoryStream exportFileStream = new MemoryStream();
+            MemoryStream exportFileStream = new MemoryStream();
 
             Assembly assembly = typeof(HomePage).GetTypeInfo().Assembly;
             // Ensure the report loaction and application name.
             Stream reportStream = assembly.GetManifestResourceStream("UwpApp.Report.Inv.rdlc");
 
-                BoldReports.UI.Xaml.ReportDataSourceCollection datas = new BoldReports.UI.Xaml.ReportDataSourceCollection();
-                datas.Add(new BoldReports.UI.Xaml.ReportDataSource { Name = "PatientInfo", Value = Reports.LoadReport() });
-                datas.Add(new BoldReports.UI.Xaml.ReportDataSource { Name = "MemoDetails", Value = Reports.loadmemodetail() });
+            BoldReports.UI.Xaml.ReportDataSourceCollection datas = new BoldReports.UI.Xaml.ReportDataSourceCollection();
+            datas.Add(new BoldReports.UI.Xaml.ReportDataSource { Name = "PatientInfo", Value = Reports.LoadReport() });
+            datas.Add(new BoldReports.UI.Xaml.ReportDataSource { Name = "MemoDetails", Value = Reports.loadmemodetail() });
 
 
 
-            
+
             ReportWriter writer = new ReportWriter(reportStream, datas);
-                writer.ExportMode = ExportMode.Local;
+            writer.ExportMode = ExportMode.Local;
             await writer.SaveASync(exportFileStream, format);
 
 
@@ -96,7 +96,8 @@ namespace UwpApp.Views.Report
 
             Load(doc);
         }
-    }}
+    }
+}
 
-    
+
 

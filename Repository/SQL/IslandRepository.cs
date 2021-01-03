@@ -1,9 +1,4 @@
 ﻿using Domin.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository.SQL
@@ -26,11 +21,11 @@ namespace Repository.SQL
             Atoll _atoll = new Atoll();
             _atoll = atoll;
             atoll.Islands.Add(_island);
-          await  _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
             return _island;
 
         }
 
-        
+
     }
 }

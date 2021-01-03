@@ -1,22 +1,18 @@
 ﻿using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using UwpApp.ViewModel.SettingsViewModelfolder;
 
 namespace UwpApp.ViewModel
 {
-    public class SettingsViewModel :BindableBase
+    public class SettingsViewModel : BindableBase
     {
         public AtollViewModel atollViewModel { get; set; }
         public SettingsViewModel()
         {
 
-           Task.Run( GetListOfDoctor);
+            Task.Run(GetListOfDoctor);
             Task.Run(GetListOfAtoll);
             Task.Run(GetListOfServices);
 
@@ -48,7 +44,7 @@ namespace UwpApp.ViewModel
             set => Set(ref _selectedAtoll, value);
         }
 
-        private DoctorViewModel  _selectedDoctor;
+        private DoctorViewModel _selectedDoctor;
 
         public DoctorViewModel SelectedDoctor
         {
@@ -61,7 +57,7 @@ namespace UwpApp.ViewModel
         {
             await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
             Atolls.Clear();
-            var atolls =await App.Repository.Atoll.GetAsync();
+            var atolls = await App.Repository.Atoll.GetAsync();
             foreach (var atoll in atolls)
             {
                 Atolls.Add(new AtollViewModel(atoll));
@@ -73,7 +69,7 @@ namespace UwpApp.ViewModel
             await DispatcherHelper.ExecuteOnUIThreadAsync(() => IsLoading = true);
             Doctors.Clear();
             var doctors = await App.Repository.Doctor.GetAsync();
-            foreach (var doctor in doctors )
+            foreach (var doctor in doctors)
             {
                 Doctors.Add(new DoctorViewModel(doctor));
             }

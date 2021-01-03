@@ -1,9 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -24,6 +21,8 @@ namespace Domin.Configuration
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("Patient_Name");
+            builder.Property(m => m.ReferaceNo)
+                .HasMaxLength(100);
             builder.Property(m => m.Address)
                 .HasColumnName("Address")
                 .HasMaxLength(100);

@@ -1,16 +1,10 @@
 ﻿using Domin.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Devices.I2c;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
-   public class AtollViewModel :BindableBase
+    public class AtollViewModel : BindableBase
     {
-        public AtollViewModel(Atoll atoll =null)
+        public AtollViewModel(Atoll atoll = null)
         {
             Atoll = atoll ?? new Atoll();
 
@@ -33,8 +27,9 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
         public Atoll Atoll
         {
             get => _atoll;
-            set {
-                if (value!=_atoll)
+            set
+            {
+                if (value != _atoll)
                 {
                     _atoll = value;
                     OnPropertyChanged(string.Empty);
@@ -57,7 +52,7 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
                 }
             }
         }
-        public string AtollName 
+        public string AtollName
         {
             get => Atoll.AtollName;
             set

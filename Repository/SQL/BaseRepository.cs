@@ -1,11 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository.SQL
@@ -29,11 +26,11 @@ namespace Repository.SQL
 
 
 
-        public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity,bool>> match)
+        public async Task<IEnumerable<TEntity>> GetAsync(Expression<Func<TEntity, bool>> match)
         {
             return await _db.Set<TEntity>().Where(match).ToListAsync();
-          
-                
+
+
         }
 
 
@@ -51,12 +48,12 @@ namespace Repository.SQL
         public async Task<TEntity> UpsertAsync(TEntity entity)
         {
             //var state = (_db.ChangeTracker.Entries());
-             _db.Set<TEntity>().Update(entity);
+            _db.Set<TEntity>().Update(entity);
             await _db.SaveChangesAsync();
             return entity;
         }
 
-    
+
     }
-    }
+}
 

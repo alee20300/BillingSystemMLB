@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Security.Principal;
-using System.Text;
 
 namespace Domin.Models
 {
@@ -19,7 +17,7 @@ namespace Domin.Models
         [StringLength(50)]
         public string ServiceName { get; set; }
 
-  
+
 
         [StringLength(10)]
         public string ICode { get; set; }
@@ -27,7 +25,7 @@ namespace Domin.Models
         [StringLength(10)]
         public String LisCode { get; set; }
 
-        public decimal Rate { get; set; } 
+        public decimal Rate { get; set; }
 
         public bool IsActive { get; set; }
 

@@ -1,22 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repository;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Runtime.InteropServices.WindowsRuntime;
 using UwpApp.ViewModel;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace UwpApp
@@ -33,11 +24,11 @@ namespace UwpApp
         /// 
         public static ShellViewModel ShellViewModel { get; } = new ShellViewModel();
 
-        public static AtollIslandViewModel AtollIslandViewModel { get; } = new AtollIslandViewModel(); 
+        public static AtollIslandViewModel AtollIslandViewModel { get; } = new AtollIslandViewModel();
 
         public static IBillingRepository Repository { get; private set; }
 
-        
+
 
         public App()
         {
@@ -130,7 +121,7 @@ namespace UwpApp
 
         private static void UseSqlServer()
         {
-            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1;Initial Catalog=Billing2;User Id=sa;Password=sa@12345;");
+            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1;Initial Catalog=Billing4;User Id=sa;Password=sa@12345;");
             Repository = new BillingRepository(dbOptions);
 
         }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using ViewModels.Infrastructure.Services;
 using ViewModels.Models;
@@ -18,19 +16,19 @@ namespace ViewModels.ViewModels.Patient
         public bool IsNew => PatientID <= 0;
     }
 
-    public  class PatientDetailsViewModel : GenericDetailsViewModel<PatientModel>
+    public class PatientDetailsViewModel : GenericDetailsViewModel<PatientModel>
 
     {
-        
 
-        public PatientDetailsViewModel(IPatientService patientService, ICommonServices commonServices ) :base (commonServices)
+
+        public PatientDetailsViewModel(IPatientService patientService, ICommonServices commonServices) : base(commonServices)
         {
             PatientService = patientService;
         }
 
         public IPatientService PatientService { get; }
 
-        
+
 
         public override bool ItemIsNew => throw new NotImplementedException();
 

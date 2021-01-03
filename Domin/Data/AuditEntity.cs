@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace Domin.Models
 {
-   public class AuditEntity
+    public class AuditEntity
     {
         [StringLength(25)]
         public string CreatedBy { get; set; }

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domin.Data
 {
@@ -14,10 +13,10 @@ namespace Domin.Data
         public string Name { get; set; }
 
         public int RoleId { get; set; }
-
+        [ForeignKey("RoleId")]
         public Role Role { get; set; }
 
-        public ICollection<Role> Roles { get; set; } = new List<Role>();
+        public ICollection<UserRole> UserRoles { get; set; }
 
 
 

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UwpApp.Services.Reporting
+﻿namespace UwpApp.Services.Reporting
 {
-   public interface IReportingServices
+    public interface IReportingServices
     {
 
 

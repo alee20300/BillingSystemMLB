@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using UwpApp.ViewModel.SettingsViewModelfolder;
 
@@ -21,9 +20,26 @@ namespace UwpApp.ViewModel
             Task.Run(getCountryList);
             Task.Run(GetAccounts);
             Task.Run(GetCollectionSite);
+            Task.Run(getDoctors);
 
         }
 
+        public ObservableCollection<DoctorViewModel> Doctors { get; set; } = new ObservableCollection<DoctorViewModel>();
+
+        private async void getDoctors()
+        {
+
+            var results = await App.Repository.Doctor.GetAsync();
+            Doctors.Clear();
+            foreach (var result in results)
+            {
+                Doctors.Add(new DoctorViewModel(result));
+
+            }
+
+
+
+        }
 
         public ObservableCollection<CollectionSiteViewModel> CollectionSites { get; set; } = new ObservableCollection<CollectionSiteViewModel>();
 
@@ -80,17 +96,17 @@ namespace UwpApp.ViewModel
             Country.Clear();
             foreach (var country in countries)
             {
-               Country.Add(country);
+                Country.Add(country);
             }
 
         }
 
 
-        public List<Country> Country { get; set; } 
+        public List<Country> Country { get; set; }
 
         public List<Atoll> Atolls { get; set; }
         public ObservableCollection<AccountViewModel> Accounts { get; set; } = new ObservableCollection<AccountViewModel>();
-       
+
         public List<Island> MasterIslandList { get; } = new List<Island>();
 
         public ObservableCollection<Island> Islands { get; } = new ObservableCollection<Island>();

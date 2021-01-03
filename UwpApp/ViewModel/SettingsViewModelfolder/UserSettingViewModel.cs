@@ -1,18 +1,13 @@
 ﻿using Domin.Data;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
-  public  class UserSettingViewModel 
+    public class UserSettingViewModel
     {
         public UserSettingViewModel()
         {
-                
+
         }
 
         public User User { get; set; }
@@ -21,7 +16,7 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
         public ObservableCollection<User> Users { get; set; } = new ObservableCollection<User>();
 
 
-        public async void  LoadUsers()
+        public async void LoadUsers()
         {
             var results = await App.Repository.Users.GetAsync();
             Users.Clear();

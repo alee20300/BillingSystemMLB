@@ -1,17 +1,13 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 using UwpApp.Services.Infrastructure;
 using UwpApp.Views.Login;
 using ViewModels.Infrastructure.Services;
 using ViewModels.ViewModels.Login;
 using Windows.Storage;
-using Windows.UI.ViewManagement;
 
 namespace UwpApp.Configuration
 {

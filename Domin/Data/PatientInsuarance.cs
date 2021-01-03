@@ -1,11 +1,9 @@
 ﻿using Domin.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Data
 {
-   public class PatientInsuarance
+    public class PatientInsuarance
     {
         public int PatientInsuaranceId { get; set; }
         public int PatientId { get; set; }

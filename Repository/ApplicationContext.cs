@@ -1,18 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Domin.Configuration;
 using Domin.Models;
-using Domin.Configuration;
-using Domin.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
     public class ApplicationContext : DbContext
     {
 
-        
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) 
+
+        public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
 
@@ -28,7 +24,7 @@ namespace Repository
         public DbSet<MemoDetail> MemoDetails { get; set; }
 
         public DbSet<Country> Country { get; set; }
-       
+
 
         public DbSet<Service> Services { get; set; }
 
@@ -37,13 +33,13 @@ namespace Repository
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         public DbSet<CollectionSite> collectionSites { get; set; }
-        //public DbSet<User> Users { get; set; }
-        //public DbSet<Role> Roles { get; set; }
+        ////public DbSet<User> Users { get; set; }
+        ////public DbSet<Role> Roles { get; set; }
 
 
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder )
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PatientConfiguration());
             modelBuilder.ApplyConfiguration(new MemoConfiguration());
@@ -56,9 +52,9 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionSiteConfiguration());
 
-            //modelBuilder.ApplyConfiguration(new UserConfiguration());
+            modelBuilder.ApplyConfiguration(new UserConfiguration());
 
-            //modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
     }
 }

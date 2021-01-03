@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository.SQL
@@ -17,8 +15,8 @@ namespace Repository.SQL
             _db = db;
         }
 
-        public async Task<IEnumerable<Memo>> GetForPatientAsync(int id)=>
-        
+        public async Task<IEnumerable<Memo>> GetForPatientAsync(int id) =>
+
             await dbSet
                 .Where(memo => memo.Patient.PatientId == id)
                 .Include(order => order.MemoDetails)
@@ -36,24 +34,24 @@ namespace Repository.SQL
         public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
         {
             return await dbSet.Where(m => m.AccountId == Account &&
-            m.COllectedDate >= from  && m.COllectedDate <= to &&
-            m.IsPaid==false
+            m.COllectedDate >= from && m.COllectedDate <= to &&
+            m.IsPaid == false
             ).ToListAsync();
         }
 
-        public  Memo getreposrt(int MemoId)
+        public Memo getreposrt(int MemoId)
         {
-            return  dbSet.Include(m=>m.Patient).Include(m=>m.MemoDetails).ThenInclude(s=>s.Service).
+            return dbSet.Include(m => m.Patient).Include(m => m.MemoDetails).ThenInclude(s => s.Service).
                 FirstOrDefault(m => m.MemoId == MemoId)
-                
-              
-                
+
+
+
                ;
         }
 
         public async Task<Memo> Update(Memo memo)
         {
-            var existing = await dbSet.Include(p=>p.Patient).Include(m=>m.MemoDetails)
+            var existing = await dbSet.Include(p => p.Patient).Include(m => m.MemoDetails)
                 .FirstOrDefaultAsync(_memo => _memo.MemoId == memo.MemoId);
             //var account = await _db.Accounts.FirstOrDefaultAsync(a => a.Id == memo.Account.Id);
 
@@ -66,16 +64,16 @@ namespace Repository.SQL
                 memo.MemoId = 0;
                 memo.Account.AccountId = 0;
                 _db.Memos.Add(memo);
-               
+
             }
             else
             {
                 _db.Entry(existing).CurrentValues.SetValues(memo);
             }
-  
+
             //_db.Update(memo.Patient);
-            
-           
+
+
             var state = (_db.ChangeTracker.Entries());
             await _db.SaveChangesAsync();
             return memo;

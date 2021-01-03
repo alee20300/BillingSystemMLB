@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace Domin.Models
 {
@@ -11,7 +8,7 @@ namespace Domin.Models
         public int IslandId { get; set; }
         [ForeignKey("AtollId")]
         public Atoll Atoll { get; set; }
-        
+
         public string IslandName { get; set; }
         public int AtollId { get; set; }
 

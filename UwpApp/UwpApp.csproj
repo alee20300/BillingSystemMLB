@@ -144,12 +144,14 @@
       <DependentUpon>PatientCard.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\AtollIslandViewModel.cs" />
+    <Compile Include="ViewModel\Authentication\AuthenticationViewModel.cs" />
     <Compile Include="ViewModel\BindableBase.cs" />
     <Compile Include="ViewModel\Command\RelayCommand.cs" />
     <Compile Include="ViewModel\Command\SaveCommand.cs" />
     <Compile Include="ViewModel\Converters\TimeConverter.cs" />
     <Compile Include="ViewModel\Converters\WIndowsStateConverter.cs" />
     <Compile Include="ViewModel\Exception.cs" />
+    <Compile Include="ViewModel\InvoiceDetailViewModel.cs" />
     <Compile Include="ViewModel\InvoiceViewModel.cs" />
     <Compile Include="ViewModel\MemoDetailViewModel.cs" />
     <Compile Include="ViewModel\MemoListPageViewModel.cs" />

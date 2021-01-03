@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ViewModels.Models
+﻿namespace ViewModels.Models
 {
     public class AtollModel
     {

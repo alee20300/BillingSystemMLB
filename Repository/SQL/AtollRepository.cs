@@ -1,8 +1,5 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Repository.SQL
@@ -17,21 +14,21 @@ namespace Repository.SQL
 
         public async Task<Atoll> GetbyintIdAsync(int Id)
         {
-            
-            return await dbSet.FirstOrDefaultAsync(atoll=>atoll.AtollId ==Id );
+
+            return await dbSet.FirstOrDefaultAsync(atoll => atoll.AtollId == Id);
         }
 
         public async Task<Atoll> Update(Atoll atoll)
         {
             var existing = await dbSet.FirstOrDefaultAsync(_atoll => _atoll.AtollId == atoll.AtollId);
-            if (null==existing )
+            if (null == existing)
 
             {
                 dbSet.Add(existing);
             }
             else
             {
-                _db.Entry(existing).CurrentValues.SetValues(atoll);  
+                _db.Entry(existing).CurrentValues.SetValues(atoll);
             }
 
             await _db.SaveChangesAsync();

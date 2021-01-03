@@ -1,9 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -15,7 +12,7 @@ namespace Domin.Configuration
             builder.Property(i => i.InvoiceId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("InvoiceId");
-           
+
         }
     }
 }

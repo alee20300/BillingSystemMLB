@@ -103,26 +103,33 @@
                 <TextBlock Text="{x:Bind ViewModel.Patient.Email,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.DateOfBirth,Mode=TwoWay}" Grid.Column="0"></TextBlock>
             </StackPanel>
-            <StackPanel Width="450" RelativePanel.RightOf="FieldsStackPanel">
+            <StackPanel Width="250" Name="stack" RelativePanel.RightOf="FieldsStackPanel">
 
                 <!--<ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}"  DisplayMemberPath="AtollName"/>-->
                 <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
-                <CalendarDatePicker Width="450" Header="Collected Date"  Date="{x:Bind ViewModel.COllectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></CalendarDatePicker>
+                <CalendarDatePicker Width="250" Header="Collected Date"  Date="{x:Bind ViewModel.COllectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></CalendarDatePicker>
 
                 <ComboBox Header="Account"  ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
                            IsTextSearchEnabled="True" 
                           SelectedValuePath="Account"
-                          SelectedValue="{x:Bind ViewModel.Account,Mode=TwoWay}" Width="450">
+                          SelectedValue="{x:Bind ViewModel.Account,Mode=TwoWay}" Width="250">
 
                 </ComboBox>
                 <ComboBox x:Name="combosite" IsTextSearchEnabled="True"  
-                          Width="450" Header="Collection Site" 
+                          Width="250" Header="Collection Site" 
                           ItemsSource="{x:Bind IAVM.CollectionSites ,
                     Mode=OneWay}" DisplayMemberPath="CollectionSiteName" 
                           SelectedValuePath="CollectionSIteId"  
                           SelectedValue="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>
                     
                 </StackPanel>
+            <StackPanel Margin="20,0,0,0" Width="250" RelativePanel.RightOf="stack">
+                <TextBox Header="Referance Number"></TextBox>
+                <ComboBox Header=" Referal Doctor" Text="{x:Bind _viewModel.ReferanceCode, Mode=TwoWay}" HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=OneWay}" DisplayMemberPath="DoctorName" SelectedItem="{x:Bind _viewModel.Doctor,Mode=TwoWay}" >
+                    
+                </ComboBox>
+                
+            </StackPanel>
             
         </RelativePanel>
 

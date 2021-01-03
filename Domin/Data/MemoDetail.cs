@@ -1,23 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Dynamic;
-using System.Linq;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domin.Models
 {
-     public class MemoDetail 
+    public class MemoDetail
     {
         public MemoDetail()
         {
-            
+
         }
         public MemoDetail(int serviceId)
-            :this()
+            : this()
         {
             ServiceId = serviceId;
-           
+
 
 
         }
@@ -42,6 +37,6 @@ namespace Domin.Models
 
         #endregion
 
-        
+
     }
 }

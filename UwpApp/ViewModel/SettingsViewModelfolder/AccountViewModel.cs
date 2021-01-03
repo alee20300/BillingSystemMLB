@@ -1,15 +1,10 @@
 ﻿using Domin.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
-   public class AccountViewModel : BindableBase
+    public class AccountViewModel : BindableBase
     {
-        public AccountViewModel(Account acount=null)
+        public AccountViewModel(Account acount = null)
         {
             Account = acount ?? new Account();
 
@@ -24,10 +19,10 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
             set { Set(ref _IsLoading, value); }
         }
 
-       
+
 
         public Account Account { get; set; }
-       
+
 
         public int id
         {

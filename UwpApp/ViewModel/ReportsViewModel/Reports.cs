@@ -6,11 +6,11 @@ namespace UwpApp.ViewModel.ReportsViewModel
 {
     public class Reports : BindableBase
     {
-        public Reports( Memo memoId)
+        public Reports(Memo memoId)
         {
             memoidInt = memoId.MemoId;
             Loadmemo(memoidInt);
-            
+
 
         }
 
@@ -28,12 +28,12 @@ namespace UwpApp.ViewModel.ReportsViewModel
         }
         public List<ReportViewModelM> reportslist = new List<ReportViewModelM>();
 
-        public  IList LoadReport()
+        public IList LoadReport()
         {
 
             reportslist.Add(new ReportViewModelM(memo));
             return reportslist;
-            
+
         }
 
 
@@ -41,12 +41,12 @@ namespace UwpApp.ViewModel.ReportsViewModel
 
         public IList loadmemodetail()
         {
-            
-            
+
+
             var memoDetails = memo.MemoDetails;
             foreach (var memod in memoDetails)
             {
-                reportMemoDetailVMs.Add(new ReportMemoDetailVM( memod));
+                reportMemoDetailVMs.Add(new ReportMemoDetailVM(memod));
             }
 
             return reportMemoDetailVMs;

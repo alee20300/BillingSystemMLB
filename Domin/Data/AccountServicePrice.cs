@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domin.Models
 {
-     public class AccountServicePrice :AuditEntity
+    public class AccountServicePrice : AuditEntity
     {
         public AccountServicePrice()
         {
 
         }
-        public AccountServicePrice(int acc,int scc)
+        public AccountServicePrice(int acc, int scc)
         {
             AccountId = acc;
             ServiceId = scc;
@@ -24,10 +21,10 @@ namespace Domin.Models
         [ForeignKey("ServiceId")]
         public Service Service { get; set; }
         public int ServiceId { get; set; }
-        public decimal Rate { get; set; } 
+        public decimal Rate { get; set; }
         public decimal PatientAmmount { get; set; }
         public decimal AccountAmmount { get; set; }
 
-       
+
     }
 }

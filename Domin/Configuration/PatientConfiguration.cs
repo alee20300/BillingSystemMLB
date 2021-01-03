@@ -1,16 +1,13 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
     public class PatientConfiguration : IEntityTypeConfiguration<Patient>
     {
-       public void Configure(EntityTypeBuilder<Patient> builder)
+        public void Configure(EntityTypeBuilder<Patient> builder)
         {
             builder.HasKey(p => p.PatientId);
             builder.Property(p => p.PatientId)
@@ -35,14 +32,26 @@ namespace Domin.Configuration
             builder.Property(p => p.Email)
                 .HasMaxLength(100);
 
-                
-                
 
-                
-           builder
-                .HasData(new Patient()  { PatientId=1, AtollId = 1, CountryId = 1, Contact = "9702030", 
-                    CreatedBy = "Ali", Email = "Alee20300@gmail.com", IslandId = 1, DateOfBirth = DateTime.Now, 
-                    PatientName = "Ali Abdulla", Sex = "M", PermAddress = "Sandalwood" , IdCardNumber="A301427"});
+
+
+
+            builder
+                 .HasData(new Patient()
+                 {
+                     PatientId = 1,
+                     AtollId = 1,
+                     CountryId = 1,
+                     Contact = "9702030",
+                     CreatedBy = "Ali",
+                     Email = "Alee20300@gmail.com",
+                     IslandId = 1,
+                     DateOfBirth = DateTime.Now,
+                     PatientName = "Ali Abdulla",
+                     Sex = "M",
+                     PermAddress = "Sandalwood",
+                     IdCardNumber = "A301427"
+                 });
 
 
         }

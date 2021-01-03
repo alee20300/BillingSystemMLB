@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using UwpApp.ViewModel.Command;
@@ -62,14 +60,14 @@ namespace ViewModels.ViewModels.Login
 
         public ICommand ShowLoginWithPasswordCommand => new RelayCommand(ShowLoginWithPassword);
         public ICommand LoginWithPasswordCommand => new RelayCommand(LoginWithPassword);
-       
+
 
         public Task LoadAsync(ShellArgs args)
         {
             ViewModelArgs = args;
 
             UserName = SettingsService.UserName ?? args.UserInfo.AccountName;
-           
+
             IsLoginWithPassword = !IsLoginWithWindowsHello;
             IsBusy = false;
 
@@ -78,8 +76,8 @@ namespace ViewModels.ViewModels.Login
 
         public void Login()
         {
-              LoginWithPassword();
-            
+            LoginWithPassword();
+
         }
 
         private void ShowLoginWithPassword()
@@ -96,7 +94,7 @@ namespace ViewModels.ViewModels.Login
             {
                 if (await LoginService.SignInWithPasswordAsync(UserName, Password))
                 {
-                   
+
                     SettingsService.UserName = UserName;
                     EnterApplication();
                     return;
@@ -106,7 +104,7 @@ namespace ViewModels.ViewModels.Login
             IsBusy = false;
         }
 
-       
+
 
         private void EnterApplication()
         {

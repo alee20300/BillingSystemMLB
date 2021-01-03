@@ -1,9 +1,6 @@
 ﻿using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Domin.Configuration
 {
@@ -20,10 +17,10 @@ namespace Domin.Configuration
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("Island_Name");
-            
+
             builder
                .HasData(new Island() { AtollId = 1, IslandId = 1, IslandName = "Thinadhoo" });
-           
+
         }
     }
 }

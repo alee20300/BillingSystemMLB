@@ -1,13 +1,11 @@
 ﻿using Domin.Data;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using ViewModels.Infrastructure.Services;
 
 namespace ViewModels.Infrastructure.ViewModels
 {
-   public class ViewModelBase : ObservableObject
+    public class ViewModelBase : ObservableObject
     {
 
         private Stopwatch _stopwatch = new Stopwatch();
@@ -50,13 +48,13 @@ namespace ViewModels.Infrastructure.ViewModels
             await LogService.WriteAsync(LogType.Error, source, action, message, description);
         }
 
-       
+
 
         public void StatusReady()
         {
             MessageService.Send(this, "StatusMessage", "Ready");
         }
-     
+
 
         public void EnableThisView(string message = null)
         {

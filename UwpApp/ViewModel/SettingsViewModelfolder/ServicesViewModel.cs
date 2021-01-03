@@ -1,22 +1,16 @@
 ﻿using Domin.Models;
-using Microsoft.UI.Xaml.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
-   public class ServicesViewModel :BindableBase
+    public class ServicesViewModel : BindableBase
     {
-        public ServicesViewModel(Service service =null )
+        public ServicesViewModel(Service service = null)
         {
             Service = service ?? new Service();
 
         }
 
-        
+
 
         private bool _IsLoading = false;
 
@@ -30,23 +24,24 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
         public Service Service
         {
-            get => _service; 
-            set {
-                if (value!=_service)
+            get => _service;
+            set
+            {
+                if (value != _service)
                 {
                     _service = value;
                     OnPropertyChanged(string.Empty);
                 }
-            
+
             }
         }
 
         public int Id
         {
-            get =>Service.ServiceId; 
+            get => Service.ServiceId;
             set
             {
-                if (value!=Service.ServiceId)
+                if (value != Service.ServiceId)
                 {
                     Service.ServiceId = value;
                     OnPropertyChanged();
