@@ -11,7 +11,7 @@ namespace UwpApp.Views.SettingsPages
     /// </summary>
     public sealed partial class AccountsSetting : Page
     {
-        AtollIslandViewModel avmodel = new AtollIslandViewModel();
+        StaticData avmodel = new StaticData();
         AccountViewModel viewModel { get; set; } = new AccountViewModel();
         public AccountsSetting()
         {

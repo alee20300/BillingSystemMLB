@@ -24,9 +24,11 @@ namespace UwpApp
         /// 
         public static ShellViewModel ShellViewModel { get; } = new ShellViewModel();
 
-        public static AtollIslandViewModel AtollIslandViewModel { get; } = new AtollIslandViewModel();
-
         public static IBillingRepository Repository { get; private set; }
+
+        public static StaticData AtollIslandViewModel { get; } = new StaticData();
+
+        
 
 
 

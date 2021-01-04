@@ -8,9 +8,9 @@ using UwpApp.ViewModel.SettingsViewModelfolder;
 
 namespace UwpApp.ViewModel
 {
-    public class AtollIslandViewModel
+    public class StaticData
     {
-        public AtollIslandViewModel()
+        public StaticData()
         {
             Atolls = new List<Atoll>();
             Country = new List<Country>();

@@ -87,7 +87,7 @@
 
         </StackPanel >  
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right"  Padding="10">
-                <Button Content="Invoice" Margin="0,0,20,0" ></Button>
+                <Button Content="Invoice" Margin="0,0,20,0" Command="{x:Bind InvoiceViewModel.SaveInvoice}" ></Button>
             <Button Content="Cancel"></Button>
             </StackPanel>
 

@@ -19,7 +19,7 @@ namespace UwpApp.Views
 
         }
         public Invoice Invoice { get; set; }
-        public AtollIslandViewModel IAVM { get => App.AtollIslandViewModel; }
+        public StaticData IAVM { get => App.AtollIslandViewModel; }
 
 
     }

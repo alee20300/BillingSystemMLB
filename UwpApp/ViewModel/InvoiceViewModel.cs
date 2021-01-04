@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using UwpApp.Models;
 using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel
@@ -10,11 +11,24 @@ namespace UwpApp.ViewModel
     {
         public InvoiceViewModel()
         {
+            Invoice = new Invoice();
               InvoiceDetails = new ObservableCollection<InvoiceDetail>();
         }
         public ICommand LoadAccount => new RelayCommand(GetMemos);
+        public ICommand SaveInvoice => new RelayCommand(SaveMemo);
 
-        public Account Account { get; set; }
+        public Account Account
+        {
+            get=>Invoice.Account ;
+            set
+            {
+                if (Invoice. Account!=value)
+                {
+                    Invoice. Account = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         private ObservableCollection<InvoiceDetail> _invoiceDetails;
         public Invoice Invoice { get; set; }
@@ -33,9 +47,18 @@ namespace UwpApp.ViewModel
 
         }
 
-        public void SaveMemo()
+        public async void SaveMemo()
         {
+            Invoice result = null;
+            try
+            {
 
+                result = await App.Repository.Invoices.UpsertAsync(Invoice);
+            }
+            catch (Exception ex)
+            {
+                throw new MemoSavingException("Unable to Save Memo. There might have been a problem Connecting to Database. Please Try again later", ex);
+            }
 
         }
 
@@ -54,5 +77,35 @@ namespace UwpApp.ViewModel
                 }
             }
         }
+
+        public decimal InvoviceAmmount
+        {
+            get => Invoice.InvoiceAmmount;
+            set
+            {
+                if (Invoice.InvoiceAmmount != value)
+                {
+                    Invoice.InvoiceAmmount = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public int MyProperty { get; set; }
+        public DateTime InvoiceDate 
+        { get => _invoiceDate = DateTime.Now;
+           
+        } 
+
+
+
+
+
+        private DateTime _invoiceDate;
+
+       
+
+
+
     }
 }

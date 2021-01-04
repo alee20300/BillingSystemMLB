@@ -1,4 +1,5 @@
 ﻿using Domin.Configuration;
+using Domin.Data;
 using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,8 +34,8 @@ namespace Repository
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         public DbSet<CollectionSite> collectionSites { get; set; }
-        ////public DbSet<User> Users { get; set; }
-        ////public DbSet<Role> Roles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
 
 

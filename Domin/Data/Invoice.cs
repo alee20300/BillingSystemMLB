@@ -22,7 +22,7 @@ namespace Domin.Models
         public int AccountId { get; set; }
         public Account Account { get; set; }
         public List<Memo> Memos { get; set; }
-        public List<InvoiceDetail> invoiceDetails { get; set; }
+        public List<InvoiceDetail> invoiceDetails { get; set; } = new List<InvoiceDetail>();
 
     }
 }

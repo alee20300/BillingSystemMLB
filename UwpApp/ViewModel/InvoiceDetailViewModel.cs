@@ -19,5 +19,7 @@ namespace UwpApp.ViewModel
         public decimal MemoAmount { get; set; }
 
 
+        public bool Isadded { get; set; }
+
     }
 }

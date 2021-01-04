@@ -60,10 +60,7 @@ namespace Domin.Models
         public Account Account { get; set; }
         public int AccountId { get; set; }
 
-        public Memo Include(Func<object, object> p)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         [ForeignKey("PatientId")]
         public Patient Patient { get; set; }

@@ -31,7 +31,7 @@ namespace UwpApp.Views
         }
 
         private MemoViewModel _viewModel;
-        public AtollIslandViewModel IAVM { get => App.AtollIslandViewModel; }
+        public StaticData IAVM { get => App.AtollIslandViewModel; }
 
 
 

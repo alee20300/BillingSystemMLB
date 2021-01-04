@@ -125,7 +125,7 @@
                 </StackPanel>
             <StackPanel Margin="20,0,0,0" Width="250" RelativePanel.RightOf="stack">
                 <TextBox Header="Referance Number"></TextBox>
-                <ComboBox Header=" Referal Doctor" Text="{x:Bind _viewModel.ReferanceCode, Mode=TwoWay}" HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=OneWay}" DisplayMemberPath="DoctorName" SelectedItem="{x:Bind _viewModel.Doctor,Mode=TwoWay}" >
+                <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True" Text="{x:Bind _viewModel.ReferanceCode, Mode=TwoWay}" HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=OneWay}" DisplayMemberPath="DoctorName" SelectedItem="{x:Bind _viewModel.Doctor,Mode=TwoWay}" >
                     
                 </ComboBox>
                 

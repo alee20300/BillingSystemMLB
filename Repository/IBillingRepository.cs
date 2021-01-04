@@ -21,6 +21,8 @@
 
         ICollectionSiteRepository CollectionSite { get; }
 
+        IInvoiceRepository Invoices { get; }
+
 
         IUserRepository Users { get; }
 
