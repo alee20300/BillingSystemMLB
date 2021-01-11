@@ -37,6 +37,10 @@ namespace Repository
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
 
+        public DbSet<AutorizeDetail> AutorizeDetails { get; set; }
+
+        public DbSet<UsernameAndHash> UsernameAndHashes { get; set; }
+
 
 
 
@@ -52,6 +56,7 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new MemoDetailConfiguration());
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionSiteConfiguration());
+            modelBuilder.ApplyConfiguration(new PaymentDetailConfiguration());
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
 

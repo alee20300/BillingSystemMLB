@@ -11,7 +11,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Billingmlb.Uwp", "Billingml
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UwpApp", "UwpApp\UwpApp.csproj", "{AD8119C1-00B2-437A-870B-8D72E916FFE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\ViewModels.csproj", "{5FF459DE-308C-4A40-B37A-2F15FD958929}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModels", "ViewModels\ViewModels.csproj", "{5FF459DE-308C-4A40-B37A-2F15FD958929}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Swatinc", "..\..\Swatinc\Swatinc\Swatinc.vbproj", "{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -139,6 +141,26 @@ Global
 		{5FF459DE-308C-4A40-B37A-2F15FD958929}.Release|x64.Build.0 = Release|Any CPU
 		{5FF459DE-308C-4A40-B37A-2F15FD958929}.Release|x86.ActiveCfg = Release|Any CPU
 		{5FF459DE-308C-4A40-B37A-2F15FD958929}.Release|x86.Build.0 = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|ARM64.ActiveCfg = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|ARM64.Build.0 = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|x64.Build.0 = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Debug|x86.Build.0 = Debug|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|ARM.Build.0 = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|ARM64.ActiveCfg = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|ARM64.Build.0 = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|x64.ActiveCfg = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|x64.Build.0 = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|x86.ActiveCfg = Release|Any CPU
+		{C30AFB1D-0AAC-4178-A2BA-5D027A3B4CB0}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

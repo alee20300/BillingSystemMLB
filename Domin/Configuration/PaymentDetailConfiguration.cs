@@ -12,6 +12,7 @@ namespace Domin.Configuration
     {
         public void Configure(EntityTypeBuilder<PaymentDetail> builder)
         {
+
             builder.HasKey(p => p.PaymentId);
             builder.Property(p => p.PaymentId)
                 .ValueGeneratedOnAdd()

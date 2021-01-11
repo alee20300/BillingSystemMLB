@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using Domin.Data;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domin.Models
 {
@@ -23,6 +25,8 @@ namespace Domin.Models
         public decimal PatientAmmount { get; set; }
         public decimal AccountAmmount { get; set; }
 
+
+        public ICollection<PaymentDetail> PaymentDetails { get; set; } = new List<PaymentDetail>();
 
 
         #region Navigation

@@ -1,6 +1,8 @@
-﻿using Domin.Models;
+﻿using Domin.Data;
+using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -12,36 +14,14 @@ using UwpApp.ViewModel.Command;
 namespace UwpApp.ViewModel
 {
     public class MemoViewModel : BindableBase
-
     {
-
         public Memo Memo { get; set; }
         public MemoViewModel(Memo memo)
         {
             Memo = memo;
-
-
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
-
-
-
-
-
-            //Task.Run(() => loadAccount(1));
-
         }
-
-
-
-
-
-
-
         public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
-
-
-
-
         public async void loadAccount(string accountName)
         {
             var account = await App.Repository.Account.GetAccountbyIdInt(accountName);
@@ -50,6 +30,17 @@ namespace UwpApp.ViewModel
                 Account = account;
             });
         }
+        
+        public void AddPaymentType(Account account) 
+        {
+           PaymentType acccunt = new PaymentType();
+            PaymentType.Account = Account;         
+            PaymentTypes.Add(PaymentType);
+        }
+
+        public PaymentType PaymentType { get; set; }
+
+        public ObservableCollection<PaymentType> PaymentTypes { get; set; } = new ObservableCollection<PaymentType>();
 
         public async static Task<MemoViewModel> CreatefromMemoId(int MemoId) =>
             new MemoViewModel(await GetMemo(MemoId));
@@ -394,8 +385,7 @@ namespace UwpApp.ViewModel
 
         public Account Account
         {
-            get => Memo.Account
-                  ;
+            get => Memo.Account;
             set
             {
                 if (Memo.Account != value)

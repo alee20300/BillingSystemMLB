@@ -12,11 +12,15 @@ namespace Domin.Data
 
         public string Name { get; set; }
 
+        public UsernameAndHash UsernameAndHash { get; set; }
+
         public int RoleId { get; set; }
         [ForeignKey("RoleId")]
         public Role Role { get; set; }
 
         public ICollection<UserRole> UserRoles { get; set; }
+
+        
 
 
 

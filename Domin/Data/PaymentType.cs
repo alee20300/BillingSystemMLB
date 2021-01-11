@@ -1,10 +1,12 @@
-﻿namespace Domin.Data
+﻿using Domin.Models;
+
+namespace Domin.Data
 {
     public class PaymentType
     {
 
         public int PaymentTypeId { get; set; }
-        public string PaymentTypeSign { get; set; }
+        public Account Account { get; set; }
 
 
     }

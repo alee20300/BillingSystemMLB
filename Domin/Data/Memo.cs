@@ -48,7 +48,7 @@ namespace Domin.Models
         public bool IsPaid { get; set; }
 
 
-        public PaymentType PaymentSign { get; set; }
+        public ICollection<PaymentType> PaymentSign { get; set; } = new List<PaymentType>();
 
 
         public ICollection<MemoDetail> MemoDetails { get; set; } = new List<MemoDetail>();

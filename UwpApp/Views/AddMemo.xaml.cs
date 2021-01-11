@@ -177,6 +177,13 @@ namespace UwpApp.Views
             ViewModel.MemoDetails.Remove((sender as FrameworkElement).DataContext as MemoDetail);
         }
 
+        private void AccountComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+       {
 
+            var acc = (Account)e.OriginalSource;
+            
+            
+            ViewModel.AddPaymentType(acc);
+        }
     }
 }

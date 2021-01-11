@@ -43,5 +43,10 @@ namespace Repository
 
         public IRoleRepostitory Roles => new RoleRepository(new ApplicationContext(_dbOptions));
 
+        public IUsernameAndHashRepository UsernameAndHash => new UsernameAndHashRepository(new ApplicationContext(_dbOptions));
+
+
+
+        public IAthorizeDetailRepository  AthorizeDetails => new AutorizeDetailRepository(new ApplicationContext(_dbOptions));
     }
 }

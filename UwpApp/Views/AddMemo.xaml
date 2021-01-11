@@ -111,8 +111,8 @@
 
                 <ComboBox Header="Account"  ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
                            IsTextSearchEnabled="True" 
-                          SelectedValuePath="Account"
-                          SelectedValue="{x:Bind ViewModel.Account,Mode=TwoWay}" Width="250">
+                          
+                          SelectedItem="{x:Bind _viewModel.Account, Mode=TwoWay}" Width="250">
 
                 </ComboBox>
                 <ComboBox x:Name="combosite" IsTextSearchEnabled="True"  
@@ -123,12 +123,20 @@
                           SelectedValue="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>
                     
                 </StackPanel>
-            <StackPanel Margin="20,0,0,0" Width="250" RelativePanel.RightOf="stack">
+            <StackPanel x:Name="refpanel" Margin="20,0,0,0" Width="250" RelativePanel.RightOf="stack">
                 <TextBox Header="Referance Number"></TextBox>
                 <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True" Text="{x:Bind _viewModel.ReferanceCode, Mode=TwoWay}" HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=OneWay}" DisplayMemberPath="DoctorName" SelectedItem="{x:Bind _viewModel.Doctor,Mode=TwoWay}" >
                     
                 </ComboBox>
+                <ComboBox ItemsSource="{x:Bind IAVM.Accounts, Mode=OneWay}" SelectedItem="{x:Bind  _viewModel.Account, Mode=TwoWay}" x:Name="AccountComboBox" MinWidth="250" Header="PaymentAccounts" DisplayMemberPath="AccountName"  SelectionChanged="AccountComboBox_SelectionChanged" >
+                    
+                </ComboBox>
                 
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="20,0,0,0" RelativePanel.RightOf="refpanel" >
+                <ComboBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" MinWidth="250" Header="Payment Accounts" ></ComboBox>
+                <TextBlock  Text="Payment Account" Margin="0,20,0,0"></TextBlock>
+                <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" Height="60"  Width="250"></ListBox>
             </StackPanel>
             
         </RelativePanel>

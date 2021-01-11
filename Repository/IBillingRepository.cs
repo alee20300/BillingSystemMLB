@@ -27,5 +27,9 @@
         IUserRepository Users { get; }
 
         IRoleRepostitory Roles { get; }
+
+        IAthorizeDetailRepository AthorizeDetails { get; }
+
+        IUsernameAndHashRepository UsernameAndHash { get; }
     }
 }
