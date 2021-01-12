@@ -9,5 +9,7 @@ namespace Domin.Data
 
         public int ClaimsId { get; set; }
         public string ClaimName { get; set; }
+
+        public ICollection<RoleClaims> RoleClaims { get; set; }
     }
 }

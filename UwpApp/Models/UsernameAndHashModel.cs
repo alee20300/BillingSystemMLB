@@ -9,6 +9,10 @@ namespace UwpApp.Models
 {
     public class UsernameAndHashModel
     {
+        public UsernameAndHashModel()
+        {
+
+        }
         public UsernameAndHashModel(UsernameAndHash usernameAndHasH)
         {
             UserName = usernameAndHasH.UserName;

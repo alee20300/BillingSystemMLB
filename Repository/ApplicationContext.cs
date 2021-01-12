@@ -57,6 +57,11 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new CountryConfiguration());
             modelBuilder.ApplyConfiguration(new CollectionSiteConfiguration());
             modelBuilder.ApplyConfiguration(new PaymentDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new AutorizeDetailConfiguration());
+            modelBuilder.ApplyConfiguration(new UsernameAndHashConfiguration());
+            modelBuilder.ApplyConfiguration(new ClaimConfiguration());
+
+            modelBuilder.ApplyConfiguration(new RoleClaimConfiguration());
 
             modelBuilder.ApplyConfiguration(new UserConfiguration());
 

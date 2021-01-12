@@ -1,17 +1,52 @@
-﻿using Swatinc;
+﻿using Domin.Data;
+using Swatinc;
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using UwpApp.Models;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel.Authentication
 {
-    public class AuthenticationViewModel
+    public class AuthenticationViewModel : BindableBase
     {
-        public async Task<AutorizeDetailModel> Authenticate
-             (string username, string password)
+        public AuthenticationViewModel()
         {
+            userName = "alee20300";
+        }
+
+        private string password;
+        private string userName;
+
+        public string UserName { get => userName; set => userName = value; }
+        public string Password
+        {
+            get => password;
+
+            set
+            {
+                if (password != value)
+                {
+                    password = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+
+
+
+        public async Task<AutorizeDetailModel> Authenticate
+             ()
+        {
+
+
+
+
+
             //get username and password hash from database.
-            var result = await GetHashForUser(username);
+            var result = await GetHashForUser(userName);
             //if username is not found, return isAuthentcated as false.
             if (result is null)
             {
@@ -24,8 +59,8 @@ namespace UwpApp.ViewModel.Authentication
             //if hash match returns true, fetch other details for return model.
             if (VerifyPassword(password, result.PasswordHash))
             {
-               
-                var queryResult = await App.Repository.AthorizeDetails.GetauthorrizedData(username);
+
+                var queryResult = await App.Repository.AthorizeDetails.GetauthorrizedData(userName);
                 queryResult.IsAuthenticated = true;
                 AutorizeDetailModel autorizeDetailModel = new AutorizeDetailModel(queryResult);
                 return autorizeDetailModel;
@@ -101,8 +136,21 @@ namespace UwpApp.ViewModel.Authentication
             try
             {
                 var result = await App.Repository.UsernameAndHash.GetUsernameAndHash(username);
-                UsernameAndHashModel usernameAndHashModel = new UsernameAndHashModel(result);
-                return usernameAndHashModel;
+                
+
+
+                if (result!=null)
+                {
+                    UsernameAndHashModel usernameAndHashModel = new UsernameAndHashModel(result);
+                    return usernameAndHashModel;
+                }
+                else
+                {
+                    UsernameAndHashModel usernameAndHashModel = new UsernameAndHashModel();
+                    return usernameAndHashModel;
+                }
+               
+                
             }
             catch (Exception)
             {
@@ -114,22 +162,30 @@ namespace UwpApp.ViewModel.Authentication
         /// updates the database with new password hash
         /// </summary>
         /// <param name="password">The new password</param>
-        //private async Task ChangeUserHash(string password, string username)
-        //{
-        //    var storedProcedure = "[dbo].[usp_ChangeUserHash]";
-        //    var parameter = new { PasswordHash = SwatIncCrypto.SwatIncSecurityCreateHashSHA512(password), UserName = username };
-        //    try
-        //    {
-        //        _ = await SelectInsertOrUpdateAsync<dynamic, dynamic>(storedProcedure, parameter);
-        //    }
-        //    catch (Exception)
-        //    {
+        public async Task ChangeUserHash(string password, string username)
+        {
 
-        //        throw;
-        //    }
-        //}
+            try
+            {
+                var result = await App.Repository.UsernameAndHash.GetUsernameAndHash(username);
+                result.PasswordHash = SwatIncCrypto.SwatIncSecurityCreateHashSHA512(password);
+                var save = await App.Repository.UsernameAndHash.UpsertAsync(result);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+            
+
+
+           
+        }
 
 
 
     }
+
+  
 }

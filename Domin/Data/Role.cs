@@ -10,10 +10,7 @@ namespace Domin.Data
         [StringLength(20)]
         public string RoleName { get; set; }
 
-        public int UserId { get; set; }
-
-        [ForeignKey("UserId")]
-        public User User { get; set; }
+        public ICollection<RoleClaims> RoleClaims { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
 
 
