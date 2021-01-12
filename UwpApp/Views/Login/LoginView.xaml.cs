@@ -1,4 +1,5 @@
 ﻿using UwpApp.ViewModel.Authentication;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -21,8 +22,10 @@ namespace UwpApp.Views.Login
 
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-
+            var rootframe = Window.Current.Content as Frame;
             authenticationViewModel.Authenticate();
+            
+            rootframe.Navigate(typeof(ShellView));
         }
     }
 }

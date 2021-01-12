@@ -16,7 +16,7 @@ namespace Repository.SQL
         public async Task<AutorizeDetail> GetauthorrizedData(string username)
         {
            
-                return await dbSet.FirstOrDefaultAsync(u => u.User.UserName == username);
+                return await dbSet.Include(u=>u.User).Include(c=>c.Claims).FirstOrDefaultAsync(u => u.User.UserName == username);
            
         }
     }

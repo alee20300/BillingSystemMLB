@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using UwpApp.Models;
 using UwpApp.ViewModel.Command;
+using ViewModels.Infrastructure.Common;
 
 namespace UwpApp.ViewModel.Authentication
 {
@@ -12,7 +13,7 @@ namespace UwpApp.ViewModel.Authentication
     {
         public AuthenticationViewModel()
         {
-            userName = "alee20300";
+            
         }
 
         private string password;
@@ -63,7 +64,10 @@ namespace UwpApp.ViewModel.Authentication
                 var queryResult = await App.Repository.AthorizeDetails.GetauthorrizedData(userName);
                 queryResult.IsAuthenticated = true;
                 AutorizeDetailModel autorizeDetailModel = new AutorizeDetailModel(queryResult);
+                
                 return autorizeDetailModel;
+
+
             }
             else
             {
@@ -157,6 +161,8 @@ namespace UwpApp.ViewModel.Authentication
                 throw;
             }
         }
+
+       
 
         /// <summary>
         /// updates the database with new password hash
