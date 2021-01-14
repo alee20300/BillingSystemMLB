@@ -183,7 +183,7 @@ namespace UwpApp.Views
             var acc = (Account)e.OriginalSource;
             
             
-            ViewModel.AddPaymentType(acc);
+            //ViewModel.AddPaymentType(acc);
         }
     }
 }

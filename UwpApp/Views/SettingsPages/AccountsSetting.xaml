@@ -10,20 +10,40 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Margin="20">
-        <StackPanel HorizontalAlignment="Left" MaxWidth="600" MinWidth="400">
-            <TextBlock Text="Add Account" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
 
-            <TextBox Width="400" Header="Account Id" Text="{x:Bind viewModel.id}" PlaceholderText="Account Id"> </TextBox>
-            <TextBox Width="400" Header="Account Name" Text="{x:Bind viewModel.AccountName}" PlaceholderText="Account Name"></TextBox>
-            <TextBox Width="400" Header="Account Code" Text="{x:Bind viewModel.AccountCode}"></TextBox>
-            <toolkit:DataGrid ItemsSource="{x:Bind avmodel.Accounts,Mode=TwoWay}">
+        <RelativePanel>
+            <StackPanel x:Name="Form" HorizontalAlignment="Left" MaxWidth="600" MinWidth="400">
+                <TextBlock Text="Add Account" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+                <TextBox Width="400" Header="Account Id" Text="{x:Bind viewModel.AccountId}" PlaceholderText="Account Id"></TextBox>
+                <TextBox Width="400" Header="Account Name" Text="{x:Bind viewModel.AccountName}" PlaceholderText="Account Name"></TextBox>
+                <TextBox Width="400" Header="Account Code" Text="{x:Bind viewModel.AccountCode}"></TextBox>
+            </StackPanel>
+
+            <toolkit:DataGrid x:Name="table" RelativePanel.Below="Form" ItemsSource="{x:Bind avmodel.Accounts,Mode=TwoWay}">
                 <toolkit:DataGrid.Columns>
-                    
+
                 </toolkit:DataGrid.Columns>
             </toolkit:DataGrid>
 
-        </StackPanel>
-        
+        </RelativePanel>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth ="700"/>
+
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Remove the next 3 lines for left-only navigation. -->
+                        <Setter Target="table.RelativePanel.(RightOf)" Value="Form"/>
+                     
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
 
 
     </Grid>

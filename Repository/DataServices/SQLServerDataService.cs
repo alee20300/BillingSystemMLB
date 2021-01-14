@@ -3,11 +3,10 @@ using Repository.DataServices.Base;
 
 namespace Repository.DataServices
 {
-    class SQLServerDataService : DataServiceBase
+    public class SQLServerDataService : DataServiceBase
     {
-
         public SQLServerDataService(string connectionString)
-          : base(new SQLServerDb(connectionString))
+            : base(new SQLServerDb(connectionString))
         {
         }
     }

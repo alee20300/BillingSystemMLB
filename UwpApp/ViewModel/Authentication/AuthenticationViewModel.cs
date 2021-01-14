@@ -162,7 +162,9 @@ namespace UwpApp.ViewModel.Authentication
             }
         }
 
-       
+
+        
+
 
         /// <summary>
         /// updates the database with new password hash

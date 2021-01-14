@@ -67,7 +67,7 @@ namespace UwpApp.Configuration
 
         public string SQLServerConnectionString
         {
-            get => GetSettingsValue("SQLServerConnectionString", @"Data Source=.\SQLExpress;Initial Catalog=VanArsdelDb;Integrated Security=SSPI");
+            get => GetSettingsValue("SQLServerConnectionString", "Data Source = DESKTOP - EOG1FMN\\MSSQLSERVER1; Initial Catalog=Billing1; User Id=sa; Password=sa@12345;");
             set => SetSettingsValue("SQLServerConnectionString", value);
         }
 

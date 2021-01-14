@@ -1,4 +1,8 @@
 ﻿using Domin.Models;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using UwpApp.Models;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
@@ -21,10 +25,10 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
 
 
 
-        public Account Account { get; set; }
+        public Account Account  { get; set; }
 
 
-        public int id
+        public int AccountId
         {
             get => Account.AccountId;
             set
@@ -64,6 +68,17 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
             }
         }
 
+        public ICommand AddAccount => new RelayCommand<Account>(AddAccountAsync);
+
+        public void AddAccountAsync(Account account)
+        {
+            var result =  App.Repository.Account.UpsertAsync(account);
+       
+
+
+        }
+
     }
 
 }
+

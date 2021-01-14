@@ -124,11 +124,11 @@
                     
                 </StackPanel>
             <StackPanel x:Name="refpanel" Margin="20,0,0,0" Width="250" RelativePanel.RightOf="stack">
-                <TextBox Header="Referance Number"></TextBox>
-                <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True" Text="{x:Bind _viewModel.ReferanceCode, Mode=TwoWay}" HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=OneWay}" DisplayMemberPath="DoctorName" SelectedItem="{x:Bind _viewModel.Doctor,Mode=TwoWay}" >
+                <TextBox Header="Referance Number"  Text="{x:Bind ViewModel.ReferanceCode, Mode=TwoWay}"></TextBox>
+                <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True"  HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=TwoWay}" DisplayMemberPath="DoctorName" SelectedValuePath="Doctor" SelectedValue="{x:Bind  ViewModel.Doctor, Mode=TwoWay}" >
                     
                 </ComboBox>
-                <ComboBox ItemsSource="{x:Bind IAVM.Accounts, Mode=OneWay}" SelectedItem="{x:Bind  _viewModel.Account, Mode=TwoWay}" x:Name="AccountComboBox" MinWidth="250" Header="PaymentAccounts" DisplayMemberPath="AccountName"  SelectionChanged="AccountComboBox_SelectionChanged" >
+                <ComboBox ItemsSource="{x:Bind IAVM.Accounts, Mode=OneWay}" IsTextSearchEnabled="True" SelectedValuePath="Account" SelectedValue="{x:Bind  ViewModel.Account, Mode=TwoWay}" x:Name="AccountComboBox" MinWidth="250" Header="PaymentAccounts" DisplayMemberPath="AccountName"  SelectionChanged="AccountComboBox_SelectionChanged" >
                     
                 </ComboBox>
                 

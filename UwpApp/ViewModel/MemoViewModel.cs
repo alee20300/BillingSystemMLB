@@ -388,10 +388,10 @@ namespace UwpApp.ViewModel
             get => Memo.Account;
             set
             {
-                if (Memo.Account != value)
+                if (value != Memo.Account)
                 {
                     Memo.Account = value;
-                    OnPropertyChanged();
+                    
                 }
             }
         }
@@ -415,9 +415,9 @@ namespace UwpApp.ViewModel
             get => Memo.Doctor;
             set
             {
-                if (value != Memo.Doctor)
+                if (Memo.Doctor != value)
                 {
-                    Doctor = value;
+                   Memo. Doctor = value;
                     OnPropertyChanged();
 
                 }
@@ -427,17 +427,19 @@ namespace UwpApp.ViewModel
 
 
 
-        //public int DoctorID
-        //{ get=>Memo.DoctorId;
-        //    set
-        //    {
-        //        if (value!=Memo.DoctorId)
-        //        {
-        //            value = Memo.DoctorId;
-        //            OnPropertyChanged();
+        public int DoctorID
+        {
+            get => Memo.Doctor.DoctorId;
+            set
+            {
+                if (value != Memo.Doctor.DoctorId)
+                {
+                    value = Memo.Doctor.DoctorId;
+                    OnPropertyChanged();
 
-        //        }
-        //    } }
+                }
+            }
+        }
 
 
 
