@@ -11,6 +11,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <BoldReports:ReportViewer Name="ReportViewer"/>
+        <BoldReports:ReportViewer IsPrintPreviewEnabled="True" Name="ReportViewer"/>
     </Grid>
 </Page>

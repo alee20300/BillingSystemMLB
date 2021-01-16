@@ -54,8 +54,9 @@ namespace UwpApp.Views
             this.ReportViewer.LoadReport(reportStream);
             this.ReportViewer.DataSources.Add(new ReportDataSource { Name = "PatientInfo", Value = Reports.LoadReport() });
             this.ReportViewer.DataSources.Add(new ReportDataSource { Name = "MemoDetails", Value = Reports.loadmemodetail() });
-
+            
             this.ReportViewer.RefreshReport();
+            
         }
     }
 }

@@ -125,6 +125,18 @@ namespace UwpApp.Views
             try
             {
                 await ViewModel.SaveMemoAsync();
+                if (AppWindow == null)
+                {
+                    AppWindow = await AppWindow.TryCreateAsync();
+                    AppWindow.Closed += delegate { AppWindow = null; appWindowFrame.Content = null; };
+                    appWindowFrame.Navigate(typeof(report), ViewModel.Memo);
+                    ElementCompositionPreview.SetAppWindowContent(AppWindow, appWindowFrame);
+
+                }
+
+                // Now show the window
+                await AppWindow.TryShowAsync();
+
             }
             catch (MemoSavingException ex)
             {
@@ -138,20 +150,9 @@ namespace UwpApp.Views
                 await dialog.ShowAsync();
             }
 
-            if (AppWindow == null)
-            {
-                // Create a new window
-                AppWindow = await AppWindow.TryCreateAsync();
-                // Make sure we release the reference to this window, and release XAML resources, when it's closed
-                AppWindow.Closed += delegate { AppWindow = null; appWindowFrame.Content = null; };
-                // Navigate the frame to the page we want to show in the new window
-                appWindowFrame.Navigate(typeof(report), ViewModel.Memo);
-                // Attach the XAML content to our window
-                ElementCompositionPreview.SetAppWindowContent(AppWindow, appWindowFrame);
-            }
-
-            // Now show the window
-            await AppWindow.TryShowAsync();
+           
+            
+            
         }
 
         private void AddServiceButton_Click(object sender, RoutedEventArgs e)

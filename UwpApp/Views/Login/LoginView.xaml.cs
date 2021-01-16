@@ -1,4 +1,5 @@
-﻿using UwpApp.ViewModel.Authentication;
+﻿using UwpApp.Models;
+using UwpApp.ViewModel.Authentication;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -23,9 +24,19 @@ namespace UwpApp.Views.Login
         private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
             var rootframe = Window.Current.Content as Frame;
-            authenticationViewModel.Authenticate();
-            
+
+
+            //AutorizeDetailModel result =
+                authenticationViewModel.Authenticate();
+
+            //if (result!= null)
+            //{
             rootframe.Navigate(typeof(ShellView));
+            //}
+            //else
+            //{ }
+
+
         }
     }
 }
