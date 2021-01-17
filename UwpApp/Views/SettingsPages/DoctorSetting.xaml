@@ -4,21 +4,27 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views.SettingsPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls"  xmlns:controls="using:Syncfusion.UI.Xaml.Controls.Input"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     
     <Grid Margin="20">
-        <StackPanel  HorizontalAlignment="Left">
-            <TextBox  Width="400" Text="{x:Bind viewModel.Id}" Header="Doctor Id" PlaceholderText="Doctor Id"></TextBox>
-            <TextBox Width="400" Text="{x:Bind viewModel.DoctorName}" Header="Doctor Name" PlaceholderText="Doctor Name"></TextBox>
-            
-        </StackPanel>
+        
+        <toolkit:Expander>
+            <StackPanel  HorizontalAlignment="Left">
+                <TextBox  Width="400" Text="{x:Bind viewModel.Id}" Header="Doctor Id" PlaceholderText="Doctor Id"></TextBox>
+                <TextBox Width="400" Text="{x:Bind viewModel.DoctorName}" Header="Doctor Name" PlaceholderText="Doctor Name"></TextBox>
+
+            </StackPanel>
+
+        </toolkit:Expander>
         
         
-        
-        
+
+
+
+
 
     </Grid>
 </Page>

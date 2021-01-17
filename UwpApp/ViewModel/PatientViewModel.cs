@@ -4,11 +4,12 @@ using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Threading.Tasks;
+using UwpApp.Validation;
 using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel
 {
-    public class PatientViewModel : BindableBase
+    public class PatientViewModel : ValidatableBindableBase
     {
         public SaveCommand SaveCommand { get; set; }
 
@@ -16,7 +17,7 @@ namespace UwpApp.ViewModel
         public PatientViewModel(Patient patient = null)
         {
             Patient = patient ?? new Patient();
-
+            PatientValidation = new PatientValidation();
             SaveCommand = new SaveCommand(this);
             Task.Run(LoadMemoAsync);
 
@@ -24,7 +25,7 @@ namespace UwpApp.ViewModel
         }
 
 
-
+        public PatientValidation PatientValidation { get; set; }
 
         private void Memos_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
@@ -83,6 +84,7 @@ namespace UwpApp.ViewModel
                     Patient.PatientName = value;
                     IsModified = true;
                     OnPropertyChanged();
+                    validate();
 
                 }
             }
@@ -413,6 +415,16 @@ namespace UwpApp.ViewModel
                 }
                 Isloading = false;
             });
+        }
+
+        public void validate()
+        {
+
+            var result = PatientValidation.Validate(this);
+            foreach (var error in result.Errors)
+            {
+                SetError(error.PropertyName, error.ErrorMessage);
+            }
         }
     }
 }
