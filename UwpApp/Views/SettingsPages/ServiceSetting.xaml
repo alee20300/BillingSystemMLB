@@ -24,17 +24,24 @@
                         <x:String>Yes</x:String>
                     </ComboBox>
                 </RelativePanel>
+            </StackPanel>
+            <StackPanel RelativePanel.RightOf="formStack" Margin="24" Width="400" >
                 <TextBox Header="Rate" ></TextBox>
                 <TextBox Header="Lis Code" PlaceholderText="LIS Code" ></TextBox>
                 <TextBox  Header="Insuarance Code" PlaceholderText="Aasandha Code"></TextBox>
             </StackPanel>
-            <toolkit:DataGrid RelativePanel.RightOf="formStack" ItemsSource="{x:Bind viewModel.Serviceslist}">
-                <toolkit:DataGrid.Columns>
-                    <toolkit:DataGridTextColumn
+
+            <toolkit:Expander RelativePanel.Below="formStack">
+
+                <toolkit:DataGrid Height="600"  ItemsSource="{x:Bind viewModel.Serviceslist}">
+                    <toolkit:DataGrid.Columns>
+                        <toolkit:DataGridTextColumn
                         />
-                </toolkit:DataGrid.Columns>
-                
-            </toolkit:DataGrid>
+                    </toolkit:DataGrid.Columns>
+
+                </toolkit:DataGrid>
+
+            </toolkit:Expander>
             
         </RelativePanel>
         

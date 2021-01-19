@@ -19,8 +19,8 @@ namespace UwpApp.ViewModel.ReportsViewModel
 
         public int QTY => memoDetail.Qty;
         public decimal Rate => memoDetail.Rate;
-        public decimal Account => memoDetail.AccountAmmount;
-        public decimal Patient => memoDetail.PatientAmmount;
+        //public decimal Account => memoDetail.AccountAmmount;
+        //public decimal Patient => memoDetail.PatientAmmount;
 
     }
 }

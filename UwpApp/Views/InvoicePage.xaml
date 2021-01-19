@@ -32,7 +32,7 @@
 
                 </CalendarDatePicker>
 
-                <Button Content="Load Memos" VerticalAlignment="Bottom"  CornerRadius="3" Command="{x:Bind InvoiceViewModel.LoadAccount}"></Button>
+                <!--<Button Content="Load Memos" VerticalAlignment="Bottom"  CornerRadius="3" Command="{x:Bind InvoiceViewModel.LoadAccount}"></Button>-->
             </StackPanel>
         </StackPanel>
 
@@ -73,9 +73,9 @@
 
                             <CheckBox Grid.Column="0" IsChecked="{x:Bind IsPaid , Mode=OneWay}" ></CheckBox>
                             <TextBlock Grid.Column="1" Text="{x:Bind Address }" ></TextBlock>
-                            <TextBlock Grid.Column="2" Text="{x:Bind AccountId , Mode=OneWay}" ></TextBlock>
+                            <!--<TextBlock Grid.Column="2" Text="{x:Bind AccountId , Mode=OneWay}" ></TextBlock>
                             <TextBlock Grid.Column="3" Text="{x:Bind AccountAmmount , Mode=OneWay}" ></TextBlock>
-                            <TextBlock Grid.Column="4" Text="{x:Bind PatientAmmount, Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="4" Text="{x:Bind PatientAmmount, Mode=OneWay}" ></TextBlock>-->
 
 
 

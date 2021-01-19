@@ -418,7 +418,7 @@ namespace UwpApp.ViewModel
         }
 
         public void validate()
-        {
+       {
 
             var result = PatientValidation.Validate(this);
             foreach (var error in result.Errors)

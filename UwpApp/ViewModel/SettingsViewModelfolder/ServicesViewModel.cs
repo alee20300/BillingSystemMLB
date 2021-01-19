@@ -1,4 +1,6 @@
 ﻿using Domin.Models;
+using System.Windows.Input;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
@@ -141,5 +143,14 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
             }
         }
 
+        public ICommand Add => new RelayCommand<Service>(AddAsync);
+
+        public void AddAsync(Service service)
+        {
+            var result = App.Repository.Service.UpsertAsync(service);
+
+
+
+        }
     }
 }

@@ -28,10 +28,10 @@ namespace Domin.Configuration
                 .HasMaxLength(100);
             builder.Property(m => m.Rate)
                 .HasColumnType("decimal(5, 2)");
-            builder.Property(m => m.PatientAmmount)
-                .HasColumnType("decimal(5, 2)");
-            builder.Property(m => m.AccountAmmount)
-                .HasColumnType("decimal(5, 2)");
+            //builder.Property(m => m.PatientAmmount)
+            //    .HasColumnType("decimal(5, 2)");
+            //builder.Property(m => m.AccountAmmount)
+            //    .HasColumnType("decimal(5, 2)");
 
 
         }

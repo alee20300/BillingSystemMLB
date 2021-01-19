@@ -2,14 +2,12 @@
 using Domin.Models;
 using Microsoft.Toolkit.Uwp.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using UwpApp.ViewModel.Command;
+using UwpApp.ViewModel.SettingsViewModelfolder;
 
 namespace UwpApp.ViewModel
 {
@@ -20,22 +18,30 @@ namespace UwpApp.ViewModel
         {
             Memo = memo;
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
+            PaymentTypes = new ObservableCollection<PaymentType>();
+           
+
         }
-        public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
-        public async void loadAccount(string accountName)
-        {
-            var account = await App.Repository.Account.GetAccountbyIdInt(accountName);
-            await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-            {
-                Account = account;
-            });
-        }
-        
-        public void AddPaymentType(Account account) 
-        {
+        //public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
+        //public async void loadAccount(string accountName)
+        //{
+        //    var account = await App.Repository.Account.GetAccountbyIdInt(accountName);
+        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
+        //    {
+        //        Account = account;
+        //    });
+        //}
+
+      
+
+        public void AddPaymentType(AccountViewModel account) 
+     {
+            var Acc = account.Account;
            PaymentType acccunt = new PaymentType();
-            PaymentType.Account = Account;         
-            PaymentTypes.Add(PaymentType);
+            acccunt.Account = Acc;
+            acccunt.AccountName = Acc.AccountName;
+            PaymentTypes.Add(acccunt);
+
         }
 
         public PaymentType PaymentType { get; set; }
@@ -138,54 +144,54 @@ namespace UwpApp.ViewModel
         }
 
 
-        public string ReferanceCode
-        {
-            get => Memo.ReferaceNo;
-            set
-            {
+        //public string ReferanceCode
+        //{
+        //    get => Memo.ReferaceNo;
+        //    set
+        //    {
 
-                if (Memo.ReferaceNo != value)
-                {
-                    Memo.ReferaceNo = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-
-
-
-        private bool _ispaid;
-
-        public bool Ispaid
-        {
-            get => _ispaid;
-            set
-            {
-                if (_ispaid != value)
-                {
-                    Ispaid = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        //        if (Memo.ReferaceNo != value)
+        //        {
+        //            Memo.ReferaceNo = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
 
 
 
 
-        public int CollectionSiteId
-        {
-            get => Memo.CollectionSiteId;
-            set
-            {
-                if (Memo.CollectionSiteId != value)
-                {
-                    Memo.CollectionSiteId = value;
-                    OnPropertyChanged();
+        //private bool _ispaid;
 
-                }
-            }
-        }
+        //public bool Ispaid
+        //{
+        //    get => _ispaid;
+        //    set
+        //    {
+        //        if (_ispaid != value)
+        //        {
+        //            Ispaid = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
+
+
+
+
+        //public int CollectionSiteId
+        //{
+        //    get => Memo.CollectionSiteId;
+        //    set
+        //    {
+        //        if (Memo.CollectionSiteId != value)
+        //        {
+        //            Memo.CollectionSiteId = value;
+        //            OnPropertyChanged();
+
+        //        }
+        //    }
+        //}
 
         public bool IsNewOrder => Memo.MemoId == 0;
 
@@ -247,8 +253,8 @@ namespace UwpApp.ViewModel
                 Memo.MemoDetails = MemoDetails.ToList();
             }
 
-            OnPropertyChanged(nameof(PatientTotal));
-            OnPropertyChanged(nameof(AccountAmmount));
+            //OnPropertyChanged(nameof(PatientTotal));
+            //OnPropertyChanged(nameof(AccountAmmount));
             OnPropertyChanged(nameof(Rate));
             //OnPropertyChanged(nameof(Tax));
             //OnPropertyChanged(nameof(GrandTotal));
@@ -285,53 +291,53 @@ namespace UwpApp.ViewModel
             }
 
         }
-        public DateTime CreatedOn
-        {
-            get => Memo.CreatatedOn;
-            set
-            {
-                if (value != Memo.CreatatedOn
-                    )
-                {
-                    Memo.CreatatedOn = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        //public DateTime CreatedOn
+        //{
+        //    get => Memo.CreatatedOn;
+        //    set
+        //    {
+        //        if (value != Memo.CreatatedOn
+        //            )
+        //        {
+        //            Memo.CreatatedOn = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
 
-        public Decimal PatientTotal
-        {
-            get
-            {
-                return MemoDetails.Sum(m => m.PatientAmmount);
-            }
-            set
-            {
-                if (value != Memo.PatientAmmount)
-                {
-                    Memo.PatientAmmount = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        //public Decimal PatientTotal
+        //{
+        //    get
+        //    {
+        //        return MemoDetails.Sum(m => m.PatientAmmount);
+        //    }
+        //    set
+        //    {
+        //        if (value != Memo.PatientAmmount)
+        //        {
+        //            Memo.PatientAmmount = value;
+        //            OnPropertyChanged();
+        //        }
+        //    }
+        //}
 
-        public Decimal AccountAmmount
-        {
-            get
-            {
-                return MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount);
-            }
+        //public Decimal AccountAmmount
+        //{
+        //    get
+        //    {
+        //        return MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount);
+        //    }
 
-            set
-            {
-                if (value != Memo.AccountAmmount)
-                {
-                    AccountAmmount = value;
-                    OnPropertyChanged();
+        //    set
+        //    {
+        //        if (value != Memo.AccountAmmount)
+        //        {
+        //            AccountAmmount = value;
+        //            OnPropertyChanged();
 
-                }
-            }
-        }
+        //        }
+        //    }
+        //}
 
         public decimal Rate
         {
@@ -385,30 +391,32 @@ namespace UwpApp.ViewModel
 
         public Account Account
         {
-            get => Memo.Account;
+            get => Account;
             set
             {
-                if (value != Memo.Account)
+                if (value != Account)
                 {
-                    Memo.Account = value;
+                   Account = value;
+                    OnPropertyChanged();
                     
+
                 }
             }
         }
 
 
-        public int AccountId
-        {
-            get => Memo.AccountId;
+        //public int AccountId
+        //{
+        //    get => Memo.AccountId;
 
-            set
-            {
-                if (Memo.AccountId != value)
-                {
-                    Memo.AccountId = value;
-                }
-            }
-        }
+        //    set
+        //    {
+        //        if (Memo.AccountId != value)
+        //        {
+        //            Memo.AccountId = value;
+        //        }
+        //    }
+        //}
 
         public Doctor Doctor
         {

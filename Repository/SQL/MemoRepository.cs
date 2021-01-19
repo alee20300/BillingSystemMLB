@@ -31,13 +31,13 @@ namespace Repository.SQL
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
-        public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
-        {
-            return await dbSet.Where(m => m.AccountId == Account &&
-            m.COllectedDate >= from && m.COllectedDate <= to &&
-            m.IsPaid == false
-            ).ToListAsync();
-        }
+        //public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
+        //{
+        //    return await dbSet.Where(m => m.AccountId == Account &&
+        //    m.COllectedDate >= from && m.COllectedDate <= to &&
+        //    m.IsPaid == false
+        //    ).ToListAsync();
+        //}
 
         public Memo getreposrt(int MemoId)
         {
@@ -49,34 +49,34 @@ namespace Repository.SQL
                ;
         }
 
-        public async Task<Memo> Update(Memo memo)
-        {
-            var existing = await dbSet.Include(p => p.Patient).Include(m => m.MemoDetails)
-                .FirstOrDefaultAsync(_memo => _memo.MemoId == memo.MemoId);
-            //var account = await _db.Accounts.FirstOrDefaultAsync(a => a.Id == memo.Account.Id);
+        //public async Task<Memo> Update(Memo memo)
+        //{
+        //    var existing = await dbSet.Include(p => p.Patient).Include(m => m.MemoDetails)
+        //        .FirstOrDefaultAsync(_memo => _memo.MemoId == memo.MemoId);
+        //    //var account = await _db.Accounts.FirstOrDefaultAsync(a => a.Id == memo.Account.Id);
 
-            var state1 = (_db.ChangeTracker.Entries());
-            if (null == existing)
+        //    var state1 = (_db.ChangeTracker.Entries());
+        //    if (null == existing)
 
-            {
-                memo.PatientId = 0;
-                memo.Patient.PatientId = 0;
-                memo.MemoId = 0;
-                memo.Account.AccountId = 0;
-                _db.Memos.Add(memo);
+        //    {
+        //        memo.PatientId = 0;
+        //        memo.Patient.PatientId = 0;
+        //        memo.MemoId = 0;
+        //        memo.Account.AccountId = 0;
+        //        _db.Memos.Add(memo);
 
-            }
-            else
-            {
-                _db.Entry(existing).CurrentValues.SetValues(memo);
-            }
+        //    }
+        //    else
+        //    {
+        //        _db.Entry(existing).CurrentValues.SetValues(memo);
+        //    }
 
-            //_db.Update(memo.Patient);
+        //    //_db.Update(memo.Patient);
 
 
-            var state = (_db.ChangeTracker.Entries());
-            await _db.SaveChangesAsync();
-            return memo;
-        }
+        //    var state = (_db.ChangeTracker.Entries());
+        //    await _db.SaveChangesAsync();
+        //    return memo;
+        //}
     }
 }

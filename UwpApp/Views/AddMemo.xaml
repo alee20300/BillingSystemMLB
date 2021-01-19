@@ -107,36 +107,35 @@
 
                 <!--<ComboBox Header="Account" ItemsSource="{x:Bind  IAVM.Atolls,Mode=OneWay}" SelectedValuePath="Id" SelectedItem="{x:Bind _viewModel.AccountId,Mode=TwoWay}"  DisplayMemberPath="AtollName"/>-->
                 <!--<TextBox Header="Account" Text="{x:Bind ViewModel.Memo.Account.Id,Mode=TwoWay}" PlaceholderText="Account"></TextBox>-->
-                <CalendarDatePicker  Width="250" Header="Collected Date"  Date="{x:Bind ViewModel.COllectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></CalendarDatePicker>
+                <!--<CalendarDatePicker  Width="250" Header="Collected Date"  Date="{x:Bind ViewModel.COllectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></CalendarDatePicker>-->
 
-                <ComboBox Header="Account"  ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
+                <!--<ComboBox Header="Account"  ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" 
                            IsTextSearchEnabled="True" 
-                          
-                          SelectedItem="{x:Bind _viewModel.Account, Mode=TwoWay}" Width="250">
-
-                </ComboBox>
-                <ComboBox x:Name="combosite" IsTextSearchEnabled="True"  
+                          SelectedItem="{x:Bind _viewModel.Account, Mode=TwoWay}"
+                          Width="250">--><!--
+                </ComboBox>-->
+                <!--<ComboBox x:Name="combosite" IsTextSearchEnabled="True"  
                           Width="250" Header="Collection Site" 
                           ItemsSource="{x:Bind IAVM.CollectionSites ,
                     Mode=OneWay}" DisplayMemberPath="CollectionSiteName" 
                           SelectedValuePath="CollectionSIteId"  
-                          SelectedValue="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>
-                    
-                </StackPanel>
-            <StackPanel x:Name="refpanel" Margin="20,0,0,0" Width="250" RelativePanel.RightOf="stack">
-                <TextBox Header="Referance Number"  Text="{x:Bind ViewModel.ReferanceCode, Mode=TwoWay}"></TextBox>
+                          SelectedValue="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>-->
+                <!--<TextBox Header="Referance Number"  Text="{x:Bind ViewModel.ReferanceCode, Mode=TwoWay}"></TextBox>-->
                 <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True"  HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=TwoWay}" DisplayMemberPath="DoctorName" SelectedValuePath="Doctor" SelectedValue="{x:Bind  ViewModel.Doctor, Mode=TwoWay}" >
-                    
+
                 </ComboBox>
-                <ComboBox ItemsSource="{x:Bind IAVM.Accounts, Mode=OneWay}" IsTextSearchEnabled="True" SelectedValuePath="Account" SelectedValue="{x:Bind  ViewModel.Account, Mode=TwoWay}" x:Name="AccountComboBox" MinWidth="250" Header="PaymentAccounts" DisplayMemberPath="AccountName"  SelectionChanged="AccountComboBox_SelectionChanged" >
-                    
-                </ComboBox>
-                
             </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="20,0,0,0" RelativePanel.RightOf="refpanel" >
-                <ComboBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}" DisplayMemberPath="AccountName" MinWidth="250" Header="Payment Accounts" ></ComboBox>
+            
+            <StackPanel Orientation="Vertical" Margin="20,0,0,0" RelativePanel.RightOf="stack" >
+                <AutoSuggestBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}"
+                              DisplayMemberPath="AccountName"    
+                                TextMemberPath="AccountName"
+                          SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                         
+                           MinWidth="250" Header="Payment Accounts" >
+                </AutoSuggestBox>
                 <TextBlock  Text="Payment Account" Margin="0,20,0,0"></TextBlock>
-                <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" Height="60"  Width="250"></ListBox>
+                <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" DisplayMemberPath="AccountName" Height="100"  Width="250"></ListBox>
             </StackPanel>
             
         </RelativePanel>
@@ -343,7 +342,7 @@
                                 Padding="0,0,0,0"
                                 
                                 Text="Account" />
-                <TextBlock 
+                <!--<TextBlock 
                     Grid.Column="2"
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
@@ -362,7 +361,7 @@
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
                     HorizontalAlignment="Right"
-                   Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}"/>
+                   Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}"/>-->
                 <Border
                                 Grid.Row="3"
                                 Grid.Column="1"

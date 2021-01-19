@@ -18,11 +18,11 @@ namespace Domin.Configuration
             builder.Property(s => s.Rate)
                 .HasColumnType("decimal(5, 2)");
 
-            builder.Property(s => s.PatientAmmount)
-                .HasColumnType("decimal(5, 2)");
+            //builder.Property(s => s.PatientAmmount)
+            //    .HasColumnType("decimal(5, 2)");
 
-            builder.Property(s => s.AccountAmmount)
-                .HasColumnType("decimal(5, 2)");
+            //builder.Property(s => s.AccountAmmount)
+            //    .HasColumnType("decimal(5, 2)");
         }
     }
 }

@@ -5,7 +5,7 @@
     xmlns:local="using:UwpApp.Views.SettingsPages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" 
+     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:models="using:Domin.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -13,36 +13,29 @@
 
         <RelativePanel>
             <StackPanel x:Name="Form" HorizontalAlignment="Left" MaxWidth="600" MinWidth="400">
-                <TextBlock Text="Add Account" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
-                <TextBox Width="400" Header="Account Id" Text="{x:Bind viewModel.AccountId}" PlaceholderText="Account Id"></TextBox>
-                <TextBox Width="400" Header="Account Name" Text="{x:Bind viewModel.AccountName}" PlaceholderText="Account Name"></TextBox>
-                <TextBox Width="400" Header="Account Code" Text="{x:Bind viewModel.AccountCode}"></TextBox>
+                <TextBlock Text="Account Settings" Style="{StaticResource HeaderTextBlockStyle}"></TextBlock>
+                
+                <TextBox Width="400" Header="Account Id" Text="{x:Bind viewModel.AccountId,Mode=TwoWay}" PlaceholderText="Account Id"></TextBox>
+                <TextBox Width="400" Header="Account Name" Text="{x:Bind viewModel.AccountName, Mode=TwoWay}" PlaceholderText="Account Name"></TextBox>
+                <TextBox Width="400" Header="Account Code" Text="{x:Bind viewModel.AccountCode,Mode=TwoWay}"></TextBox>
             </StackPanel>
+            <toolkit:Expander Margin="0,20,0,0" x:Name="MainTable" RelativePanel.Below="Form"  HorizontalAlignment="Stretch" >
+                <toolkit:DataGrid  AutoGenerateColumns="False" ItemsSource="{x:Bind avmodel.Accounts}">
+                    <toolkit:DataGrid.Columns>
+                        <toolkit:DataGridTextColumn Header="ID" Binding="{Binding AccountId}"/>
+                        <toolkit:DataGridTextColumn Header="Account Name" Binding="{Binding AccountName}"/>
+                        <toolkit:DataGridTextColumn Header="Account Code" Binding="{Binding AccountCode}"/>
+                    </toolkit:DataGrid.Columns>
 
-            <toolkit:DataGrid x:Name="table" RelativePanel.Below="Form" ItemsSource="{x:Bind avmodel.Accounts,Mode=TwoWay}">
-                <toolkit:DataGrid.Columns>
+                </toolkit:DataGrid>
 
-                </toolkit:DataGrid.Columns>
-            </toolkit:DataGrid>
+            </toolkit:Expander >
+           
+          
 
         </RelativePanel>
 
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger
-                        MinWindowWidth ="700"/>
-
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!-- Remove the next 3 lines for left-only navigation. -->
-                        <Setter Target="table.RelativePanel.(RightOf)" Value="Form"/>
-                     
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
+      
 
 
 

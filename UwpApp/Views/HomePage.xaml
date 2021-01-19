@@ -133,10 +133,10 @@
                                             <TextBlock Margin="20,0,0,0" Text="{x:Bind  Address ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
                                             <TextBlock Margin="20,0,0,0" Text="{x:Bind  MemoDate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
 </StackPanel>
-                                        <StackPanel Grid.Row="0" Grid.Column="1">
+                                        <!--<StackPanel Grid.Row="0" Grid.Column="1">
                                             <TextBlock Margin="0,20,0,0" Text="{x:Bind  AccountAmmount ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
                                             <TextBlock  Text="{x:Bind  PatientAmmount ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
-                                        </StackPanel>
+                                        </StackPanel>-->
                                         </Grid>
                                             
 

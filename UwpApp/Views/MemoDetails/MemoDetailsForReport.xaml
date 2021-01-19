@@ -39,7 +39,7 @@
                 <StackPanel>
                     <TextBlock Text="{x:Bind report.memo.PatientName , Mode=OneWay}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
                     <TextBlock Text="{x:Bind report.memo.Address, Mode=OneWay}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
-                    <TextBlock Text="{x:Bind report.memo.Account}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                    <!--<TextBlock Text="{x:Bind report.memo.Account}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>-->
                     <TextBlock Text="{x:Bind report.memo.MemoDate}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
 
                 </StackPanel>

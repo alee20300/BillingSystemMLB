@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using UwpApp.ViewModel;
+using UwpApp.ViewModel.SettingsViewModelfolder;
 using Windows.UI.WindowManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -98,6 +99,7 @@ namespace UwpApp.Views
         private void ServiceSuggection_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
         {
 
+          
             if (args.SelectedItem != null)
             {
 
@@ -106,11 +108,11 @@ namespace UwpApp.Views
 
                 if (ViewModel.NewMemoDetail == null)
                 {
-                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser, 1);
+                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser, ViewModel);
                 }
                 else
                 {
-                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser, 1);
+                    ViewModel.NewMemoDetail = new MemoDetailViewModel(ser, ViewModel);
                 }
 
                 ViewModel.NewMemoDetail.Service = selectedService;
@@ -178,13 +180,24 @@ namespace UwpApp.Views
             ViewModel.MemoDetails.Remove((sender as FrameworkElement).DataContext as MemoDetail);
         }
 
-        private void AccountComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-       {
+       
+            
+      
 
-            var acc = (Account)e.OriginalSource;
-            
-            
-            //ViewModel.AddPaymentType(acc);
+        private void AutoSuggestBox_SuggestionChosen(AutoSuggestBox sender, AutoSuggestBoxSuggestionChosenEventArgs args)
+        {
+
+           
+
+            if (args.SelectedItem != null)
+            {
+
+                var selectedService = args.SelectedItem as AccountViewModel;
+                
+                
+                ViewModel.AddPaymentType(selectedService);
+
+            }
         }
     }
 }

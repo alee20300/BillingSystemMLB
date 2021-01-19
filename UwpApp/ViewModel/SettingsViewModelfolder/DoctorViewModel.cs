@@ -1,4 +1,6 @@
 ﻿using Domin.Models;
+using System.Windows.Input;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel.SettingsViewModelfolder
 {
@@ -57,6 +59,16 @@ namespace UwpApp.ViewModel.SettingsViewModelfolder
                     OnPropertyChanged();
                 }
             }
+        }
+
+        public ICommand Add => new RelayCommand<Doctor>(AddAsync);
+
+        public void AddAsync(Doctor doctor)
+        {
+            var result = App.Repository.Doctor.UpsertAsync(doctor);
+
+
+
         }
 
     }

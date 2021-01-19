@@ -39,11 +39,11 @@ namespace Domin.Models
         public string ReferaceNo { get; set; }
         public decimal Rate { get; set; }
 
-        public decimal PatientAmmount { get; set; }
+        //public decimal PatientAmmount { get; set; }
 
-        public decimal AccountAmmount { get; set; }
+        //public decimal AccountAmmount { get; set; }
 
-        public int CollectionSiteId { get; set; }
+        //public int CollectionSiteId { get; set; }
 
         public bool IsPaid { get; set; }
 
@@ -56,9 +56,9 @@ namespace Domin.Models
 
 
         #region Navigation
-        [ForeignKey("AccountId")]
-        public Account Account { get; set; }
-        public int AccountId { get; set; }
+        //[ForeignKey("AccountId")]
+        //public Account Account { get; set; }
+        //public int AccountId { get; set; }
 
       
 
