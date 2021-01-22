@@ -1,4 +1,5 @@
-﻿using Domin.Models;
+﻿using Domin.Data;
+using Domin.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -31,13 +32,45 @@ namespace Repository.SQL
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
-        //public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
-        //{
-        //    return await dbSet.Where(m => m.AccountId == Account &&
-        //    m.COllectedDate >= from && m.COllectedDate <= to &&
-        //    m.IsPaid == false
-        //    ).ToListAsync();
-        //}
+        public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
+        {
+
+            return await dbSet.Where(m => m.MemoDate >= from && m.MemoDate <= to && m.IsPaid==false)
+                .Include(memo => memo.MemoDetails).ToListAsync();
+                
+              
+
+
+            //return (IEnumerable<object>)await dbSet.Where(m => m.MemoDate >= from && m.MemoDate <= to)
+
+            //    .Select(s => new
+            //    {
+            //        MemoId=s.MemoId,
+            //        MemoDate=s.MemoDate,
+            //        PatientName=s.PatientName,
+            //        Address=s.Address,
+            //        Rate=s.Rate,
+
+            //        ispaid = s.IsPaid,
+            //        MemoDetail = s.MemoDetails
+            //    .Select(m => new
+            //    {
+            //        MemoDetailId=m.MemoDetailId,
+            //        Qty=m.Qty,
+            //        Service=m.Service,
+
+            //        PaymentDetail = m.PaymentDetails
+            //        .Select(a => new
+            //        {
+            //            PaymentId=a.PaymentId,
+            //            Ammount=a.Amount,
+            //            Account = a.Account
+            //        }).Where(a => a.Account.AccountId == Account)
+            //    })
+            //    }).Where(m => m.ispaid == false).ToListAsync();
+
+
+        }
 
         public Memo getreposrt(int MemoId)
         {
@@ -48,6 +81,8 @@ namespace Repository.SQL
 
                ;
         }
+
+       
 
         //public async Task<Memo> Update(Memo memo)
         //{

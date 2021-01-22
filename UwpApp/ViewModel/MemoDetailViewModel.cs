@@ -18,15 +18,7 @@ namespace UwpApp.ViewModel
             {
                 account(paymenttype.Account, ser);
             }
-
-
-           
-
-
-
         }
-
-
         public MemoDetail MemoDetail { get; }
 
         public void account(Account acc, int scc)
@@ -124,7 +116,8 @@ namespace UwpApp.ViewModel
 
         public decimal Rate
         {
-            get => MemoDetail.Rate;
+            get 
+                => MemoDetail.Rate;
             set
             {
                 if (MemoDetail.Rate != value)
@@ -162,6 +155,11 @@ namespace UwpApp.ViewModel
             }
 
         }
+
+        public decimal Account 
+        { get
+            { return PaymentDetails.Sum(PaymentDetails => PaymentDetails.Amount); } 
+             }
 
 
 

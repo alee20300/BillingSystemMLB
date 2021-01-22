@@ -32,7 +32,7 @@
 
                 </CalendarDatePicker>
 
-                <!--<Button Content="Load Memos" VerticalAlignment="Bottom"  CornerRadius="3" Command="{x:Bind InvoiceViewModel.LoadAccount}"></Button>-->
+                <Button Content="Load Memos" VerticalAlignment="Bottom"  CornerRadius="3" Command="{x:Bind InvoiceViewModel.LoadAccount}"></Button>
             </StackPanel>
         </StackPanel>
 

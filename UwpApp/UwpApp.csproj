@@ -123,6 +123,7 @@
     <Compile Include="Configuration\ServiceLocator.cs" />
     <Compile Include="Configuration\Startup.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
+    <Compile Include="InvoiceDetailViewModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
     <Compile Include="PageData\ApplicationPage.cs" />
     <Compile Include="Validation\PatientValidation.cs" />

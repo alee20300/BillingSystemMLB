@@ -112,6 +112,8 @@ namespace UwpApp.ViewModel
         //}
 
 
+      
+
 
         public Patient Patient
         {
@@ -321,23 +323,25 @@ namespace UwpApp.ViewModel
         //    }
         //}
 
+
         //public Decimal AccountAmmount
         //{
+
         //    get
         //    {
-        //        return MemoDetails.Sum(MemoDetails => MemoDetails.AccountAmmount);
-        //    }
-
-        //    set
-        //    {
-        //        if (value != Memo.AccountAmmount)
-        //        {
-        //            AccountAmmount = value;
-        //            OnPropertyChanged();
-
-        //        }
+        //        return MemoDetails.Sum(MemoDetails => MemoDetails.PaymentDetails.Sum(PaymentDetail => PaymentDetail.Amount));
         //    }
         //}
+
+
+        public Decimal AccountAmmount
+        {
+            get
+            {
+                return MemoDetails.Sum(MemoDetails => MemoDetails.PaymentDetails.Sum(PaymentDetail => PaymentDetail.Amount));
+            }
+
+        }
 
         public decimal Rate
         {

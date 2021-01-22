@@ -14,7 +14,7 @@ namespace UwpApp.ViewModel
             Invoice = new Invoice();
               InvoiceDetails = new ObservableCollection<InvoiceDetail>();
         }
-        //public ICommand LoadAccount => new RelayCommand(GetMemos);
+        public ICommand LoadAccount => new RelayCommand(GetMemos);
         public ICommand SaveInvoice => new RelayCommand(SaveMemo);
 
         public Account Account
@@ -36,16 +36,17 @@ namespace UwpApp.ViewModel
         public DateTimeOffset DateTimeOffsetfrom { get; set; }
         public DateTimeOffset DateTimeOffsetto { get; set; }
 
-        //public async void GetMemos()
-        //{
-        //    var memos = await App.Repository.Memo.GetMemoForInvoice(DateTimeOffsetfrom, DateTimeOffsetto, Account.AccountId);
-        //    Memos.Clear();
-        //    foreach (var memo in memos)
-        //    {
-        //        Memos.Add(memo);
-        //    }
+        public async void GetMemos()
+        {
+            var memos = await App.Repository.Memo.GetMemoForInvoice(DateTimeOffsetfrom, DateTimeOffsetto, Account.AccountId);
+            Memos.Clear();
+            foreach (var memo in memos)
+            {
+                Memos.Add(memo);
+               
+            }
 
-        //}
+        }
 
         public async void SaveMemo()
         {
@@ -64,7 +65,7 @@ namespace UwpApp.ViewModel
 
 
         public bool Added { get; set; }
-        public ObservableCollection<Memo> Memos { get; set; } = new ObservableCollection<Memo>();
+        public ObservableCollection<object> Memos { get; set; } = new ObservableCollection<object>();
         public ObservableCollection<InvoiceDetail> InvoiceDetails
         {
             get => _invoiceDetails;
@@ -93,7 +94,8 @@ namespace UwpApp.ViewModel
 
         public int MyProperty { get; set; }
         public DateTime InvoiceDate 
-        { get => _invoiceDate = DateTime.Now;
+        { 
+            get => _invoiceDate = DateTime.Now;
            
         } 
 
