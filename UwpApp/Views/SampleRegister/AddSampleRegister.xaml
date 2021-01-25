@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="UwpApp.Views.SampleRegister.AddSampleRegister"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views.SampleRegister"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Width="300" Orientation="Vertical">
+            <TextBox Header="Sample Number"></TextBox>
+            <DatePicker Header="Collected Date"></DatePicker>
+            <ComboBox Width="300" Header="Collected by"></ComboBox>
+            <DatePicker Header="Recived Date"></DatePicker>
+            
+            
+        </StackPanel>
+        
+
+    </Grid>
+</Page>

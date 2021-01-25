@@ -42,9 +42,22 @@ namespace UwpApp.ViewModel
             Memos.Clear();
             foreach (var memo in memos)
             {
-                Memos.Add(memo);
+
+
+                makememoout(memo);
+                
                
             }
+
+        }
+
+
+        public void makememoout(dynamic obj)
+        {
+
+            Memo memo = new Memo();
+            memo.MemoId = obj.MemoId;
+            Memos.Add(memo);
 
         }
 

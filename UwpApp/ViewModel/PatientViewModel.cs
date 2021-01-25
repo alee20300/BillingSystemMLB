@@ -254,7 +254,8 @@ namespace UwpApp.ViewModel
                     Patient.DateOfBirth = value;
                     IsModified = true;
                     OnPropertyChanged();
-                    //calcualteAge(Patient.DateOfBirth);
+                    calcualteAge(Patient.DateOfBirth);
+                    OnPropertyChanged(nameof(Agestring));
 
                 }
             }
@@ -342,34 +343,44 @@ namespace UwpApp.ViewModel
 
         public bool IsModified { get; set; }
 
-        //public void calcualteAge(DateTime? Dob)
-        //{
-        //    DateTime Now = DateTime.Now;
-        //    int Years = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
-        //    DateTime PastYearDate = Dob.AddYears(Years);
-        //    int Months = 0;
-        //    for (int i = 1; i <= 12; i++)
-        //    {
-        //        if (PastYearDate.AddMonths(i) == Now)
-        //        {
-        //            Months = i;
-        //            break;
-        //        }
-        //        else if (PastYearDate.AddMonths(i) >= Now)
-        //        {
-        //            Months = i - 1;
-        //            break;
-        //        }
-        //    }
+        public void calcualteAge(DateTime
+            Dob)
+        {
+            DateTime Now = DateTime.Now;
+            int Years = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
+            DateTime PastYearDate = Dob.AddYears(Years);
+            int Months = 0;
+            for (int i = 1; i <= 12; i++)
+            {
+                if (PastYearDate.AddMonths(i) == Now)
+                {
+                    Months = i;
+                    break;
+                }
+                else if (PastYearDate.AddMonths(i) >= Now)
+                {
+                    Months = i - 1;
+                    break;
+                }
+            }
 
-        //    int Days = Now.Subtract(PastYearDate.AddMonths(Months)).Days;
+            int Days = Now.Subtract(PastYearDate.AddMonths(Months)).Days;
+            
+            Age = Years;
+            Month = Months;
+            Day = Days;
+            
+        }
 
-        //    Age = Years;
-        //    Month = Months;
-        //    Day = Days;
 
-        //}
 
+        public string Agestring
+        {
+            get=> $"{Age}Year {Month} Month {Day} Day";
+
+
+
+        }
         public ObservableCollection<Memo> Memos { get; } = new ObservableCollection<Memo>();
 
         private Memo _selectedeMemo;

@@ -129,6 +129,7 @@
     <Compile Include="Validation\PatientValidation.cs" />
     <Compile Include="ViewModel\Converters\BaseValueConveter.cs" />
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
+    <Compile Include="ViewModel\SampleRegisterViewModel\SampleRegisterViewModel.cs" />
     <Compile Include="ViewModel\ValidatableBindableBase.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -209,6 +210,12 @@
     </Compile>
     <Compile Include="Views\Report\Reportpdf.xaml.cs">
       <DependentUpon>Reportpdf.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SampleRegister\AddSampleRegister.xaml.cs">
+      <DependentUpon>AddSampleRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SampleRegister\SampleRegisterPage.xaml.cs">
+      <DependentUpon>SampleRegisterPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SaveChangesDialog.xaml.cs">
       <DependentUpon>SaveChangesDialog.xaml</DependentUpon>
@@ -312,6 +319,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Report\Reportpdf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SampleRegister\AddSampleRegister.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SampleRegister\SampleRegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

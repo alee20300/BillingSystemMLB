@@ -19,7 +19,8 @@ namespace UwpApp.ViewModel
             Memo = memo;
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
             PaymentTypes = new ObservableCollection<PaymentType>();
-           
+
+            calcualteAge(Patient.DateOfBirth);
 
         }
         //public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
@@ -85,6 +86,8 @@ namespace UwpApp.ViewModel
         private void UpdateNewMemoDetailBindings()
         {
             OnPropertyChanged(nameof(NewMemoDetail));
+            OnPropertyChanged(nameof(AccountAmmount));
+            OnPropertyChanged(nameof(PatientAmmount));
             //OnPropertyChanged(nameof(HasNewMemoDetailItem));
             //OnPropertyChanged(nameof(NewMemoDtail))
         }
@@ -125,12 +128,61 @@ namespace UwpApp.ViewModel
 
                     Memo.Patient = value;
                     OnPropertyChanged();
+                    
 
                 }
             }
         }
 
+     
 
+
+        public int Age { get; set; }
+
+        public int Month { get; set; }
+        public int Day { get; set; }
+
+   
+
+        public void calcualteAge(DateTime
+            Dob)
+        {
+            DateTime Now = DateTime.Now;
+            int Years = new DateTime(DateTime.Now.Subtract(Dob).Ticks).Year - 1;
+            DateTime PastYearDate = Dob.AddYears(Years);
+            int Months = 0;
+            for (int i = 1; i <= 12; i++)
+            {
+                if (PastYearDate.AddMonths(i) == Now)
+                {
+                    Months = i;
+                    break;
+                }
+                else if (PastYearDate.AddMonths(i) >= Now)
+                {
+                    Months = i - 1;
+                    break;
+                }
+            }
+
+            int Days = Now.Subtract(PastYearDate.AddMonths(Months)).Days;
+
+            Age = Years;
+            Month = Months;
+            Day = Days;
+            OnPropertyChanged(nameof(Agestring));
+
+        }
+
+
+
+        public string Agestring
+        {
+            get => $"{Age}Year {Month} Month {Day} Day";
+
+
+
+        }
         public DateTime COllectedDate
         {
             get => Memo.COllectedDate;
@@ -342,6 +394,16 @@ namespace UwpApp.ViewModel
             }
 
         }
+
+        public Decimal PatientAmmount
+        {
+            get
+            {
+                return MemoDetails.Sum(MemoDetails => MemoDetails.PaymentDetails.Sum(PaymentDetail => PaymentDetail.Amount-Rate));
+            }
+
+        }
+
 
         public decimal Rate
         {

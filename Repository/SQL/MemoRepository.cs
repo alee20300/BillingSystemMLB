@@ -32,42 +32,42 @@ namespace Repository.SQL
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
-        public async Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
+        public async Task<IEnumerable<object>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int Account)
         {
 
-            return await dbSet.Where(m => m.MemoDate >= from && m.MemoDate <= to && m.IsPaid==false)
-                .Include(memo => memo.MemoDetails).ToListAsync();
-                
-              
+            //return await dbSet.Where(m => m.MemoDate >= from && m.MemoDate <= to && m.IsPaid==false)
+            //    .Include(memo => memo.MemoDetails).ToListAsync();
 
 
-            //return (IEnumerable<object>)await dbSet.Where(m => m.MemoDate >= from && m.MemoDate <= to)
 
-            //    .Select(s => new
-            //    {
-            //        MemoId=s.MemoId,
-            //        MemoDate=s.MemoDate,
-            //        PatientName=s.PatientName,
-            //        Address=s.Address,
-            //        Rate=s.Rate,
 
-            //        ispaid = s.IsPaid,
-            //        MemoDetail = s.MemoDetails
-            //    .Select(m => new
-            //    {
-            //        MemoDetailId=m.MemoDetailId,
-            //        Qty=m.Qty,
-            //        Service=m.Service,
+            return (IEnumerable<dynamic>)await dbSet.Where(m => m.MemoDate >= from && m.MemoDate <= to)
 
-            //        PaymentDetail = m.PaymentDetails
-            //        .Select(a => new
-            //        {
-            //            PaymentId=a.PaymentId,
-            //            Ammount=a.Amount,
-            //            Account = a.Account
-            //        }).Where(a => a.Account.AccountId == Account)
-            //    })
-            //    }).Where(m => m.ispaid == false).ToListAsync();
+                .Select(s => new
+                {
+                    MemoId = s.MemoId,
+                    MemoDate = s.MemoDate,
+                    PatientName = s.PatientName,
+                    Address = s.Address,
+                    Rate = s.Rate,
+
+                    ispaid = s.IsPaid,
+                    MemoDetail = s.MemoDetails
+                .Select(m => new
+                {
+                    MemoDetailId = m.MemoDetailId,
+                    Qty = m.Qty,
+                    Service = m.Service,
+
+                    PaymentDetail = m.PaymentDetails
+                    .Select(a => new
+                    {
+                        PaymentId = a.PaymentId,
+                        Ammount = a.Amount,
+                        Account = a.Account
+                    }).Where(a => a.Account.AccountId == Account)
+                })
+                }).Where(m => m.ispaid == false).ToListAsync();
 
 
         }

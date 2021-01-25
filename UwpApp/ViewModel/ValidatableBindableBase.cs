@@ -59,7 +59,7 @@ namespace UwpApp.ViewModel
         /// <param name="propertyName"></param>
         public void RaiseErrorsChanged(string propertyName)
         {
-            ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
+           ErrorsChanged(this, new DataErrorsChangedEventArgs(propertyName));
         }
 
         /// <summary>

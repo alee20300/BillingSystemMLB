@@ -39,7 +39,7 @@
                     <x:String>F</x:String>
                     <x:String>M</x:String>
                 </ComboBox>
-                <TextBlock Text="{x:Bind patientViewModel.Age}"></TextBlock>
+                <TextBlock Text="{x:Bind patientViewModel.Agestring, Mode=OneWay}" VerticalAlignment="Bottom" Margin="20,0,0,2" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
 
 
             </StackPanel>

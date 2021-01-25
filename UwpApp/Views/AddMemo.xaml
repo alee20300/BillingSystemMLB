@@ -101,7 +101,7 @@
                 <TextBlock Text="{x:Bind ViewModel.Patient.PermAddress,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Contact,Mode=TwoWay}" Grid.Column="0"></TextBlock>
                 <TextBlock Text="{x:Bind ViewModel.Patient.Email,Mode=TwoWay}" Grid.Column="0"></TextBlock>
-                <TextBlock Text="{x:Bind ViewModel.Patient.DateOfBirth,Mode=TwoWay}" Grid.Column="0"></TextBlock>
+                <TextBlock Text="{x:Bind ViewModel.Agestring,Mode=OneWay}" Grid.Column="0"></TextBlock>
             </StackPanel>
             <StackPanel Width="250" Name="stack" RelativePanel.RightOf="FieldsStackPanel">
 
@@ -342,7 +342,7 @@
                                 Padding="0,0,0,0"
                                 
                                 Text="Account" />
-                <!--<TextBlock 
+                <TextBlock 
                     Grid.Column="2"
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
@@ -361,7 +361,7 @@
                     Margin="0,0,0,0"
                     Padding="0,0,0,0"
                     HorizontalAlignment="Right"
-                   Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientTotal), Mode=OneWay}"/>-->
+                   Text="{x:Bind sys:String.Format('\{0:c\}', ViewModel.PatientAmmount), Mode=OneWay}"/>
                 <Border
                                 Grid.Row="3"
                                 Grid.Column="1"

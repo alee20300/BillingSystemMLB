@@ -4,9 +4,9 @@ namespace UwpApp.ViewModel
 {
     public class InvoiceDetailViewModel
     {
-        public InvoiceDetailViewModel()
+        public InvoiceDetailViewModel(object obj)
         {
-
+            
         }
 
         public InvoiceDetail InvoiceDetail { get; set; }
