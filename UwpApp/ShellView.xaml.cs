@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UwpApp.Views;
 using UwpApp.Views.Login;
+using UwpApp.Views.SampleRegister;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -38,6 +39,7 @@ namespace UwpApp
 {
     ("home", typeof(HomePage)),
     ("Patient", typeof(InvoicePage)),
+    ("Sample", typeof(SampleRegisterPage)),
 
 };
 

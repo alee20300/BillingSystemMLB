@@ -101,34 +101,34 @@ namespace UwpApp.ViewModel.Authentication
             return SwatIncCrypto.VerifyPassword(password, goodHash);
         }
 
-        //public async Task ChangePassword(string currentPassword, string username, string newPassword)
-        //{
-        //    try
-        //    {
-        //        //get user hash
-        //        var usernameAndHash = await GetHashForUser(username);
-        //        if (usernameAndHash is null)
-        //        {
-        //            throw new Exception($"An error occured while changing the password.\nCannot find user: {username}");
-        //        }
-        //        //verify that the current password match
-        //        if (VerifyPassword(currentPassword, usernameAndHash.PasswordHash))
-        //        {
-        //            //change the password
-        //            await ChangeUserHash(newPassword, username);
-        //        }
-        //        else
-        //        {
-        //            throw new Exception("The current password provided is invalid!");
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
+        public async Task ChangePassword(string currentPassword, string username, string newPassword)
+        {
+            try
+            {
+                //get user hash
+                var usernameAndHash = await GetHashForUser(username);
+                if (usernameAndHash is null)
+                {
+                    throw new Exception($"An error occured while changing the password.\nCannot find user: {username}");
+                }
+                //verify that the current password match
+                if (VerifyPassword(currentPassword, usernameAndHash.PasswordHash))
+                {
+                    //change the password
+                    await ChangeUserHash(newPassword, username);
+                }
+                else
+                {
+                    throw new Exception("The current password provided is invalid!");
+                }
+            }
+            catch (Exception)
+            {
 
-        //        throw;
-        //    }
+                throw;
+            }
 
-        //}
+        }
 
         /// <summary>
         /// Fetches the user hash from database with the specified username

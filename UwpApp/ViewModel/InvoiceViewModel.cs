@@ -42,9 +42,13 @@ namespace UwpApp.ViewModel
             Memos.Clear();
             foreach (var memo in memos)
             {
+                Memo memo1 = new Memo();
+                memo1.MemoId = memo.MemoId;
+                memo1.Address = memo.Address;
 
+                Memos.Add(memo);
 
-                makememoout(memo);
+                
                 
                
             }
@@ -78,7 +82,7 @@ namespace UwpApp.ViewModel
 
 
         public bool Added { get; set; }
-        public ObservableCollection<object> Memos { get; set; } = new ObservableCollection<object>();
+        public ObservableCollection<Memo> Memos { get; set; } = new ObservableCollection<Memo>();
         public ObservableCollection<InvoiceDetail> InvoiceDetails
         {
             get => _invoiceDetails;

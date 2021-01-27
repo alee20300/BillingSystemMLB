@@ -15,9 +15,7 @@ namespace Domin.Configuration
             builder.Property(u => u.UserName)
                 .HasMaxLength(20)
                 .IsRequired();
-            builder.Property(u => u.Password)
-                .HasMaxLength(30)
-                .IsRequired();
+            
             builder.Property(u => u.Name)
                 .HasMaxLength(50)
                 .IsRequired();

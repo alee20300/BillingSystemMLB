@@ -117,6 +117,26 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             Status = status;
         }
 
+        public void AddSample(SampleRegister sampleRegister)
+        {
+            if (sampleRegister!=null)
+            {
+
+                try
+                {
+                    App.Repository.SampleRegisterRepository.UpsertAsync(sampleRegister);
+                    
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+                
+
+            }
+        }
+
 
 
 

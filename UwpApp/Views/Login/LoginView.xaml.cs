@@ -21,17 +21,24 @@ namespace UwpApp.Views.Login
 
         }
 
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        private async void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
+
+            
             var rootframe = Window.Current.Content as Frame;
 
 
-            //AutorizeDetailModel result =
-                authenticationViewModel.Authenticate();
+            AutorizeDetailModel result = await authenticationViewModel.Authenticate();
+
+            if (result.IsAuthenticated==false)
+            {
+                rootframe.Navigate(typeof(ShellView));
+            }
+
 
             //if (result!= null)
             //{
-            rootframe.Navigate(typeof(ShellView));
+            
             //}
             //else
             //{ }

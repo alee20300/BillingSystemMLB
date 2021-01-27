@@ -41,6 +41,7 @@ namespace Repository
 
         public DbSet<UsernameAndHash> UsernameAndHashes { get; set; }
 
+        public DbSet<SampleRegister> SampleRegisters { get; set; }
 
 
 
@@ -66,6 +67,8 @@ namespace Repository
             modelBuilder.ApplyConfiguration(new UserConfiguration());
 
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
+            modelBuilder.ApplyConfiguration(new SampleRegisterConfiguration());
         }
     }
 }

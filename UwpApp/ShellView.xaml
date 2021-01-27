@@ -21,6 +21,7 @@
                 <NavigationViewItemHeader x:Name="MainPagesHeader"
                                            Content="Main pages"/>
                 <NavigationViewItem Tag="Patient" Icon="People" Content="report"/>
+                <NavigationViewItem Tag="Sample" Icon="AddFriend" Content="Sample"/>
                 
 
             </NavigationView.MenuItems>

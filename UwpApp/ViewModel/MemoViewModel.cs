@@ -77,6 +77,7 @@ namespace UwpApp.ViewModel
 
                     _newMemoDetail = value;
                     UpdateNewMemoDetailBindings();
+                   
                 }
 
             }
@@ -86,8 +87,8 @@ namespace UwpApp.ViewModel
         private void UpdateNewMemoDetailBindings()
         {
             OnPropertyChanged(nameof(NewMemoDetail));
-            OnPropertyChanged(nameof(AccountAmmount));
-            OnPropertyChanged(nameof(PatientAmmount));
+            //OnPropertyChanged(nameof(AccountAmmount));
+            //OnPropertyChanged(nameof(PatientAmmount));
             //OnPropertyChanged(nameof(HasNewMemoDetailItem));
             //OnPropertyChanged(nameof(NewMemoDtail))
         }
@@ -385,12 +386,31 @@ namespace UwpApp.ViewModel
         //    }
         //}
 
+        public void updateprice()
+        {
+            //newAccountPrice = NewMemoDetail.MemoDetail.PaymentDetails.Sum(s => s.Amount);
+            
+            OnPropertyChanged(nameof(AccountAmmount));
+            OnPropertyChanged(nameof(PatientAmmount));
+
+        }
+
+
+        public decimal newAccountPrice { get; set; }
 
         public Decimal AccountAmmount
         {
             get
             {
+
                 return MemoDetails.Sum(MemoDetails => MemoDetails.PaymentDetails.Sum(PaymentDetail => PaymentDetail.Amount));
+            }
+            set
+            {
+
+                 
+               
+         
             }
 
         }

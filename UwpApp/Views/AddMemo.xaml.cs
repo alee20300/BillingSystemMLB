@@ -118,6 +118,7 @@ namespace UwpApp.Views
                 ViewModel.NewMemoDetail.Service = selectedService;
                 ViewModel.NewMemoDetail.MemoDetail.Service = selectedService;
                 ViewModel.MemoDetails.Add(ViewModel.NewMemoDetail.MemoDetail);
+                ViewModel.updateprice();
                 ClearCandidateService();
             }
         }
@@ -178,6 +179,8 @@ namespace UwpApp.Views
         {
 
             ViewModel.MemoDetails.Remove((sender as FrameworkElement).DataContext as MemoDetail);
+
+            ViewModel.updateprice();
         }
 
        

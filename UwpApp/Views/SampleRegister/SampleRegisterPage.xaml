@@ -22,7 +22,7 @@
                             QueryIcon="Find" PlaceholderText="Search For Sample" Width="300" ></AutoSuggestBox>
 
             </StackPanel>
-            <StackPanel Margin="0,40,0,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
+            <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
                 <TextBlock Style="{StaticResource  SubtitleTextBlockStyle}" Text="Add Sampple"></TextBlock>
                 <TextBox Header="Sample Number"></TextBox>
                 <DatePicker Header="Collected Date"></DatePicker>
@@ -31,6 +31,13 @@
 
 
             </StackPanel>
+            <toolkit:DataGrid RelativePanel.RightOf="Addform" RelativePanel.Below="Header" HorizontalAlignment="Stretch" Height="600"  ItemsSource="{x:Bind sampleRegisterViewModel.Samples}">
+                <toolkit:DataGrid.Columns>
+                    <toolkit:DataGridTextColumn
+                        />
+                </toolkit:DataGrid.Columns>
+
+            </toolkit:DataGrid>
 
 
 

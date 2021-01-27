@@ -16,7 +16,7 @@ namespace Repository
         //Task<Memo> Update(Memo memo);
         Memo getreposrt(int MemoId);
 
-        Task<IEnumerable<dynamic>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int accountId);
+        Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int accountId);
     }
 
 

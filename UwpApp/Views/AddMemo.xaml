@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:UwpApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:Models="using:Domin.Models" xmlns:sys="using:System" xmlns:con="using:UwpApp.ViewModel.Converters"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:Models="using:Domin.Models" xmlns:sys="using:System" xmlns:con="using:UwpApp.ViewModel.Converters" xmlns:data="using:Domin.Data"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -124,9 +124,7 @@
                 <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True"  HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=TwoWay}" DisplayMemberPath="DoctorName" SelectedValuePath="Doctor" SelectedValue="{x:Bind  ViewModel.Doctor, Mode=TwoWay}" >
 
                 </ComboBox>
-            </StackPanel>
-            
-            <StackPanel Orientation="Vertical" Margin="20,0,0,0" RelativePanel.RightOf="stack" >
+
                 <AutoSuggestBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}"
                               DisplayMemberPath="AccountName"    
                                 TextMemberPath="AccountName"
@@ -134,8 +132,16 @@
                          
                            MinWidth="250" Header="Payment Accounts" >
                 </AutoSuggestBox>
+            </StackPanel>
+            
+            <StackPanel Orientation="Vertical" Margin="20,0,0,0" RelativePanel.RightOf="stack" >
+                
                 <TextBlock  Text="Payment Account" Margin="0,20,0,0"></TextBlock>
-                <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" DisplayMemberPath="AccountName" Height="100"  Width="250"></ListBox>
+                <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" DisplayMemberPath="AccountName" Height="150"  Width="250">
+                    <DataTemplate x:DataType="data:PaymentType">
+                        <TextBlock Text="{x:Bind AccountName}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                    </DataTemplate>
+                </ListBox>
             </StackPanel>
             
         </RelativePanel>

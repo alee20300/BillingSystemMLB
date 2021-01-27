@@ -30,6 +30,8 @@
 
         IAthorizeDetailRepository AthorizeDetails { get; }
 
+        ISampleRegisterRepository SampleRegisterRepository { get; }
+
         IUsernameAndHashRepository UsernameAndHash { get; }
     }
 }
