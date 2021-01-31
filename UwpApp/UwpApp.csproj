@@ -124,6 +124,8 @@
     <Compile Include="Configuration\Startup.cs" />
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="InvoiceDetailViewModel.cs" />
+    <Compile Include="Models\MemoDetailModel.cs" />
+    <Compile Include="Models\MemoModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
     <Compile Include="PageData\ApplicationPage.cs" />
     <Compile Include="Validation\PatientValidation.cs" />
@@ -213,6 +215,9 @@
     </Compile>
     <Compile Include="Views\SampleRegister\AddSampleRegister.xaml.cs">
       <DependentUpon>AddSampleRegister.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SampleRegister\bulkmemoDialogue.xaml.cs">
+      <DependentUpon>bulkmemoDialogue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SampleRegister\SampleRegisterPage.xaml.cs">
       <DependentUpon>SampleRegisterPage.xaml</DependentUpon>
@@ -326,6 +331,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\SampleRegister\bulkmemoDialogue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SampleRegister\SampleRegisterPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -414,6 +423,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <SDKReference Include="Syncfusion Controls for UWP XAML, Version=18.4.0.30">
+      <Name>Syncfusion Controls for UWP XAML</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

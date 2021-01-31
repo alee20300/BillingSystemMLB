@@ -9,6 +9,7 @@ namespace Domin.Data
         public int ReisterId { get; set; }
         public string SampleNumber { get; set; }
         public DateTime CollectedDate { get; set; }
+        
         public DateTime RecivedDate { get; set; }
         public string RecivedBy { get; set; }
         public status Status { get; set; }

@@ -15,6 +15,12 @@ namespace Repository.SQL
             _db = db;
         }
 
+        public async Task bulkinsertpatient(List<Patient> patient)
+        {
+            _db.AddRange(patient);
+             await _db.SaveChangesAsync();
+        }
+
         public async Task<Patient> findbyid(int ID)
         {
             return await _db.Patients

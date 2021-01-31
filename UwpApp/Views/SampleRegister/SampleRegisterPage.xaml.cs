@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using UwpApp.ViewModel;
 using UwpApp.ViewModel.SampleRegisterViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -28,7 +29,7 @@ namespace UwpApp.Views.SampleRegister
             this.InitializeComponent();
             sampleRegisterViewModel = new SampleRegisterViewModel();
         }
-
+        public StaticData IAVM { get => App.AtollIslandViewModel; }
         public SampleRegisterViewModel sampleRegisterViewModel { get; set; }
     }
 }

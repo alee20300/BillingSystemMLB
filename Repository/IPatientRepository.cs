@@ -9,5 +9,6 @@ namespace Repository
         Task<Patient> Update(Patient patient);
         Task<Patient> findbyid(int ID);
         Task<IEnumerable<Patient>> getpatientforsearch(string Query);
+       Task bulkinsertpatient(List<Patient> patient);
     }
 }

@@ -5,44 +5,108 @@
     xmlns:local="using:UwpApp.Views.SampleRegister"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:data="using:Domin.Data"
+    xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:data="using:Domin.Data" xmlns:con="using:UwpApp.ViewModel.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="20">
+    <Page.Resources>
+        <con:TimeConverter x:Key="TimeConverter"></con:TimeConverter>
+        
+    </Page.Resources>
 
+
+    <Grid Margin="20">
+        <Grid.Resources>
+            <Flyout x:Key="DataGridContextMenu">
+                <StackPanel>
+                    <Button 
+                        Content="Add"
+                        Command="{x:Bind sampleRegisterViewModel.add}"></Button>
+                </StackPanel>
+            </Flyout>
+        </Grid.Resources>
         <RelativePanel>
             <TextBlock x:Name="Header" Text="Sample Register" Style="{StaticResource HeaderTextBlockStyle}">
-                
             </TextBlock>
             <StackPanel RelativePanel.AlignRightWithPanel="True" Orientation="Horizontal" >
                 <AppBarButton Icon="Add" ></AppBarButton>
-                <AppBarButton Icon="Save"></AppBarButton>
+                <AppBarButton Icon="Save" Command="{x:Bind sampleRegisterViewModel.SaveSample}"></AppBarButton>
+                <AppBarButton Icon="AddFriend" Command="{x:Bind sampleRegisterViewModel.MakeMemo}"></AppBarButton>
                 <AutoSuggestBox x:Name="Searchbox" 
                             QueryIcon="Find" PlaceholderText="Search For Sample" Width="300" ></AutoSuggestBox>
 
             </StackPanel>
-            <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
+            <StackPanel Visibility="Collapsed" x:Name="Addform"  Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True"  Width="300" Orientation="Vertical">
                 <TextBlock Style="{StaticResource  SubtitleTextBlockStyle}" Text="Add Sampple"></TextBlock>
-                <TextBox Header="Sample Number"></TextBox>
-                <DatePicker Header="Collected Date"></DatePicker>
-                <ComboBox Width="300" Header="Collected by"></ComboBox>
-                <DatePicker Header="Recived Date"></DatePicker>
-
+                
+                <TextBox Header="Sample Number" Text="{x:Bind sampleRegisterViewModel.SampleNumber,Mode=TwoWay}"></TextBox>
+               
+                    <DatePicker Header="Collected Date" Date="{x:Bind sampleRegisterViewModel.CollectedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}" ></DatePicker>
+                    <TimePicker Header="CollectedTime"></TimePicker>
+                
+                <ComboBox Width="300" Header="Recived by" IsTextSearchEnabled="True" SelectedValue="{x:Bind sampleRegisterViewModel.Recivedby,Mode=TwoWay}" >
+                    <x:String>Ali Abdulla</x:String>
+                </ComboBox>
+                <DatePicker Header="Received Date" Date="{x:Bind sampleRegisterViewModel.RecivedDate,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></DatePicker>
+                <TimePicker Header="Received Time"></TimePicker>
 
             </StackPanel>
-            <toolkit:DataGrid RelativePanel.RightOf="Addform" RelativePanel.Below="Header" HorizontalAlignment="Stretch" Height="600"  ItemsSource="{x:Bind sampleRegisterViewModel.Samples}">
+            <toolkit:DataGrid  x:Name="table"
+                RelativePanel.RightOf="Addform"
+                RelativePanel.Below="Header" 
+                HorizontalAlignment="Stretch"
+                
+                              
+                
+                AlternatingRowBackground="LightGray"
+                Height="600"  
+                ItemsSource="{x:Bind sampleRegisterViewModel.Samples}"
+                FlyoutBase.AttachedFlyout="{StaticResource DataGridContextMenu}"
+                 ContextFlyout="{StaticResource DataGridContextMenu}"
+                SelectionMode="Extended"
+                SelectedItem="{x:Bind sampleRegisterViewModel.SelectedSampleReg, Mode=TwoWay}">
+                
                 <toolkit:DataGrid.Columns>
                     <toolkit:DataGridTextColumn
                         />
                 </toolkit:DataGrid.Columns>
 
             </toolkit:DataGrid>
+            <ListView x:Name="listview" Header="Samples to Make Memo"  HorizontalAlignment="Stretch" RelativePanel.AlignRightWithPanel="True" RelativePanel.Below="Header" RelativePanel.RightOf="table" ItemsSource="{x:Bind sampleRegisterViewModel.SamplesToMakeMemo,Mode=OneWay}">
+                <ListView.ItemTemplate >
+                    <DataTemplate x:DataType="data:SampleRegister">
+                        <Grid Width="500" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Column="0" Text="{x:Bind ReisterId,Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="1" Text="{x:Bind SampleNumber ,Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="2" Text="{x:Bind RecivedBy,Mode=OneWay}" ></TextBlock>
+                            <Border Grid.Row="1" Grid.Column="4" BorderThickness="0.5"></Border>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackPanel Orientation="Vertical" RelativePanel.RightOf="listview" RelativePanel.Below="listview">
+                <ComboBox
+                    Header="Select An Account" Width="200">
 
 
-
-
+                </ComboBox>
+                <AutoSuggestBox Header="Select Service">
+                    
+                </AutoSuggestBox>
+                <ListView Header="Services"></ListView>
+            </StackPanel>
         </RelativePanel>
 
     </Grid>
+    
 </Page>
