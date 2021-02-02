@@ -10,6 +10,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Margin="24">
+        <Grid.Resources>
+            <Flyout x:Key="DataGridContextMenue">
+                <Button x:Name="ContextButton" Content="Add sample" Click="ContextButton_Click"></Button>
+            </Flyout>
+        </Grid.Resources>
 
         <RelativePanel>
             <TextBlock x:Name="Header" Text="Sample Register" Style="{StaticResource HeaderTextBlockStyle}">
@@ -31,15 +36,43 @@
 
 
             </StackPanel>
-            <toolkit:DataGrid x:Name="Table" RelativePanel.RightOf="Addform" RelativePanel.Below="Header" HorizontalAlignment="Stretch" Height="500"  ItemsSource="{x:Bind sampleRegisterViewModel.Samples}">
+            <toolkit:DataGrid
+                x:Name="Table" 
+                              
+                 RelativePanel.RightOf="Addform" 
+                RelativePanel.Below="Header" 
+                HorizontalAlignment="Stretch" 
+                Height="500"  
+                SelectionMode="Extended"
+                ItemsSource="{x:Bind sampleRegisterViewModel.Samples}"
+                ContextFlyout="{StaticResource DataGridContextMenue}">
                 <toolkit:DataGrid.Columns>
                     <toolkit:DataGridTextColumn
                         />
                 </toolkit:DataGrid.Columns>
 
             </toolkit:DataGrid>
-            <ListView x:Name="list" Height="500" Header="Samples to Make Memo" HorizontalAlignment="Stretch" Width="400" RelativePanel.Below="Header" RelativePanel.AlignRightWithPanel="True"
+            <ListView x:Name="list" Height="500" Header="Samples to Make Memo" HorizontalAlignment="Stretch" Width="600" RelativePanel.Below="Header" RelativePanel.AlignRightWithPanel="True"
                       ItemsSource="{x:Bind sampleRegisterViewModel.SamplestoMakeMemo}">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="data:SampleRegister">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{x:Bind ReisterId,Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="1" Text="{x:Bind SampleNumber ,Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="2" Text="{x:Bind  CollectedDate,Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="3" Text="{x:Bind  RecivedDate,Mode=OneWay}" ></TextBlock>
+                            <TextBlock Grid.Column="4" Text="{x:Bind RecivedBy,Mode=OneWay}" ></TextBlock>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
                 
             </ListView>
             

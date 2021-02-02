@@ -1,5 +1,6 @@
 ﻿using Domin.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -16,7 +17,9 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         public SampleRegisterViewModel()
         {
+            Task.Run(GetSampleRegister);
 
+            samplestoMakeMemo = new ObservableCollection<SampleRegister>();
         }
         public ObservableCollection<SampleRegister> Samples { get; set; } = new ObservableCollection<SampleRegister>();
 
@@ -111,10 +114,23 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         }
 
+        public IList SelectedItems { get; set; }
+
 
         public void ChangeStatus(status status)
         {
             Status = status;
+        }
+
+        public async Task GetSampleRegister()
+        {
+            var results = await App.Repository.SampleRegisterRepository.GetAsync();
+            Samples.Clear();
+            foreach (var result in results)
+            {
+                Samples.Add(result);
+            }
+
         }
 
         public void AddSample(SampleRegister sampleRegister)

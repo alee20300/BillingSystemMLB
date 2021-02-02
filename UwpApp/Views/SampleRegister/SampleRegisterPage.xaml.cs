@@ -31,6 +31,17 @@ namespace UwpApp.Views.SampleRegister
 
         public SampleRegisterViewModel sampleRegisterViewModel { get; set; }
 
-       
+        private void ContextButton_Click(object sender, RoutedEventArgs e)
+        {
+            var results = Table.SelectedItems;
+
+            foreach (var r in results)
+            {
+                sampleRegisterViewModel.SamplestoMakeMemo.Add((Domin.Data.SampleRegister)r);
+            }
+
+            //sampleRegisterViewModel.SamplestoMakeMemo.Add()
+
+        }
     }
 }
