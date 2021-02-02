@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Background="Black">
+    <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <Image Source="/Assets/Asset 1.png" Height="200" Width="200" ></Image>
             <TextBox Header="User Name" Text="{x:Bind authenticationViewModel.UserName , Mode=TwoWay}" Width="400"/>

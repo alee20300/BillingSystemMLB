@@ -1,4 +1,5 @@
-﻿using Domin.Models;
+﻿using Domin.Data;
+using Domin.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,24 @@ namespace UwpApp.Models
     public class PatientModel : ValidatableBindableBase
 
     {
+        public PatientModel()
+        {
+                
+        }
 
+        public PatientModel(SampleRegister sampleRegister)
+        {
+            PatientName = sampleRegister.SampleNumber;
+            IdCardNumber = sampleRegister.SampleNumber;
+            PermAddress = "C/O National Drug Agency";
+            Sex = "U";
+            DateOfBirth = DateTime.Now;
+            Contact = "0";
+            AtollId = 1;
+            IslandId = 1;
+            CountryId = 1;
+
+        }
         public int PatientId { get; set; }
 
 
@@ -26,8 +44,6 @@ namespace UwpApp.Models
 
         public string Contact { get; set; }
 
-
-        public string Email { get; set; }
 
 
         public int AtollId { get; set; }

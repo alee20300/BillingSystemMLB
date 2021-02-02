@@ -12,12 +12,12 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
     {
         private status status;
+        private ObservableCollection<SampleRegister> samplestoMakeMemo;
 
         public SampleRegisterViewModel()
         {
 
         }
-
         public ObservableCollection<SampleRegister> Samples { get; set; } = new ObservableCollection<SampleRegister>();
 
         public SampleRegister SampleRegister { get; set; }
@@ -109,39 +109,35 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
                 }
             }
 
-        } 
+        }
 
 
-        public  void ChangeStatus (status status)
+        public void ChangeStatus(status status)
         {
             Status = status;
         }
 
         public void AddSample(SampleRegister sampleRegister)
         {
-            if (sampleRegister!=null)
+            if (sampleRegister != null)
             {
 
                 try
                 {
                     App.Repository.SampleRegisterRepository.UpsertAsync(sampleRegister);
-                    
+
                 }
                 catch (Exception)
                 {
 
                     throw;
                 }
-                
+
 
             }
         }
 
-
-
-
-
-
+        public ObservableCollection<SampleRegister> SamplestoMakeMemo { get => samplestoMakeMemo; set => samplestoMakeMemo = value; }
 
     }
 }

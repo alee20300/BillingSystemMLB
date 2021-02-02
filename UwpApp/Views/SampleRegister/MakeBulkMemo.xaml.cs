@@ -22,6 +22,7 @@ namespace UwpApp.Views.SampleRegister
     /// </summary>
     public sealed partial class AddSampleRegister : Page
     {
+       
         public AddSampleRegister()
         {
             this.InitializeComponent();

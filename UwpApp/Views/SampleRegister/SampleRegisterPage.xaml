@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid Margin="20">
+    <Grid Margin="24">
 
         <RelativePanel>
             <TextBlock x:Name="Header" Text="Sample Register" Style="{StaticResource HeaderTextBlockStyle}">
@@ -22,7 +22,7 @@
                             QueryIcon="Find" PlaceholderText="Search For Sample" Width="300" ></AutoSuggestBox>
 
             </StackPanel>
-            <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
+            <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Collapsed"  Width="300" Orientation="Vertical">
                 <TextBlock Style="{StaticResource  SubtitleTextBlockStyle}" Text="Add Sampple"></TextBlock>
                 <TextBox Header="Sample Number"></TextBox>
                 <DatePicker Header="Collected Date"></DatePicker>
@@ -31,13 +31,18 @@
 
 
             </StackPanel>
-            <toolkit:DataGrid RelativePanel.RightOf="Addform" RelativePanel.Below="Header" HorizontalAlignment="Stretch" Height="600"  ItemsSource="{x:Bind sampleRegisterViewModel.Samples}">
+            <toolkit:DataGrid x:Name="Table" RelativePanel.RightOf="Addform" RelativePanel.Below="Header" HorizontalAlignment="Stretch" Height="500"  ItemsSource="{x:Bind sampleRegisterViewModel.Samples}">
                 <toolkit:DataGrid.Columns>
                     <toolkit:DataGridTextColumn
                         />
                 </toolkit:DataGrid.Columns>
 
             </toolkit:DataGrid>
+            <ListView x:Name="list" Height="500" Header="Samples to Make Memo" HorizontalAlignment="Stretch" Width="400" RelativePanel.Below="Header" RelativePanel.AlignRightWithPanel="True"
+                      ItemsSource="{x:Bind sampleRegisterViewModel.SamplestoMakeMemo}">
+                
+            </ListView>
+            
 
 
 

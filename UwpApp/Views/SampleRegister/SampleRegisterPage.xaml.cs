@@ -30,5 +30,7 @@ namespace UwpApp.Views.SampleRegister
         }
 
         public SampleRegisterViewModel sampleRegisterViewModel { get; set; }
+
+       
     }
 }
