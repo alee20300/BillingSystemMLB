@@ -43,5 +43,10 @@ namespace UwpApp.Views.SampleRegister
             //sampleRegisterViewModel.SamplestoMakeMemo.Add()
 
         }
+
+        private void NextButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(UwpApp.Views.SampleRegister.BulkMemo),sampleRegisterViewModel.SamplestoMakeMemo);
+        }
     }
 }

@@ -52,30 +52,34 @@
                 </toolkit:DataGrid.Columns>
 
             </toolkit:DataGrid>
-            <ListView x:Name="list" Height="500" Header="Samples to Make Memo" HorizontalAlignment="Stretch" Width="600" RelativePanel.Below="Header" RelativePanel.AlignRightWithPanel="True"
+            <ListView x:Name="list" Height="500" Header="Samples to Make Memo" HorizontalAlignment="Stretch"  RelativePanel.Below="Header" RelativePanel.RightOf="Table"
                       ItemsSource="{x:Bind sampleRegisterViewModel.SamplestoMakeMemo}">
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="data:SampleRegister">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="0.2*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                                <ColumnDefinition Width="1*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{x:Bind ReisterId,Mode=OneWay}" ></TextBlock>
-                            <TextBlock Grid.Column="1" Text="{x:Bind SampleNumber ,Mode=OneWay}" ></TextBlock>
-                            <TextBlock Grid.Column="2" Text="{x:Bind  CollectedDate,Mode=OneWay}" ></TextBlock>
-                            <TextBlock Grid.Column="3" Text="{x:Bind  RecivedDate,Mode=OneWay}" ></TextBlock>
-                            <TextBlock Grid.Column="4" Text="{x:Bind RecivedBy,Mode=OneWay}" ></TextBlock>
-
+                            
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                                <RowDefinition Height="1*" />
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                                
+                                <TextBlock Text="{x:Bind SampleNumber ,Mode=OneWay}" Style="{StaticResource  BaseTextBlockStyle }" ></TextBlock>
+                            </StackPanel>
+                            <StackPanel Grid.Row="1" Orientation="Horizontal" >
+                                <TextBlock Text="{x:Bind  CollectedDate,Mode=OneWay}" ></TextBlock>
+                                
+                            </StackPanel>
+                            
+                            
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
                 
             </ListView>
-            
+            <AppBarButton x:Name="NextButton" Click="NextButton_Click" RelativePanel.Below="list" RelativePanel.RightOf="Table" Icon="Next"></AppBarButton>
+
 
 
 

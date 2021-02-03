@@ -212,6 +212,9 @@
     <Compile Include="Views\Report\Reportpdf.xaml.cs">
       <DependentUpon>Reportpdf.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SampleRegister\BulkMemo.xaml.cs">
+      <DependentUpon>BulkMemo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SampleRegister\MakeBulkMemo.xaml.cs">
       <DependentUpon>MakeBulkMemo.xaml</DependentUpon>
     </Compile>
@@ -360,6 +363,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Report\Reportpdf.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SampleRegister\BulkMemo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

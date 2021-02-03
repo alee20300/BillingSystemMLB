@@ -17,15 +17,16 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
         private MemoDetail memoDetail;
         private Account account;
         private Service service;
+        
 
-        public BulkSampleMemoViewModel(List<SampleRegister> sampleRegisters)
+        public BulkSampleMemoViewModel(ObservableCollection<SampleRegister> sampleRegisters)
         {
-            SampleRegisters = new List<SampleRegister>();
+            SampleRegisters = new ObservableCollection<SampleRegister>();
             SampleRegisters = sampleRegisters;
             MakePatients();
         }
 
-        public IList<SampleRegister> SampleRegisters { get; set; }
+        public ObservableCollection<SampleRegister> SampleRegisters { get; set; }
 
         public  ObservableCollection<PatientModel> MakePatients()
         {

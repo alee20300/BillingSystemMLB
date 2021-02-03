@@ -38,7 +38,7 @@ namespace UwpApp
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
 {
     ("home", typeof(HomePage)),
-    ("Patient", typeof(InvoicePage)),
+    ("Patient", typeof(BulkMemo)),
     ("Sample", typeof(SampleRegisterPage)),
 
 };
@@ -170,7 +170,10 @@ namespace UwpApp
             {
 
             }
+            else if (ContentFrame.SourcePageType == typeof(BulkMemo))
+            {
 
+            }
 
             else if (ContentFrame.SourcePageType != null)
             {

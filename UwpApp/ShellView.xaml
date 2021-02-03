@@ -20,7 +20,7 @@
                 <NavigationViewItemSeparator/>
                 <NavigationViewItemHeader x:Name="MainPagesHeader"
                                            Content="Main pages"/>
-                <NavigationViewItem Tag="Patient" Icon="People" Content="report"/>
+                <NavigationViewItem Tag="Patient" Icon="People" Content="Invoice"/>
                 <NavigationViewItem Tag="Sample" Icon="AddFriend" Content="Sample"/>
                 
 

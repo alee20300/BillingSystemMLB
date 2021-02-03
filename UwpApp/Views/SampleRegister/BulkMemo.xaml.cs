@@ -22,10 +22,9 @@ namespace UwpApp.Views.SampleRegister
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MakeBulkMemo : Page
+    public sealed partial class BulkMemo : Page
     {
-       
-        public MakeBulkMemo()
+        public BulkMemo()
         {
             this.InitializeComponent();
         }
@@ -33,14 +32,14 @@ namespace UwpApp.Views.SampleRegister
         public BulkSampleMemoViewModel bulkMemoViewModel { get; set; }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            ObservableCollection<Domin.Data.SampleRegister > id = (ObservableCollection<Domin.Data.SampleRegister>)e.Parameter;
+            ObservableCollection<Domin.Data.SampleRegister> id = (ObservableCollection<Domin.Data.SampleRegister>)e.Parameter;
 
 
             if (id != null)
             {
                 // Order is a new order
                 bulkMemoViewModel = new BulkSampleMemoViewModel(id);
-               
+
             }
             //else
             //{
