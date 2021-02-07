@@ -53,7 +53,13 @@ namespace Repository.SQL
             return entity;
         }
 
+        public async Task<IEnumerable<TEntity>> UpsrBulk(IEnumerable<TEntity> entities)
+        {
 
+            _db.Set<TEntity>().AddRange(entities);
+            await _db.SaveChangesAsync();
+            return entities;
+        }
     }
 }
 

@@ -2,16 +2,24 @@
 using Domin.Data;
 using Domin.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Repository
 {
     public class ApplicationContext : DbContext
     {
-
+        public string connectionString { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("appsettings.json", optional: false);
+
+            var configuration = builder.Build();
+
+            connectionString = configuration.GetConnectionString("SQLConnection").ToString();
+
 
 
         }

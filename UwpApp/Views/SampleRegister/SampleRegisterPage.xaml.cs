@@ -33,6 +33,7 @@ namespace UwpApp.Views.SampleRegister
 
         private void ContextButton_Click(object sender, RoutedEventArgs e)
         {
+            
             var results = Table.SelectedItems;
 
             foreach (var r in results)

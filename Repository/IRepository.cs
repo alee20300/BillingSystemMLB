@@ -10,6 +10,8 @@ namespace Repository
         Task<TEntity> GetbyIdAsync(int Id);
         Task<TEntity> UpsertAsync(TEntity entity);
 
+        Task<IEnumerable<TEntity>> UpsrBulk(IEnumerable<TEntity> entities);
+
 
 
 

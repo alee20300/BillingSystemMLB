@@ -37,8 +37,6 @@ namespace UwpApp.ViewModel
 
             }
 
-
-
         }
 
         public ObservableCollection<CollectionSiteViewModel> CollectionSites { get; set; } = new ObservableCollection<CollectionSiteViewModel>();

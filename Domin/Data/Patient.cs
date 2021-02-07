@@ -40,6 +40,7 @@ namespace Domin.Models
         public int CountryId { get; set; }
         public ICollection<Memo> Memos { get; set; } = new List<Memo>();
 
+       
     }
 
 

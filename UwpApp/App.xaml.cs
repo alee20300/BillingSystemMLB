@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Repository;
 using System;
 using System.IO;
@@ -30,9 +31,7 @@ namespace UwpApp
 
         public static StaticData AtollIslandViewModel { get; } = new StaticData();
 
-        
-
-
+        public static string connectionString { get; set; }
 
         public App()
         {
@@ -49,6 +48,9 @@ namespace UwpApp
                     Bold.Licensing.BoldLicenseProvider.RegisterLicense(licenseKey);
                 }
             }
+
+         
+
 
             this.InitializeComponent();
             this.Suspending += OnSuspending;
@@ -125,7 +127,9 @@ namespace UwpApp
 
         private static void UseSqlServer()
         {
-            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1;Initial Catalog=Billing14;User Id=sa;Password=sa@12345;");
+
+
+            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1; Initial Catalog = Billing14; User Id = sa; Password = sa@12345;");
             Repository = new BillingRepository(dbOptions);
 
         }
