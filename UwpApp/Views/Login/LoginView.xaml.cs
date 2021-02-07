@@ -27,13 +27,21 @@ namespace UwpApp.Views.Login
             
             var rootframe = Window.Current.Content as Frame;
 
-
-            AutorizeDetailModel result = await authenticationViewModel.Authenticate();
-
-            if (result.IsAuthenticated==false)
+            try
             {
-                rootframe.Navigate(typeof(ShellView));
+                AutorizeDetailModel result = await authenticationViewModel.Authenticate();
+
+                if (result.IsAuthenticated == false)
+                {
+                    rootframe.Navigate(typeof(ShellView));
+                }
             }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            
 
 
             //if (result!= null)

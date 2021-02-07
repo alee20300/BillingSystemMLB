@@ -164,6 +164,11 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             {
 
                 PrepMemo = await App.Repository.Memo.UpsrBulk(Memos);
+                Memos.Clear();
+                foreach (var m in PrepMemo)
+                {
+                    Memos.Add(m);
+                }
 
 
             }
@@ -184,7 +189,7 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
         {
 
             PrintToPdf = new PrintToPdfHelper();
-            foreach (var p in PrepMemo)
+            foreach (var p in Memos)
             {
                 PrintToPdf.PrintPDF(p);
 
@@ -194,7 +199,8 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
         public void Makememo(PatientModel patientModel)
         {
             memo = new Memo();
-            memo.Doctor = Doctor;
+            memo.DoctorId = 1;
+            //memo.Doctor = Doctor;
             memo.Rate = memoDetails.Sum(memoDetails => memoDetails.Rate);
             memo.MemoDate = DateTime.Now;
             memo.MemoDetails = memoDetails;

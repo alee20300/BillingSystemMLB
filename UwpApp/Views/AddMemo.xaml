@@ -121,9 +121,9 @@
                           SelectedValuePath="CollectionSIteId"  
                           SelectedValue="{x:Bind ViewModel.CollectionSiteId,Mode=TwoWay}" ></ComboBox>-->
                 <!--<TextBox Header="Referance Number"  Text="{x:Bind ViewModel.ReferanceCode, Mode=TwoWay}"></TextBox>-->
-                <ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True"  HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=TwoWay}" DisplayMemberPath="DoctorName" SelectedValuePath="Doctor" SelectedValue="{x:Bind  ViewModel.Doctor, Mode=TwoWay}" >
+                <!--<ComboBox Header=" Referal Doctor" IsTextSearchEnabled="True"  HorizontalAlignment="Stretch" ItemsSource="{x:Bind IAVM.Doctors ,Mode=TwoWay}" DisplayMemberPath="DoctorName" SelectedValuePath="Doctor" SelectedValue="{x:Bind  ViewModel.Doctor, Mode=TwoWay}" >
 
-                </ComboBox>
+                </ComboBox>-->
 
                 <AutoSuggestBox ItemsSource="{x:Bind IAVM.Accounts,Mode=OneWay}"
                               DisplayMemberPath="AccountName"    

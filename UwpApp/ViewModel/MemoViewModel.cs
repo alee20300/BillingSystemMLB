@@ -504,31 +504,31 @@ namespace UwpApp.ViewModel
         //    }
         //}
 
-        public Doctor Doctor
-        {
-            get => Memo.Doctor;
-            set
-            {
-                if (Memo.Doctor != value)
-                {
-                   Memo. Doctor = value;
-                    OnPropertyChanged();
+        //public Doctor Doctor
+        //{
+        //    get => Memo.Doctor;
+        //    set
+        //    {
+        //        if (Memo.Doctor != value)
+        //        {
+        //           Memo. Doctor = value;
+        //            OnPropertyChanged();
 
-                }
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
 
 
         public int DoctorID
         {
-            get => Memo.Doctor.DoctorId;
+            get => Memo.DoctorId;
             set
             {
-                if (value != Memo.Doctor.DoctorId)
+                if (value != Memo.DoctorId)
                 {
-                    value = Memo.Doctor.DoctorId;
+                    value = Memo.DoctorId;
                     OnPropertyChanged();
 
                 }

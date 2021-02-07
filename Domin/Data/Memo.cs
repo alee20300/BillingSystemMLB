@@ -65,8 +65,8 @@ namespace Domin.Models
         [ForeignKey("PatientId")]
         public Patient Patient { get; set; }
         public int PatientId { get; set; }
-        [ForeignKey("DoctorId")]
-        public Doctor Doctor { get; set; }
+        //[ForeignKey("DoctorId")]
+        //public Doctor Doctor { get; set; }
         public int DoctorId { get; set; }
 
         #endregion

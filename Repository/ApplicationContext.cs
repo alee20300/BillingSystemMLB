@@ -26,6 +26,7 @@ namespace Repository
 
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Account> Accounts { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
         public DbSet<AccountServicePrice> AccountServicePrices { get; set; }
         public DbSet<Memo> Memos { get; set; }
         public DbSet<Island> Islands { get; set; }
@@ -57,6 +58,7 @@ namespace Repository
         {
             modelBuilder.ApplyConfiguration(new PatientConfiguration());
             modelBuilder.ApplyConfiguration(new MemoConfiguration());
+            modelBuilder.ApplyConfiguration(new DoctorConfiguration());
             modelBuilder.ApplyConfiguration(new ServiceConfiguration());
             modelBuilder.ApplyConfiguration(new AccountConfiguration());
             modelBuilder.ApplyConfiguration(new AccountServicePriceConfiguration());
