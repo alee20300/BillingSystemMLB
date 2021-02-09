@@ -528,7 +528,8 @@ namespace UwpApp.ViewModel
             {
                 if (value != Memo.DoctorId)
                 {
-                    value = Memo.DoctorId;
+                    Memo.DoctorId = value;
+                    
                     OnPropertyChanged();
 
                 }

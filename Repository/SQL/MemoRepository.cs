@@ -28,7 +28,10 @@ namespace Repository.SQL
         public async Task<Memo> GetMemoAsync(int Id) =>
             await dbSet
             .Include(memo => memo.MemoDetails)
+            
             .ThenInclude(memoDetail => memoDetail.Service)
+            .Include(m => m.MemoDetails)
+            .ThenInclude(p=>p.PaymentDetails)
             .AsNoTracking()
             .FirstOrDefaultAsync(memo => memo.MemoId == Id);
 
@@ -79,7 +82,12 @@ namespace Repository.SQL
 
         public Memo getreposrt(int MemoId)
         {
-            return dbSet.Include(m => m.Patient).Include(m => m.MemoDetails).ThenInclude(s => s.Service).
+            return dbSet.Include(m => m.Patient)
+                .Include(m => m.MemoDetails)
+                .ThenInclude(s => s.Service)
+               .Include(m => m.MemoDetails)
+            .ThenInclude(p => p.PaymentDetails)
+            .
                 FirstOrDefault(m => m.MemoId == MemoId)
 
 

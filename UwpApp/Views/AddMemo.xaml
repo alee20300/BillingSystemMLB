@@ -132,17 +132,19 @@
                          
                            MinWidth="250" Header="Payment Accounts" >
                 </AutoSuggestBox>
+                <ComboBox ItemsSource="{x:Bind IAVM.Doctors, Mode=OneWay}" SelectedValuePath="Id" DisplayMemberPath="DoctorName" Header="Doctor" Width="250" SelectedValue="{x:Bind ViewModel.DoctorID,Mode=TwoWay}"></ComboBox>
+                <StackPanel Orientation="Vertical" Margin="0,0,0,0" RelativePanel.RightOf="stack" >
+
+                    <TextBlock  Text="Payment Account" Margin="0,20,0,0"></TextBlock>
+                    <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" DisplayMemberPath="AccountName" Height="150"  Width="250">
+                        <DataTemplate x:DataType="data:PaymentType">
+                            <TextBlock Text="{x:Bind AccountName}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                        </DataTemplate>
+                    </ListBox>
+                </StackPanel>
             </StackPanel>
             
-            <StackPanel Orientation="Vertical" Margin="20,0,0,0" RelativePanel.RightOf="stack" >
-                
-                <TextBlock  Text="Payment Account" Margin="0,20,0,0"></TextBlock>
-                <ListBox ItemsSource="{x:Bind ViewModel.PaymentTypes, Mode=OneWay}" DisplayMemberPath="AccountName" Height="150"  Width="250">
-                    <DataTemplate x:DataType="data:PaymentType">
-                        <TextBlock Text="{x:Bind AccountName}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
-                    </DataTemplate>
-                </ListBox>
-            </StackPanel>
+           
             
         </RelativePanel>
 

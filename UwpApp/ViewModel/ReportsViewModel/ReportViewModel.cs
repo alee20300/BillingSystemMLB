@@ -1,4 +1,5 @@
 ﻿using Domin.Models;
+using System.Linq;
 
 namespace UwpApp.ViewModel.ReportsViewModel
 {
@@ -51,6 +52,23 @@ namespace UwpApp.ViewModel.ReportsViewModel
         {
             get => _age;
 
+        }
+
+        public decimal  PatientAmount
+        {
+            get => Memo.MemoDetails.Sum(m => m.PaymentDetails.Sum(p => p.Amount));
+
+        }
+
+        public decimal AccountAmount
+        {
+            get => Memo.MemoDetails.Sum(m => m.PaymentDetails.Sum(p => p.Amount));
+
+        }
+
+        public decimal Total
+        {
+            get => AccountAmount + PatientAmount;
         }
 
 

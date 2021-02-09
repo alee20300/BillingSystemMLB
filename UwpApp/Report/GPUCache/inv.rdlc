@@ -6,16 +6,281 @@
         <Style>
           <FontSize>0.35278cm</FontSize>
           <Border>
-            <Style>Solid</Style>
+            <Style>None</Style>
           </Border>
         </Style>
         <ReportItems>
+          <Rectangle Name="Rectangle1">
+            <Left>0.66146cm</Left>
+            <Top>2.29278cm</Top>
+            <Height>2.92723cm</Height>
+            <Width>20.3404cm</Width>
+            <Style>
+              <FontSize>0.35278cm</FontSize>
+              <Border>
+                <Style>Solid</Style>
+              </Border>
+            </Style>
+            <ReportItems>
+              <Textbox Name="TextBox4">
+                <Left>0.69646cm</Left>
+                <Top>0.20864cm</Top>
+                <Height>0.62441cm</Height>
+                <Width>1.25926cm</Width>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Name:</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+              <Textbox Name="TextBox13">
+                <Left>0.69618cm</Left>
+                <Top>0.88911cm</Top>
+                <Height>0.62426cm</Height>
+                <Width>1.57676cm</Width>
+                <ZIndex>1</ZIndex>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Address:</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+              <Textbox Name="TextBox14">
+                <Left>0.69646cm</Left>
+                <Top>1.56297cm</Top>
+                <Height>0.62426cm</Height>
+                <Width>1.92954cm</Width>
+                <ZIndex>2</ZIndex>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Contact:</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+              <Textbox Name="TextBox15">
+                <Left>0.69618cm</Left>
+                <Top>2.21148cm</Top>
+                <Height>0.62426cm</Height>
+                <Width>1.25926cm</Width>
+                <ZIndex>3</ZIndex>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>Age:</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value />
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+              <Textbox Name="PatientName1">
+                <Left>3.01405cm</Left>
+                <Top>0.19816cm</Top>
+                <Height>0.63500cm</Height>
+                <Width>2.54cm</Width>
+                <ZIndex>4</ZIndex>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!PatientName.Value, "PatientInfo")</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+              <Textbox Name="Address">
+                <Left>3.01405cm</Left>
+                <Top>0.87836cm</Top>
+                <Height>0.63500cm</Height>
+                <Width>2.54cm</Width>
+                <ZIndex>5</ZIndex>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Address.Value, "PatientInfo")</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+              <Textbox Name="Contact">
+                <Left>3.01405cm</Left>
+                <Top>1.61919cm</Top>
+                <Height>0.63500cm</Height>
+                <Width>2.54cm</Width>
+                <ZIndex>6</ZIndex>
+                <Style>
+                  <FontSize>0.35278cm</FontSize>
+                  <PaddingLeft>0.07056cm</PaddingLeft>
+                  <PaddingRight>0.07056cm</PaddingRight>
+                  <PaddingTop>0.07056cm</PaddingTop>
+                  <PaddingBottom>0.07056cm</PaddingBottom>
+                  <Border>
+                    <Style>None</Style>
+                  </Border>
+                </Style>
+                <CanGrow>true</CanGrow>
+                <KeepTogether>true</KeepTogether>
+                <Paragraphs>
+                  <Paragraph>
+                    <TextRuns>
+                      <TextRun>
+                        <Value>=First(Fields!Contact.Value, "PatientInfo")</Value>
+                        <Style>
+                          <FontSize>0.35278cm</FontSize>
+                        </Style>
+                      </TextRun>
+                    </TextRuns>
+                    <Style>
+                      <FontSize>0.35278cm</FontSize>
+                    </Style>
+                  </Paragraph>
+                </Paragraphs>
+              </Textbox>
+            </ReportItems>
+            <KeepTogether>true</KeepTogether>
+          </Rectangle>
           <Image Name="Image1">
-            <Left>0.07937cm</Left>
-            <Top>0.13229cm</Top>
+            <Left>0.66147cm</Left>
+            <Top>0cm</Top>
             <Value>logo</Value>
-            <Height>2.41901cm</Height>
-            <Width>2.27459cm</Width>
+            <Height>2.52512cm</Height>
+            <Width>2.67118cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <FontSize>0.35278cm</FontSize>
@@ -27,10 +292,10 @@
             <Sizing>FitProportional</Sizing>
           </Image>
           <Tablix Name="Tablix1">
-            <Left>0.43188cm</Left>
-            <Top>5.06898cm</Top>
+            <Left>0.64327cm</Left>
+            <Top>5.28037cm</Top>
             <Height>1.27cm</Height>
-            <Width>14.2875cm</Width>
+            <Width>20.39938cm</Width>
             <ZIndex>2</ZIndex>
             <Style>
               <FontSize>0.35278cm</FontSize>
@@ -42,22 +307,22 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.32292cm</Width>
+                  <Width>1.28764cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.29708cm</Width>
+                  <Width>10.28347cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.11125cm</Width>
+                  <Width>1.34056cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.27cm</Width>
+                  <Width>1.81681cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.76389cm</Width>
+                  <Width>1.60514cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.52236cm</Width>
+                  <Width>4.05694cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -70,7 +335,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.32292cm</Width>
+                          <Width>1.28764cm</Width>
                           <Style>
                             <BackgroundColor>Red</BackgroundColor>
                             <FontSize>0.35278cm</FontSize>
@@ -111,7 +376,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>6.29708cm</Width>
+                          <Width>10.28348cm</Width>
                           <Style>
                             <BackgroundColor>Red</BackgroundColor>
                             <FontSize>0.35278cm</FontSize>
@@ -152,7 +417,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.11125cm</Width>
+                          <Width>1.34056cm</Width>
                           <Style>
                             <BackgroundColor>Red</BackgroundColor>
                             <FontSize>0.35278cm</FontSize>
@@ -193,7 +458,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.27cm</Width>
+                          <Width>1.81681cm</Width>
                           <Style>
                             <BackgroundColor>Red</BackgroundColor>
                             <FontSize>0.35278cm</FontSize>
@@ -234,7 +499,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.76389cm</Width>
+                          <Width>1.60514cm</Width>
                           <Style>
                             <BackgroundColor>Red</BackgroundColor>
                             <FontSize>0.35278cm</FontSize>
@@ -275,7 +540,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>2.52236cm</Width>
+                          <Width>4.05694cm</Width>
                           <Style>
                             <BackgroundColor>Red</BackgroundColor>
                             <FontSize>0.35278cm</FontSize>
@@ -321,7 +586,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.32292cm</Width>
+                          <Width>1.28764cm</Width>
                           <Style>
                             <FontSize>0.35278cm</FontSize>
                             <PaddingLeft>0.07056cm</PaddingLeft>
@@ -361,7 +626,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>6.29708cm</Width>
+                          <Width>10.28348cm</Width>
                           <Style>
                             <FontSize>0.35278cm</FontSize>
                             <PaddingLeft>0.07056cm</PaddingLeft>
@@ -401,7 +666,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.11125cm</Width>
+                          <Width>1.34056cm</Width>
                           <Style>
                             <FontSize>0.35278cm</FontSize>
                             <PaddingLeft>0.07056cm</PaddingLeft>
@@ -441,7 +706,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.27cm</Width>
+                          <Width>1.81681cm</Width>
                           <Style>
                             <FontSize>0.35278cm</FontSize>
                             <PaddingLeft>0.07056cm</PaddingLeft>
@@ -481,7 +746,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>1.76389cm</Width>
+                          <Width>1.60514cm</Width>
                           <Style>
                             <FontSize>0.35278cm</FontSize>
                             <PaddingLeft>0.07056cm</PaddingLeft>
@@ -521,7 +786,7 @@
                           <Left>0in</Left>
                           <Top>0in</Top>
                           <Height>0.63500cm</Height>
-                          <Width>2.52236cm</Width>
+                          <Width>4.05694cm</Width>
                           <Style>
                             <FontSize>0.35278cm</FontSize>
                             <PaddingLeft>0.07056cm</PaddingLeft>
@@ -581,10 +846,10 @@
             </TablixRowHierarchy>
           </Tablix>
           <Line Name="Line1">
-            <Left>0.23812cm</Left>
-            <Top>5.00036cm</Top>
+            <Left>0.66146cm</Left>
+            <Top>5.21203cm</Top>
             <Height>0cm</Height>
-            <Width>14.41979cm</Width>
+            <Width>20.32cm</Width>
             <Style>
               <FontSize>0.35278cm</FontSize>
               <Border>
@@ -593,10 +858,10 @@
             </Style>
           </Line>
           <Textbox Name="TextBox18">
-            <Left>9.92161cm</Left>
-            <Top>6.35cm</Top>
+            <Left>15.84827cm</Left>
+            <Top>7.23608cm</Top>
             <Height>0.50271cm</Height>
-            <Width>4.60375cm</Width>
+            <Width>3.38667cm</Width>
             <Style>
               <FontSize>0.35278cm</FontSize>
               <PaddingLeft>0.07056cm</PaddingLeft>
@@ -630,10 +895,10 @@
             </Paragraphs>
           </Textbox>
           <Textbox Name="TextBox19">
-            <Left>9.94807cm</Left>
-            <Top>6.985cm</Top>
+            <Left>15.84827cm</Left>
+            <Top>7.6991cm</Top>
             <Height>0.50271cm</Height>
-            <Width>4.57729cm</Width>
+            <Width>3.38667cm</Width>
             <Style>
               <FontSize>0.35278cm</FontSize>
               <PaddingLeft>0.07056cm</PaddingLeft>
@@ -667,10 +932,10 @@
             </Paragraphs>
           </Textbox>
           <Textbox Name="TextBox20">
-            <Left>9.9216cm</Left>
-            <Top>7.62cm</Top>
+            <Left>15.84827cm</Left>
+            <Top>6.77306cm</Top>
             <Height>0.50271cm</Height>
-            <Width>4.60375cm</Width>
+            <Width>3.38667cm</Width>
             <Style>
               <FontSize>0.35278cm</FontSize>
               <PaddingLeft>0.07056cm</PaddingLeft>
@@ -704,10 +969,10 @@
             </Paragraphs>
           </Textbox>
           <Textbox Name="TextBox21">
-            <Left>0.64795cm</Left>
-            <Top>7.44775cm</Top>
-            <Height>0.50271cm</Height>
-            <Width>6.05896cm</Width>
+            <Left>7.95018cm</Left>
+            <Top>7.55358cm</Top>
+            <Height>0.50272cm</Height>
+            <Width>5.29166cm</Width>
             <Style>
               <FontSize>0.35278cm</FontSize>
               <PaddingLeft>0.07056cm</PaddingLeft>
@@ -738,392 +1003,13 @@
               </Paragraph>
             </Paragraphs>
           </Textbox>
-          <Rectangle Name="Rectangle1">
-            <Left>0.37042cm</Left>
-            <Top>2.06651cm</Top>
-            <Height>2.86219cm</Height>
-            <Width>14.3079cm</Width>
-            <Style>
-              <FontSize>0.35278cm</FontSize>
-              <Border>
-                <Style>Solid</Style>
-              </Border>
-            </Style>
-            <ReportItems>
-              <Textbox Name="Contact">
-                <Left>2.43196cm</Left>
-                <Top>1.58089cm</Top>
-                <Height>0.63500cm</Height>
-                <Width>2.54cm</Width>
-                <ZIndex>6</ZIndex>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Contact.Value, "PatientInfo")</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-              <Textbox Name="Address">
-                <Left>2.43196cm</Left>
-                <Top>0.84005cm</Top>
-                <Height>0.63500cm</Height>
-                <Width>2.54cm</Width>
-                <ZIndex>5</ZIndex>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!Address.Value, "PatientInfo")</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-              <Textbox Name="PatientName1">
-                <Left>2.43196cm</Left>
-                <Top>0.15958cm</Top>
-                <Height>0.63500cm</Height>
-                <Width>2.54cm</Width>
-                <ZIndex>4</ZIndex>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>=First(Fields!PatientName.Value, "PatientInfo")</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-              <Textbox Name="TextBox15">
-                <Left>0.11410cm</Left>
-                <Top>2.17289cm</Top>
-                <Height>0.62426cm</Height>
-                <Width>1.25926cm</Width>
-                <ZIndex>3</ZIndex>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Age:</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value />
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-              <Textbox Name="TextBox14">
-                <Left>0.11438cm</Left>
-                <Top>1.52466cm</Top>
-                <Height>0.62426cm</Height>
-                <Width>1.92954cm</Width>
-                <ZIndex>2</ZIndex>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Contact:</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-              <Textbox Name="TextBox13">
-                <Left>0.11410cm</Left>
-                <Top>0.85080cm</Top>
-                <Height>0.62426cm</Height>
-                <Width>1.57676cm</Width>
-                <ZIndex>1</ZIndex>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Address:</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-              <Textbox Name="TextBox4">
-                <Left>0.11438cm</Left>
-                <Top>0.17033cm</Top>
-                <Height>0.62441cm</Height>
-                <Width>1.25926cm</Width>
-                <Style>
-                  <FontSize>0.35278cm</FontSize>
-                  <PaddingLeft>0.07056cm</PaddingLeft>
-                  <PaddingRight>0.07056cm</PaddingRight>
-                  <PaddingTop>0.07056cm</PaddingTop>
-                  <PaddingBottom>0.07056cm</PaddingBottom>
-                  <Border>
-                    <Style>None</Style>
-                  </Border>
-                </Style>
-                <CanGrow>true</CanGrow>
-                <KeepTogether>true</KeepTogether>
-                <Paragraphs>
-                  <Paragraph>
-                    <TextRuns>
-                      <TextRun>
-                        <Value>Name:</Value>
-                        <Style>
-                          <FontSize>0.35278cm</FontSize>
-                        </Style>
-                      </TextRun>
-                    </TextRuns>
-                    <Style>
-                      <FontSize>0.35278cm</FontSize>
-                    </Style>
-                  </Paragraph>
-                </Paragraphs>
-              </Textbox>
-            </ReportItems>
-            <KeepTogether>true</KeepTogether>
-          </Rectangle>
-          <Textbox Name="PatientAmmount1">
-            <Left>13.17625cm</Left>
-            <Top>6.35cm</Top>
-            <Height>0.66146cm</Height>
-            <Width>1.53458cm</Width>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!PatientAmmount.Value, "PatientInfo")</Value>
-                    <Style>
-                      <FontSize>0.30100cm</FontSize>
-                      <Format>0.00;(0.00);'-'</Format>
-                      <FormatType xmlns="http://tempuri.org/">
-                        <Format>Number</Format>
-                        <Representation>None</Representation>
-                        <NegativeValue>(12345)</NegativeValue>
-                        <Culture />
-                      </FormatType>
-                      <Color>Black</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-          </Textbox>
-          <Textbox Name="AccountAmmount1">
-            <Left>13.25562cm</Left>
-            <Top>6.985cm</Top>
-            <Height>0.66146cm</Height>
-            <Width>1.46403cm</Width>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!AccountAmmount.Value, "PatientInfo")</Value>
-                    <Style>
-                      <FontSize>0.30100cm</FontSize>
-                      <Format>0.00;(0.00);'-'</Format>
-                      <FormatType xmlns="http://tempuri.org/">
-                        <Format>Number</Format>
-                        <Representation>None</Representation>
-                        <NegativeValue>(12345)</NegativeValue>
-                        <Culture />
-                      </FormatType>
-                      <Color>Black</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-          </Textbox>
-          <Textbox Name="Total1">
-            <Left>13.17625cm</Left>
-            <Top>7.62cm</Top>
-            <Height>0.66146cm</Height>
-            <Width>1.55222cm</Width>
-            <Style>
-              <PaddingLeft>2pt</PaddingLeft>
-              <PaddingRight>2pt</PaddingRight>
-              <PaddingTop>2pt</PaddingTop>
-              <PaddingBottom>2pt</PaddingBottom>
-              <Border>
-                <Style>None</Style>
-              </Border>
-            </Style>
-            <CanGrow>true</CanGrow>
-            <KeepTogether>true</KeepTogether>
-            <Paragraphs>
-              <Paragraph>
-                <TextRuns>
-                  <TextRun>
-                    <Value>=First(Fields!Total.Value, "PatientInfo")</Value>
-                    <Style>
-                      <FontSize>0.30100cm</FontSize>
-                      <Format>0.00;(0.00);'-'</Format>
-                      <FormatType xmlns="http://tempuri.org/">
-                        <Format>Number</Format>
-                        <Representation>None</Representation>
-                        <NegativeValue>(12345)</NegativeValue>
-                        <Culture />
-                      </FormatType>
-                      <Color>Black</Color>
-                    </Style>
-                  </TextRun>
-                </TextRuns>
-                <Style />
-              </Paragraph>
-            </Paragraphs>
-          </Textbox>
         </ReportItems>
-        <Height>8.33438cm</Height>
+        <Height>8.20182cm</Height>
       </Body>
-      <Width>14.89604cm</Width>
+      <Width>21.85458cm</Width>
       <Page>
-        <PageHeight>25.7048cm</PageHeight>
-        <PageWidth>18.2118cm</PageWidth>
+        <PageHeight>18.2118cm</PageHeight>
+        <PageWidth>25.7048cm</PageWidth>
         <PageFooter>
           <Style>
             <FontSize>0.35278cm</FontSize>
@@ -1131,14 +1017,84 @@
               <Style>None</Style>
             </Border>
           </Style>
-          <Height>0.29104cm</Height>
+          <Height>0.84666cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="TextBox16">
+              <Left>15.31938cm</Left>
+              <Top>0.21166cm</Top>
+              <Height>0.63500cm</Height>
+              <Width>5.29166cm</Width>
+              <Style>
+                <FontSize>0.35278cm</FontSize>
+                <PaddingLeft>0.07056cm</PaddingLeft>
+                <PaddingRight>0.07056cm</PaddingRight>
+                <PaddingTop>0.07056cm</PaddingTop>
+                <PaddingBottom>0.07056cm</PaddingBottom>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style>
+                        <FontSize>0.35278cm</FontSize>
+                        <Color>Black</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <FontSize>0.35278cm</FontSize>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+            </Textbox>
+            <Textbox Name="TextBox17">
+              <Left>13.86416cm</Left>
+              <Top>0.21166cm</Top>
+              <Height>0.63500cm</Height>
+              <Width>1.42875cm</Width>
+              <Style>
+                <FontSize>0.35278cm</FontSize>
+                <PaddingLeft>0.07056cm</PaddingLeft>
+                <PaddingRight>0.07056cm</PaddingRight>
+                <PaddingTop>0.07056cm</PaddingTop>
+                <PaddingBottom>0.07056cm</PaddingBottom>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+              </Style>
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Printed:</Value>
+                      <Style>
+                        <FontSize>0.35278cm</FontSize>
+                        <Color>Black</Color>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <FontSize>0.35278cm</FontSize>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+            </Textbox>
+          </ReportItems>
         </PageFooter>
         <LeftMargin>0.50000cm</LeftMargin>
-        <RightMargin>5cm</RightMargin>
-        <TopMargin>0.50000cm</TopMargin>
-        <BottomMargin>0.50000cm</BottomMargin>
+        <RightMargin>0.50000cm</RightMargin>
+        <TopMargin>2.54cm</TopMargin>
+        <BottomMargin>2.54cm</BottomMargin>
         <ColumnSpacing>1.27cm</ColumnSpacing>
         <Style>
           <FontSize>0.35278cm</FontSize>
@@ -1186,18 +1142,6 @@
         <Field Name="Age">
           <DataField>Age</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
-        </Field>
-        <Field Name="AccountAmmount">
-          <DataField>AccountAmmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="PatientAmmount">
-          <DataField>PatientAmmount</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
-        <Field Name="Total">
-          <DataField>Total</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
       </Fields>
       <Query>
