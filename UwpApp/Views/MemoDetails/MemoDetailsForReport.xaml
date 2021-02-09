@@ -1,0 +1,117 @@
+﻿<Page
+    x:Class="UwpApp.Views.MemoDetails.MemoDetailsForReport"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views.MemoDetails"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="using:Domin.Models" xmlns:models1="using:UwpApp.ViewModel.ReportsViewModel"
+    mc:Ignorable="d"
+    
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch"> 
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="110" />
+                <RowDefinition Height="70*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="MEMO #" Grid.Row="0" Style="{StaticResource TitleTextBlockStyle}"></TextBlock>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <Image Width="100" Height="100" Source="/Assets/Asset 1.png" ></Image>
+                <StackPanel Margin="20,0,0,0">
+                    <TextBlock Text="NAME:" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                    <TextBlock Text="ADDRESS" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                    <TextBlock Text="PHONE:" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                    <TextBlock Text="MEMO DATE:" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+
+
+
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock Text="{x:Bind report.memo.PatientName , Mode=OneWay}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                    <TextBlock Text="{x:Bind report.memo.Address, Mode=OneWay}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+                    <!--<TextBlock Text="{x:Bind report.memo.Account}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>-->
+                    <TextBlock Text="{x:Bind report.memo.MemoDate}" Style="{StaticResource SubtitleTextBlockStyle}"></TextBlock>
+
+                </StackPanel>
+            </StackPanel>
+            <StackPanel  Orientation="Horizontal"  Margin="0,50,0,0 "  Width="800" Grid.Row="2" HorizontalAlignment="Stretch" Grid.ColumnSpan="2">
+
+                <Grid >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="19" />
+                        <ColumnDefinition Width="70" />
+                        <ColumnDefinition Width="480" />
+                        <ColumnDefinition Width="35" />
+                        <ColumnDefinition Width="40" />
+                        <ColumnDefinition Width="90" />
+                        <ColumnDefinition Width="90" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Text="#"></TextBlock>
+                    <TextBlock Grid.Column="1" Text="ServiceID"></TextBlock>
+                    <TextBlock Grid.Column="2" Text="Service Name"></TextBlock>
+                    <TextBlock Grid.Column="3" Text="QTY"></TextBlock>
+                    <TextBlock Grid.Column="4" Text="Rate"></TextBlock>
+                    <TextBlock Grid.Column="5" Text="Patient"></TextBlock>
+                    <TextBlock Grid.Column="6" Text="Account"></TextBlock>
+                    <Border Grid.Row="1" Grid.ColumnSpan="7" BorderBrush="Black"  BorderThickness="1"/>
+                </Grid>
+                <GridView ItemsSource="{x:Bind report.memo.MemoDetails, Mode=OneWay}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate x:DataType="models:MemoDetail">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ServiceId}"></TextBlock>
+                            </StackPanel>
+                                
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                    
+                </GridView>
+                <!--<ListView  ItemsSource="{x:Bind report.memo.MemoDetails , Mode=OneWay}" DisplayMemberPath="ServiceId" >-->
+                    
+                    <!--<ListView.ItemTemplate>
+                        <DataTemplate x:DataType="models1:ReportMemoDetailVM">
+                            <Grid >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="19" />
+                                    <ColumnDefinition Width="70" />
+                                    <ColumnDefinition Width="480" />
+                                    <ColumnDefinition Width="35" />
+                                    <ColumnDefinition Width="40" />
+                                    <ColumnDefinition Width="90" />
+                                    <ColumnDefinition Width="90" />
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Column="0" Text="{Binding Code}"></TextBlock>
+                                <TextBlock Grid.Column="1" Text="{x:Bind Code.ToString() , Mode=OneWay}"></TextBlock>
+                                <TextBlock Grid.Column="2" Text="{x:Bind Description.ToString(), Mode=OneWay}"></TextBlock>
+                                <TextBlock Grid.Column="3" Text="{x:Bind QTY.ToString() ,Mode=OneWay}"></TextBlock>
+                                <TextBlock Grid.Column="4" Text="{x:Bind Rate.ToString(), Mode=OneWay}"></TextBlock>
+                                <TextBlock Grid.Column="5" Text="{x:Bind Patient.ToString(),Mode=OneWay}"></TextBlock>
+                                <TextBlock Grid.Column="6" Text="{x:Bind  Account.ToString() ,Mode=OneWay}"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>-->
+
+
+                <!--</ListView>-->
+
+
+            </StackPanel>
+             
+        </Grid>
+    </Canvas>
+</Page>

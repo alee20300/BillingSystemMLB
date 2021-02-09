@@ -1,0 +1,192 @@
+﻿<Page
+    x:Class="UwpApp.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converters="using:UwpApp.ViewModel.Converters"
+    xmlns:models="using:Domin.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <converters:WIndowsStateConverter x:Key="ObjectToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid>
+
+        <StackPanel Orientation="Vertical" >
+            
+            <RelativePanel HorizontalAlignment="Right">
+                <CommandBar x:Name="CommandBar" Background="Transparent" HorizontalAlignment="Right" >
+                    <AppBarToggleButton 
+                        Icon="Add" Label="Add Patient" Click="AppBarToggleButton_Click" />
+                    <AppBarButton
+                        Name="Edit" Label="Edit Patinet" Icon="Edit" Click="Edit_Click"
+                        />
+                    <AppBarButton x:Name="SavePateint" Label="Save Patient" Icon="Save"/>
+                    
+                    <AppBarSeparator/>
+                </CommandBar>
+                <AutoSuggestBox  
+                    RelativePanel.RightOf="CommandBar" 
+                    
+                    Name="Searchbox"  PlaceholderText="Search for Something" 
+                    Width="400" HorizontalAlignment="Right"
+                    QueryIcon="Find"
+                    
+                    TextChanged="AutoSuggestBox_TextChangedAsync"
+                    QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                    SuggestionChosen="AutoSuggestBox_SuggestionChosen"
+                    TextMemberPath="PatientName">
+                    <AutoSuggestBox.KeyboardAccelerators>
+                        <KeyboardAccelerator Key="f" Modifiers="Control"></KeyboardAccelerator>
+                    </AutoSuggestBox.KeyboardAccelerators>
+
+
+                    <AutoSuggestBox.ItemTemplate>
+                        <DataTemplate x:DataType="models:Patient" >
+                            <StackPanel>
+                                <TextBlock Text="{x:Bind PatientName}" Style="{StaticResource BaseTextBlockStyle}"></TextBlock>
+                                <TextBlock Text="{x:Bind IdCardNumber }"></TextBlock>
+                            </StackPanel>
+                        </DataTemplate>
+                    </AutoSuggestBox.ItemTemplate>
+                </AutoSuggestBox>
+            </RelativePanel>
+
+
+
+            <Grid Margin="10" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="4*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="1.8*" />
+                    </Grid.RowDefinitions>
+                    <Image HorizontalAlignment="Left" Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg" MaxHeight="200"  VerticalAlignment="Bottom"></Image>
+                    <StackPanel Grid.Column="1" Margin="20,5,5,5" Grid.RowSpan="2">
+                        <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
+                        <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Id, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.PermAddress ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Email ,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Contact,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                        <TextBlock Text="{x:Bind ViewModel.SelectedPatient.Country,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+                    <TextBlock x:Name="MemoNo" Text="{x:Bind ViewModel.SelectedPatientMemos.Count}"/>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,20,20">
+                    <Button HorizontalAlignment="Left" x:Name="loadbtn" Content="Load Memo" Margin="20,0,0,0" Click="loadbtn_Click"></Button>
+                    <Button HorizontalAlignment="Left" Content="Make Memo" Margin="20,0,0,0" Click="Button_Click"></Button>
+                </StackPanel>
+
+            </Grid>
+
+
+            
+            
+            <!--<TextBlock x:Name="testtext" Text="{x:Bind ViewModel.SelectedPatient.Name, Mode=TwoWay}"></TextBlock>-->
+                <!--<uc:AddPatient DataContext="{x:Bind ViewModel.Patient}"></uc:AddPatient>-->
+            <Pivot x:Name="HomePagePivot" VerticalAlignment="Stretch">
+                <PivotItem Header="Edit Patient">
+                    <Frame x:Name="addpatientframe" HorizontalAlignment="Left">
+
+                    </Frame>
+
+                </PivotItem>
+                <PivotItem Header=" Patient Memos">
+
+                    <RelativePanel>
+                        <ListView Header="Patient Memo"  x:Name="Listview" ItemsSource="{x:Bind ViewModel.SelectedPatient.Memos ,Mode=OneWay}"
+                                      Width="350"
+                                      Height="400"
+                                  SelectedValuePath="Memo"
+                                  SelectionChanged="Listview_SelectionChanged"
+                                      HorizontalAlignment="Left"
+                                  Margin="0,5,0,20" >
+
+                            <ListView.ItemTemplate  >
+                                <DataTemplate x:DataType="models:Memo">
+
+                                    <Grid Margin="5">
+                                        <Grid.ColumnDefinitions>
+                                            
+                                            <ColumnDefinition Width="7*" />
+                                            <ColumnDefinition Width="2*" />
+                                            
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="7*" />
+                                            <RowDefinition Height="2*" />
+                                           
+                                        </Grid.RowDefinitions>
+                                        <Rectangle Width="310" Height="100" RadiusX="5" RadiusY="5" 
+                                                   Grid.ColumnSpan="2" Grid.RowSpan="2" Fill="{ThemeResource SystemControlAcrylicWindowBrush}">
+                                            <Rectangle.Shadow>
+                                                <ThemeShadow />
+                                            </Rectangle.Shadow>
+                                        </Rectangle>
+                                        <StackPanel Grid.Row="0" Grid.Column="0">
+                                            <TextBlock Margin="20,20,0,0" Text="{x:Bind MemoId, Mode=OneWay}" Style="{StaticResource BaseTextBlockStyle}" />
+                                            <TextBlock Margin="20,0,0,0" Text="{x:Bind PatientName ,Mode=TwoWay}" IsColorFontEnabled="True"  Style="{StaticResource BaseTextBlockStyle}" />
+                                            <TextBlock Margin="20,0,0,0" Text="{x:Bind  Address ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                            <TextBlock Margin="20,0,0,0" Text="{x:Bind  MemoDate ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+</StackPanel>
+                                        <!--<StackPanel Grid.Row="0" Grid.Column="1">
+                                            <TextBlock Margin="0,20,0,0" Text="{x:Bind  AccountAmmount ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                            <TextBlock  Text="{x:Bind  PatientAmmount ,Mode=OneWay}" Style="{StaticResource BodyTextBlockStyle}"></TextBlock>
+                                        </StackPanel>-->
+                                        </Grid>
+                                            
+
+                                        
+                                   
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame x:Name="memoframe"  Width="900" Height=" 600"  RelativePanel.RightOf="Listview" >
+                            
+                        </Frame>
+                        
+                    </RelativePanel>
+                           
+
+
+
+                </PivotItem>
+                
+            </Pivot>
+
+                
+            
+
+            <RelativePanel Visibility="Collapsed" >
+                
+                
+                           </RelativePanel>
+                
+           
+            
+            
+        </StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth ="300"/>
+
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Remove the next 3 lines for left-only navigation. -->
+                        <Setter Target="Searchbox.Visibility" Value="Visible"/>
+
+
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</Page>

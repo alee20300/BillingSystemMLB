@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="UwpApp.Views.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel>
+            <CommandBar Background="Transparent" IsOpen="True" DefaultLabelPosition="Right" IsSticky="True" >
+                <AppBarButton Icon="Add" Label="Add"/>
+                <AppBarButton Icon="Edit" Label="Edit"/>
+               
+                   
+               
+            </CommandBar>
+            <Pivot>
+                <PivotItem Header="User">
+
+                    <StackPanel>
+                        <TextBox x:Name="AtollID" Text="{x:Bind ViewModel.Id}" Header="Atoll Id" PlaceholderText="Atoll Id" Width="400" HorizontalAlignment="Left"/>
+                        <TextBox x:Name="AtollName" Text="{x:Bind ViewModel.AtollName}" Header="Atoll Name" PlaceholderText="Atoll Name" Width="400" HorizontalAlignment="Left">
+                        </TextBox>
+                        <GridView >
+
+                        </GridView>
+                    </StackPanel>
+                </PivotItem>
+                <PivotItem Header="Accounts/Clients">
+                    <Frame x:Name="AccoutSettingframe" Loaded="AccoutSettingframe_Loaded"></Frame>
+
+
+                </PivotItem>
+                <PivotItem Header="Services">
+                    <Frame x:Name="ServiceSettingFrame" Loaded="ServiceSettingFrame_Loaded"></Frame>
+                </PivotItem>
+                <PivotItem Header="Doctors">
+                    <Frame x:Name="DoctorSettingFrame" Loaded="DoctorSettingFrame_Loaded"></Frame>
+                </PivotItem>
+            </Pivot>
+        </StackPanel>
+       
+
+    </Grid>
+</Page>

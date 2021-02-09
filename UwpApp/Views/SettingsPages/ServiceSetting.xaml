@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="UwpApp.Views.SettingsPages.ServiceSetting"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views.SettingsPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+     xmlns:Tk="using:Microsoft.Toolkit.Uwp" xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:models="using:Domin.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <RelativePanel>
+
+            <StackPanel Width="400" HorizontalAlignment="Left" Margin="24" x:Name="formStack">
+                <TextBox  Header="Service ID" PlaceholderText="Service Id"></TextBox>
+                <TextBox  Header="Service Name" PlaceholderText="Service Name"></TextBox>
+                <TextBox  Header="Service Code" PlaceholderText="ServiceCode"></TextBox>
+                <RelativePanel>
+                    <ComboBox x:Name="CatogoryComboBox" PlaceholderText="Catogory" Header="Catogory">
+                        <x:String>Hematology</x:String>
+                    </ComboBox>
+                    <ComboBox Margin="24,0,0,0"  Header="Is Active" RelativePanel.RightOf="CatogoryComboBox" >
+                        <x:String>Yes</x:String>
+                    </ComboBox>
+                </RelativePanel>
+            </StackPanel>
+            <StackPanel RelativePanel.RightOf="formStack" Margin="24" Width="400" >
+                <TextBox Header="Rate" ></TextBox>
+                <TextBox Header="Lis Code" PlaceholderText="LIS Code" ></TextBox>
+                <TextBox  Header="Insuarance Code" PlaceholderText="Aasandha Code"></TextBox>
+            </StackPanel>
+
+            <toolkit:Expander RelativePanel.Below="formStack">
+
+                <toolkit:DataGrid Height="600"  ItemsSource="{x:Bind viewModel.Serviceslist}">
+                    <toolkit:DataGrid.Columns>
+                        <toolkit:DataGridTextColumn
+                        />
+                    </toolkit:DataGrid.Columns>
+
+                </toolkit:DataGrid>
+
+            </toolkit:Expander>
+            
+        </RelativePanel>
+        
+                 
+
+    </Grid>
+</Page>

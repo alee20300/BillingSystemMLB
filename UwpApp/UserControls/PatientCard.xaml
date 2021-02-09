@@ -1,0 +1,56 @@
+﻿<UserControl
+    x:Class="UwpApp.UserControls.PatientCard"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.UserControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:UwpApp.ViewModel"
+   
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="800">
+   
+
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="0.5*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="2.0*" />
+        </Grid.RowDefinitions>
+        <Image Source="/Assets/360_F_233462402_Fx1yke4ng4GA8TJikJZoiATrkncvW6Ib.jpg"   VerticalAlignment="Bottom"></Image>
+        <StackPanel Grid.Column="1" Margin="5" Grid.RowSpan="2">
+            <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Id, Mode=TwoWay}" Style="{StaticResource HeaderTextBlockStyle}" />
+            <TextBlock Text="{x:Bind  ViewModel.SelectedPatient.Name, Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+            <TextBlock Text="{Binding patientViewModel.Name,Mode=TwoWay}" Style="{StaticResource BodyTextBlockStyle}"/>
+
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="5" Width="200" HorizontalAlignment="Left">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="0.2*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+
+            <Button x:Name="makememo" Grid.Column="0" Content="Make Memo" FontSize="12" ></Button>
+            <Button Content="load Data"   Grid.Column="2" FontSize="12" ></Button>
+        </Grid>
+       
+        
+
+        
+        
+        
+        
+        
+        
+    </Grid>
+</UserControl>

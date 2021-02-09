@@ -1,0 +1,61 @@
+﻿<Page
+    
+    x:Class="Billingmlb.Uwp.Views.HomePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Billingmlb.Uwp.Views"
+    xmlns:vm="using:Billing.core.ViewModel"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:uc="using:Billingmlb.Uwp.UserControls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+   
+    <Grid>
+        <StackPanel Orientation="Vertical" >
+            <RelativePanel HorizontalAlignment="Right">
+                <CommandBar x:Name="CommandBar" Background="Transparent" HorizontalAlignment="Right" >
+                <AppBarToggleButton Icon="Add" Label="Add Patient" />
+                <AppBarToggleButton Icon="RepeatAll" Label="Refresh" />
+                    <AppBarSeparator/>
+                </CommandBar>
+                <AutoSuggestBox 
+                    RelativePanel.RightOf="CommandBar" 
+                    Name="Searchbox"  PlaceholderText="Search for Something" 
+                    Width="400" HorizontalAlignment="Right"
+                    QueryIcon="Find"></AutoSuggestBox>
+            </RelativePanel>
+           
+            <ScrollViewer Height="400">
+                <GridView>
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                          
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+            </ScrollViewer>
+
+          
+        </StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger
+                        MinWindowWidth ="300"/>
+                        
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Remove the next 3 lines for left-only navigation. -->
+                        <Setter Target="Searchbox.Visibility" Value="Visible"/>
+                        
+
+                       
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </Grid>
+</Page>

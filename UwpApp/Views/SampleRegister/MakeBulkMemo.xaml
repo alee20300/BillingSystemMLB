@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="UwpApp.Views.SampleRegister.MakeBulkMemo"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views.SampleRegister"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20">
+        <RelativePanel>
+            <TextBlock x:Name="header" Text="Make Memo" Style="{StaticResource HeaderTextBlockStyle}" ></TextBlock>
+
+            <StackPanel RelativePanel.Below="header" x:Name="form" >
+                <ComboBox Header="Account" Width="300" ItemsSource="{x:Bind }">
+
+                </ComboBox>
+                <AutoSuggestBox Header="Search Service" Width="300" HorizontalAlignment="Left" ></AutoSuggestBox>
+                <ListView Margin="0,24,0,0" Width="300" x:Name="List" Header=" Services"  HorizontalAlignment="Left" VerticalAlignment="Stretch" Height="600"></ListView>
+
+            </StackPanel>
+            <ListView HorizontalAlignment="Stretch" x:Name="Samplelist"
+                      
+                      Header="Sample to Make " RelativePanel.Below="header" Margin="20,0,0,0" RelativePanel.RightOf="form"  >
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <StackPanel>
+                            <TextBlock Text="Samples To Make Memo" FontSize="20" ></TextBlock>
+                            <TextBlock Text="Drag to rearange" FontWeight="Light"></TextBlock>
+                            <Border BorderBrush="LightGray" BorderThickness=".5" ></Border>
+
+
+                        </StackPanel>
+                        
+                       
+                        
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+            </ListView>
+
+        </RelativePanel>
+       
+
+
+    </Grid>
+</Page>

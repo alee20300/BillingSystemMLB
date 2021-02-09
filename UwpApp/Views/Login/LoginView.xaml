@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="UwpApp.Views.Login.LoginView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views.Login"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Assets/Asset 1.png" Height="200" Width="200" ></Image>
+            <TextBox Header="User Name" Text="{x:Bind authenticationViewModel.UserName , Mode=TwoWay}" Width="400"/>
+            <PasswordBox Header="Password" Password="{x:Bind authenticationViewModel.Password, Mode=TwoWay}" Width="400"></PasswordBox>
+            <Button Content="Login" Click="Button_Click" HorizontalAlignment="Center" Margin="0,20,0,0" />
+             </StackPanel>
+      
+
+    </Grid>
+</Page>

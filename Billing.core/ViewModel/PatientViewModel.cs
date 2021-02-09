@@ -23,7 +23,11 @@ namespace Billing.core.ViewModel
                 Atoll = "G Dh",
                 Sex = "M",
                 Country = "Maldives",
-                Name = "ali abdulla"
+                Name = "ali abdulla",
+                CreatatedOn = DateTime.UtcNow,
+                CreatedBy="Laith",
+
+
             };
             _patients.Add(pt);
 
@@ -53,7 +57,8 @@ namespace Billing.core.ViewModel
 
         public ObservableCollection<Patient> Patients
         {
-            get { return _patients; }
+            get => _patients;
+
             set { SetProperty(ref _patients, value); }
         }
 
@@ -67,6 +72,7 @@ namespace Billing.core.ViewModel
             }
 
         }
+
 
         private Patient _patient;
 
@@ -108,7 +114,7 @@ namespace Billing.core.ViewModel
 
         public string PatientNumber
         {
-            get { return _patientNumber; }
+            get { return "1000"; }
             set { SetProperty(ref _patientNumber, value); }
         }
 
