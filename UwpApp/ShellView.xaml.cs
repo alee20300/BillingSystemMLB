@@ -4,6 +4,7 @@ using System.Linq;
 using UwpApp.Views;
 using UwpApp.Views.Login;
 using UwpApp.Views.SampleRegister;
+using UwpApp.Views.Statistics;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -38,7 +39,7 @@ namespace UwpApp
         private readonly List<(string Tag, Type Page)> _pages = new List<(string Tag, Type Page)>
 {
     ("home", typeof(HomePage)),
-    ("Patient", typeof(BulkMemo)),
+    ("Patient", typeof(DailySummary)),
     ("Sample", typeof(SampleRegisterPage)),
 
 };

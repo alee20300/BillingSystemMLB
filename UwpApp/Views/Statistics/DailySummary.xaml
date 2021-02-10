@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="UwpApp.Views.Statistics.DailySummary"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UwpApp.Views.Statistics"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="24">
+        <RelativePanel>
+            <TextBlock x:Name="Header" Text="Daily Summary" Style="{StaticResource HeaderTextBlockStyle}" ></TextBlock>
+            <RelativePanel x:Name="StackPanel" Margin="0,40,0,0" RelativePanel.Below="Header">
+                <DatePicker Name="Datepicker" Header="Select Date" >
+                    
+                </DatePicker>
+                <DropDownButton CornerRadius="3" Width="120" Content="By Account" Margin="24,0,0,0" RelativePanel.RightOf="Datepicker" RelativePanel.AlignBottomWith="Datepicker">
+                    <DropDownButton.Flyout>
+                        <MenuFlyout Placement="Bottom">
+                            <MenuFlyoutItem Text="By Account"></MenuFlyoutItem>
+                            <MenuFlyoutItem Text="By Service"></MenuFlyoutItem>
+                        </MenuFlyout>
+                    </DropDownButton.Flyout>
+                </DropDownButton>
+           
+            </RelativePanel>
+
+           
+            
+        </RelativePanel>
+            
+
+    </Grid>
+</Page>

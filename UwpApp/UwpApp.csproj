@@ -125,6 +125,7 @@
     <Compile Include="Extensions\UriExtensions.cs" />
     <Compile Include="Helpers\PrintToPdfHelper.cs" />
     <Compile Include="InvoiceDetailViewModel.cs" />
+    <Compile Include="Models\DailySummaryModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
     <Compile Include="PageData\ApplicationPage.cs" />
     <Compile Include="Validation\PatientValidation.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SampleRegisterViewModel\BulkSampleMemoViewModel.cs" />
     <Compile Include="ViewModel\SampleRegisterViewModel\SampleRegisterViewModel.cs" />
+    <Compile Include="ViewModel\Statistics\DailySummaryViewModel.cs" />
     <Compile Include="ViewModel\ValidatableBindableBase.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -243,6 +245,9 @@
     </Compile>
     <Compile Include="Views\SplashScreen\ExtendedSplash.xaml.cs">
       <DependentUpon>ExtendedSplash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Statistics\DailySummary.xaml.cs">
+      <DependentUpon>DailySummary.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -408,6 +413,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Statistics\DailySummary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="BoldReports.UWP">
@@ -449,7 +458,6 @@
     <Folder Include="ViewModel\Converters\NewFolder1\" />
     <Folder Include="ViewModel\PaymentDetail\" />
     <Folder Include="Views\Shell\" />
-    <Folder Include="Views\Statistics\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Swatinc\Swatinc\Swatinc.vbproj">

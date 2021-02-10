@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using UwpApp.Models;
 
 namespace Repository
 {
@@ -15,6 +16,8 @@ namespace Repository
         Task<Memo> GetMemoAsync(int Id);
         //Task<Memo> Update(Memo memo);
         Memo getreposrt(int MemoId);
+
+        IEnumerable<DailySummaryModel> GetDailySummary(DateTime dateTime);
 
         Task<IEnumerable<Memo>> GetMemoForInvoice(DateTimeOffset from, DateTimeOffset to, int accountId);
     }

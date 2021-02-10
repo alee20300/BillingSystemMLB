@@ -1,10 +1,12 @@
 ﻿using Domin.Data;
 using Domin.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using UwpApp.Models;
 
 namespace Repository.SQL
 {
@@ -14,6 +16,25 @@ namespace Repository.SQL
         public MemoRepository(ApplicationContext db) : base(db)
         {
             _db = db;
+        }
+
+        public IEnumerable<DailySummaryModel> GetDailySummary(DateTime dateTime)
+        {
+            var p = dbSet.Join(_db.MemoDetails,
+                m => m.MemoId,
+                 md => md.MemoId,
+             (m, md) =>
+             new DailySummaryModel {
+
+                 ServiceName = md.Service.ServiceName,
+                 Qty = md.Qty,
+
+
+             } )
+                .AsNoTracking()
+                
+                .AsEnumerable();
+            return p;
         }
 
         public async Task<IEnumerable<Memo>> GetForPatientAsync(int id) =>
