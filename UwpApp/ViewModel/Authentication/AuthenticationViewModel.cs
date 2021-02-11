@@ -41,11 +41,6 @@ namespace UwpApp.ViewModel.Authentication
         public async Task<AutorizeDetailModel> Authenticate
              ()
         {
-
-
-
-
-
             //get username and password hash from database.
             var result = await GetHashForUser(userName);
             //if username is not found, return isAuthentcated as false.

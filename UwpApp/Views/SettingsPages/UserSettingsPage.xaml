@@ -9,9 +9,25 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel>
-            <TextBox Header="User Name" PlaceholderText=" User Name"></TextBox>
-        </StackPanel>
+        <RelativePanel Margin="24" >
+            <TextBlock x:Name="Title"  Text="User Settings" Style="{StaticResource SubheaderTextBlockStyle}" ></TextBlock>
+
+            <StackPanel  x:Name="Header"  RelativePanel.AlignRightWithPanel="True" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <AppBarButton Icon="Add"></AppBarButton>
+                <AppBarButton Icon="Save"></AppBarButton>
+                <AutoSuggestBox QueryIcon="Find" PlaceholderText="Search User" MaxWidth="400" MinWidth="150" Width="250"></AutoSuggestBox>
+            </StackPanel>
+            <StackPanel Margin="24,40,0,0" Width="300" RelativePanel.Below="Title">
+                <TextBlock Text="Add/Modify User" Style="{StaticResource SubheaderTextBlockStyle}" ></TextBlock>
+                <TextBox Header="User Name" Text="{x:Bind userSettingViewModel.UserName}"></TextBox>
+                <PasswordBox Header="User Password" ></PasswordBox>
+                <TextBlock Margin="0,20,0,0" Text="User Roles" Style="{StaticResource SubtitleTextBlockStyle}" ></TextBlock>
+                <ListView ></ListView>
+                <Button HorizontalAlignment="Right" Content="Add Roles"></Button>
+            </StackPanel>
+            
+        
+        </RelativePanel>
 
     </Grid>
 </Page>

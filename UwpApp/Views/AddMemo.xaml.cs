@@ -119,6 +119,7 @@ namespace UwpApp.Views
                 ViewModel.NewMemoDetail.MemoDetail.Service = selectedService;
                 ViewModel.MemoDetails.Add(ViewModel.NewMemoDetail.MemoDetail);
                 ViewModel.updateprice();
+                ViewModel.ServiceSuggections.Remove(selectedService);
                 ClearCandidateService();
             }
         }
@@ -161,12 +162,15 @@ namespace UwpApp.Views
         private void AddServiceButton_Click(object sender, RoutedEventArgs e)
         {
             ViewModel.MemoDetails.Add(ViewModel.NewMemoDetail.MemoDetail);
+            
             ClearCandidateService();
         }
 
         private void ClearCandidateService()
         {
             ServiceSuggection.Text = string.Empty;
+            
+
             //ViewModel.NewMemoDetail = new MemoDetailViewModel();
         }
 

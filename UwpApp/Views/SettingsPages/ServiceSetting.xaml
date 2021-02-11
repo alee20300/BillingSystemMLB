@@ -8,9 +8,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:models="using:Domin.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
 
     <Grid>
         <RelativePanel>
+            
 
             <StackPanel Width="400" HorizontalAlignment="Left" Margin="24" x:Name="formStack">
                 <TextBox  Header="Service ID" PlaceholderText="Service Id"></TextBox>

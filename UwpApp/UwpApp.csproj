@@ -134,6 +134,7 @@
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SampleRegisterViewModel\BulkSampleMemoViewModel.cs" />
     <Compile Include="ViewModel\SampleRegisterViewModel\SampleRegisterViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModelfolder\BaseSettingViewModel.cs" />
     <Compile Include="ViewModel\Statistics\DailySummaryViewModel.cs" />
     <Compile Include="ViewModel\ValidatableBindableBase.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
