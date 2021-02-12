@@ -1,4 +1,5 @@
 ﻿using Domin.Models;
+using System.Linq;
 
 namespace UwpApp.ViewModel.ReportsViewModel
 {
@@ -19,8 +20,8 @@ namespace UwpApp.ViewModel.ReportsViewModel
 
         public int QTY => memoDetail.Qty;
         public decimal Rate => memoDetail.Rate;
-        //public decimal Account => memoDetail.AccountAmmount;
-        //public decimal Patient => memoDetail.PatientAmmount;
+        public decimal Account => memoDetail.PaymentDetails.Sum(p => p.Amount);
+        public decimal Patient => memoDetail.Rate-Account;
 
     }
 }

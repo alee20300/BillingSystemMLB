@@ -200,9 +200,14 @@ namespace UwpApp.Views
             {
 
                 var selectedService = args.SelectedItem as AccountViewModel;
+
+                if (ViewModel.PaymentTypes.Count<2)
+                {
+                    ViewModel.AddPaymentType(selectedService);
+                    ViewModel.Accounts.Remove(selectedService);
+                }
                 
-                
-                ViewModel.AddPaymentType(selectedService);
+               
 
             }
         }

@@ -20,19 +20,23 @@ namespace Repository.SQL
 
         public IEnumerable<DailySummaryModel> GetDailySummary(DateTime dateTime)
         {
+
+
+
             var p = dbSet.Join(_db.MemoDetails,
                 m => m.MemoId,
                  md => md.MemoId,
              (m, md) =>
-             new DailySummaryModel {
+             new DailySummaryModel
+             {
 
                  ServiceName = md.Service.ServiceName,
                  Qty = md.Qty,
 
 
-             } )
+             })
                 .AsNoTracking()
-                
+
                 .AsEnumerable();
             return p;
         }

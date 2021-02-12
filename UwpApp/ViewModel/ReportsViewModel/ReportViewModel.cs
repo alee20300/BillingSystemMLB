@@ -54,13 +54,13 @@ namespace UwpApp.ViewModel.ReportsViewModel
 
         }
 
-        public decimal  PatientAmount
+        public decimal  PatientAmmount
         {
             get => Memo.MemoDetails.Sum(m => m.PaymentDetails.Sum(p => p.Amount));
 
         }
 
-        public decimal AccountAmount
+        public decimal AccountAmmount
         {
             get => Memo.MemoDetails.Sum(m => m.PaymentDetails.Sum(p => p.Amount));
 
@@ -68,7 +68,7 @@ namespace UwpApp.ViewModel.ReportsViewModel
 
         public decimal Total
         {
-            get => AccountAmount + PatientAmount;
+            get => AccountAmmount + PatientAmmount;
         }
 
 

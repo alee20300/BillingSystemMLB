@@ -19,10 +19,14 @@ namespace UwpApp.ViewModel
             Memo = memo;
             MemoDetails = new ObservableCollection<MemoDetail>(Memo.MemoDetails);
             PaymentTypes = new ObservableCollection<PaymentType>();
-
+            Accounts=  new ObservableCollection<AccountViewModel>();
             calcualteAge(Patient.DateOfBirth);
-
+            Task.Run(LoadAccounts);
         }
+
+
+
+        public ObservableCollection<AccountViewModel> Accounts { get; set; }
         //public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
         //public async void loadAccount(string accountName)
         //{
@@ -33,7 +37,16 @@ namespace UwpApp.ViewModel
         //    });
         //}
 
-      
+        public async Task LoadAccounts()
+        {
+
+            var result = App.AtollIslandViewModel.Accounts;
+            foreach (var r in result)
+            {
+                Accounts.Add(r);
+            }
+
+        }
 
         public void AddPaymentType(AccountViewModel account) 
      {
@@ -41,6 +54,8 @@ namespace UwpApp.ViewModel
            PaymentType acccunt = new PaymentType();
             acccunt.Account = Acc;
             acccunt.AccountName = Acc.AccountName;
+
+           
             PaymentTypes.Add(acccunt);
 
         }

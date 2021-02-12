@@ -6,6 +6,8 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using UwpApp.ViewModel.Command;
 
 namespace UwpApp.ViewModel.SampleRegisterViewModel
 {
@@ -20,6 +22,7 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             Task.Run(GetSampleRegister);
 
             samplestoMakeMemo = new ObservableCollection<SampleRegister>();
+            SampleRegister = new SampleRegister();
         }
         public ObservableCollection<SampleRegister> Samples { get; set; } = new ObservableCollection<SampleRegister>();
 
@@ -78,7 +81,8 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         public DateTime RecivedTime
         {
-            get => SampleRegister.RecivedDate; set
+            get => SampleRegister.RecivedDate; 
+            set
             {
                 if (value != SampleRegister.RecivedDate)
                 {
@@ -90,7 +94,8 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         public string Recivedby
         {
-            get => SampleRegister.RecivedBy; set
+            get => SampleRegister.RecivedBy; 
+            set
             {
                 if (value != SampleRegister.RecivedBy)
                 {
@@ -133,14 +138,16 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         }
 
-        public void AddSample(SampleRegister sampleRegister)
+        public ICommand AddSamplerelay => new RelayCommand(AddSample);
+
+        public void AddSample()
         {
-            if (sampleRegister != null)
+            if (SampleRegister != null)
             {
 
                 try
                 {
-                    App.Repository.SampleRegisterRepository.UpsertAsync(sampleRegister);
+                    App.Repository.SampleRegisterRepository.UpsertAsync(SampleRegister);
 
                 }
                 catch (Exception)
