@@ -128,6 +128,7 @@
     <Compile Include="Models\DailySummaryModel.cs" />
     <Compile Include="Models\PatientModel.cs" />
     <Compile Include="PageData\ApplicationPage.cs" />
+    <Compile Include="Report\IReportingService.cs" />
     <Compile Include="Validation\PatientValidation.cs" />
     <Compile Include="ViewModel\Converters\BaseValueConveter.cs" />
     <Compile Include="ViewModel\Converters\ComboBoxItemConvert.cs" />

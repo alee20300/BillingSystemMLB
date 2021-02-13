@@ -22,11 +22,13 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             Task.Run(GetSampleRegister);
 
             samplestoMakeMemo = new ObservableCollection<SampleRegister>();
-            SampleRegister = new SampleRegister();
+
+
         }
         public ObservableCollection<SampleRegister> Samples { get; set; } = new ObservableCollection<SampleRegister>();
 
-        public SampleRegister SampleRegister { get; set; }
+        public SampleRegister SampleRegister = new SampleRegister();
+        private string recivedby;
 
         public int SampleRegisterId
         {
@@ -52,9 +54,9 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
             set
             {
-                if (value != SampleRegister.SampleNumber)
+                if (SampleRegister.SampleNumber != value)
                 {
-                    SampleNumber = value;
+                    SampleRegister.SampleNumber = value;
                     OnPropertyChanged();
 
                 }
@@ -68,7 +70,7 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
             set
             {
-                if (value != SampleRegister.CollectedDate
+                if (SampleRegister.CollectedDate != value
                     )
                 {
                     CollectedDate = value;
@@ -81,7 +83,7 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         public DateTime RecivedTime
         {
-            get => SampleRegister.RecivedDate; 
+            get => SampleRegister.RecivedDate;
             set
             {
                 if (value != SampleRegister.RecivedDate)
@@ -94,14 +96,16 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         public string Recivedby
         {
-            get => SampleRegister.RecivedBy; 
+            get => recivedby;
             set
             {
-                if (value != SampleRegister.RecivedBy)
+
+                if (recivedby!=value)
                 {
-                    Recivedby = value;
+                    recivedby = value;
                     OnPropertyChanged();
                 }
+                
             }
         }
 
@@ -140,17 +144,18 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
         public ICommand AddSamplerelay => new RelayCommand(AddSample);
 
-        public void AddSample()
+
+        public async Task SaveSample(SampleRegister sampleRegister)
         {
-            if (SampleRegister != null)
+            if (sampleRegister != null)
             {
 
                 try
                 {
-                    App.Repository.SampleRegisterRepository.UpsertAsync(SampleRegister);
+                    var result = await App.Repository.SampleRegisterRepository.UpsertAsync(sampleRegister);
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
 
                     throw;
@@ -158,6 +163,10 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
 
             }
+        }
+        public async void AddSample()
+        {
+            SaveSample(SampleRegister);
         }
 
         public ObservableCollection<SampleRegister> SamplestoMakeMemo { get => samplestoMakeMemo; set => samplestoMakeMemo = value; }

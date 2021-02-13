@@ -17,7 +17,7 @@ namespace UwpApp.ViewModel
 
         public ObservableCollection<Memo> SelectedPatientMemos { get; set; }
 
-        //public List<Patient> MasterPatientList { get; } = new List<Patient>();
+       
         public ObservableCollection<Patient> PatientSuggestion { get; } = new ObservableCollection<Patient>();
 
 

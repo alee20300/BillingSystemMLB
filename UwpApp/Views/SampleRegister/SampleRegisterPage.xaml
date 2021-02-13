@@ -7,7 +7,13 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:toolkit="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:data="using:Domin.Data"
     mc:Ignorable="d"
+    xmlns:con="using:UwpApp.ViewModel.Converters"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.Resources>
+        <con:TimeConverter x:Key="TimeConverter"></con:TimeConverter>
+    </Page.Resources>
 
     <Grid Margin="24">
         <Grid.Resources>
@@ -30,8 +36,8 @@
             <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
                 <TextBlock Style="{StaticResource  SubtitleTextBlockStyle}" Text="Add Sampple"></TextBlock>
                 <TextBox Header="Sample Number" Text="{x:Bind sampleRegisterViewModel.SampleNumber, Mode=TwoWay}"></TextBox>
-                <DatePicker Header="Collected Date" Date="{x:Bind sampleRegisterViewModel.CollectedDate ,Mode=TwoWay,Converter={StaticResource TimeConverter}}"></DatePicker>
-                <ComboBox Width="300" Header="Collected by">
+                <DatePicker Header="Collected Date"></DatePicker>
+                <ComboBox  Width="300" SelectedItem="{x:Bind sampleRegisterViewModel.Recivedby, Mode=TwoWay}" Header="Collected by">
                     <x:String>ali  </x:String>
                 </ComboBox>
                 <DatePicker Header="Recived Date"></DatePicker>

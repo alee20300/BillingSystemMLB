@@ -27,15 +27,7 @@ namespace UwpApp.ViewModel
 
 
         public ObservableCollection<AccountViewModel> Accounts { get; set; }
-        //public ICommand LoadAccount => new RelayCommand<string>(loadAccount);
-        //public async void loadAccount(string accountName)
-        //{
-        //    var account = await App.Repository.Account.GetAccountbyIdInt(accountName);
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-        //    {
-        //        Account = account;
-        //    });
-        //}
+     
 
         public async Task LoadAccounts()
         {
@@ -110,25 +102,6 @@ namespace UwpApp.ViewModel
 
 
         public bool HasNewMemoDetailItem => NewMemoDetail != null && NewMemoDetail.Service != null;
-
-
-        //private async void loadpatient(int memoNumber)
-        //{
-        //    var patient = await App.Repository.Patient.GetbyIdAsync(memoNumber);
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-        //    {
-        //        Patient = patient;
-        //    });
-        //}
-
-        //private async void loadDoc(int DoctorId)
-        //{
-        //    var doctor =  App.Repository.Doctor.GetDocById(DoctorId);
-        //    await DispatcherHelper.ExecuteOnUIThreadAsync(() =>
-        //    {
-        //        Doctor = doctor;
-        //    });
-        //}
 
 
       
