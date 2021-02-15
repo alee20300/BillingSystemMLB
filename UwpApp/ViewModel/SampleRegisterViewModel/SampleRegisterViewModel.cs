@@ -73,7 +73,7 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
                 if (SampleRegister.CollectedDate != value
                     )
                 {
-                    CollectedDate = value;
+                   SampleRegister. CollectedDate = value;
                     OnPropertyChanged();
 
                 }
@@ -88,21 +88,21 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             {
                 if (value != SampleRegister.RecivedDate)
                 {
-                    RecivedTime = value;
+                   SampleRegister.RecivedDate = value;
                     OnPropertyChanged();
                 }
             }
         }
 
-        public string Recivedby
+        public string RecivedBy
         {
-            get => recivedby;
+            get =>SampleRegister. RecivedBy;
             set
             {
 
-                if (recivedby!=value)
+                if (SampleRegister. RecivedBy != value)
                 {
-                    recivedby = value;
+                   SampleRegister. RecivedBy = value;
                     OnPropertyChanged();
                 }
                 
@@ -153,14 +153,14 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
                 try
                 {
                     var result = await App.Repository.SampleRegisterRepository.UpsertAsync(sampleRegister);
-
+                    Samples.Add(result);
                 }
                 catch (Exception ex)
                 {
 
                     throw;
                 }
-
+                 
 
             }
         }

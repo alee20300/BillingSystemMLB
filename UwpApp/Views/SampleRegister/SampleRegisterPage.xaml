@@ -36,9 +36,9 @@
             <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
                 <TextBlock Style="{StaticResource  SubtitleTextBlockStyle}" Text="Add Sampple"></TextBlock>
                 <TextBox Header="Sample Number" Text="{x:Bind sampleRegisterViewModel.SampleNumber, Mode=TwoWay}"></TextBox>
-                <DatePicker Header="Collected Date"></DatePicker>
-                <ComboBox  Width="300" SelectedItem="{x:Bind sampleRegisterViewModel.Recivedby, Mode=TwoWay}" Header="Collected by">
-                    <x:String>ali  </x:String>
+                <DatePicker Header="Collected Date" Date="{x:Bind sampleRegisterViewModel.CollectedDate, Mode=TwoWay,Converter={StaticResource TimeConverter}}" ></DatePicker>
+                <ComboBox  Width="300" SelectedItem="{x:Bind sampleRegisterViewModel.RecivedBy, Mode=TwoWay}" Header="Collected by">
+                    <x:String>ali</x:String>
                 </ComboBox>
                 <DatePicker Header="Recived Date"></DatePicker>
 
