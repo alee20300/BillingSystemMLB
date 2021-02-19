@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domin.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,8 +9,27 @@ namespace Domin.Models
     public class Patient : AuditEntity
 
     {
+        public int PatientId { get;  set; }
 
-        public int PatientId { get; set; }
+        public Patient()
+        {
+
+        }
+        public Patient(SampleRegister sampleRegister)
+           : this()
+        {
+            PatientName = sampleRegister.SampleNumber;
+            IdCardNumber = sampleRegister.SampleNumber;
+            PermAddress = "C/O National Drug Agency";
+            Sex = "U";
+            DateOfBirth = DateTime.Now;
+            Contact = "0";
+            AtollId = 1;
+            IslandId = 1;
+            CountryId = 1;
+
+        }
+       
 
 
         public string PatientName { get; set; }

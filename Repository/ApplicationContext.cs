@@ -13,12 +13,12 @@ namespace Repository
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
         {
-            var builder = new ConfigurationBuilder();
-            builder.AddJsonFile("appsettings.json", optional: false);
+            //var builder = new ConfigurationBuilder();
+            //builder.AddJsonFile("appsettings.json", optional: false);
 
-            var configuration = builder.Build();
+            //var configuration = builder.Build();
 
-            connectionString = configuration.GetConnectionString("SQLConnection").ToString();
+            //connectionString = configuration.GetConnectionString("SQLConnection").ToString();
 
 
 

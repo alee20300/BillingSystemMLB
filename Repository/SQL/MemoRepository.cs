@@ -18,27 +18,28 @@ namespace Repository.SQL
             _db = db;
         }
 
-        public IEnumerable<DailySummaryModel> GetDailySummary(DateTime dateTime)
+        public IEnumerable<DailySummaryModel> GetDailySummaryByService(DateTime dateTime)
         {
+            var grouped = from m in _db.MemoDetails
+                          group m.ServiceId by m.Service.ServiceName into g
+                          select new DailySummaryModel
+                          {
+                              Name = g.Key,
+                              Qty = g.Count()
+                          };
+            return grouped;
+        }
 
-
-
-            var p = dbSet.Join(_db.MemoDetails,
-                m => m.MemoId,
-                 md => md.MemoId,
-             (m, md) =>
-             new DailySummaryModel
-             {
-
-                 ServiceName = md.Service.ServiceName,
-                 Qty = md.Qty,
-
-
-             })
-                .AsNoTracking()
-
-                .AsEnumerable();
-            return p;
+        public IEnumerable<DailySummaryModel> GetDailySummaryByAccount(DateTime dateTime)
+        {
+            var grouped = from m in _db.MemoDetails
+                          group m.ServiceId by m.Service.ServiceName into g
+                          select new DailySummaryModel
+                          {
+                              Name = g.Key,
+                              Qty = g.Sum()
+                          };
+            return grouped;
         }
 
         public async Task<IEnumerable<Memo>> GetForPatientAsync(int id) =>
@@ -114,9 +115,6 @@ namespace Repository.SQL
             .ThenInclude(p => p.PaymentDetails)
             .
                 FirstOrDefault(m => m.MemoId == MemoId)
-
-
-
                ;
         }
 

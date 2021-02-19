@@ -5,7 +5,7 @@
     xmlns:local="using:UwpApp.Views.Statistics"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls" xmlns:models="using:UwpApp.Models"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -26,6 +26,18 @@
                 </DropDownButton>
            
             </RelativePanel>
+            <ListView ItemsSource="{x:Bind DailySummaryViewModel.DailySummary,Mode=OneWay}" RelativePanel.Below="StackPanel">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:DailySummaryModel">
+                        <StackPanel>
+                            <TextBlock Text="{Binding ServiceName,Mode=OneWay}"></TextBlock>
+                            <TextBlock Text="{Binding Qty, Mode=OneWay}"></TextBlock>
+                        </StackPanel>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
 
            
             

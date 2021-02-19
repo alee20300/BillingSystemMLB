@@ -7,6 +7,7 @@ namespace Repository
     public interface IServiceRepository : IRepository<Service>
     {
         Task<IEnumerable<Service>> GetServiceAsync(string search);
+        Task<IEnumerable<Service>> GetServiceswithTracking();
 
 
     }

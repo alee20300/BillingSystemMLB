@@ -14,6 +14,7 @@ namespace Domin.Models
 
         }
 
+       
         public Memo(Patient patient)
             : this()
         {
@@ -21,18 +22,13 @@ namespace Domin.Models
             PatientId = patient.PatientId;
             PatientName = patient.PatientName;
             Address = patient.PermAddress;
-
-
         }
 
         public int MemoId { get; set; }
         public DateTime MemoDate { get; set; }
 
         public string PatientName { get; set; }
-
-        public string Address { get; set; }
-
-
+      public string Address { get; set; }
         public DateTime COllectedDate { get; set; }
 
 

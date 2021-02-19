@@ -33,7 +33,7 @@
                             QueryIcon="Find" PlaceholderText="Search For Sample" Width="300" ></AutoSuggestBox>
 
             </StackPanel>
-            <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Visible"  Width="300" Orientation="Vertical">
+            <StackPanel x:Name="Addform" Margin="0,40,40,0" RelativePanel.Below="Header" RelativePanel.AlignLeftWithPanel="True" Visibility="Collapsed"  Width="300" Orientation="Vertical">
                 <TextBlock Style="{StaticResource  SubtitleTextBlockStyle}" Text="Add Sampple"></TextBlock>
                 <TextBox Header="Sample Number" Text="{x:Bind sampleRegisterViewModel.SampleNumber, Mode=TwoWay}"></TextBox>
                 <DatePicker Header="Collected Date" Date="{x:Bind sampleRegisterViewModel.CollectedDate, Mode=TwoWay,Converter={StaticResource TimeConverter}}" ></DatePicker>

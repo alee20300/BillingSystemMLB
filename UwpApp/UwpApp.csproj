@@ -132,6 +132,8 @@
     <Compile Include="Validation\PatientValidation.cs" />
     <Compile Include="ViewModel\Converters\BaseValueConveter.cs" />
     <Compile Include="ViewModel\Converters\ComboBoxItemConvert.cs" />
+    <Compile Include="ViewModel\Memoservice\IMemoServices.cs" />
+    <Compile Include="ViewModel\Memoservice\MemoServices.cs" />
     <Compile Include="ViewModel\PaymentDetailViewModel.cs" />
     <Compile Include="ViewModel\SampleRegisterViewModel\BulkSampleMemoViewModel.cs" />
     <Compile Include="ViewModel\SampleRegisterViewModel\SampleRegisterViewModel.cs" />

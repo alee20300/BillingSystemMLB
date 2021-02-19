@@ -11,7 +11,7 @@ namespace UwpApp.Models
 
       
        
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
         public int Qty { get; set; }
     }
 }

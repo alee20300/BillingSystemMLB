@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UwpApp.Models
 {
-  public  class DailySummaryModel
+  public  class DailySummaryModeluwp
     {
 
         public int DailySummaryId { get; set; }

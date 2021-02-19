@@ -30,14 +30,17 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             MakePatients();
         }
 
+        public Memoservice.MemoServices memoServices { get; set; } = new Memoservice.MemoServices();
+
         public ObservableCollection<SampleRegister> SampleRegisters { get; set; }
 
-        public ObservableCollection<PatientModel> MakePatients()
+        public ObservableCollection<Patient> MakePatients()
         {
-            Patients = new ObservableCollection<PatientModel>();
+            Patients = new ObservableCollection<Patient>();
+            Patients.Clear();
             foreach (var sample in SampleRegisters)
             {
-                Patients.Add(new PatientModel(sample));
+                Patients.Add(new Patient(sample));
             }
             return Patients;
         }
@@ -45,7 +48,7 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
 
 
-        public ObservableCollection<PatientModel> Patients { get; set; }
+        public ObservableCollection<Patient> Patients { get; set; }
         public ObservableCollection<Service> Services { get; set; } = new ObservableCollection<Service>();
 
         public ObservableCollection<Service> ServiceSuggections { get; } = new ObservableCollection<Service>();
@@ -57,8 +60,8 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
             if (!string.IsNullOrEmpty(queryText))
             {
-                var services = await App.Repository.Service.GetServiceAsync(queryText);
-
+                var services = memoServices.GetServicesForSugesstion(queryText); 
+                
                 foreach (Service service in services)
                 {
                     ServiceSuggections.Add(service);
@@ -112,14 +115,15 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
         }
 
 
-        public void newmemodetail()
+        public  void newmemodetail()
         {
             memoDetail = new MemoDetail();
             memoDetail.Qty = 1;
             memoDetail.Service = service;
             memoDetail.Rate = service.Rate;
+            memoDetail.ServiceId = service.ServiceId;
             memoDetail.PaymentDetails = new List<PaymentDetail>();
-            memoDetail.PaymentDetails.Add(new PaymentDetail { Account = account,  Amount = service.Rate });
+            memoDetail.PaymentDetails.Add(new PaymentDetail { Account = account, Amount = service.Rate });
             memoDetails.Add(memoDetail);
 
         }
@@ -149,28 +153,23 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
 
                 throw;
             }
-
-           
-
-            
-           
         }
-
+    
 
        public async Task<IEnumerable<Memo>> MemosAsync()
         {
-
+            var ser = await App.Repository.Service.GetbyIdAsync(service.ServiceId);
+            
             try
             {
 
+                
                 PrepMemo = await App.Repository.Memo.UpsrBulk(Memos);
                 Memos.Clear();
                 foreach (var m in PrepMemo)
                 {
                     Memos.Add(m);
                 }
-
-
             }
             catch (Exception Ex)
             {
@@ -196,29 +195,21 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
             }
         }
 
-        public void Makememo(PatientModel patientModel)
+        public void Makememo(Patient patient)
         {
-            memo = new Memo();
+            memo = new Memo(patient);
+            
             memo.DoctorId = 1;
             //memo.Doctor = Doctor;
             memo.Rate = memoDetails.Sum(memoDetails => memoDetails.Rate);
             memo.MemoDate = DateTime.Now;
+            memo.Patient = patient;
+            
             memo.MemoDetails = memoDetails;
-            memo.PatientId = patientModel.PatientId;
-            memo.Address = patientModel.PermAddress;
-            memo.PatientName = patientModel.PatientName;
-
-
-
-
-
+            
+            memo.Address = patient.PermAddress;
+            memo.PatientName = patient.PatientName;
             Memos.Add(memo);
-
-
-        }
-
-
-
-
+       }
     }
 }

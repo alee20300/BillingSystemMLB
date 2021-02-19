@@ -19,8 +19,13 @@ namespace Repository.SQL
             return await dbSet.Where(service =>
             service.ServiceName.StartsWith(search) ||
             service.LisCode.StartsWith(search) ||
-            service.ServiceCode.StartsWith(search)).AsNoTracking()
+            service.ServiceCode.StartsWith(search))
             .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Service>> GetServiceswithTracking()
+        {
+            return await dbSet.Include(ap=>ap.AccountServicePrices).ToListAsync();
         }
     }
 }

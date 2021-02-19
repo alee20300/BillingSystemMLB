@@ -13,6 +13,7 @@ namespace Domin.Configuration
         void IEntityTypeConfiguration<Service>.Configure(EntityTypeBuilder<Service> builder)
         {
             builder.HasKey(s => s.ServiceId);
+            builder.Property(s => s.ServiceId).ValueGeneratedOnAdd();
 
 
 

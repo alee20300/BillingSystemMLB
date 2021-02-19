@@ -56,6 +56,7 @@ namespace Repository.SQL
         public async Task<IEnumerable<TEntity>> UpsrBulk(IEnumerable<TEntity> entities)
         {
 
+            var state1 = (_db.ChangeTracker.Entries());
             _db.Set<TEntity>().AddRange(entities);
             await _db.SaveChangesAsync();
             return entities;
