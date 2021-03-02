@@ -154,6 +154,8 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
                 {
                     var result = await App.Repository.SampleRegisterRepository.UpsertAsync(sampleRegister);
                     Samples.Add(result);
+                    SampleRegister.ReisterId = 0;
+                    SampleRegister.SampleNumber = null;
                 }
                 catch (Exception ex)
                 {

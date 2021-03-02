@@ -49,5 +49,15 @@ namespace Repository
 
 
         public IAthorizeDetailRepository  AthorizeDetails => new AutorizeDetailRepository(new ApplicationContext(_dbOptions));
+
+        public int Complete()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Dispose()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

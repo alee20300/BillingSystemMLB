@@ -1,6 +1,8 @@
-﻿namespace Repository
+﻿using System;
+
+namespace Repository
 {
-    public interface IBillingRepository
+    public interface IBillingRepository : IDisposable
     {
         IPatientRepository Patient { get; }
         IMemoRepository Memo { get; }
@@ -33,5 +35,9 @@
         ISampleRegisterRepository SampleRegisterRepository { get; }
 
         IUsernameAndHashRepository UsernameAndHash { get; }
+
+
+        int Complete();
+
     }
 }

@@ -33,6 +33,8 @@ namespace UwpApp
 
         public static string connectionString { get; set; }
 
+
+
         public App()
         {
 
@@ -65,6 +67,7 @@ namespace UwpApp
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+
 
             UseSqlServer();
             Frame rootFrame = Window.Current.Content as Frame;
@@ -127,9 +130,7 @@ namespace UwpApp
 
         private static void UseSqlServer()
         {
-
-
-            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=DESKTOP-EOG1FMN\\MSSQLSERVER1; Initial Catalog = Billing18; User Id = sa; Password = sa@12345;");
+            var dbOptions = new DbContextOptionsBuilder<ApplicationContext>().UseSqlServer("Data Source=LAPTOP-7KC3O54G\\RECEPTION; Initial Catalog = Billing18; User Id = sa; Password = sa@12345;");
             Repository = new BillingRepository(dbOptions);
 
         }

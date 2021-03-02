@@ -31,7 +31,7 @@
                     RelativePanel.RightOf="CommandBar" 
                     
                     Name="Searchbox"  PlaceholderText="Search for Something" 
-                    Width="400" HorizontalAlignment="Right"
+                    MinWidth="50" Width="300" HorizontalAlignment="Right"
                     QueryIcon="Find"
                     
                     TextChanged="AutoSuggestBox_TextChangedAsync"
@@ -172,12 +172,12 @@
                 <VisualState>
                     <VisualState.StateTriggers>
                         <AdaptiveTrigger
-                        MinWindowWidth ="300"/>
+                        MinWindowWidth ="1000"/>
 
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!-- Remove the next 3 lines for left-only navigation. -->
-                        <Setter Target="Searchbox.Visibility" Value="Visible"/>
+                        <Setter Target="Searchbox.Width" Value="450"/>
 
 
 

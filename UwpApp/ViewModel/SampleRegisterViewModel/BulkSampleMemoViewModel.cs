@@ -10,6 +10,7 @@ using System.Windows.Input;
 using UwpApp.Helpers;
 using UwpApp.Models;
 using UwpApp.ViewModel.Command;
+using Windows.UI.WindowManagement;
 
 namespace UwpApp.ViewModel.SampleRegisterViewModel
 {
@@ -159,17 +160,21 @@ namespace UwpApp.ViewModel.SampleRegisterViewModel
        public async Task<IEnumerable<Memo>> MemosAsync()
         {
             var ser = await App.Repository.Service.GetbyIdAsync(service.ServiceId);
-            
+            var acc = await App.Repository.Account.GetbyIdAsync(1);
             try
             {
-
-                
-                PrepMemo = await App.Repository.Memo.UpsrBulk(Memos);
-                Memos.Clear();
-                foreach (var m in PrepMemo)
+                foreach (var item in Memos)
                 {
-                    Memos.Add(m);
+                    var result = await App.Repository.Memo.UpsertAsync(item);
+                    Memos.Add(result);
                 }
+                
+                //PrepMemo = await App.Repository.Memo.UpsrBulk(Memos);
+                //Memos.Clear();
+                //foreach (var m in PrepMemo)
+                //{
+                //    Memos.Add(m);
+                //}
             }
             catch (Exception Ex)
             {

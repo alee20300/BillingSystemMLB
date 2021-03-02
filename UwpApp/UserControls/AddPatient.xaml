@@ -26,6 +26,10 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
 
         <StackPanel Grid.Column="0">
 
@@ -49,7 +53,7 @@
                 <AppBarButton Icon="Add" RelativePanel.RightOf="PhoneNumber" RelativePanel.AlignBottomWith="PhoneNumber" Width="40" Height="37"> </AppBarButton>
             </RelativePanel>
         </StackPanel>
-        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+        <StackPanel x:Name="Col2" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left">
            
 
             <TextBox x:Name="Address" Header="Address" Text="{x:Bind patientViewModel.PermAddress,Mode=TwoWay}" PlaceholderText="Address" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
@@ -68,9 +72,6 @@
 
                 <ComboBox x:Name="Contry" PlaceholderText="Country" IsTextSearchEnabled="True"  Header="Country" ItemsSource="{x:Bind IAviewModel.Country,Mode=OneWay}" SelectedValue="{x:Bind patientViewModel.CountryId, Mode=TwoWay}"
                           DisplayMemberPath="CountryName" SelectedValuePath="CountryId" RelativePanel.RightOf="Island" Margin="20,0,0,0" HorizontalAlignment="Stretch" Width="180"/>
-
-
-
             </RelativePanel>
                 <TextBox x:Name="Email" Header="Email" Text="{x:Bind patientViewModel.Email,Mode=TwoWay}" Margin="0,0,0,0" MaxLength="50" Width="400" HorizontalAlignment="Left" InputScope="EmailNameOrAddress" />
                 <StackPanel Orientation="Horizontal">
@@ -80,9 +81,24 @@
             
 
             </StackPanel>
-           
-       
-    
-        
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ScreenSize">
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1000"></AdaptiveTrigger> 
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="Col2.Grid.Column" Value="1"></Setter>
+                        <Setter Target="Col2.Grid.Row" Value="0"></Setter>
+                        <Setter Target="Col2.HorizontalAlignment" Value="Left"></Setter>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+
+
+
     </Grid>
 </Page>

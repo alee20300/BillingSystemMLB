@@ -28,7 +28,7 @@ namespace UwpApp.Helpers
 
         public async void PrintPDF(Memo memo)
         {
-            Reports = new Reports(Memo);
+            Reports = new Reports(memo);
             //var stream = new InMemoryRandomAccessStream();
             //FileSavePicker fileSavePicker = new FileSavePicker();
             WriterFormat format = WriterFormat.PDF;
