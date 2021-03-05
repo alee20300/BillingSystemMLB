@@ -22,8 +22,8 @@ namespace Domin.Models
 
         public decimal Rate { get; set; }
         public int Qty { get; set; } = 1;
-        //public decimal PatientAmmount { get; set; }
-        //public decimal AccountAmmount { get; set; }
+        public decimal PatientAmmount { get; set; }
+        public decimal AccountAmmount { get; set; }
 
 
         public ICollection<PaymentDetail> PaymentDetails { get; set; } = new List<PaymentDetail>();

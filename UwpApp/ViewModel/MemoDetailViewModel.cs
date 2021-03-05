@@ -19,6 +19,13 @@ namespace UwpApp.ViewModel
                 account(paymenttype.Account, ser);
             }
         }
+
+        public void AddCashPaymentDetail()
+        {
+            PaymentDetail = new PaymentDetail();
+            PaymentDetail.Account.AccountId = 1;
+
+        }
         public MemoDetail MemoDetail { get; }
 
         public void account(Account acc, int scc)
@@ -101,18 +108,11 @@ namespace UwpApp.ViewModel
             }
         }
 
-        //public decimal PatientAmount
-        //{
-        //    get => MemoDetail.PatientAmmount;
-        //    set
-        //    {
-        //        if (MemoDetail.PatientAmmount != value)
-        //        {
-        //            MemoDetail.PatientAmmount = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
+        public decimal PatientAmount
+        {
+            get => Rate-AccountAmmount;
+           
+        }
 
         public decimal Rate
         {
@@ -128,18 +128,11 @@ namespace UwpApp.ViewModel
             }
         }
 
-        //public decimal AccountAmmount
-        //{
-        //    get => MemoDetail.AccountAmmount;
-        //    set
-        //    {
-        //        if (MemoDetail.AccountAmmount != value)
-        //        {
-        //            MemoDetail.AccountAmmount = value;
-        //            OnPropertyChanged();
-        //        }
-        //    }
-        //}
+        public decimal AccountAmmount
+        {
+            get => (PaymentDetails.Where(p => p.Account.AccountId == 1).Sum(p => p.Amount));
+
+        }
 
         public int Qty
         {
@@ -158,7 +151,7 @@ namespace UwpApp.ViewModel
 
         public decimal Account 
         { get
-            { return PaymentDetails.Sum(PaymentDetails => PaymentDetails.Amount); } 
+            { return (PaymentDetails.Where(p=>p.Account.AccountId==1).Sum(p=>p.Amount)); } 
              }
 
 

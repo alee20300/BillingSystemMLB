@@ -19,7 +19,7 @@
             <RelativePanel HorizontalAlignment="Right">
                 <CommandBar x:Name="CommandBar" Background="Transparent" HorizontalAlignment="Right" >
                     <AppBarToggleButton 
-                        Icon="Add" Label="Add Patient" Click="AppBarToggleButton_Click" />
+                        Icon="Add" Label="Add Patient" Click="AppBarToggleButton_Click"/>
                     <AppBarButton
                         Name="Edit" Label="Edit Patinet" Icon="Edit" Click="Edit_Click"
                         />
@@ -87,7 +87,7 @@
             
             <Pivot x:Name="HomePagePivot" VerticalAlignment="Stretch">
                 <PivotItem Header="Edit Patient">
-                    <Frame x:Name="addpatientframe" HorizontalAlignment="Left">
+                    <Frame x:Name="addpatientframe"  HorizontalAlignment="Stretch">
 
                     </Frame>
 
@@ -178,6 +178,7 @@
                     <VisualState.Setters>
                         <!-- Remove the next 3 lines for left-only navigation. -->
                         <Setter Target="Searchbox.Width" Value="450"/>
+                       
 
 
 

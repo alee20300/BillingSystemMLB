@@ -403,11 +403,13 @@ namespace UwpApp.ViewModel
 
         }
 
-        public Decimal PatientAmmount
+        public decimal PatientAmmount
         {
             get
             {
-                return MemoDetails.Sum(MemoDetails => MemoDetails.PaymentDetails.Sum(PaymentDetail => PaymentDetail.Amount-Rate));
+               
+
+                return  MemoDetails.Sum(MemoDetails => MemoDetails.PaymentDetails.Sum(PaymentDetail => PaymentDetail.Amount-Rate));
             }
 
         }
